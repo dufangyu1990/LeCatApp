@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <item android:state_pressed="false">
+        <shape>
+            实心  bdw   lanse
+            <solid android:color="@color/lanse" />
+            圆角
+            <corners android:radius="5dp" />
+            描边
+            <stroke android:width="0.5dp" android:color="@color/lanse" />
+        </shape>
+    </item>
+    <item android:state_pressed="true">
+        <shape>
+            实心
+            <solid android:color="@color/choseGrey" />
+            圆角
+            <corners android:radius="5dp" />
+            描边
+            <stroke android:width="0.5dp" android:color="@color/choseGrey" />
+        </shape>
+    </item>
+    
+    
+    
+    
+    
+    
+</selector>

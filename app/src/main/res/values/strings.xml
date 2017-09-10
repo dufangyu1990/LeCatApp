@@ -1,0 +1,247 @@
+<resources>
+    <string name="app_name">乐瞄</string>
+
+    <!--登录界面-->
+    <string name="login">登录</string>
+    <string name="forget_pwd">忘记密码</string>
+    <string name="regist">注册账号</string>
+
+    <!--注册界面-->
+    <string name="input_account">输入帐号</string>
+    <string name="input_phone">输入手机号</string>
+    <string name="input_pwd">输入密码</string>
+    <string name="input_insurepwd">确认密码</string>
+    <string name="input_nickname">填写您的昵称</string>
+    <string name="input_verify_code">输入验证码</string>
+    <string name="resend">重新发送</string>
+    <string name="completed">完成</string>
+    <string name="instruction">我已经阅读并同意使用条款和个人隐私</string>
+    <string name="get_verify_code">获取验证码</string>
+
+
+
+    <string name="badnetwork">网络连接失败,请检查网络状态</string>
+    <string name="badnetinfo">网络连接异常!</string>
+    <string name="pressagain">再按一次退出</string>
+    <string name="loginfail">用户名或密码错误,请重试</string>
+
+
+    <string name="changePas">修改密码</string>
+    <string name="returnAdvs">意见反馈</string>
+    <string name="about">关于我们</string>
+    <string name="exitLogin">退出登录</string>
+    <string name="exittitle">退出当前账号?</string>
+    <string name="introduce1">Copyright©2014-2017
+       </string>
+    <string name="introduce2">
+        北京博创联动科技有限公司 版权所有</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="strTitleImg">TitleImg</string>
+    <string name="strLoginImg">LoginImg</string>
+    <string name="strUserName">用户名:</string>
+    <string name="strPassword">密&#160;&#160;&#160;&#160;码:</string>
+    <string name="strLogin">登&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;录</string>
+    <string name="strSavePass">记住密码</string>
+    <string name="strTitle">金控车ｅ寻</string>
+    <string name="strGpsButton">GPS定位</string>
+    <string name="strReListClearB">清除列表</string>
+    <string name="strMapButton">地图选择</string>
+    <string name="strGpsExplain">Gps®Network</string>
+    <string name="strLinkStateLabel">正在连接········</string>
+    <string name="strListSelectButton">定&#160;&#160;&#160;&#160;位</string>
+    <string name="netconnect">已连接请登录</string>
+    <string name="strSelectCb">全&#160;&#160;&#160;&#160;选</string>
+    <string name="strSetName">终端号码</string>
+    <string name="strReDate">车牌号码</string>
+    <string name="strReTime">回传时间</string>
+    <string name="strReSpeed">速&#160;度</string>
+    <string name="strSaveMapView">保存视野</string>
+    <string name="strChangeMap">影像地图</string>
+    <string name="strSetMsgTitle">用户信息</string>
+    <string name="strBeginTime">开始时间</string>
+    <string name="strEndTime">结束时间</string>
+    <string name="strLoadHis">回放轨迹</string>
+    <string name="strQueryMileage">里程查询</string>
+    <string name="scan_scan">扫一扫</string>
+    <string name="scan_qrcode">将二维码放入框内，即可自动扫描</string>
+    <string name="scan_onecode">将条形码放入框内，即可自动扫描</string>
+    <string name="scan_qr">二维码</string>
+    <string name="scan_one">条形码</string>
+    <string name="scan_result">扫描结果</string>
+    <string name="scan_content">扫描内容</string>
+    <string name="scan_back">返回</string>
+    <string name="scan_help">帮助</string>
+    <string name="sendOrder">下发指令</string>
+    <string name="queryOrder">指令查询</string>
+    <string name="queryGroup">部门查询</string>
+    <string name="returnAdv">意见反馈</string>
+    <string name="chooseCar">选取终端</string>
+    <string name="Tongjifenxi">统计分析</string>
+    <string name="onlineTongji">在线离线统计</string>
+    <string name="alarmTongji">报警统计</string>
+    <string name="alarmtuisong">报警推送</string>
+    <string name="showCarInfo">车辆信息</string>
+    <string name="MeliageInfo">里程统计详情</string>
+    <string name="OverMeliageInfo">超里程统计详情</string>
+    <string name="homeshowCarInfo">车辆列表</string>
+    <string name="CarInfo">车辆详情</string>
+    <string name="AlarmCarInfo">报警详情</string>
+    <string name="SystemSet">系统设置</string>
+    <string name="persioninfo">个人信息</string>
+    <string name="my_device">我的设备</string>
+    <string name="add_device">添加设备</string>
+    <string name="more_info">完善信息</string>
+    <string name="Statetongji">状态统计</string>
+    <string name="PublishAdv">发布反馈信息</string>
+    <string name="AdvInfo">反馈详情</string>
+    <string name="ModifyPassword">修改密码</string>
+    <string name="modifypwdsuccess">修改密码成功</string>
+    <string name="modifypwdfail">修改密码失败</string>
+    <string name="button_ok">确定</string>
+    <string name="msg_camera_framework_bug">抱歉，Android相机可能被占用，您可能需要重启设备。</string>
+    <string name="canclespeedOrder">取消限速</string>
+    <string name="remountoffOrder">遥控熄火</string>
+    <string name="restoreelectricOrder">恢复上电</string>
+    <string name="call_time">时间:</string>
+    <string name="call_distance">距离:</string>
+    <string name="speed_limit">速度:</string>
+    <string name="mechineId">终端编号:</string>
+    <string name="bindingId">绑定Id</string>
+    <string name="lichenset">超里程设置</string>
+    <string name="tishi">注:超里程数为空,表示取消超里程</string>
+    <string name="order_context">命令信息:</string>
+    <string name="state">执行状态</string>
+    <string name="setOrder">指令设置</string>
+    <string name="histimeset">轨迹时间设置</string>
+    <string name="mileageset">里程统计设置</string>
+    <string name="playHis">轨迹回放</string>
+    <string name="fenceSet">围栏设置</string>
+    <string name="shebeipeizhi">设备配置</string>
+    <string name="minglingchaxun">命令查询</string>
+    <string name="workmode">工作模式</string>
+    <string name="fixedtime">定时时间</string>
+    <string name="locatetime">定位次数(每天)</string>
+    <string name="locateshijian">定位时间</string>
+    <string name="worktime">工作时间(分钟)</string>
+    <string name="intervaltime">间隔时间(分钟)</string>
+    <string name="mechinestate">终端状态</string>
+    <string name="setting">发  送</string>
+    <string name="checkorder">历  史</string>
+    <string name="homepage">首页</string>
+    <string name="tongji">统计</string>
+    <string name="findcar">找车</string>
+    <string name="fixcar">装车</string>
+    <string name="myself">我的</string>
+    <string name="carinfo">车辆信息</string>
+    <string name="retruntime">回传时间</string>
+    <string name="pull_to_refresh_pull_label">下拉刷新</string>
+    <string name="pull_to_refresh_release_label">松开后刷新</string>
+    <!--   <string name="pull_to_refresh_refreshing_label">刷新\u2026</string> -->
+    <string name="pull_to_refresh_footer_release_label">松开后加载</string>
+    <string name="pull_to_refresh_footer_pull_label">上拉加载更多</string>
+    <string name="pull_to_refresh_footer_refreshing_label">加载中\u2026</string>
+    <string name="onlinestr">在线</string>
+    <string name="offlinestr">离线</string>
+    <string name="otherstr">其他</string>
+    <string name="kucunstr">库存</string>
+    <string name="guoqistr">到期</string>
+    <string name="sleepstr">休眠</string>
+    <string name="duandianstr">断电</string>
+    <string name="chaichustr">拆除</string>
+    <string name="chaosustr">超速</string>
+    <string name="quyustr">区域</string>
+
+    <string name="timemode">定时模式</string>
+    <string name="weekmode">星期模式</string>
+
+
+
+
+    <string name="pushmsg_center_no_more_msg">没有更多数据了</string>
+    <string name="pushmsg_center_pull_up_text">松开加载更多</string>
+    <string name="pushmsg_center_pull_down_text">下拉可以刷新</string>
+    <string name="pushmsg_center_pull_release_text">松开获取更多</string>
+    <string name="pushmsg_center_pull_down_update_time">最后更新时间 : </string>
+    <string name="pushmsg_center_load_more_ongoing_text">正在加载中</string>
+    <string name="xsearch_loading">正在加载中…</string>
+
+    <!-- 加载图片失败时的提示文本 -->
+    <string name="picture_load_image_failed">点击屏幕，重新加载</string>
+    <!-- 加载中提示 -->
+    <string name="picture_image_loading">正在加载…</string>
+
+    <!-- 下拉刷新和上拉加载更多的文本 -->
+    <string name="pull_to_refresh_header_hint_normal">@string/pushmsg_center_pull_down_text</string>
+    <string name="pull_to_refresh_header_hint_normal2">上拉可以刷新</string>
+    <string name="pull_to_refresh_header_hint_ready">松开后刷新</string>
+    <string name="pull_to_refresh_header_hint_loading">@string/pushmsg_center_load_more_ongoing_text</string>
+    <string name="pull_to_refresh_header_last_time">@string/pushmsg_center_pull_down_update_time</string>
+    <string name="pull_to_refresh_footer_hint_ready">松开载入更多</string>
+    <string name="pull_to_refresh_refreshing_label">@string/pull_to_refresh_header_hint_loading</string>
+    <string name="pull_to_refresh_no_more_data">@string/pushmsg_center_no_more_msg</string>
+    <string name="pull_to_refresh_network_error">网络不给力，请检查网络</string>
+
+
+
+    <string-array name="strAlarmSelect">
+        <item>全部车辆</item>
+        <item>拆除报警</item>
+        <item>区域报警</item>
+        <item>断电报警</item>
+        <item>超速报警</item>
+    </string-array>
+
+    <string-array name="strWorkmodeArr">
+        <item>不设置</item>
+        <item>标准模式</item>
+        <item>精准模式</item>
+        <item>追车模式</item>
+    </string-array>
+
+
+    <string-array name="strWeekArr">
+        <item>星期一</item>
+        <item>星期二</item>
+        <item>星期三</item>
+        <item>星期四</item>
+        <item>星期五</item>
+        <item>星期六</item>
+        <item>星期日</item>
+        <item>全选</item>
+    </string-array>
+
+
+    <string-array name="strStateArr">
+        <item>不设置</item>
+        <item>已激活</item>
+    </string-array>
+
+
+
+
+    <string-array name="strOrderArr">
+        <item>定时</item>
+        <item>定距</item>
+        <item>限速</item>
+        <item>熄火</item>
+        <item>上电</item>
+        <item>里程</item>
+    </string-array>
+
+
+
+    <string-array name="strBSJOrderArr">
+        <item>定时</item>
+        <item>限速</item>
+        <item>熄火</item>
+        <item>上电</item>
+        <item>里程</item>
+    </string-array>
+
+    <string-array name="strTypeArr">
+        <item>部门</item>
+        <item>车辆</item>
+    </string-array>
+
+</resources>
