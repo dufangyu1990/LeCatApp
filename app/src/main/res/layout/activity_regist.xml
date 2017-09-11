@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/beijing1"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/regist_title_bar"/>
+
+
+   <ScrollView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:orientation="vertical"
+           android:layout_height="match_parent">
+
+           <ImageView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center_horizontal"
+               android:layout_marginTop="@dimen/margin10"
+               android:src="@drawable/touxiang" />
+
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="@dimen/margin10"
+               android:background="@drawable/beijing2"
+               android:orientation="vertical">
+
+
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="@dimen/margin30"
+                   android:orientation="vertical">
+
+                   <include layout="@layout/lineview" />
+
+                   <LinearLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:focusable="true"
+                       android:focusableInTouchMode="true"
+                       android:orientation="vertical"
+                       >
+
+
+                       <LinearLayout
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:layout_marginLeft="@dimen/margin10"
+                           android:orientation="vertical">
+
+                           <LinearLayout
+                               android:layout_width="match_parent"
+                               android:layout_height="wrap_content"
+                               android:orientation="horizontal"
+                               android:paddingBottom="@dimen/margin17"
+                               android:paddingTop="@dimen/margin17">
+
+                               <TextView
+                                   android:layout_width="wrap_content"
+                                   android:layout_height="wrap_content"
+                                   android:minWidth="@dimen/margin80"
+                                   android:text="用  户  名 "
+                                   android:textColor="@color/lightgreymore"
+                                   android:textSize="@dimen/text16" />
+
+                               <EditText
+
+                                   android:id="@+id/old_editor"
+                                   android:layout_width="match_parent"
+                                   android:layout_height="wrap_content"
+                                   android:layout_gravity="center"
+                                   android:layout_marginLeft="@dimen/margin10"
+                                   android:layout_weight="1"
+                                   android:background="@null"
+                                   android:singleLine="true"
+                                   android:textColor="@color/white"
+                                   android:textCursorDrawable="@null"
+                                   android:textSize="@dimen/text14" />
+
+
+                           </LinearLayout>
+
+                           <include layout="@layout/lineview" />
+
+
+                       </LinearLayout>
+
+                       <LinearLayout
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:layout_marginLeft="@dimen/margin10"
+                           android:orientation="vertical">
+
+                           <LinearLayout
+                               android:layout_width="match_parent"
+                               android:layout_height="wrap_content"
+                               android:orientation="horizontal"
+                               android:paddingBottom="@dimen/margin17"
+                               android:paddingTop="@dimen/margin17">
+
+                               <TextView
+                                   android:layout_width="wrap_content"
+                                   android:layout_height="wrap_content"
+                                   android:minWidth="@dimen/margin80"
+                                   android:text="密        码"
+                                   android:textColor="@color/lightgreymore"
+                                   android:textSize="@dimen/text16" />
+
+                               <EditText
+
+                                   android:id="@+id/new_editor"
+                                   android:layout_width="match_parent"
+                                   android:layout_height="wrap_content"
+                                   android:layout_gravity="center"
+                                   android:layout_marginLeft="@dimen/margin10"
+                                   android:layout_weight="1"
+                                   android:textColor="@color/white"
+                                   android:background="@null"
+                                   android:inputType="textPassword"
+                                   android:singleLine="true"
+                                   android:textCursorDrawable="@null"
+                                   android:textSize="@dimen/text14" />
+
+
+                           </LinearLayout>
+
+                           <include layout="@layout/lineview" />
+
+
+                       </LinearLayout>
+
+                       <LinearLayout
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:layout_marginLeft="@dimen/margin10"
+                           android:orientation="vertical">
+
+                           <LinearLayout
+                               android:layout_width="match_parent"
+                               android:layout_height="wrap_content"
+                               android:orientation="horizontal"
+                               android:paddingBottom="@dimen/margin17"
+                               android:paddingTop="@dimen/margin17">
+
+                               <TextView
+                                   android:layout_width="wrap_content"
+                                   android:layout_height="wrap_content"
+                                   android:minWidth="@dimen/margin80"
+                                   android:text="确认密码"
+                                   android:textColor="@color/lightgreymore"
+                                   android:textSize="@dimen/text16" />
+
+                               <EditText
+
+                                   android:id="@+id/insure_editor"
+                                   android:layout_width="match_parent"
+                                   android:layout_height="wrap_content"
+                                   android:layout_gravity="center"
+                                   android:textColor="@color/white"
+                                   android:layout_marginLeft="@dimen/margin10"
+                                   android:layout_weight="1"
+                                   android:background="@null"
+                                   android:inputType="textPassword"
+                                   android:singleLine="true"
+                                   android:textCursorDrawable="@null"
+                                   android:textSize="@dimen/text14" />
+
+
+                           </LinearLayout>
+
+                       </LinearLayout>
+
+
+                   </LinearLayout>
+
+                   <include layout="@layout/lineview" />
+               </LinearLayout>
+
+
+           </LinearLayout>
+
+
+           <TextView
+               android:id="@+id/submit_btn"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginLeft="@dimen/margin10"
+               android:layout_marginRight="@dimen/margin10"
+               android:layout_marginTop="@dimen/margin20"
+               android:background="@drawable/registbtn"
+               android:clickable="true"
+               android:gravity="center"
+               android:paddingBottom="@dimen/margin10"
+               android:paddingLeft="@dimen/margin30"
+               android:paddingRight="@dimen/margin30"
+               android:paddingTop="@dimen/margin10"
+               android:text="提交"
+               android:textColor="@color/white"
+               android:textSize="@dimen/text16" />
+       </LinearLayout>
+
+   </ScrollView>
+
+
+
+
+
+
+</LinearLayout>

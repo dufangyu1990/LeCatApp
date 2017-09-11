@@ -20,6 +20,13 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
+    <style name="regist_title_bar_style">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:paddingLeft">0dp</item>
+        <item name="android:paddingRight">0dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
 
     <!--自定义对话框-->
     <style name="AlertDialogStyle" parent="@android:style/Theme.Dialog">

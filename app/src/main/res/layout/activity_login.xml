@@ -11,7 +11,10 @@
     <ScrollView
         android:id="@+id/scrollview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
 
 
@@ -183,6 +186,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_marginTop="@dimen/margin20"
+            android:padding="@dimen/margin5"
             android:layout_height="wrap_content">
 
             <TextView
@@ -192,6 +196,7 @@
                 android:textColor="@color/white"
                 android:layout_marginLeft="@dimen/margin20"
                 android:text="注册用户"
+                android:id="@+id/regist_user"
                 android:textSize="@dimen/text18"
 
                 />

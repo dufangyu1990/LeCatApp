@@ -21,6 +21,7 @@
     <color name="selectbg">#cccccc</color>
     <color name="top_bg_color">#d0d0d0</color>
     <color name="zhaungchebiaoqian">#efeff4</color>
+    <color name="linecolor">#748daf</color>
 
     <color name="windowFrame">#f8f8f8</color>
     <color name="line">#cccccc</color>
@@ -151,6 +152,9 @@
     <color name="black">#000000</color>
     <color name="blue">#ffccddff</color>
     <color name="grey">#58616d</color>
+    <color name="lightgreymore">#9da7b6</color>
+
+
     <color name="titleColor">#656565</color>
     <color name="darkgrey">#ff404040</color>
     <color name="toasterro">#9fd524</color>

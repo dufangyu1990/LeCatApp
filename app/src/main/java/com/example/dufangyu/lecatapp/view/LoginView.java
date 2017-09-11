@@ -30,12 +30,14 @@ public class LoginView extends ViewImpl{
     private String loginNameStr,pwdStr;
     private CheckBox SavePassCheck;
     private boolean p_bSavePassON = false;
+    private TextView registtv;
 
 
     private ScrollView mScrollView;
 
     @Override
     public void initView() {
+        registtv = findViewById(R.id.regist_user);
         mScrollView = findViewById(R.id.scrollview);
         accountText = findViewById(R.id.user_name_et);
         passwordText = findViewById(R.id.pass_word_et);
@@ -53,7 +55,7 @@ public class LoginView extends ViewImpl{
 
     @Override
     public void bindEvent() {
-        EventHelper.click(mPresent,loginText);
+        EventHelper.click(mPresent,loginText,registtv);
         EventHelper.focus(mPresent,accountText,passwordText);
     }
 

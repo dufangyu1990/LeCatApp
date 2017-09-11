@@ -56,6 +56,9 @@ public class LoginActivity extends ActivityPresentImpl<LoginView> implements Vie
             case R.id.login_button:
                 login();
                 break;
+            case R.id.regist_user:
+                RegistActivity.actionStart(LoginActivity.this);
+                break;
         }
     }
 
