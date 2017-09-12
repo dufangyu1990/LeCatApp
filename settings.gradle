@@ -1,1 +1,1 @@
-include ':app', ':OkHttpFinal'
+include ':app', ':OkHttpFinal', ':myapplication'

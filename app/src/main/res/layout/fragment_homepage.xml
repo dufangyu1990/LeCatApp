@@ -1,26 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
+    xmlns:cuiweiyou="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:background="@color/white"
     android:layout_height="match_parent">
 
     <ImageView
-        android:layout_marginTop="@dimen/margin10"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/beijing3"
         android:scaleType="centerCrop"
-        />
-
-
-
-    <ImageView
-        android:id="@+id/menkongimg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/menkong1"
-        android:layout_centerInParent="true"
         />
 
     <TextView
@@ -29,11 +19,157 @@
         android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:text="点击查看乐喵门控"
-        android:layout_above="@id/menkongimg"
-        android:layout_marginBottom="@dimen/margin20"
         android:textSize="@dimen/text20"
-        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/margin100"
         />
+
+    <ImageView
+        android:id="@+id/menkongimg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/menkong1"
+        android:layout_marginTop="@dimen/margin20"
+        android:layout_below="@id/texttv"
+        android:layout_centerHorizontal="true"
+        />
+
+
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_below="@id/menkongimg"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="温度"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                android:textSize="@dimen/text16"
+                android:textColor="@color/lightlanse"
+                />
+
+            <com.example.dufangyu.lecatapp.customview.ProgressView
+                android:layout_width="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="wrap_content"
+            cuiweiyou:ringBackgroundColor="#bfdef3"
+            cuiweiyou:ringForegroundColor="#0099ff"
+            cuiweiyou:ringSize="10dp"
+            cuiweiyou:textColor="@color/lightlanse"
+            cuiweiyou:textSize="@dimen/text14"
+            />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="温度"
+
+                android:gravity="center_horizontal"
+                android:textStyle="bold"
+                android:visibility="invisible"
+                android:layout_gravity="center_horizontal"
+                android:textSize="@dimen/text16"
+                android:textColor="@color/lightlanse"
+
+                />
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:orientation="vertical"
+               android:layout_gravity="center"
+               android:layout_marginTop="@dimen/margin40"
+               android:layout_height="wrap_content">
+
+               <TextView
+                   android:layout_width="match_parent"
+                   android:text="更新时间"
+                   android:gravity="center_horizontal"
+                   android:layout_gravity="center_horizontal"
+                   android:textSize="@dimen/text14"
+                   android:textColor="@color/textcolor"
+                   android:layout_height="wrap_content" />
+
+               <TextView
+                   android:id="@+id/textView"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="center_horizontal"
+                   android:text="2017年9月7日"
+                   android:singleLine="true"
+                   android:gravity="center_horizontal"
+                   android:textColor="@color/textcolor"
+                   android:textSize="@dimen/text14" />
+
+               <TextView
+                   android:layout_width="match_parent"
+                   android:text="09:36:09"
+                   android:gravity="center"
+                   android:textStyle="bold"
+                   android:layout_gravity="center_horizontal"
+                   android:textSize="@dimen/text16"
+                   android:textColor="@color/textcolor"
+                   android:layout_height="wrap_content" />
+
+
+
+           </LinearLayout>
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="湿度"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                android:textSize="@dimen/text16"
+                android:textColor="@color/lightlanse"
+                />
+
+            <com.example.dufangyu.lecatapp.customview.ProgressView
+                android:layout_width="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="wrap_content"
+                cuiweiyou:ringBackgroundColor="#bfdef3"
+                cuiweiyou:ringForegroundColor="#0099ff"
+                cuiweiyou:ringSize="10dp"
+                cuiweiyou:textColor="@color/lightlanse"
+                cuiweiyou:textSize="@dimen/text14"
+                />
+          </LinearLayout>
+
+
+
+        </LinearLayout>
+
 
 
 

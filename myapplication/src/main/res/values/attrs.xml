@@ -14,7 +14,6 @@
     </declare-styleable>
 
 
-
     <!-- 在自定义类中使用 -->
     <!-- 自定义属性集合 name=自定义名称 -->
     <declare-styleable name="udfstyle">
@@ -31,6 +30,9 @@
         <!-- 最大值 -->
         <attr name="max" format="integer" />
     </declare-styleable>
+
+
+
 
 
 
