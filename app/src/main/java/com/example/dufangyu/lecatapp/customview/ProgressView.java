@@ -136,7 +136,6 @@ public class ProgressView extends View{
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        LogUtil.d("dfy","width = "+getWidth());
         center = getWidth() / 2;	// 此时可以获取控件的尺寸了
 //        radius = (int) ((center - ringSize) / 2);
         radius =  (int)(center*0.7) ;
