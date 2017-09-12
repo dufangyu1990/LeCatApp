@@ -5,13 +5,36 @@
     android:background="@color/white"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:layout_marginTop="@dimen/margin10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/beijing3"
+        android:scaleType="centerCrop"
+        />
+
+
+
+    <ImageView
+        android:id="@+id/menkongimg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/menkong1"
+        android:layout_centerInParent="true"
+        />
 
     <TextView
+        android:id="@+id/texttv"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text="点击查看乐喵门控"
+        android:layout_above="@id/menkongimg"
+        android:layout_marginBottom="@dimen/margin20"
+        android:textSize="@dimen/text20"
         android:layout_centerInParent="true"
-        android:text="首页"
-        android:textSize="@dimen/text18"
-        android:layout_height="wrap_content" />
+        />
+
 
 
 </RelativeLayout>
