@@ -73,7 +73,7 @@
                     android:orientation="vertical">
 
                     <RelativeLayout
-                        android:id="@+id/systemset_rel"
+                        android:id="@+id/userinfo_rel"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/setlist_selector"
@@ -125,7 +125,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:padding="@dimen/margin15"
-                    android:id="@+id/changepwd_rel"
+                    android:id="@+id/mydevice_rel"
                     android:clickable="true"
                     android:background="@drawable/setlist_selector"
                     >
@@ -165,7 +165,7 @@
                     android:orientation="vertical">
 
                     <RelativeLayout
-                        android:id="@+id/returnavs_rel"
+                        android:id="@+id/add_device_rel"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/setlist_selector"
@@ -185,7 +185,6 @@
                             android:visibility="gone" />
 
                         <TextView
-                            android:id="@+id/returnAvs"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
@@ -218,7 +217,7 @@
                         android:orientation="horizontal"
                         android:padding="@dimen/margin15"
                         android:clickable="true"
-                        android:id="@+id/about_rel"
+                        android:id="@+id/changepwd_rel"
                         android:background="@drawable/setlist_selector"
                         >
 
@@ -240,7 +239,7 @@
                             android:layout_marginLeft="@dimen/margin10"
                             android:drawableRight="@drawable/jiantouleft"
                             android:layout_centerVertical="true"
-                            android:text="@string/more_info"
+                            android:text="@string/ModifyPassword"
                             android:textColor="@color/text_color"
                             android:textSize="@dimen/text16" />
                     </RelativeLayout>
@@ -303,7 +302,7 @@
                     android:id="@+id/exitlogin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin40"
+                    android:layout_marginTop="@dimen/margin20"
                     android:layout_marginRight="@dimen/margin20"
                     android:layout_marginLeft="@dimen/margin20"
                     android:background="@drawable/exit_selector"

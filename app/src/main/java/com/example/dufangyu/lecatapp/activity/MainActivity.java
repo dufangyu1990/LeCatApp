@@ -14,7 +14,7 @@ import com.example.dufangyu.lecatapp.present.FragmentActivityPresentImpl;
 import com.example.dufangyu.lecatapp.utils.MyToast;
 import com.example.dufangyu.lecatapp.view.MainView;
 
-
+import zxing.CaptureActivity;
 public class MainActivity extends FragmentActivityPresentImpl<MainView> implements MainListener,JumpToActivityListener {
 
     private long exitTime=0;
@@ -101,10 +101,6 @@ public class MainActivity extends FragmentActivityPresentImpl<MainView> implemen
     }
 
 
-    @Override
-    public void jumpToAboutActivity() {
-        AboutUsActivity.actionStart(this);
-    }
 
     @Override
     public void jumpToModifyPawActivity(String loginName,String pwdStr) {
@@ -115,5 +111,13 @@ public class MainActivity extends FragmentActivityPresentImpl<MainView> implemen
     public void jumpToUpdateActivity() {
         UpdateActivity.actionStart(this);
     }
+
+
+    @Override
+    public void jumpToScanCodeActivity() {
+        CaptureActivity.actionStart(this);
+
+    }
+
 
 }

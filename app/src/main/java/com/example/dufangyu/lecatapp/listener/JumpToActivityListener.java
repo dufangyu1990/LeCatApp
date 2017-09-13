@@ -11,9 +11,10 @@ public interface JumpToActivityListener {
 //	public void jumpToHomeShowCarActivity(AlarmCarGrid mCarGrid);
 //	public void jumpToHomeShowCarAlarmActivity(AlarmCarGrid mAlarmGrid);
 //	public void jumpToTongjiActivity();
-	public void jumpToAboutActivity();
+//	public void jumpToAboutActivity();
 	public void jumpToModifyPawActivity(String loginName, String pwdStr);
 	public void jumpToUpdateActivity();
+	public void jumpToScanCodeActivity();
 //	public void resetAppData();
 //	public void jumpToReturnAdvActivity();
 }

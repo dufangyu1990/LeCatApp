@@ -38,5 +38,6 @@ public class AddDeviceBiz extends BaseBiz implements IAddDevice{
         this.listener = listener;
         TcpConnectUtil.getTcpInstance().IntiTemp();
         TcpConnectUtil.getTcpInstance().ClintSendBcCommData(1108, "0002", "1", "", "", "", "", "", "", loginName, DEVICE_TYPE, deviceId, nickName, "", "", "", "", "", "");
+//        TcpConnectUtil.getTcpInstance().ClintSendBcCommData(1108, "0002", "1", "", "", "", "", "", "", "用户名", "设备类型", "设备ID", "设备别名", "", "", "", "", "", "");
     }
 }

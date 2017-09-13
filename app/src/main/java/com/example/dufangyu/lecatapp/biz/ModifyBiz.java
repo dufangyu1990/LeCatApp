@@ -14,9 +14,9 @@ public class ModifyBiz extends BaseBiz implements IModifyPwd{
 
     @Override
     protected void handleServerResult(int intDataType, String strDataType, String strSetSN, String strSetSN1, String strAlmComType, String strParam1, String strParam2, String strParam3) {
-        if(intDataType==1109)
+        if(intDataType==1105)
         {
-            if(strDataType.equals("53"))
+            if(strDataType.equals("1003"))
             {
                 if(strParam1.equals("1"))//修改成功
                 {
@@ -34,7 +34,7 @@ public class ModifyBiz extends BaseBiz implements IModifyPwd{
     public void modifyPwd(String loginName, String newPwd, ModifyPwdListener listener) {
         this.listener = listener;
         TcpConnectUtil.getTcpInstance().IntiTemp();
-        TcpConnectUtil.getTcpInstance().ClintSendBcCommData(1107, "53", "", "", "", "", "", "", "", "", "", loginName, newPwd, "", "", "", "", "", "");
+        TcpConnectUtil.getTcpInstance().ClintSendBcCommData(1105, "0003", "", "", "", "", "", "", "", "", "", loginName, newPwd, "", "", "", "", "", "");
 
     }
 

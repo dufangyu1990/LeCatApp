@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:fitsSystemWindows="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     >
 
     <SurfaceView
@@ -17,14 +21,16 @@
 
     <!-- 顶部条栏 -->
 
+
+
     <RelativeLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:background="@color/colorPrimary">
 
-        
-        
+
+
         <ImageView
             android:id="@+id/capture_back"
             android:layout_width="wrap_content"
@@ -37,7 +43,7 @@
             android:paddingLeft="10dp"
             android:layout_gravity="center_vertical|center_horizontal"
             android:src="@drawable/fanhui" />
-        
+
 
         <TextView
             android:id="@+id/mtextview_title"
@@ -48,4 +54,4 @@
             android:textColor="@color/white"
             android:textSize="18sp" />
     </RelativeLayout>
-</merge>
+</FrameLayout>

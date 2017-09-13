@@ -9,6 +9,9 @@
         android:smallScreens="true">
 
     </supports-screens>
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
@@ -51,6 +54,9 @@
             android:screenOrientation="portrait"
             />
         <activity android:name="zxing.CaptureActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".activity.AddDeviceActivity"
             android:screenOrientation="portrait"
             />
 
