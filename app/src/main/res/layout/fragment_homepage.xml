@@ -1,16 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     xmlns:cuiweiyou="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:background="@color/white"
+    android:background="@color/white4"
     android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/beijing3"
-        android:scaleType="centerCrop"
+        android:scaleType="fitXY"
         />
 
     <TextView
@@ -34,15 +44,19 @@
         android:layout_centerHorizontal="true"
         />
 
-
-
-
+    </RelativeLayout>
+    </LinearLayout>
 
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_weight="2"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:orientation="horizontal"
-        android:layout_below="@id/menkongimg"
+
         android:layout_height="wrap_content">
 
         <LinearLayout
@@ -62,14 +76,15 @@
                 />
 
             <com.example.dufangyu.lecatapp.customview.ProgressView
+                android:id="@+id/wenduPro"
                 android:layout_width="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_height="wrap_content"
-            cuiweiyou:ringBackgroundColor="#bfdef3"
-            cuiweiyou:ringForegroundColor="#0099ff"
-            cuiweiyou:ringSize="10dp"
-            cuiweiyou:textColor="@color/lightlanse"
-            cuiweiyou:textSize="@dimen/text14"
+                cuiweiyou:ringBackgroundColor="#BEDEF3"
+                cuiweiyou:ringForegroundColor="#2447FF"
+                cuiweiyou:ringSize="10dp"
+                cuiweiyou:textColor="@color/lightlanse"
+                cuiweiyou:textSize="@dimen/text14"
             />
 
 
@@ -124,7 +139,6 @@
                    android:layout_width="match_parent"
                    android:text="09:36:09"
                    android:gravity="center"
-                   android:textStyle="bold"
                    android:layout_gravity="center_horizontal"
                    android:textSize="@dimen/text16"
                    android:textColor="@color/textcolor"
@@ -153,11 +167,12 @@
                 />
 
             <com.example.dufangyu.lecatapp.customview.ProgressView
+                android:id="@+id/shiduPro"
                 android:layout_width="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_height="wrap_content"
-                cuiweiyou:ringBackgroundColor="#bfdef3"
-                cuiweiyou:ringForegroundColor="#0099ff"
+                cuiweiyou:ringBackgroundColor="#BEDEF3"
+                cuiweiyou:ringForegroundColor="#F7BA12"
                 cuiweiyou:ringSize="10dp"
                 cuiweiyou:textColor="@color/lightlanse"
                 cuiweiyou:textSize="@dimen/text14"
@@ -171,4 +186,9 @@
 
 
 
-</RelativeLayout>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

@@ -21,9 +21,10 @@ public class MainActivity extends FragmentActivityPresentImpl<MainView> implemen
 
     private boolean fromlogin;
     private IMain mainBiz;
-    private String depCode;
+    private String depCode;//部门code  个人用户登录返回""
     private String strShareUserName;
     private String strSharePassword;
+    private static SplashActivity splashActivity;
     @Override
     public void afterViewCreate(Bundle savedInstanceState) {
         super.afterViewCreate(savedInstanceState);
@@ -38,7 +39,8 @@ public class MainActivity extends FragmentActivityPresentImpl<MainView> implemen
         {
             mainBiz.sendLoginCommad(strShareUserName, strSharePassword);
         }
-        mainBiz.getDepResult(depCode, strShareUserName);
+        //获取设备列表
+        mainBiz.getDeviceList(strShareUserName);
 
     }
 
@@ -61,9 +63,18 @@ public class MainActivity extends FragmentActivityPresentImpl<MainView> implemen
      */
     public static void actionStart(Context context,boolean fromlogin)
     {
-        Intent intent = new Intent(context,MainActivity.class);
+//        Intent intent = new Intent(context,MainActivity.class);
+//        intent.putExtra("fromlogin",fromlogin);
+//        context.startActivity(intent);
+
+
+        splashActivity = (SplashActivity) context;
+        Intent intent = new Intent(context, LoginActivity.class);
         intent.putExtra("fromlogin",fromlogin);
         context.startActivity(intent);
+        splashActivity.overridePendingTransition(android.R.anim.fade_in,
+                android.R.anim.fade_out);
+
     }
 
     public static void actionStart(Context context,boolean fromlogin,String code)
@@ -72,6 +83,10 @@ public class MainActivity extends FragmentActivityPresentImpl<MainView> implemen
         intent.putExtra("fromlogin",fromlogin);
         intent.putExtra("depCode",code);
         context.startActivity(intent);
+
+
+
+
     }
 
 
@@ -94,6 +109,11 @@ public class MainActivity extends FragmentActivityPresentImpl<MainView> implemen
     @Override
     public void jumpToModifyPawActivity(String loginName,String pwdStr) {
         ModifyPwdActivity.actionStart(this,loginName,pwdStr);
+    }
+
+    @Override
+    public void jumpToUpdateActivity() {
+        UpdateActivity.actionStart(this);
     }
 
 }

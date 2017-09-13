@@ -35,6 +35,7 @@ public class LoginActivity extends ActivityPresentImpl<LoginView> implements Vie
     private ILogin loginBiz;
     private boolean isConnected;
     private Handler myHandler = new Handler();
+    private static SplashActivity splashActivity;
     @Override
     public void afterViewCreate(Bundle savedInstanceState) {
         super.afterViewCreate(savedInstanceState);
@@ -59,15 +60,27 @@ public class LoginActivity extends ActivityPresentImpl<LoginView> implements Vie
             case R.id.regist_user:
                 RegistActivity.actionStart(LoginActivity.this);
                 break;
+            case R.id.user_name_et:
+                getKeyboardHeight();
+                break;
+            case R.id.pass_word_et:
+                getKeyboardHeight();
+                break;
         }
     }
 
 
     public static void actionStart(Context context,boolean isConnected)
     {
-        Intent intent  = new Intent(context,LoginActivity.class);
+
+        splashActivity = (SplashActivity) context;
+        Intent intent = new Intent(context, LoginActivity.class);
         intent.putExtra("isConnected",isConnected);
         context.startActivity(intent);
+        splashActivity.overridePendingTransition(android.R.anim.fade_in,
+                android.R.anim.fade_out);
+
+
     }
 
     private void login()
@@ -85,7 +98,7 @@ public class LoginActivity extends ActivityPresentImpl<LoginView> implements Vie
             CustomLoadDialog.show(LoginActivity.this,"",true,null,R.layout.logindialog);
             loginBiz.login(loginName, password, new LoginListener() {
                 @Override
-                public void loginSuccess(String code) {
+                public void loginSuccess(String code,String author) {
                     CustomLoadDialog.dismisDialog();
                     mView.saveAccountNdPwd();
                     MainActivity.actionStart(LoginActivity.this,true,code);

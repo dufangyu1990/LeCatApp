@@ -1,7 +1,11 @@
 package com.example.dufangyu.lecatapp.utils;
 
 import android.content.Context;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.dufangyu.lecatapp.R;
 
 
 public class MyToast {
@@ -13,6 +17,10 @@ public class MyToast {
         } else {
             toast.setText(msg);
         }
+
+        LinearLayout linearLayout = (LinearLayout) toast.getView();
+        TextView messageTextView = (TextView) linearLayout.getChildAt(0);
+        messageTextView.setTextColor(context.getResources().getColor(R.color.white));
         toast.show();
     }
 

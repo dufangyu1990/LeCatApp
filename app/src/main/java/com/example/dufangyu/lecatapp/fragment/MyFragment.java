@@ -12,7 +12,6 @@ import com.example.dufangyu.lecatapp.activity.MyApplication;
 import com.example.dufangyu.lecatapp.biz.IMyFragment;
 import com.example.dufangyu.lecatapp.biz.MyFragmentBiz;
 import com.example.dufangyu.lecatapp.listener.JumpToActivityListener;
-import com.example.dufangyu.lecatapp.manager.DataManager;
 import com.example.dufangyu.lecatapp.present.FragmentPresentImpl;
 import com.example.dufangyu.lecatapp.socketUtils.TcpConnectUtil;
 import com.example.dufangyu.lecatapp.utils.ActivityControl;
@@ -28,7 +27,6 @@ import com.example.dufangyu.lecatapp.view.MyView;
 public class MyFragment  extends FragmentPresentImpl<MyView> implements View.OnClickListener{
 
     private String username;
-    private String depName;
     private String password;
     private JumpToActivityListener mListener;
     private MyAlertDialog dialog;
@@ -44,9 +42,7 @@ public class MyFragment  extends FragmentPresentImpl<MyView> implements View.OnC
         {
             username = bundle.getString("username");
             password = bundle.getString("password");
-            depName = DataManager.p_strDepList[0][2];
             mView.setValue(R.id.my_name,username);
-            mView.setValue(R.id.my_departname,depName);
 
         }
         myFragmentBiz = new MyFragmentBiz();
@@ -76,6 +72,9 @@ public class MyFragment  extends FragmentPresentImpl<MyView> implements View.OnC
                 break;
             case R.id.about_rel:
                 mListener.jumpToAboutActivity();
+                break;
+            case R.id.update_rel:
+                mListener.jumpToUpdateActivity();
                 break;
             case R.id.exitlogin:
                 showExitDialog();

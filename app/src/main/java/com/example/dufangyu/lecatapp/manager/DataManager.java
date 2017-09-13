@@ -10,9 +10,12 @@ import static com.example.dufangyu.lecatapp.socketUtils.TcpConnectUtil.p_strTemp
 
 public class DataManager {
     private static DataManager managerInstance;
-    // 部门表
-    public static String p_strDepList[][] = new String[6000][3];
-    public static int p_intDepCount = 0;
+    //设备表
+    public static String p_strDeviceList[][] = new String[100][4];
+    public static int p_intDeviceCount = 0;
+
+
+
 
     public static DataManager getManagerInstance()
     {
@@ -24,28 +27,32 @@ public class DataManager {
     }
 
 
-    //部门一级表
-    public void saveDepListData()
+
+
+
+    //保存设备表
+    public void saveDeviceListData()
     {
         for(int i=0;i<p_intTempCount;i++)
         {
-            p_strDepList[p_intDepCount][0]=p_strTempList[i][0];
-            p_strDepList[p_intDepCount][1]=p_strTempList[i][1];
-            p_strDepList[p_intDepCount][2]=p_strTempList[i][2];
-            p_intDepCount++;
+            p_strDeviceList[p_intDeviceCount][0]=p_strTempList[i][0];
+            p_strDeviceList[p_intDeviceCount][1]=p_strTempList[i][1];
+            p_strDeviceList[p_intDeviceCount][2]=p_strTempList[i][2];
+            p_strDeviceList[p_intDeviceCount][3]=p_strTempList[i][3];
+            p_intDeviceCount++;
         }
     }
 
     //退出登录的时候重置数据
     public void resetData()
     {
-        //清空部门表
-        if(p_intDepCount!=0){
-            for(int i=0;i<p_intDepCount;i++){
-                p_strDepList[i][0]="";
+        //清空设备表
+        if(p_intDeviceCount!=0){
+            for(int i=0;i<p_intDeviceCount;i++){
+                p_strDeviceList[i][0]="";
             }
         }
-        p_intDepCount = 0;
+        p_intDeviceCount = 0;
     }
 
 

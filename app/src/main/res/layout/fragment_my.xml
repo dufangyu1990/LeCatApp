@@ -40,7 +40,6 @@
                     android:orientation="vertical" >
 
                     <TextView
-                        android:id="@+id/my_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="欢迎您"
@@ -48,7 +47,7 @@
                         android:textSize="@dimen/text20" />
 
                     <TextView
-                        android:id="@+id/my_departname"
+                        android:id="@+id/my_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
@@ -242,6 +241,44 @@
                             android:drawableRight="@drawable/jiantouleft"
                             android:layout_centerVertical="true"
                             android:text="@string/more_info"
+                            android:textColor="@color/text_color"
+                            android:textSize="@dimen/text16" />
+                    </RelativeLayout>
+
+
+                    <include layout="@layout/commonview"/>
+
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/margin15"
+                        android:clickable="true"
+                        android:id="@+id/update_rel"
+                        android:background="@drawable/setlist_selector"
+                        >
+
+
+                        <ImageView
+
+                            android:id="@+id/update"
+                            android:src="@drawable/guanyu"
+                            android:visibility="gone"
+                            android:layout_width="wrap_content"
+                            android:layout_marginLeft="@dimen/margin5"
+                            android:layout_centerVertical="true"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_toRightOf="@id/update"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/margin10"
+                            android:drawableRight="@drawable/jiantouleft"
+                            android:layout_centerVertical="true"
+                            android:text="@string/update"
                             android:textColor="@color/text_color"
                             android:textSize="@dimen/text16" />
                     </RelativeLayout>

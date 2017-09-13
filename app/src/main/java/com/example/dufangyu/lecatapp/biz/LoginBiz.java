@@ -1,52 +1,46 @@
 package com.example.dufangyu.lecatapp.biz;
 
 
-import com.example.dufangyu.lecatapp.CallBack.DataCallBackImp;
 import com.example.dufangyu.lecatapp.socketUtils.TcpConnectUtil;
 
 /**
  * Created by dufangyu on 2017/8/30.
  */
 
-public class LoginBiz implements ILogin{
+public class LoginBiz extends BaseBiz implements ILogin{
 
 
     private LoginListener listener;
-    public LoginBiz()
-    {
-        TcpConnectUtil.getTcpInstance().setDataCallBack(serverCallBack);
-    }
 
     @Override
     public void login(String loginName, String password, LoginListener listener) {
 
         this.listener = listener;
-//        LogUtil.d("dfy","发送登录指令");
-//        LogUtil.d("dfy","loginName = "+loginName);
-//        LogUtil.d("dfy","password = "+password);
         TcpConnectUtil.getTcpInstance().IntiTemp();
         TcpConnectUtil.getTcpInstance().ClintSendBcCommData(1105, "0002", "", "", "", "", "", "", "", "", "", loginName,password, "", "", "", "", "", "");
     }
 
-    private DataCallBackImp serverCallBack = new DataCallBackImp()
-    {
 
-        @Override
-        public void onReceiveServerResult(int intDataType, String strDataType, String strSetSN, String strSetSN1, String strAlmComType, String strParam1, String strParam2, String strParam3) {
-            if(intDataType==1105)
+    @Override
+    protected void handleServerResult(int intDataType, String strDataType, String strSetSN, String strSetSN1, String strAlmComType, String strParam1, String strParam2, String strParam3) {
+        if(intDataType==1105)
+        {
+
+            if(strDataType.equals("1002"))
             {
                 if(strParam1.equals("0"))//登录失败
                 {
                     listener.loginFailed();
                 }else if(strParam1.equals("1"))//登录成功
                 {
-                    listener.loginSuccess(strParam2);
+
+                    //大参数2:管理部门码  个人用户管理码为空
+                    //大参数3:管理权限 (后续定义).
+                    listener.loginSuccess(strParam2,strParam3);
 
                 }
             }
+
         }
-
-
-    };
-
+    }
 }

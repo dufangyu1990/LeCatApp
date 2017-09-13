@@ -43,7 +43,6 @@ public class SplashActivity extends ActivityPresentImpl<SplashView> implements V
         String  isFirst = MyApplication.getInstance().getStringPerference("isFirst");
         if("NO".equals(isFirst))
         {
-
             MainActivity.actionStart(SplashActivity.this,false);
         }else{
             LoginActivity.actionStart(SplashActivity.this,isServetConnect);

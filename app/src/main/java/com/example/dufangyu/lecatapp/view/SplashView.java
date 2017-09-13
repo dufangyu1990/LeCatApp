@@ -4,8 +4,6 @@ package com.example.dufangyu.lecatapp.view;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -51,7 +49,7 @@ public class SplashView extends ViewImpl implements Runnable{
 
     public void startAnim()
     {
-        startImg.postDelayed(this,400);
+        startImg.postDelayed(this,1500);
     }
 
 
@@ -59,31 +57,34 @@ public class SplashView extends ViewImpl implements Runnable{
 
     @Override
     public void run() {
-        final ScaleAnimation scaleAnim = new ScaleAnimation(1.0f, 1.2f, 1.0f, 1.2f,
-                Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,
-                0.5f);//动画效果
-        scaleAnim.setFillAfter(true);//动画持续执行
-        scaleAnim.setDuration(2000);//3秒
+//        final ScaleAnimation scaleAnim = new ScaleAnimation(1.0f, 1.2f, 1.0f, 1.2f,
+//                Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,
+//                0.5f);//动画效果
+//        scaleAnim.setFillAfter(true);//动画持续执行
+//        scaleAnim.setDuration(2000);//3秒
+//
+//        scaleAnim.setAnimationListener(new Animation.AnimationListener() {
+//
+//            @Override
+//            public void onAnimationStart(Animation animation) {
+//
+//            }
+//
+//            /**结束时调用*/
+//            @Override
+//            public void onAnimationEnd(Animation animation) {
+//                mPresent.presentCallBack("","","");
+//            }
+//
+//            @Override
+//            public void onAnimationRepeat(Animation animation) {
+//
+//            }
+//        });
+//        startImg.startAnimation(scaleAnim);
+        mPresent.presentCallBack("","","");
 
-        scaleAnim.setAnimationListener(new Animation.AnimationListener() {
 
-            @Override
-            public void onAnimationStart(Animation animation) {
-
-            }
-
-            /**结束时调用*/
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                mPresent.presentCallBack("","","");
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-
-            }
-        });
-        startImg.startAnimation(scaleAnim);
     }
 
 

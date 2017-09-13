@@ -31,8 +31,7 @@
     <string name="about">关于我们</string>
     <string name="exitLogin">退出登录</string>
     <string name="exittitle">退出当前账号?</string>
-    <string name="introduce1">Copyright©2014-2017
-       </string>
+    <string name="introduce1">Copyright©2014-2017</string>
     <string name="introduce2">
         北京博创联动科技有限公司 版权所有</string>
 
@@ -92,6 +91,7 @@
     <string name="my_device">我的设备</string>
     <string name="add_device">添加设备</string>
     <string name="more_info">完善信息</string>
+    <string name="update">更新版本</string>
     <string name="Statetongji">状态统计</string>
     <string name="PublishAdv">发布反馈信息</string>
     <string name="AdvInfo">反馈详情</string>

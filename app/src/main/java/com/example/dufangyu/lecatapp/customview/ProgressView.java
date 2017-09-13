@@ -14,6 +14,7 @@ import android.view.WindowManager;
 
 import com.example.dufangyu.lecatapp.R;
 import com.example.dufangyu.lecatapp.utils.LogUtil;
+import com.example.dufangyu.lecatapp.utils.Util;
 
 /**
  * Created by dufangyu on 2017/9/12.
@@ -27,8 +28,10 @@ public class ProgressView extends View{
     private TypedArray attributes;
     /** 圆环最大值 */
     private int max;
-    /** 文字尺寸 */
+    /** 上面文字尺寸 */
     private float textSize;
+    /** 下面文字尺寸 */
+    private float textSize_bleow;
     /** 文字颜色 */
     private int textColor;
     /** 圆环前景色-轨迹颜色 */
@@ -52,6 +55,7 @@ public class ProgressView extends View{
 
     private Context mContext;
     private String text1="寒冷";
+    private String textValue="14.6℃";
 
 
     /** 最好是为在xml里定义的这些属性提供set、get方法 */
@@ -69,8 +73,9 @@ public class ProgressView extends View{
         ringForegroundColor = attributes.getColor(R.styleable.udfstyle_ringForegroundColor, Color.GREEN);
         textColor = attributes.getColor(R.styleable.udfstyle_textColor, getResources().getColor(R.color.lightlanse));
         textSize = attributes.getDimension(R.styleable.udfstyle_textSize, 12);
+        textSize_bleow = attributes.getDimension(R.styleable.udfstyle_textSize, 10);
         ringSize = attributes.getDimension(R.styleable.udfstyle_ringSize, 5);
-        max = attributes.getInteger(R.styleable.udfstyle_max, 100);
+        max = attributes.getInteger(R.styleable.udfstyle_max, 60);
         attributes.recycle();
     }
 
@@ -111,7 +116,6 @@ public class ProgressView extends View{
         else if (specMode == MeasureSpec.EXACTLY){
             return specSize;
         }
-//        Log.i("这个控件的宽度----------","specMode=" specMode " specSize=" specSize);
         return specSize;
     }
     //根据xml的设定获取高度
@@ -126,7 +130,6 @@ public class ProgressView extends View{
         else if (specMode == MeasureSpec.EXACTLY){
             return specSize;
         }
-//        Log.i("这个控件的高度----------","specMode:" specMode " specSize:" specSize);
         return specSize;
     }
 
@@ -155,18 +158,19 @@ public class ProgressView extends View{
         cal(canvas);
         arc(canvas);
         txt(canvas);
+        txtValue(canvas);
     }
 
 
+    //绘制最外层圆环
     private void calBig(Canvas canvas,int bigPaintWidth)
     {
         paint.setStyle(Paint.Style.STROKE);     // 设置空心
-        paint.setColor(Color.parseColor("#e8e8e8"));    // 设置圆环轨道颜色
+        paint.setColor(Color.parseColor("#E8E8E8"));    // 设置圆环轨道颜色
         paint.setStrokeWidth(bigPaintWidth); 	// 设置圆环的宽度
         paint.setAntiAlias(true); 		// 消除锯齿
-
+        paint.setShadowLayer(10f, 0, 0, Color.parseColor("#D3D3D3"));
         // 画出圆形（圆心x、圆心y，半径，画笔），如果paint为空心模式，画出来的就是圆环；实心模式画出的是圆饼
-        // xml里配的宽高400dp
         canvas.drawCircle(center, center, bigradius, paint);
     }
 
@@ -174,6 +178,7 @@ public class ProgressView extends View{
      * 绘制圆环轨道
      */
     private void cal(Canvas canvas) {
+        paint.reset();
         paint.setStyle(Paint.Style.STROKE);     // 设置空心
         paint.setColor(ringBackgroudnColor);    // 设置圆环轨道颜色
         paint.setStrokeWidth(ringSize); 	// 设置圆环的宽度
@@ -181,7 +186,6 @@ public class ProgressView extends View{
         int tempradius= (int)(radius-ringSize/2);
         Log.d("dfy","tempradius = "+tempradius);
         // 画出圆形（圆心x、圆心y，半径，画笔），如果paint为空心模式，画出来的就是圆环；实心模式画出的是圆饼
-        // xml里配的宽高400dp
         canvas.drawCircle(center, center, tempradius, paint);
     }
 
@@ -189,9 +193,12 @@ public class ProgressView extends View{
      * 圆环的进度-轨迹
      */
     private void arc(Canvas canvas) {
+        paint.reset();
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(ringSize); 	// 设置圆环的宽度
-        paint.setColor(ringForegroundColor);    // 设置进度的颜色
+        paint.setColor(ringForegroundColor);// 设置进度的颜色
+        paint.setAntiAlias(true);
+        paint.setStrokeCap(Paint.Cap.ROUND);
         int tempradius= (int)(radius-ringSize/2);
         // 定义一个矩形区域（左，上，右，下）。正好重合圆环所在的范围
         RectF oval = new RectF(center - tempradius, center - tempradius, center + tempradius, center + tempradius);
@@ -200,31 +207,32 @@ public class ProgressView extends View{
     }
 
     /**
-     * 画进度百分比
+     * 画下面文字
      */
-    private void txtPercent(Canvas canvas) {
+    private void txtValue(Canvas canvas) {
+        paint.reset();
         paint.setStrokeWidth(0);
         paint.setColor(textColor);
-        paint.setTextSize(textSize);
+        paint.setTextSize(textSize_bleow);
         paint.setTypeface(Typeface.DEFAULT_BOLD); 			// 设置字体
-        float percent = (float)progress / (float)max * 100;		// 进度百分比
-        float textWidth = paint.measureText((int)percent + "%"); 	// 字体宽度
+        float textWidth = paint.measureText(textValue); 	// 字体宽度
         // 绘制文本（文本，绘制区域x起点，y起点，画笔）
-        canvas.drawText((int)percent + "%", center - textWidth / 2, center + textSize / 2, paint);
+        canvas.drawText(textValue, center - textWidth / 2, center + textSize_bleow / 2+ Util.dip2px(mContext,10), paint);
     }
 
 
     /**
-     * 画文字
+     * 画上面文字
      */
     private void txt(Canvas canvas) {
+        paint.reset();
         paint.setStrokeWidth(0);
         paint.setColor(textColor);
         paint.setTextSize(textSize);
         paint.setTypeface(Typeface.DEFAULT_BOLD); 			// 设置字体
         float textWidth = paint.measureText(text1); 	// 字体宽度
         // 绘制文本（文本，绘制区域x起点，y起点，画笔）
-        canvas.drawText(text1, center - textWidth / 2, center + textSize / 2, paint);
+        canvas.drawText(text1, center - textWidth / 2, center + textSize / 2- Util.dip2px(mContext,10), paint);
     }
 
 
@@ -234,13 +242,12 @@ public class ProgressView extends View{
     private void txtvalue(Canvas canvas) {
         paint.setStrokeWidth(0);
         paint.setColor(textColor);
-        paint.setTextSize(textSize);
+        paint.setTextSize(textSize_bleow);
         paint.setTypeface(Typeface.DEFAULT_BOLD); 			// 设置字体
         float percent = (float)progress / (float)max * 100;		// 进度百分比
         float textWidth = paint.measureText((int)percent + "%"); 	// 字体宽度
         // 绘制文本（文本，绘制区域x起点，y起点，画笔）
-//        canvas.drawText((int)percent + "%", center - textWidth / 2, center + textSize / 2, paint);
-        canvas.drawText((int)percent + "%", center - textWidth / 2, center + textSize / 2, paint);
+        canvas.drawText((int)percent + "%", center - textWidth / 2, center + textSize_bleow / 2, paint);
     }
 
 
@@ -269,6 +276,25 @@ public class ProgressView extends View{
 
         // 刷新控件。刷一次即执行一次onDraw。postInvalidate()能在非UI线程刷新
         postInvalidate();
+    }
+
+
+
+    //上面的文字
+    public void setText(String text)
+    {
+        this.text1 = text;
+    }
+
+    //下面的文字
+    public void setTextValue(String textValue)
+    {
+        this.textValue = textValue;
+    }
+
+    public void setMax(int max)
+    {
+        this.max = max;
     }
 
 }

@@ -47,7 +47,12 @@
         <activity android:name=".activity.RegistActivity"
             android:screenOrientation="portrait"
             />
-
+        <activity android:name=".activity.UpdateActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name="zxing.CaptureActivity"
+            android:screenOrientation="portrait"
+            />
 
     </application>
 

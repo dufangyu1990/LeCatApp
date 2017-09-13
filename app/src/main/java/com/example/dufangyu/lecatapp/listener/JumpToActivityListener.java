@@ -13,6 +13,7 @@ public interface JumpToActivityListener {
 //	public void jumpToTongjiActivity();
 	public void jumpToAboutActivity();
 	public void jumpToModifyPawActivity(String loginName, String pwdStr);
+	public void jumpToUpdateActivity();
 //	public void resetAppData();
 //	public void jumpToReturnAdvActivity();
 }

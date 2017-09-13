@@ -16,20 +16,19 @@ public class MyView extends ViewImpl{
 
 
     private TextView usernametv;
-    private TextView depnametv;
-    private RelativeLayout sytem_layout,changepwd_layout,yijian_layout,about_layout;
+    private RelativeLayout sytem_layout,changepwd_layout,yijian_layout,about_layout,update_layout;
     private TextView exitlogin;
 
 
     @Override
     public void initView() {
         usernametv = findViewById(R.id.my_name);
-        depnametv = findViewById(R.id.my_departname);
         sytem_layout = findViewById(R.id.systemset_rel);
         changepwd_layout = findViewById(R.id.changepwd_rel);
         yijian_layout = findViewById(R.id.returnavs_rel);
         about_layout = findViewById(R.id.about_rel);
         exitlogin = findViewById(R.id.exitlogin);
+        update_layout = findViewById(R.id.update_rel);
 
     }
 
@@ -44,19 +43,16 @@ public class MyView extends ViewImpl{
     @Override
     public void bindEvent() {
 
-        EventHelper.click(mPresent,sytem_layout,changepwd_layout,yijian_layout,about_layout,exitlogin);
+        EventHelper.click(mPresent,sytem_layout,changepwd_layout,yijian_layout,about_layout,update_layout,exitlogin);
     }
 
 
     public void setValue(int id,String value)
     {
-//        if(id==R.id.my_name)
-//        {
-//            usernametv.setText(value);
-//        }else if(id==R.id.my_departname)
-//        {
-//            depnametv.setText(value);
-//        }
+        if(id==R.id.my_name)
+        {
+            usernametv.setText(value);
+        }
     }
 
 

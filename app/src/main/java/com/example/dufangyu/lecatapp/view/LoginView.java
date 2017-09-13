@@ -1,10 +1,10 @@
 package com.example.dufangyu.lecatapp.view;
 
 import android.text.TextUtils;
-import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -34,9 +34,13 @@ public class LoginView extends ViewImpl{
 
 
     private ScrollView mScrollView;
+    private ImageView logoImg;
+    private TextView appName;
 
     @Override
     public void initView() {
+        appName = findViewById(R.id.appname);
+        logoImg = findViewById(R.id.logoimg);
         registtv = findViewById(R.id.regist_user);
         mScrollView = findViewById(R.id.scrollview);
         accountText = findViewById(R.id.user_name_et);
@@ -61,11 +65,12 @@ public class LoginView extends ViewImpl{
 
     public void scrollview()
     {
-        mScrollView.fullScroll(View.FOCUS_DOWN);
+        //这个方法会使得输入框失去焦点
+//        mScrollView.fullScroll(View.FOCUS_DOWN);
 //        LogUtil.d("dfy","mScrollView.getHeight() = "+mScrollView.getHeight());
 //        LogUtil.d("dfy","滚动距离 = "+(mScrollView.getHeight() - logoImg.getHeight() - logotextImg.getHeight()));
 
-//        mScrollView.scrollTo(0, mScrollView.getHeight() - logoImg.getHeight() - logotextImg.getHeight());
+        mScrollView.scrollTo(0, mScrollView.getHeight() - logoImg.getHeight()-appName.getHeight() );
     }
 
     private void setListeners()

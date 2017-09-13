@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/startimg"
-        android:src="@drawable/shanping"
+        android:src="@drawable/beijing1"
         android:adjustViewBounds="true"
         tools:ignore="ContentDescription"
         android:scaleType="fitXY"
