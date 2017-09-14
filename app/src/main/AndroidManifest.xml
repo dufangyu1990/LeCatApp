@@ -59,6 +59,9 @@
         <activity android:name=".activity.AddDeviceActivity"
             android:screenOrientation="portrait"
             />
+        <activity android:name=".activity.MyDeviceActivity"
+            android:screenOrientation="portrait"
+            />
 
     </application>
 

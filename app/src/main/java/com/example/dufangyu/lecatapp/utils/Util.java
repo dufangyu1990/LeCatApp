@@ -307,7 +307,7 @@ public class Util {
 
 
 
-    public static String stringFilterForLetterNdNumber(String str)throws PatternSyntaxException {
+    public static String stringFilterForLetterNdText(String str)throws PatternSyntaxException {
         // 只允许字母和汉字
         String   regEx  =  "[^a-zA-Z\u4E00-\u9FA5]";
         Pattern p   =   Pattern.compile(regEx);
@@ -325,6 +325,16 @@ public class Util {
     public static String stringFilterForText(String str)throws PatternSyntaxException{
         // 只允许汉字
         String   regEx  =  "[^\u4E00-\u9FA5]";
+        Pattern   p   =   Pattern.compile(regEx);
+        Matcher   m   =   p.matcher(str);
+        return   m.replaceAll("").trim();
+    }
+
+
+
+    public static String stringFilterForLetterNdNumber(String str)throws PatternSyntaxException{
+        // 只允许字母和数字
+        String   regEx  =  "[^a-zA-Z0-9]";
         Pattern   p   =   Pattern.compile(regEx);
         Matcher   m   =   p.matcher(str);
         return   m.replaceAll("").trim();

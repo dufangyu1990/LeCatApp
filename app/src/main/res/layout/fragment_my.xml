@@ -79,7 +79,7 @@
                         android:background="@drawable/setlist_selector"
                         android:clickable="true"
                         android:orientation="horizontal"
-                        android:padding="@dimen/margin15">
+                        android:padding="@dimen/margin10">
 
 
                         <ImageView
@@ -124,7 +124,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:padding="@dimen/margin15"
+                    android:padding="@dimen/margin10"
                     android:id="@+id/mydevice_rel"
                     android:clickable="true"
                     android:background="@drawable/setlist_selector"
@@ -171,7 +171,7 @@
                         android:background="@drawable/setlist_selector"
                         android:clickable="true"
                         android:orientation="horizontal"
-                        android:padding="@dimen/margin15">
+                        android:padding="@dimen/margin10">
 
 
                         <ImageView
@@ -215,7 +215,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:padding="@dimen/margin15"
+                        android:padding="@dimen/margin10"
                         android:clickable="true"
                         android:id="@+id/changepwd_rel"
                         android:background="@drawable/setlist_selector"
@@ -253,7 +253,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:padding="@dimen/margin15"
+                        android:padding="@dimen/margin10"
                         android:clickable="true"
                         android:id="@+id/update_rel"
                         android:background="@drawable/setlist_selector"

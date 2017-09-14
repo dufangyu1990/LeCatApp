@@ -80,6 +80,7 @@ public class MyFragment  extends FragmentPresentImpl<MyView> implements View.OnC
                 mListener.jumpToModifyPawActivity(username,password);
                 break;
             case R.id.mydevice_rel:
+                mListener.jumpToMyDeviceActivity();
                 break;
             case R.id.add_device_rel:
                 MyFragmentPermissionsDispatcher.jumpWithCheck(this);

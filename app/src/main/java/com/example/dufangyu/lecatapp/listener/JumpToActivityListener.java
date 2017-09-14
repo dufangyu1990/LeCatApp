@@ -15,6 +15,7 @@ public interface JumpToActivityListener {
 	public void jumpToModifyPawActivity(String loginName, String pwdStr);
 	public void jumpToUpdateActivity();
 	public void jumpToScanCodeActivity();
+	public void jumpToMyDeviceActivity();
 //	public void resetAppData();
 //	public void jumpToReturnAdvActivity();
 }

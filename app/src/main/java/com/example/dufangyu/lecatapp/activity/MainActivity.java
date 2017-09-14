@@ -102,21 +102,29 @@ public class MainActivity extends FragmentActivityPresentImpl<MainView> implemen
 
 
 
+    //跳转修改密码界面
     @Override
     public void jumpToModifyPawActivity(String loginName,String pwdStr) {
         ModifyPwdActivity.actionStart(this,loginName,pwdStr);
     }
 
+    //跳转到版本界面
     @Override
     public void jumpToUpdateActivity() {
         UpdateActivity.actionStart(this);
     }
 
 
+    //扫码界面
     @Override
     public void jumpToScanCodeActivity() {
         CaptureActivity.actionStart(this);
 
+    }
+
+    @Override
+    public void jumpToMyDeviceActivity() {
+        MyDeviceActivity.actionStart(this,strShareUserName);
     }
 
 

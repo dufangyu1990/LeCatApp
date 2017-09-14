@@ -29,6 +29,7 @@ public class AddDeviceActivity extends ActivityPresentImpl<AddDeviceView> implem
         super.afterViewCreate(savedInstanceState);
         addDeviceBiz = new AddDeviceBiz();
         deviceId = getIntent().getStringExtra("deviceId");
+        mView.setDeviceIdValue(deviceId);
     }
 
     @Override
@@ -53,27 +54,25 @@ public class AddDeviceActivity extends ActivityPresentImpl<AddDeviceView> implem
             return;
         }
 
-        if(mView.checkValid())
-        {
+        CustomLoadDialog.show(AddDeviceActivity.this,"",true,null,R.layout.logindialog);
+        addDeviceBiz.addDevice(MyApplication.getInstance().getStringPerference("UserName"),deviceId,mView.getValueById(R.id.nickname_ed), new AddDeviceListener() {
+            @Override
+            public void AddDeviceSuccess() {
+                CustomLoadDialog.dismisDialog();
+                MyToast.showTextToast(AddDeviceActivity.this,"设备添加成功");
+                finish();
+            }
+
+            @Override
+            public void AddDeviceFail() {
+                CustomLoadDialog.dismisDialog();
+                MyToast.showTextToast(AddDeviceActivity.this,"此设备已存在");
+            }
+
+        });
 
 
-            CustomLoadDialog.show(AddDeviceActivity.this,"",true,null,R.layout.logindialog);
-            addDeviceBiz.addDevice(MyApplication.getInstance().getStringPerference("UserName"),deviceId,mView.getValueById(R.id.nickname_ed), new AddDeviceListener() {
-                @Override
-                public void AddDeviceSuccess() {
-                    CustomLoadDialog.dismisDialog();
-                    MyToast.showTextToast(AddDeviceActivity.this,"设备添加成功");
-                    finish();
-                }
 
-                @Override
-                public void AddDeviceFail() {
-                    CustomLoadDialog.dismisDialog();
-                    MyToast.showTextToast(AddDeviceActivity.this,"此设备已存在");
-                }
-
-            });
-        }
 
     }
 

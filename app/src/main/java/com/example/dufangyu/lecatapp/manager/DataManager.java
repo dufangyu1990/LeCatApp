@@ -33,6 +33,8 @@ public class DataManager {
     //保存设备表
     public void saveDeviceListData()
     {
+
+        resetData();
         for(int i=0;i<p_intTempCount;i++)
         {
             p_strDeviceList[p_intDeviceCount][0]=p_strTempList[i][0];

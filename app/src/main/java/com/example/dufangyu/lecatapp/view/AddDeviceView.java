@@ -1,6 +1,5 @@
 package com.example.dufangyu.lecatapp.view;
 
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -9,6 +8,7 @@ import com.example.dufangyu.lecatapp.R;
 import com.example.dufangyu.lecatapp.helper.EventHelper;
 import com.example.dufangyu.lecatapp.utils.MyToast;
 
+import static com.example.dufangyu.lecatapp.R.id.deviceId_ed;
 import static com.example.dufangyu.lecatapp.R.id.nickname_ed;
 
 /**
@@ -19,6 +19,8 @@ public class AddDeviceView extends ViewImpl{
 
     private TextView titletext,backtext,addDeviceBtn;
     private EditText nickNameEd;
+    private EditText deviceIdEd;
+
     @Override
     public void initView() {
         titletext = findViewById(R.id.title_text);
@@ -28,8 +30,10 @@ public class AddDeviceView extends ViewImpl{
         backtext.setText(mRootView.getContext().getString(R.string.myself));
         addDeviceBtn = findViewById(R.id.add_device);
         nickNameEd = findViewById(nickname_ed);
-    }
+        deviceIdEd = findViewById(deviceId_ed);
 
+
+    }
     @Override
     public int getLayoutId() {
         return R.layout.activity_add_device;
@@ -42,12 +46,14 @@ public class AddDeviceView extends ViewImpl{
 
     public boolean checkValid()
     {
-        String nickname = nickNameEd.getText().toString().trim();
-        if(TextUtils.isEmpty(nickname))
+        String deviceId = deviceIdEd.getText().toString().trim();
+
+        if(deviceId.length()!=16)
         {
-            MyToast.showTextToast(mRootView.getContext(), "版本号不能为空");
+            MyToast.showTextToast(mRootView.getContext(), "请输入16有效设备号");
             return false;
         }
+
         return true;
     }
     public String getValueById(int id)
@@ -57,5 +63,10 @@ public class AddDeviceView extends ViewImpl{
             return nickNameEd.getText().toString().trim();
         }
         return "";
+    }
+
+    public void setDeviceIdValue(String deviceId)
+    {
+        deviceIdEd.setText(deviceId);
     }
 }

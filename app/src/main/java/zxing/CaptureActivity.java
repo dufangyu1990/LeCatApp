@@ -293,6 +293,12 @@ public class CaptureActivity extends Activity implements SurfaceHolder.Callback 
         LogUtil.d("dfy", "扫描结果："+ rawResult.getText().toString());
         terminalNo = rawResult.getText().toString();
 
+        if(terminalNo.length()!=16)
+        {
+
+            drawViewfindderGoon("无效的设备号！");
+            return;
+        }
         AddDeviceActivity.actionStart(CaptureActivity.this,terminalNo);
         finish();
 

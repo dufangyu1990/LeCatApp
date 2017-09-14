@@ -17,6 +17,8 @@ public class AddDeviceBiz extends BaseBiz implements IAddDevice{
     @Override
     protected void handleServerResult(int intDataType, String strDataType, String strSetSN, String strSetSN1, String strAlmComType, String strParam1, String strParam2, String strParam3) {
 
+//        LogUtil.d("dfy","intDataType = "+intDataType+",strDataType = "+strDataType);
+
         if(intDataType==1108)
         {
             if(strDataType.equals("1002"))

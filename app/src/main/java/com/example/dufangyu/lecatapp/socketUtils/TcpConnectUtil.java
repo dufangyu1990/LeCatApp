@@ -469,8 +469,7 @@ public class TcpConnectUtil {
                         mDataCallBack.onReceiveResult(intDataType,strDataType,strSetSN,strSetSN1,strAlmComType,strParam1,strParam2,strParam3);
                 }
             }
-        }
-        if (intDataType == 1107) {
+        }else if (intDataType == 1107) {
             int intTempCount;
             String strTempStem[];
             String strTempOne[];
@@ -505,26 +504,36 @@ public class TcpConnectUtil {
                     mDataCallBack.onReceiveResult(intDataType,strDataType,strSetSN,strSetSN1,strAlmComType,strParam1,strParam2,strParam3);
 //                TempJudge(strDataType,strParam2);
             }
-        }
-
-        if(intDataType == 1105)
-        {
-//            LogUtil.d("dfy","mDataCallBack = "+mDataCallBack);
+        }else{
+            //不论什么数据类型，都进入此方法，不用每个都列出来
             if(mDataCallBack!=null)
                 mDataCallBack.onReceiveResult(intDataType,strDataType,strSetSN,strSetSN1,strAlmComType,strParam1,strParam2,strParam3);
         }
 
-        if(intDataType == 1109)
-        {
-            if(mDataCallBack!=null)
-                mDataCallBack.onReceiveResult(intDataType,strDataType,strSetSN,strSetSN1,strAlmComType,strParam1,strParam2,strParam3);
-        }
-
-        if(intDataType == 1150)
-        {
-            if(mDataCallBack!=null)
-                mDataCallBack.onReceiveResult(intDataType,strDataType,strSetSN,strSetSN1,strAlmComType,strParam1,strParam2,strParam3);
-        }
+//        if(intDataType == 1105)
+//        {
+////            LogUtil.d("dfy","mDataCallBack = "+mDataCallBack);
+//            if(mDataCallBack!=null)
+//                mDataCallBack.onReceiveResult(intDataType,strDataType,strSetSN,strSetSN1,strAlmComType,strParam1,strParam2,strParam3);
+//        }
+//
+//        if(intDataType == 1109)
+//        {
+//            if(mDataCallBack!=null)
+//                mDataCallBack.onReceiveResult(intDataType,strDataType,strSetSN,strSetSN1,strAlmComType,strParam1,strParam2,strParam3);
+//        }
+//
+//        if(intDataType == 1150)
+//        {
+//            if(mDataCallBack!=null)
+//                mDataCallBack.onReceiveResult(intDataType,strDataType,strSetSN,strSetSN1,strAlmComType,strParam1,strParam2,strParam3);
+//        }
+//
+//        if(intDataType == 1108)
+//        {
+//            if(mDataCallBack!=null)
+//                mDataCallBack.onReceiveResult(intDataType,strDataType,strSetSN,strSetSN1,strAlmComType,strParam1,strParam2,strParam3);
+//        }
 
     }
 
