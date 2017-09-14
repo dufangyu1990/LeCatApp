@@ -1,6 +1,7 @@
 package com.example.dufangyu.lecatapp.view;
 
 import android.text.TextUtils;
+import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -36,9 +37,11 @@ public class LoginView extends ViewImpl{
     private ScrollView mScrollView;
     private ImageView logoImg;
     private TextView appName;
+    private ImageView overImg;//遮盖图
 
     @Override
     public void initView() {
+        overImg = findViewById(R.id.overImg);
         appName = findViewById(R.id.appname);
         logoImg = findViewById(R.id.logoimg);
         registtv = findViewById(R.id.regist_user);
@@ -214,6 +217,18 @@ public class LoginView extends ViewImpl{
         }else{
             accountText.setText(strShareUserName);
         }
+    }
+
+
+    public void ShowOverImg()
+    {
+        //免登陆进入，出现遮盖图，造成没进入登陆界面假象
+         overImg.setVisibility(View.VISIBLE);
+    }
+    public void hideOverImg()
+    {
+        //免登陆进入，出现遮盖图，造成没进入登陆界面假象
+        overImg.setVisibility(View.INVISIBLE);
     }
 
 }

@@ -8,6 +8,10 @@
     android:fitsSystemWindows="true">
 
 
+
+
+
+
     <ScrollView
         android:id="@+id/scrollview"
         android:layout_width="match_parent"
@@ -223,7 +227,16 @@
 
     </ScrollView>
 
-
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/overImg"
+        android:src="@drawable/beijing1"
+        android:visibility="invisible"
+        android:adjustViewBounds="true"
+        tools:ignore="ContentDescription"
+        android:scaleType="fitXY"
+        />
 
 
 

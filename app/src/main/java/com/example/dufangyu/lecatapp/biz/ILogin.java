@@ -6,5 +6,6 @@ package com.example.dufangyu.lecatapp.biz;
 
 public interface ILogin {
 
-     void login(String loginName, String password, LoginListener listener);
+     void login(String loginName, String password);
+     void getDeviceList(String loginName);
 }

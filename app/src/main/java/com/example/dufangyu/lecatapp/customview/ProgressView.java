@@ -8,12 +8,10 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 
 import com.example.dufangyu.lecatapp.R;
-import com.example.dufangyu.lecatapp.utils.LogUtil;
 import com.example.dufangyu.lecatapp.utils.Util;
 
 /**
@@ -98,8 +96,8 @@ public class ProgressView extends View{
         opt = sh / 1280;
 
         int dh =  (int)(height * opt);//设置适配高度
-        LogUtil.d("dfy","sw = "+sw+",sh = "+sh);
-        LogUtil.d("dfy","dw = "+dw+",dh = "+dh);
+//        LogUtil.d("dfy","sw = "+sw+",sh = "+sh);
+//        LogUtil.d("dfy","dw = "+dw+",dh = "+dh);
         setMeasuredDimension(dw, dh);
 
 
@@ -184,7 +182,7 @@ public class ProgressView extends View{
         paint.setStrokeWidth(ringSize); 	// 设置圆环的宽度
         paint.setAntiAlias(true); 		// 消除锯齿
         int tempradius= (int)(radius-ringSize/2);
-        Log.d("dfy","tempradius = "+tempradius);
+//        Log.d("dfy","tempradius = "+tempradius);
         // 画出圆形（圆心x、圆心y，半径，画笔），如果paint为空心模式，画出来的就是圆环；实心模式画出的是圆饼
         canvas.drawCircle(center, center, tempradius, paint);
     }

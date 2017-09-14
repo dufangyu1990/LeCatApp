@@ -16,42 +16,32 @@ public class MainBiz extends BaseBiz implements IMain{
     {
         this.listener = listener;
     }
-    @Override
-    public void sendLoginCommad(String loginName, String password) {
-
-        TcpConnectUtil.getTcpInstance().IntiTemp();
-        TcpConnectUtil.getTcpInstance().ClintSendBcCommData(1105, "0002", "", "", "", "", "", "", "", "", "", loginName,password, "", "", "", "", "", "");
-    }
-
 
 
     @Override
-    public void getDeviceList(String loginName) {
+    public void get4GPushData() {
+
+        StringBuffer temBuf = new StringBuffer();
+        int size = DataManager.p_intDeviceCount;
+        for(int i =0;i<size;i++)
+        {
+            temBuf.append(DataManager.p_strDeviceList[i][1]).append("&");
+        }
         TcpConnectUtil.getTcpInstance().IntiTemp();
-        TcpConnectUtil.getTcpInstance().ClintSendBcCommData(1107, "0001", "", "", "", "", "", "", "", "", "", loginName, "", "", "", "", "", "", "");
+        TcpConnectUtil.getTcpInstance().ClintSendBcCommData(2150, "0002", "1", temBuf.toString(), "", "", "", "", "", "", "", "","" , "", "", "", "", "", "");
+
     }
 
 
     @Override
     protected void handleServerResult(int intDataType, String strDataType, String strSetSN, String strSetSN1, String strAlmComType, String strParam1, String strParam2, String strParam3) {
-        if(intDataType==1105)
-        {
-            if(strDataType.equals("1002"))
-            {
-                if(strParam1.equals("0"))//登录失败
-                {
-                    listener.loginFailed();
-                }else if(strParam1.equals("1"))//登录成功
-                {
-                    listener.loginSuccess();
-                }
-            }
-
-        }else if(intDataType ==1106||intDataType ==1107)
+     if(intDataType ==1106||intDataType ==1107)
         {
             if(strDataType.equals("1001"))
             {
                 DataManager.getManagerInstance().saveDeviceListData();
+                if(listener!=null)
+                    listener.refreshUI();
             }
         }
     }

@@ -19,87 +19,56 @@ public class MainActivity extends FragmentActivityPresentImpl<MainView> implemen
 
     private long exitTime=0;
 
-    private boolean fromlogin;
     private IMain mainBiz;
     private String depCode;//部门code  个人用户登录返回""
     private String strShareUserName;
     private String strSharePassword;
-    private static SplashActivity splashActivity;
     @Override
     public void afterViewCreate(Bundle savedInstanceState) {
         super.afterViewCreate(savedInstanceState);
         mainBiz = new MainBiz(this);
         FragmentManager manager = getSupportFragmentManager();
         mView.initTabs(manager);
-        fromlogin = getIntent().getBooleanExtra("fromlogin",false);
         depCode = getIntent().getStringExtra("depCode");
         strShareUserName = MyApplication.getInstance().getStringPerference("UserName");
         strSharePassword =MyApplication.getInstance().getStringPerference("Password");
-        if(!fromlogin)
-        {
-            mainBiz.sendLoginCommad(strShareUserName, strSharePassword);
-        }
-        //获取设备列表
-        mainBiz.getDeviceList(strShareUserName);
+        //获取设备推送数据
+        mainBiz.get4GPushData();
 
     }
 
-    public void pressAgainExit(){
-        if((System.currentTimeMillis()-exitTime) > 2000){
-            MyToast.showTextToast(getApplicationContext(), getResources().getString(R.string.pressagain));
-            exitTime = System.currentTimeMillis();
-        } else {
-            finish();
-            System.exit(0);
-        }
-    }
 
 
-    /**
-     *
-     * @param context
-     * @param fromlogin 是否是从登录界面进来  true  是   false 不是
-     * false 的时候需要发送一个登陆登录指令
-     */
-    public static void actionStart(Context context,boolean fromlogin)
-    {
-//        Intent intent = new Intent(context,MainActivity.class);
-//        intent.putExtra("fromlogin",fromlogin);
-//        context.startActivity(intent);
 
 
-        splashActivity = (SplashActivity) context;
-        Intent intent = new Intent(context, LoginActivity.class);
-        intent.putExtra("fromlogin",fromlogin);
-        context.startActivity(intent);
-        splashActivity.overridePendingTransition(android.R.anim.fade_in,
-                android.R.anim.fade_out);
 
-    }
 
-    public static void actionStart(Context context,boolean fromlogin,String code)
+
+
+
+
+
+
+
+
+
+
+
+    public static void actionStart(Context context,String code)
     {
         Intent intent = new Intent(context,MainActivity.class);
-        intent.putExtra("fromlogin",fromlogin);
         intent.putExtra("depCode",code);
         context.startActivity(intent);
 
 
-
-
     }
 
 
     @Override
-    public void loginSuccess() {
+    public void refreshUI() {
+
 
     }
-
-    @Override
-    public void loginFailed() {
-
-    }
-
 
 
     //跳转修改密码界面
@@ -127,5 +96,13 @@ public class MainActivity extends FragmentActivityPresentImpl<MainView> implemen
         MyDeviceActivity.actionStart(this,strShareUserName);
     }
 
-
+    public void pressAgainExit(){
+        if((System.currentTimeMillis()-exitTime) > 2000){
+            MyToast.showTextToast(getApplicationContext(), getResources().getString(R.string.pressagain));
+            exitTime = System.currentTimeMillis();
+        } else {
+            finish();
+            System.exit(0);
+        }
+    }
 }

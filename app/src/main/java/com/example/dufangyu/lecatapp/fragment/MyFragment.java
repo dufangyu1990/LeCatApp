@@ -22,6 +22,7 @@ import com.example.dufangyu.lecatapp.utils.ActivityControl;
 import com.example.dufangyu.lecatapp.utils.MyAlertDialog;
 import com.example.dufangyu.lecatapp.utils.MyToast;
 import com.example.dufangyu.lecatapp.view.MyView;
+
 import permissions.dispatcher.NeedsPermission;
 import permissions.dispatcher.OnNeverAskAgain;
 import permissions.dispatcher.OnPermissionDenied;
@@ -117,8 +118,9 @@ public class MyFragment  extends FragmentPresentImpl<MyView> implements View.OnC
                         }
                         myFragmentBiz.exitApp();
                         MyApplication.getInstance().setStringPerference("isFirst", "YES");
-                        LoginActivity.actionStart(context,true);
+                        LoginActivity.actionStart(context,true,true);
                         ActivityControl.finishAll();
+
 
                     }
                 })

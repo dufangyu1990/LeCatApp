@@ -6,7 +6,5 @@ package com.example.dufangyu.lecatapp.biz;
 
 public interface IMain {
 
-    void sendLoginCommad(String loginName, String password);
-    void getDeviceList(String loginName);
-
+    void get4GPushData();
 }

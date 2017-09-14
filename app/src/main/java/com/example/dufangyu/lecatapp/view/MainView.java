@@ -93,4 +93,11 @@ public class MainView extends ViewImpl{
     public void bindEvent() {
 
     }
+
+    public void refreshUI()
+    {
+
+    }
+
+
 }

@@ -1,5 +1,6 @@
 package com.example.dufangyu.lecatapp.activity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Rect;
@@ -29,20 +30,31 @@ import static com.example.dufangyu.lecatapp.utils.Constant.TCPLINK;
  * Created by dufangyu on 2017/8/30.
  */
 
-public class LoginActivity extends ActivityPresentImpl<LoginView> implements View.OnClickListener,View.OnFocusChangeListener{
+public class LoginActivity extends ActivityPresentImpl<LoginView> implements View.OnClickListener,View.OnFocusChangeListener,LoginListener{
 
     private long exitTime=0;
     private ILogin loginBiz;
     private boolean isConnected;
     private Handler myHandler = new Handler();
-    private static SplashActivity splashActivity;
+    private static Activity splashActivity;
+    private  String loginName;
+    private String password;
+    private boolean isFirstEnter;
     @Override
     public void afterViewCreate(Bundle savedInstanceState) {
         super.afterViewCreate(savedInstanceState);
-        loginBiz = new LoginBiz();
+        loginBiz = new LoginBiz(this);
         isConnected = getIntent().getBooleanExtra("isConnected",false);
+        isFirstEnter = getIntent().getBooleanExtra("isFirstEnter",false);
         if(isConnected)
             mView.setNetState(TCPLINK,getResources().getString(R.string.netconnect));
+        if(!isFirstEnter)
+        {
+            mView.ShowOverImg();
+            autoLogin();
+        }else{
+            mView.hideOverImg();
+        }
         mView.initPwdCheckBox();
 
     }
@@ -70,18 +82,32 @@ public class LoginActivity extends ActivityPresentImpl<LoginView> implements Vie
     }
 
 
-    public static void actionStart(Context context,boolean isConnected)
+    public static void actionStart(Context context,boolean isConnected,boolean isFirstEnter)
     {
 
-        splashActivity = (SplashActivity) context;
+        splashActivity = (Activity) context;
         Intent intent = new Intent(context, LoginActivity.class);
         intent.putExtra("isConnected",isConnected);
+        intent.putExtra("isFirstEnter",isFirstEnter);
         context.startActivity(intent);
         splashActivity.overridePendingTransition(android.R.anim.fade_in,
                 android.R.anim.fade_out);
 
-
     }
+
+
+
+
+
+
+
+
+    //自动登陆
+    private void autoLogin()
+    {
+        login();
+    }
+
 
     private void login()
     {
@@ -93,26 +119,10 @@ public class LoginActivity extends ActivityPresentImpl<LoginView> implements Vie
 
         if(mView.checkInvalid())
         {
-            String loginName = mView.getTextValue(R.id.user_name_et);
-            String password = mView.getTextValue(R.id.pass_word_et);
+            loginName = mView.getTextValue(R.id.user_name_et);
+            password = mView.getTextValue(R.id.pass_word_et);
             CustomLoadDialog.show(LoginActivity.this,"",true,null,R.layout.logindialog);
-            loginBiz.login(loginName, password, new LoginListener() {
-                @Override
-                public void loginSuccess(String code,String author) {
-                    CustomLoadDialog.dismisDialog();
-                    mView.saveAccountNdPwd();
-                    MainActivity.actionStart(LoginActivity.this,true,code);
-                    finish();
-                }
-
-                @Override
-                public void loginFailed() {
-                    CustomLoadDialog.dismisDialog();
-                    CustomDialog.show(LoginActivity.this, getResources().getString(R.string.loginfail), false, null, R.layout.text_dialog);
-                    CustomDialog.setAutoDismiss(true, 1500);
-
-                }
-            });
+            loginBiz.login(loginName, password);
         }
 
 
@@ -191,5 +201,21 @@ public class LoginActivity extends ActivityPresentImpl<LoginView> implements Vie
         {
             getKeyboardHeight();
         }
+    }
+
+    @Override
+    public void loginSuccess(String code, String author) {
+        CustomLoadDialog.dismisDialog();
+        mView.saveAccountNdPwd();
+        loginBiz.getDeviceList(loginName);
+        MainActivity.actionStart(LoginActivity.this,code);
+        finish();
+    }
+
+    @Override
+    public void loginFailed() {
+        CustomLoadDialog.dismisDialog();
+        CustomDialog.show(LoginActivity.this, getResources().getString(R.string.loginfail), false, null, R.layout.text_dialog);
+        CustomDialog.setAutoDismiss(true, 1500);
     }
 }

@@ -71,6 +71,7 @@ public class FragmentActivityPresentImpl<T extends IView>extends FragmentActivit
     protected void onDestroy() {
         super.onDestroy();
         ActivityControl.removeActivity(this);
+        LogUtil.d("dfy", getClass().getSimpleName() + "  onDestroy");
     }
 
 
@@ -118,4 +119,5 @@ public class FragmentActivityPresentImpl<T extends IView>extends FragmentActivit
     public void doNetConnect(){
 
     }
+
 }

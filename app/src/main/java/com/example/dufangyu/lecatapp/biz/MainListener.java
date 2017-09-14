@@ -5,6 +5,5 @@ package com.example.dufangyu.lecatapp.biz;
  */
 
 public interface MainListener {
-    void loginSuccess();
-    void loginFailed();
+    void refreshUI();
 }
