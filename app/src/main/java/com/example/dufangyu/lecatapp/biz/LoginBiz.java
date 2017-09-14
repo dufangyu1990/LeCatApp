@@ -31,14 +31,16 @@ public class LoginBiz extends BaseBiz implements ILogin{
     public void getDeviceList(String loginName) {
         TcpConnectUtil.getTcpInstance().IntiTemp();
         TcpConnectUtil.getTcpInstance().ClintSendBcCommData(1107, "0001", "", "", "", "", "", "", "", "", "", loginName, "", "", "", "", "", "", "");
+
+
     }
 
 
     @Override
     protected void handleServerResult(int intDataType, String strDataType, String strSetSN, String strSetSN1, String strAlmComType, String strParam1, String strParam2, String strParam3) {
+
         if(intDataType==1105)
         {
-
             if(strDataType.equals("1002"))
             {
                 if(strParam1.equals("0"))//登录失败
@@ -57,6 +59,8 @@ public class LoginBiz extends BaseBiz implements ILogin{
             if(strDataType.equals("1001"))
             {
                 DataManager.getManagerInstance().saveDeviceListData();
+                if(listener!=null)
+                    listener.getDeviceList();
             }
         }
     }

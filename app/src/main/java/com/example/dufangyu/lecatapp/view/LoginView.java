@@ -2,10 +2,13 @@ package com.example.dufangyu.lecatapp.view;
 
 import android.text.TextUtils;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -32,15 +35,19 @@ public class LoginView extends ViewImpl{
     private CheckBox SavePassCheck;
     private boolean p_bSavePassON = false;
     private TextView registtv;
+    private Animation animation;
 
 
     private ScrollView mScrollView;
     private ImageView logoImg;
     private TextView appName;
     private ImageView overImg;//遮盖图
+    private ImageView loadimg;
+    private RelativeLayout loginlayout;
 
     @Override
     public void initView() {
+        loadimg = findViewById(R.id.loginloadImageView);
         overImg = findViewById(R.id.overImg);
         appName = findViewById(R.id.appname);
         logoImg = findViewById(R.id.logoimg);
@@ -51,6 +58,7 @@ public class LoginView extends ViewImpl{
         loginText = findViewById(R.id.login_button);
         linkStateText = findViewById(R.id.netstateTv);
         SavePassCheck = findViewById(R.id.SavePassCheck);
+        loginlayout = findViewById(R.id.loginlayout);
         setListeners();
 
     }
@@ -62,7 +70,7 @@ public class LoginView extends ViewImpl{
 
     @Override
     public void bindEvent() {
-        EventHelper.click(mPresent,loginText,registtv);
+        EventHelper.click(mPresent,loginlayout,registtv);
         EventHelper.focus(mPresent,accountText,passwordText);
     }
 
@@ -230,5 +238,27 @@ public class LoginView extends ViewImpl{
         //免登陆进入，出现遮盖图，造成没进入登陆界面假象
         overImg.setVisibility(View.INVISIBLE);
     }
+
+    public void startloginAnim()
+    {
+        //此方法是用xml文件方式来实现动画效果
+        animation = AnimationUtils.loadAnimation(mRootView.getContext(), R.anim.spinner);
+        //动画完成后，是否保留动画最后的状态，设为true
+        animation.setFillAfter(true);
+        if(animation!=null)
+        {
+            loadimg.startAnimation(animation);
+        }
+        loginText.setText("正在登录");
+    }
+
+    public void cancleAnim()
+    {
+        if(loadimg!=null)
+            loadimg.clearAnimation();
+        loadimg.setVisibility(View.INVISIBLE);
+        loginText.setText("登录");
+    }
+
 
 }

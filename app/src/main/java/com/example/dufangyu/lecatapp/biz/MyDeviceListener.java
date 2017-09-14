@@ -7,4 +7,6 @@ package com.example.dufangyu.lecatapp.biz;
 public interface MyDeviceListener {
 
     void getDevices();
+    void deleteSuccess();
+    void deleteFail();
 }

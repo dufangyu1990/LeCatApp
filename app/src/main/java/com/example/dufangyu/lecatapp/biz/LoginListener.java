@@ -7,4 +7,5 @@ package com.example.dufangyu.lecatapp.biz;
 public interface LoginListener {
     void loginSuccess(String code,String author);
     void loginFailed();
+    void getDeviceList();
 }

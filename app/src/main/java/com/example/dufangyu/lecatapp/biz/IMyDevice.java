@@ -8,4 +8,6 @@ public interface IMyDevice {
 
     void getMyDevice(String loginName);
 
+    void deleteDevice(String loginName,String deviceId);
+
 }

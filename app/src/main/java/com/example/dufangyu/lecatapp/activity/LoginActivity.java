@@ -15,7 +15,6 @@ import com.example.dufangyu.lecatapp.biz.ILogin;
 import com.example.dufangyu.lecatapp.biz.LoginBiz;
 import com.example.dufangyu.lecatapp.biz.LoginListener;
 import com.example.dufangyu.lecatapp.customview.CustomDialog;
-import com.example.dufangyu.lecatapp.customview.CustomLoadDialog;
 import com.example.dufangyu.lecatapp.present.ActivityPresentImpl;
 import com.example.dufangyu.lecatapp.socketUtils.TcpConnectUtil;
 import com.example.dufangyu.lecatapp.utils.MyToast;
@@ -40,6 +39,7 @@ public class LoginActivity extends ActivityPresentImpl<LoginView> implements Vie
     private  String loginName;
     private String password;
     private boolean isFirstEnter;
+    private String departCode;
     @Override
     public void afterViewCreate(Bundle savedInstanceState) {
         super.afterViewCreate(savedInstanceState);
@@ -48,6 +48,7 @@ public class LoginActivity extends ActivityPresentImpl<LoginView> implements Vie
         isFirstEnter = getIntent().getBooleanExtra("isFirstEnter",false);
         if(isConnected)
             mView.setNetState(TCPLINK,getResources().getString(R.string.netconnect));
+        mView.initPwdCheckBox();
         if(!isFirstEnter)
         {
             mView.ShowOverImg();
@@ -55,7 +56,7 @@ public class LoginActivity extends ActivityPresentImpl<LoginView> implements Vie
         }else{
             mView.hideOverImg();
         }
-        mView.initPwdCheckBox();
+
 
     }
 
@@ -66,7 +67,7 @@ public class LoginActivity extends ActivityPresentImpl<LoginView> implements Vie
 
         switch (v.getId())
         {
-            case R.id.login_button:
+            case R.id.loginlayout:
                 login();
                 break;
             case R.id.regist_user:
@@ -121,7 +122,7 @@ public class LoginActivity extends ActivityPresentImpl<LoginView> implements Vie
         {
             loginName = mView.getTextValue(R.id.user_name_et);
             password = mView.getTextValue(R.id.pass_word_et);
-            CustomLoadDialog.show(LoginActivity.this,"",true,null,R.layout.logindialog);
+            mView.startloginAnim();
             loginBiz.login(loginName, password);
         }
 
@@ -205,17 +206,23 @@ public class LoginActivity extends ActivityPresentImpl<LoginView> implements Vie
 
     @Override
     public void loginSuccess(String code, String author) {
-        CustomLoadDialog.dismisDialog();
+        mView.cancleAnim();
         mView.saveAccountNdPwd();
+        departCode = code;
         loginBiz.getDeviceList(loginName);
-        MainActivity.actionStart(LoginActivity.this,code);
-        finish();
+
     }
 
     @Override
     public void loginFailed() {
-        CustomLoadDialog.dismisDialog();
+        mView.cancleAnim();
         CustomDialog.show(LoginActivity.this, getResources().getString(R.string.loginfail), false, null, R.layout.text_dialog);
         CustomDialog.setAutoDismiss(true, 1500);
+    }
+
+    @Override
+    public void getDeviceList() {
+        MainActivity.actionStart(LoginActivity.this,departCode);
+        finish();
     }
 }

@@ -117,6 +117,7 @@ public class DefineLoadMoreView extends LinearLayout implements SwipeMenuRecycle
      */
     @Override
     public void onClick(View v) {
-        if (mLoadMoreListener != null) mLoadMoreListener.onLoadMore();
+        if (mLoadMoreListener != null)
+            mLoadMoreListener.onLoadMore();
     }
 }

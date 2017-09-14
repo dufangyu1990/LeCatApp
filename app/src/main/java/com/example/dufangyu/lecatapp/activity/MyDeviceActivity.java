@@ -66,8 +66,29 @@ public class MyDeviceActivity extends ActivityPresentImpl<MyDeviceView> implemen
         }
     }
 
+
     @Override
     public void getDevices() {
         mView.setDeviceList();
+    }
+
+    @Override
+    public void deleteSuccess() {
+        mView.notifyAdapterRefresh();
+        MyToast.showTextToast(MyDeviceActivity.this,"删除设备成功");
+
+    }
+
+    @Override
+    public void deleteFail() {
+        MyToast.showTextToast(MyDeviceActivity.this,"用户无此设备");
+    }
+
+
+    @Override
+    public void presentCallBack(String param1, String param2, String params3) {
+        super.presentCallBack(param1, param2, params3);
+        String deviceId = param1;
+        myDeviceBiz.deleteDevice(loginName,deviceId);
     }
 }

@@ -454,6 +454,8 @@ public class TcpConnectUtil {
                                     String strParam7, String strParam8)
     {
         int i,j;
+
+
         if (intDataType == 1106) {
             p_intTempCount = Integer.parseInt(strParam1);
             if (p_intTempCount == 0) {

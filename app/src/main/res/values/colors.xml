@@ -177,7 +177,8 @@
     <color name="lanseText">#FD6E08</color>
     <color name="yonghubg">#E2E2E2</color>
     <color name="textcolor">#9d9d9d</color>
-
+    <color name="red_normal">#FF0000</color>
+    <color name="red_pressed">#FF6666</color>
     <color name="lansean">#008ee0</color>
     <color name="qingse">#55c1de</color>
     <color name="qingsean">#50b7d4</color>
