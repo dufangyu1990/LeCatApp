@@ -28,7 +28,8 @@ public class MyDeviceBiz extends BaseBiz implements IMyDevice{
     }
 
     @Override
-    protected void handleServerResult(int intDataType, String strDataType, String strSetSN, String strSetSN1, String strAlmComType, String strParam1, String strParam2, String strParam3) {
+    protected void handleServerResult(int intDataType, String strDataType, String strSetSN, String strSetSN1,
+                                      String strAlmComType, String strParam1, String strParam2, String strParam3,String[] strArr) {
         if(intDataType ==1106||intDataType ==1107)
         {
             if(strDataType.equals("1001"))

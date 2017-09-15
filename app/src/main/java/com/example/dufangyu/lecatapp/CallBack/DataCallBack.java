@@ -6,6 +6,6 @@ package com.example.dufangyu.lecatapp.CallBack;
  */
 public abstract class DataCallBack {
 
-    public abstract void onReceiveResult(int intDataType, String strDataType, String strSetSN, String strSetSN1, String strAlmComType, String strParam1, String strParam2, String strParam3);
+    public abstract void onReceiveResult(int intDataType, String strDataType, String strSetSN, String strSetSN1, String strAlmComType, String strParam1, String strParam2, String strParam3,String[] strArr);
 
 }

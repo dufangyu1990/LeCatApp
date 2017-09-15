@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 在自定义类中使用 -->
+    <!-- 自定义属性集合 name=自定义名称 -->
+    <declare-styleable name="udfstyle">
+        <!-- 圆环背景色。定义一个roundColor属性，值为16RGB颜色类型 -->
+        <attr name="ringBackgroundColor" format="color" />
+        <!-- 前景色 -->
+        <attr name="ringForegroundColor" format="color" />
+        <!-- 圆环宽。尺寸类型 -->
+        <attr name="ringSize" format="dimension" />
+        <!-- 文字颜色 -->
+        <attr name="textColor" format="color" />
+        <!-- 文字大小 -->
+        <attr name="textSize" format="dimension" />
+        <!-- 最大值 -->
+        <attr name="max" format="integer" />
+    </declare-styleable>
+</resources>

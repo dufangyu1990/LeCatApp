@@ -1,5 +1,7 @@
 package com.example.dufangyu.lecatapp.customview;
 
+import android.animation.ValueAnimator;
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -10,6 +12,7 @@ import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.animation.LinearInterpolator;
 
 import com.example.dufangyu.lecatapp.R;
 import com.example.dufangyu.lecatapp.utils.Util;
@@ -20,6 +23,11 @@ import com.example.dufangyu.lecatapp.utils.Util;
 
 public class ProgressView extends View{
 
+
+    /**
+     * 弧度
+     */
+    private int mAngle;
     /** 画笔 */
     private Paint paint;
     /** 自定义控件的属性s */
@@ -54,7 +62,12 @@ public class ProgressView extends View{
     private Context mContext;
     private String text1="寒冷";
     private String textValue="14.6℃";
+    private int starAngle = -90;
+    //需要执行动画的参数名
+    private static final String PROGRESS_PROPERTY = "progress";
+    private ValueAnimator valueAnimator;
 
+    private int tempProgress;
 
     /** 最好是为在xml里定义的这些属性提供set、get方法 */
 
@@ -201,7 +214,7 @@ public class ProgressView extends View{
         // 定义一个矩形区域（左，上，右，下）。正好重合圆环所在的范围
         RectF oval = new RectF(center - tempradius, center - tempradius, center + tempradius, center + tempradius);
         // 绘制圆弧（绘制范围，顺时针起始角度，结束角度，是否显示指针，画笔）
-        canvas.drawArc(oval, -90, 360 * progress / max, false, paint); // 根据进度画圆弧
+        canvas.drawArc(oval, starAngle,mAngle, false, paint); // 根据进度画圆弧
     }
 
     /**
@@ -271,10 +284,75 @@ public class ProgressView extends View{
         }
 
         this.progress = progress;
+        mAngle  = 360 * progress / max;
+
 
         // 刷新控件。刷一次即执行一次onDraw。postInvalidate()能在非UI线程刷新
-        postInvalidate();
+        invalidate();
     }
+
+
+
+//
+//    public void dodo(float progressText, int progress) {
+//        this.progress = progress;
+//
+//        AnimatorSet animation = new AnimatorSet();
+//
+//        ObjectAnimator progressAnimation = ObjectAnimator.ofFloat(this,PROGRESS_PROPERTY, 0f, progress);
+//        progressAnimation.setDuration(700);// 动画执行时间
+//
+//        progressAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
+//        animation.playTogether(progressAnimation);//动画同时执行,可以做多个动画
+//        animation.start();
+//    }
+    /**
+     * 设置带动画的进度
+     */
+    @TargetApi(19)
+    public void setAnimProgress(int progress,final int flag) {
+        //flag代表绘制温度还是湿度
+        //1 温度
+        // 0  湿度
+        if (progress < 0) {
+            progress = 0;
+        }
+        if (progress > max) {
+            progress = max;
+        }
+
+
+
+
+       if(valueAnimator ==null)
+       {
+           //设置属性动画
+           valueAnimator = new ValueAnimator().ofInt(0, progress);
+       }
+
+        //动画从快到慢
+        valueAnimator.setInterpolator(new LinearInterpolator());
+        valueAnimator.setDuration(1000);
+        //监听值的变化
+        valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                int currentV = (Integer) animation.getAnimatedValue();
+                mAngle = 360 * currentV / max;
+                if(flag ==1)
+                {
+                    textValue = currentV + "℃";
+                }else if(flag ==0)
+                {
+                    textValue = currentV + "%";
+                }
+                invalidate();
+            }
+        });
+
+        valueAnimator.start();
+    }
+
 
 
 

@@ -49,6 +49,14 @@ public class Util {
 //
 //    }
 
+    //获取时间
+    public static String[] getDateTime(String value)
+    {
+        String[] strArr = value.split(" ");
+        return strArr;
+    }
+
+
 
     /**
      * 获取当前日期

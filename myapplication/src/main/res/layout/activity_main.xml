@@ -1,0 +1,28 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:cuiweiyou="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <!-- 上面的xmlns:cuiweiyou是自定义的约束，/res/后面即自定义View的包路径 -->
+
+    <!-- 这些属性都是在attr.xml中声明了，自定义View中定义了的 -->
+    <com.example.myapplication.ProgressView
+        android:id="@+id/udfprsbar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="9"
+        cuiweiyou:ringBackgroundColor="#ff9900"
+        cuiweiyou:ringForegroundColor="#0099ff"
+        cuiweiyou:ringSize="10dp"
+        cuiweiyou:textColor="#000000"
+        cuiweiyou:textSize="18sp"/>
+
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="ddd" />
+
+</LinearLayout>

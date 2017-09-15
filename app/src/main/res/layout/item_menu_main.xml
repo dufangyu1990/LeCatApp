@@ -31,16 +31,16 @@
         android:layout_height="wrap_content">
         <TextView
             android:id="@+id/tv_title"
-            android:padding="@dimen/margin10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="@dimen/text16"
             tools:text="Testing"/>
 
         <TextView
             android:id="@+id/tv_nickname"
             android:layout_width="wrap_content"
+            android:textSize="@dimen/text16"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/text12"
             tools:text="Testing"/>
     </LinearLayout>
 

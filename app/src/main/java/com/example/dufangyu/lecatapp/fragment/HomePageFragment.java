@@ -4,9 +4,10 @@ package com.example.dufangyu.lecatapp.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
-import com.example.dufangyu.lecatapp.biz.IHomePage;
+import com.example.dufangyu.lecatapp.bean.RealData;
 import com.example.dufangyu.lecatapp.biz.HomePageBiz;
 import com.example.dufangyu.lecatapp.biz.HomePageListener;
+import com.example.dufangyu.lecatapp.biz.IHomePage;
 import com.example.dufangyu.lecatapp.present.FragmentPresentImpl;
 import com.example.dufangyu.lecatapp.utils.LogUtil;
 import com.example.dufangyu.lecatapp.view.HomePageView;
@@ -33,7 +34,7 @@ public class HomePageFragment extends FragmentPresentImpl<HomePageView> implemen
     @Override
     public void onHiddenChanged(boolean hidden) {
 
-        LogUtil.d("dfy","HomePageFragment onHiddenChanged"+hidden);
+        LogUtil.d("dfy","HomePageFragment onHiddenChanged = "+hidden);
         super.onHiddenChanged(hidden);
 
         if(!hidden)
@@ -45,7 +46,7 @@ public class HomePageFragment extends FragmentPresentImpl<HomePageView> implemen
     }
 
     @Override
-    public void refreshUI() {
-
+    public void refreshUI(RealData realData) {
+       mView.refreshView(realData);
     }
 }

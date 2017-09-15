@@ -12,7 +12,8 @@ public class SplashBiz extends BaseBiz implements ISplash{
     SplashListener listener;
 
     @Override
-    protected void handleServerResult(int intDataType, String strDataType, String strSetSN, String strSetSN1, String strAlmComType, String strParam1, String strParam2, String strParam3) {
+    protected void handleServerResult(int intDataType, String strDataType, String strSetSN, String strSetSN1,
+                                      String strAlmComType, String strParam1, String strParam2, String strParam3,String[] strArr) {
         if(intDataType==1105)
         {
             if(strDataType.equals("1010"))

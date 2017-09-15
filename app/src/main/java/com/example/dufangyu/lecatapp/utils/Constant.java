@@ -21,5 +21,11 @@ public class Constant {
 
 	public static final String DEVICE_TYPE="101";//网关设备类型
 
+	public static final int HUMiDITY_BELOW = 30;
+	public static final int HUMiDITY_MID = 60;
+
+	public static final int TEMPERATURE_BELOW = 18;
+	public static final int TEMPERATURE_HIGH = 28;
+
 
 }
