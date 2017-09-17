@@ -23,6 +23,9 @@ public class LoginBiz extends BaseBiz implements ILogin{
     @Override
     public void login(String loginName, String password) {
 
+//        LogUtil.d("dfy","进行登录操作");
+//        LogUtil.d("dfy","loginName = "+loginName);
+//        LogUtil.d("dfy","password = "+password);
         TcpConnectUtil.getTcpInstance().IntiTemp();
         TcpConnectUtil.getTcpInstance().ClintSendBcCommData(1105, "0002", "", "", "", "", "", "", "", "", "", loginName,password, "", "", "", "", "", "");
     }
@@ -32,13 +35,11 @@ public class LoginBiz extends BaseBiz implements ILogin{
         TcpConnectUtil.getTcpInstance().IntiTemp();
         TcpConnectUtil.getTcpInstance().ClintSendBcCommData(1107, "0001", "", "", "", "", "", "", "", "", "", loginName, "", "", "", "", "", "", "");
 
-
     }
 
 
     @Override
     protected void handleServerResult(int intDataType, String strDataType, String strSetSN, String strSetSN1, String strAlmComType, String strParam1, String strParam2, String strParam3,String[] strArr) {
-
         if(intDataType==1105)
         {
             if(strDataType.equals("1002"))
@@ -56,6 +57,7 @@ public class LoginBiz extends BaseBiz implements ILogin{
 
         }else if(intDataType ==1106||intDataType ==1107)
         {
+//            LogUtil.d("dfy","strDataType  ="+strDataType);
             if(strDataType.equals("1001"))
             {
                 DataManager.getManagerInstance().saveDeviceListData();

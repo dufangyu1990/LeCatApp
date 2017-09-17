@@ -12,7 +12,7 @@ public class Constant {
 	public final static String TCPSERVERIP = "115.28.75.240";//219.236.247.110(测试服务器)//123.57.217.93(主网)//192.168.1.187//115.28.75.240
 	public final static  int TCPSERVERPORT = 5258;
 
-	public final static  String APKURL = "http://123.57.217.93:8080/Android/NewGpsTest.apk";
+	public final static  String APKURL = "http://115.28.75.240:8080/Android/Lm.apk";
 
 	public static final int REQ_TIMEOUT = 35000;
 	public static final int TCPNONET = 100;//app一进来就没网，100
@@ -26,6 +26,10 @@ public class Constant {
 
 	public static final int TEMPERATURE_BELOW = 18;
 	public static final int TEMPERATURE_HIGH = 28;
+
+	public static final String AD="lmadmin";
+	public static final String ADD_NEWDEVICE="addNewDevice";
+	public static final String DELETE_DEVICE="deleteDevice";
 
 
 }

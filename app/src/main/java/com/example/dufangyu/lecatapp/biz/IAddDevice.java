@@ -6,5 +6,6 @@ package com.example.dufangyu.lecatapp.biz;
 
 public interface IAddDevice {
 
-    void addDevice(String loginName,String deviceId, String nickName,AddDeviceListener listener);
+    void addDevice(String loginName,String deviceId, String nickName);
+    void getMyDeviceAgain(String loginName);
 }

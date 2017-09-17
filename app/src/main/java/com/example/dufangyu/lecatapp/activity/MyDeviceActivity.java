@@ -3,6 +3,7 @@ package com.example.dufangyu.lecatapp.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.content.LocalBroadcastManager;
 import android.view.View;
 
 import com.example.dufangyu.lecatapp.R;
@@ -14,6 +15,8 @@ import com.example.dufangyu.lecatapp.socketUtils.TcpConnectUtil;
 import com.example.dufangyu.lecatapp.utils.MyToast;
 import com.example.dufangyu.lecatapp.view.MyDeviceView;
 
+import static com.example.dufangyu.lecatapp.utils.Constant.ADD_NEWDEVICE;
+
 /**
  * Created by dufangyu on 2017/9/14.
  */
@@ -23,10 +26,13 @@ public class MyDeviceActivity extends ActivityPresentImpl<MyDeviceView> implemen
 
     private IMyDevice myDeviceBiz;
     private String loginName;
+    private boolean deleteSuccess;
+    private LocalBroadcastManager mLocalBroadcastManager;
 
     @Override
     public void afterViewCreate(Bundle savedInstanceState) {
         super.afterViewCreate(savedInstanceState);
+        mLocalBroadcastManager = LocalBroadcastManager.getInstance(this);
         loginName = getIntent().getStringExtra("loginName");
         myDeviceBiz = new MyDeviceBiz(this);
         mView.startRefrsh(true);
@@ -70,18 +76,22 @@ public class MyDeviceActivity extends ActivityPresentImpl<MyDeviceView> implemen
     @Override
     public void getDevices() {
         mView.setDeviceList();
+
+
     }
 
     @Override
     public void deleteSuccess() {
         mView.notifyAdapterRefresh();
-        MyToast.showTextToast(MyDeviceActivity.this,"删除设备成功");
+        //删除成功后再重新获取一遍列表
+        myDeviceBiz.getMyDevice(loginName);
+        MyToast.showTextToast(getApplicationContext(),"删除设备成功");
 
     }
 
     @Override
     public void deleteFail() {
-        MyToast.showTextToast(MyDeviceActivity.this,"用户无此设备");
+        MyToast.showTextToast(getApplicationContext(),"用户无此设备");
     }
 
 
@@ -90,5 +100,17 @@ public class MyDeviceActivity extends ActivityPresentImpl<MyDeviceView> implemen
         super.presentCallBack(param1, param2, params3);
         String deviceId = param1;
         myDeviceBiz.deleteDevice(loginName,deviceId);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        sendMyBroacast();
+    }
+
+    private void sendMyBroacast()
+    {
+        Intent intent =new Intent(ADD_NEWDEVICE);
+        mLocalBroadcastManager.sendBroadcast(intent);
     }
 }

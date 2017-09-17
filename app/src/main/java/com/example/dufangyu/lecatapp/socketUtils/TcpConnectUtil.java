@@ -96,7 +96,7 @@ public class TcpConnectUtil {
             byte[] charSeOneData = new byte[16384];
             while (mRunning) {
                 try {
-                    Thread.sleep(100);
+                    Thread.sleep(15);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -455,7 +455,7 @@ public class TcpConnectUtil {
     {
         int i,j;
 
-
+//        LogUtil.d("dfy","intDataType = "+intDataType+",strDataType = "+strDataType);
         if (intDataType == 1106) {
             p_intTempCount = Integer.parseInt(strParam1);
             if (p_intTempCount == 0) {
@@ -507,6 +507,7 @@ public class TcpConnectUtil {
 //                TempJudge(strDataType,strParam2);
             }
         }else{
+//            LogUtil.d("dfy","mDataCallBack = "+mDataCallBack);
             //不论什么数据类型，都进入此方法，不用每个都列出来
             if(mDataCallBack!=null)
                 mDataCallBack.onReceiveResult(intDataType,strDataType,strSetSN,strSetSN1,strAlmComType,strParam1,strParam2,strParam3,strArr);

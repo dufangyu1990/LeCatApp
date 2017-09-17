@@ -68,14 +68,14 @@ public class UpdateActivity extends ActivityPresentImpl<UpdateView> implements V
                 @Override
                 public void updateSuccess() {
                     CustomLoadDialog.dismisDialog();
-                    MyToast.showTextToast(UpdateActivity.this,"更新成功");
+                    MyToast.showTextToast(getApplicationContext(),"更新成功");
                     finish();
                 }
 
                 @Override
                 public void updateFail() {
                     CustomLoadDialog.dismisDialog();
-                    MyToast.showTextToast(UpdateActivity.this,"更新失败");
+                    MyToast.showTextToast(getApplicationContext(),"更新失败");
                 }
 
             });

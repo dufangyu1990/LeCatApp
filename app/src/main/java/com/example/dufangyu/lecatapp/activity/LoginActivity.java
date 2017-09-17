@@ -43,7 +43,7 @@ public class LoginActivity extends ActivityPresentImpl<LoginView> implements Vie
     @Override
     public void afterViewCreate(Bundle savedInstanceState) {
         super.afterViewCreate(savedInstanceState);
-        loginBiz = new LoginBiz(this);
+
         isConnected = getIntent().getBooleanExtra("isConnected",false);
         isFirstEnter = getIntent().getBooleanExtra("isFirstEnter",false);
         if(isConnected)
@@ -52,6 +52,7 @@ public class LoginActivity extends ActivityPresentImpl<LoginView> implements Vie
         if(!isFirstEnter)
         {
             mView.ShowOverImg();
+            loginBiz = new LoginBiz(this);
             autoLogin();
         }else{
             mView.hideOverImg();
@@ -68,6 +69,7 @@ public class LoginActivity extends ActivityPresentImpl<LoginView> implements Vie
         switch (v.getId())
         {
             case R.id.loginlayout:
+                loginBiz = new LoginBiz(this);
                 login();
                 break;
             case R.id.regist_user:

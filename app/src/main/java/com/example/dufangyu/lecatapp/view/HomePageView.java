@@ -2,12 +2,12 @@ package com.example.dufangyu.lecatapp.view;
 
 
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.dufangyu.lecatapp.R;
 import com.example.dufangyu.lecatapp.bean.RealData;
 import com.example.dufangyu.lecatapp.customview.ProgressView;
-import com.example.dufangyu.lecatapp.utils.LogUtil;
 import com.example.dufangyu.lecatapp.utils.Util;
 
 import static com.example.dufangyu.lecatapp.utils.Constant.HUMiDITY_BELOW;
@@ -23,8 +23,13 @@ public class HomePageView extends ViewImpl{
 
     private ProgressView wendu_progressView,shidu_progressView;
     private TextView dateTv,timeTv;
+    private TextView updateTimeTv;
+    private ImageView menkongimg;
     @Override
     public void initView() {
+        menkongimg = findViewById(R.id.menkongimg);
+        updateTimeTv = findViewById(R.id.updateTimeTv);
+
         wendu_progressView = findViewById(R.id.wenduPro);
         shidu_progressView = findViewById(R.id.shiduPro);
 //        wendu_progressView.setLayerType(View.LAYER_TYPE_HARDWARE, null);
@@ -45,6 +50,7 @@ public class HomePageView extends ViewImpl{
     @Override
     public void bindEvent() {
 
+//        EventHelper.click(mPresent,menkongimg);
     }
 
 
@@ -53,13 +59,12 @@ public class HomePageView extends ViewImpl{
 
         int temperature = Integer.parseInt(realData.getTemperatureValue());
         int humidity = Integer.parseInt(realData.getHumidityValueValue());
-
+        updateTimeTv.setVisibility(View.VISIBLE);
         dateTv.setText(Util.getDateTime(realData.getUpdateTime())[0]);
         timeTv.setText(Util.getDateTime(realData.getUpdateTime())[1]);
 
-        LogUtil.d("dfy","temperature = "+temperature);
-        LogUtil.d("dfy","humidity = "+humidity);
-        wendu_progressView.setAnimProgress(temperature,1);
+//        LogUtil.d("dfy","temperature = "+temperature);
+//        LogUtil.d("dfy","humidity = "+humidity);
 
         if(temperature<TEMPERATURE_BELOW)
         {
@@ -70,8 +75,10 @@ public class HomePageView extends ViewImpl{
         }else{
             wendu_progressView.setText("炎热");
         }
+        wendu_progressView.setTimeDely(3);
+        wendu_progressView.setTextValue(temperature+"℃");
+        wendu_progressView.setAnimProgress(temperature,1);
 
-//        wendu_progressView.setTextValue(temperature+"℃");
 
         if(humidity<HUMiDITY_BELOW)
         {
@@ -84,9 +91,23 @@ public class HomePageView extends ViewImpl{
             shidu_progressView.setText("湿润");
         }
         shidu_progressView.setAnimProgress(humidity,0);
-//        shidu_progressView.setTextValue(humidity+"%");
-//        shidu_progressView.setProgress(humidity);
+        shidu_progressView.setTextValue(humidity+"%");
+        shidu_progressView.setTimeDely(3);
 
+    }
+
+
+    public void reFreshNoData()
+    {
+        wendu_progressView.setProgress(0);
+        shidu_progressView.setProgress(0);
+        wendu_progressView.setText("");
+        wendu_progressView.setTextValue("");
+        shidu_progressView.setText("");
+        shidu_progressView.setTextValue("");
+        updateTimeTv.setVisibility(View.INVISIBLE);
+        dateTv.setText("");
+        timeTv.setText("");
     }
 
 

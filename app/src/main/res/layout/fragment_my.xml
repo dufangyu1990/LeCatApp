@@ -206,11 +206,6 @@
                     android:layout_marginLeft="@dimen/margin10"
                     android:layout_marginRight="@dimen/margin10"
                     android:orientation="vertical">
-
-
-
-
-
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -244,11 +239,18 @@
                             android:textSize="@dimen/text16" />
                     </RelativeLayout>
 
+                 </LinearLayout>
 
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin10"
+                    android:layout_marginRight="@dimen/margin10"
+                    android:id="@+id/update_layout"
+                    android:orientation="vertical">
                     <include layout="@layout/commonview"/>
-
-
-
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -262,7 +264,7 @@
 
                         <ImageView
 
-                            android:id="@+id/update"
+                            android:id="@+id/updateimg"
                             android:src="@drawable/guanyu"
                             android:visibility="gone"
                             android:layout_width="wrap_content"
@@ -272,7 +274,7 @@
 
                         <TextView
                             android:layout_width="match_parent"
-                            android:layout_toRightOf="@id/update"
+                            android:layout_toRightOf="@id/updateimg"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/margin10"
                             android:drawableRight="@drawable/jiantouleft"
@@ -282,11 +284,11 @@
                             android:textSize="@dimen/text16" />
                     </RelativeLayout>
 
-
-                    <include layout="@layout/commonview"/>
-
-
                 </LinearLayout>
+
+
+
+
 
 
 

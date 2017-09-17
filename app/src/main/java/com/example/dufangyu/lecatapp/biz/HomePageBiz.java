@@ -29,16 +29,17 @@ public class HomePageBiz extends BaseBiz implements IHomePage {
         {
             temBuf.append(DataManager.p_strDeviceList[i][1]).append("&");
         }
+//        LogUtil.d("dfy","temBuf = "+temBuf.toString());
         TcpConnectUtil.getTcpInstance().IntiTemp();
-        TcpConnectUtil.getTcpInstance().ClintSendBcCommData(2150, "0002", "1", "WG12345678901234&", "", "", "", "", "", "", "", "","" , "", "", "", "", "", "");
+        TcpConnectUtil.getTcpInstance().ClintSendBcCommData(2150, "0002", "1", temBuf.toString(), "", "", "", "", "", "", "", "","" , "", "", "", "", "", "");
 
     }
 
 
     @Override
     protected void handleServerResult(int intDataType, String strDataType, String strSetSN, String strSetSN1, String strAlmComType, String strParam1, String strParam2, String strParam3,String[] strArr) {
-        LogUtil.d("dfy","设备Id = "+strArr[2]+",报警状态 = "+strArr[4]+",更新时间 = "+strArr[8]);
-        LogUtil.d("dfy","下属设备 = "+strArr[9]+",温度值 = "+strArr[10]+",湿度值 = "+strArr[11]);
+//        LogUtil.d("dfy","设备Id = "+strArr[2]+",报警状态 = "+strArr[4]+",更新时间 = "+strArr[8]);
+        LogUtil.d("dfy","温度值 = "+strArr[10]+",湿度值 = "+strArr[11]);
         if(intDataType==2150)
         {
             if(strDataType.equals("1002"))

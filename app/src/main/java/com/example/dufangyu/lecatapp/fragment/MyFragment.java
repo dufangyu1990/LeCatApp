@@ -59,6 +59,10 @@ public class MyFragment  extends FragmentPresentImpl<MyView> implements View.OnC
         }
         myFragmentBiz = new MyFragmentBiz();
 
+
+
+
+
     }
 
 
@@ -116,7 +120,7 @@ public class MyFragment  extends FragmentPresentImpl<MyView> implements View.OnC
                             MyToast.showTextToast(context,getResources().getString(R.string.badnetwork));
                             return;
                         }
-                        myFragmentBiz.exitApp();
+                        myFragmentBiz.exitApp(context);
                         MyApplication.getInstance().setStringPerference("isFirst", "YES");
                         LoginActivity.actionStart(context,true,true);
                         ActivityControl.finishAll();
@@ -132,40 +136,6 @@ public class MyFragment  extends FragmentPresentImpl<MyView> implements View.OnC
                 });
         dialog.show();
     }
-
-
-//    @TargetApi(23)
-//    private void getPersimmions() {
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//            ArrayList<String> permissions = new ArrayList<String>();
-//
-//            /***
-//             * 读写权限为必须权限，用户如果禁止，则每次进入都会申请
-//             */
-////            if(checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
-////                permissions.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
-////            }
-////            if(checkSelfPermission(Manifest.permission.MOUNT_UNMOUNT_FILESYSTEMS) != PackageManager.PERMISSION_GRANTED){
-////                permissions.add(Manifest.permission.MOUNT_UNMOUNT_FILESYSTEMS);
-////            }
-////
-////            if(checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
-////                permissions.add(Manifest.permission.ACCESS_FINE_LOCATION);
-////            }
-////            if(checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED){
-////                permissions.add(Manifest.permission.ACCESS_COARSE_LOCATION);
-////            }
-//
-//            if(context.checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
-//                permissions.add(Manifest.permission.CAMERA);
-//            }
-//            if (permissions.size() > 0) {
-//                requestPermissions(permissions.toArray(new String[permissions.size()]),127);
-//            }
-//        }
-//    }
-//
-
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -208,5 +178,9 @@ public class MyFragment  extends FragmentPresentImpl<MyView> implements View.OnC
     }
 
 
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
 
+    }
 }

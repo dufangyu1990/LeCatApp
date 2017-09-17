@@ -7,4 +7,5 @@ package com.example.dufangyu.lecatapp.biz;
 public interface AddDeviceListener {
     void AddDeviceSuccess();
     void AddDeviceFail();
+    void getDeviceOver();
 }

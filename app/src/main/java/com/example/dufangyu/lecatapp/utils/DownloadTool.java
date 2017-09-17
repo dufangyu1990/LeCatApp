@@ -8,7 +8,8 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.os.Environment;
+import android.os.Build;
+import android.support.v4.content.FileProvider;
 
 import com.example.dufangyu.lecatapp.R;
 
@@ -54,7 +55,6 @@ public class DownloadTool extends AsyncTask<String, Integer, Boolean> {
 	                // 没有下载完毕
 	                downSize += DT.getSum();
 	                publishProgress(downSize);
-
 	                if (downSize >= DT.getSize() || !DT.isSuccess()) {
 	                    break;
 	                }
@@ -77,11 +77,26 @@ public class DownloadTool extends AsyncTask<String, Integer, Boolean> {
 	            builder.setPositiveButton("安装", new OnClickListener() {
 	                @Override
 	                public void onClick(DialogInterface dialog, int which) {
-	                    // 更新apk程序
-	                    Intent intent = new Intent();
-	                    intent.setAction("android.intent.action.VIEW");
-	                    intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
-	                    context.startActivityForResult(intent, 0);
+
+						// 更新apk程序
+						Intent intent = new Intent(Intent.ACTION_VIEW);
+						Uri data;
+						// 判断版本大于等于7.0
+						if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+							// "net.csdn.blog.ruancoder.fileprovider"即是在清单文件中配置的authorities
+							data = FileProvider.getUriForFile(context, "com.example.dufangyu.lecatapp.fileprovider", file);
+							// 给目标应用一个临时授权
+							intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+						} else {
+							data = Uri.fromFile(file);
+						}
+						intent.setDataAndType(data, "application/vnd.android.package-archive");
+						context.startActivity(intent);
+
+//	                    Intent intent = new Intent();
+//	                    intent.setAction("android.intent.action.VIEW");
+//	                    intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
+//	                    context.startActivityForResult(intent, 0);
 	                }
 	            });
 	            builder.create().show();
@@ -132,8 +147,8 @@ public class DownloadTool extends AsyncTask<String, Integer, Boolean> {
 	            OutputStream os = null;
 	            HttpURLConnection conn = null;
 	            try {
-	                file = new File(Environment.getExternalStorageDirectory().getPath(), R.string.app_name+".apk");
-	                LogUtil.d("dfy", "filePath = "+Environment.getExternalStorageDirectory().getPath());
+	                file = new File(context.getExternalCacheDir().getPath(), R.string.app_name+".apk");
+	                LogUtil.d("dfy", "filePath = "+context.getExternalCacheDir().getPath());
 	                if (file.exists()) {
 	                    file.delete();
 	                }

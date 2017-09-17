@@ -1,5 +1,6 @@
 package com.example.dufangyu.lecatapp.biz;
 
+import com.example.dufangyu.lecatapp.manager.DataManager;
 import com.example.dufangyu.lecatapp.socketUtils.TcpConnectUtil;
 
 import static com.example.dufangyu.lecatapp.utils.Constant.DEVICE_TYPE;
@@ -13,11 +14,14 @@ public class AddDeviceBiz extends BaseBiz implements IAddDevice{
 
     private AddDeviceListener listener;
 
+    public AddDeviceBiz(AddDeviceListener listener)
+    {
+        this.listener = listener;
+    }
+
 
     @Override
     protected void handleServerResult(int intDataType, String strDataType, String strSetSN, String strSetSN1, String strAlmComType, String strParam1, String strParam2, String strParam3,String[] strArr) {
-
-//        LogUtil.d("dfy","intDataType = "+intDataType+",strDataType = "+strDataType);
 
         if(intDataType==1108)
         {
@@ -30,16 +34,25 @@ public class AddDeviceBiz extends BaseBiz implements IAddDevice{
                     listener.AddDeviceFail();
                 }
             }
+        }else if (intDataType == 1106 || intDataType == 1107) {
+            if (strDataType.equals("1001")) {
+                DataManager.getManagerInstance().saveDeviceListData();
+                listener.getDeviceOver();
+            }
         }
 
 
     }
 
     @Override
-    public void addDevice(String loginName,String deviceId, String nickName, AddDeviceListener listener) {
-        this.listener = listener;
+    public void addDevice(String loginName,String deviceId, String nickName) {
         TcpConnectUtil.getTcpInstance().IntiTemp();
         TcpConnectUtil.getTcpInstance().ClintSendBcCommData(1108, "0002", "1", "", "", "", "", "", "", loginName, DEVICE_TYPE, deviceId, nickName, "", "", "", "", "", "");
-//        TcpConnectUtil.getTcpInstance().ClintSendBcCommData(1108, "0002", "1", "", "", "", "", "", "", "用户名", "设备类型", "设备ID", "设备别名", "", "", "", "", "", "");
+    }
+
+    @Override
+    public void getMyDeviceAgain(String loginName) {
+        TcpConnectUtil.getTcpInstance().IntiTemp();
+        TcpConnectUtil.getTcpInstance().ClintSendBcCommData(1107, "0001", "", "", "", "", "", "", "", "", "", loginName, "", "", "", "", "", "", "");
     }
 }

@@ -49,7 +49,6 @@ public class RegistActivity extends ActivityPresentImpl<RegistView> implements V
                 finish();
                 break;
             case R.id.submit_btn:
-
                 registUser();
                 break;
         }
@@ -74,14 +73,14 @@ public class RegistActivity extends ActivityPresentImpl<RegistView> implements V
                 @Override
                 public void registSuccess() {
                     CustomLoadDialog.dismisDialog();
-                    MyToast.showTextToast(RegistActivity.this,"注册成功");
+                    MyToast.showTextToast(getApplicationContext(),"注册成功");
                     finish();
                 }
 
                 @Override
                 public void registFail() {
                     CustomLoadDialog.dismisDialog();
-                    MyToast.showTextToast(RegistActivity.this,"用户已存在");
+                    MyToast.showTextToast(getApplicationContext(),"用户已存在");
                 }
             });
         }

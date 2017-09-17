@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentManager;
 import com.example.dufangyu.lecatapp.R;
 import com.example.dufangyu.lecatapp.listener.JumpToActivityListener;
 import com.example.dufangyu.lecatapp.present.FragmentActivityPresentImpl;
+import com.example.dufangyu.lecatapp.utils.BroadCastControll;
 import com.example.dufangyu.lecatapp.utils.MyToast;
 import com.example.dufangyu.lecatapp.view.MainView;
 
@@ -90,8 +91,11 @@ public class MainActivity extends FragmentActivityPresentImpl<MainView> implemen
             MyToast.showTextToast(getApplicationContext(), getResources().getString(R.string.pressagain));
             exitTime = System.currentTimeMillis();
         } else {
+            BroadCastControll.removeAllReciver(this);
             finish();
             System.exit(0);
         }
     }
+
+
 }

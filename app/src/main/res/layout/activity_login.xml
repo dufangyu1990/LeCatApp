@@ -255,7 +255,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/overImg"
-        android:src="@drawable/beijing1"
+        android:src="@drawable/welcome"
         android:visibility="invisible"
         android:adjustViewBounds="true"
         tools:ignore="ContentDescription"
