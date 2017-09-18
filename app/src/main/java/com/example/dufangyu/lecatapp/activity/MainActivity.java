@@ -20,6 +20,7 @@ public class MainActivity extends FragmentActivityPresentImpl<MainView> implemen
     private String depCode;//部门code  个人用户登录返回""
     private String strShareUserName;
     private String strSharePassword;
+    private boolean isNetConnnect =true  ;
     @Override
     public void afterViewCreate(Bundle savedInstanceState) {
         super.afterViewCreate(savedInstanceState);
@@ -31,22 +32,6 @@ public class MainActivity extends FragmentActivityPresentImpl<MainView> implemen
 
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     public static void actionStart(Context context,String code)
@@ -86,6 +71,7 @@ public class MainActivity extends FragmentActivityPresentImpl<MainView> implemen
         MyDeviceActivity.actionStart(this,strShareUserName);
     }
 
+    //再按一次退出
     public void pressAgainExit(){
         if((System.currentTimeMillis()-exitTime) > 2000){
             MyToast.showTextToast(getApplicationContext(), getResources().getString(R.string.pressagain));
@@ -96,6 +82,9 @@ public class MainActivity extends FragmentActivityPresentImpl<MainView> implemen
             System.exit(0);
         }
     }
+
+
+
 
 
 }

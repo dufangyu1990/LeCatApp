@@ -20,7 +20,6 @@
             android:textSize="@dimen/text16"
             android:padding="@dimen/margin10"
             android:layout_centerVertical="true"
-            android:layout_alignParentLeft="true"
             android:visibility="invisible" />
 
 

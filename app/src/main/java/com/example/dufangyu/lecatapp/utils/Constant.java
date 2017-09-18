@@ -30,6 +30,10 @@ public class Constant {
 	public static final String AD="lmadmin";
 	public static final String ADD_NEWDEVICE="addNewDevice";
 	public static final String DELETE_DEVICE="deleteDevice";
+	public static final String REENTER="reEnter";//重新连上网络,重新登录
+	public static final String LOGIN_INSTANCE=" com.example.dufangyu.lecatapp.activity.LoginActivity";//
+	public static final String SPLASH_INSTANCE="com.example.dufangyu.lecatapp.activity.SplashActivity";//
+	public static final String MAIN_INSTANCE="com.example.dufangyu.lecatapp.activity.MainActivity";//
 
 
 }

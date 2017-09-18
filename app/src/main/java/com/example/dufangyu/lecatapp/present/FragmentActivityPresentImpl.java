@@ -1,8 +1,10 @@
 package com.example.dufangyu.lecatapp.present;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
 import android.view.KeyEvent;
 
 import com.example.dufangyu.lecatapp.CallBack.NetCallBackImp;
@@ -12,8 +14,11 @@ import com.example.dufangyu.lecatapp.socketUtils.TcpConnectUtil;
 import com.example.dufangyu.lecatapp.utils.ActivityControl;
 import com.example.dufangyu.lecatapp.utils.LogUtil;
 import com.example.dufangyu.lecatapp.utils.MyToast;
+import com.example.dufangyu.lecatapp.utils.Util;
 import com.example.dufangyu.lecatapp.view.IView;
 
+import static com.example.dufangyu.lecatapp.utils.Constant.MAIN_INSTANCE;
+import static com.example.dufangyu.lecatapp.utils.Constant.REENTER;
 import static com.example.dufangyu.lecatapp.utils.Constant.TCPDISLINK;
 import static com.example.dufangyu.lecatapp.utils.Constant.TCPLINK;
 import static com.example.dufangyu.lecatapp.utils.Constant.TCPNONET;
@@ -36,6 +41,7 @@ public class FragmentActivityPresentImpl<T extends IView>extends FragmentActivit
             mView.bindPresenter(this);
             setContentView(mView.createView(getLayoutInflater(),null));
             mView.bindEvent();
+//            LogUtil.d("dfy","activity name = "+this.getClass().getName());
             TcpConnectUtil.getTcpInstance().setNetCallBack(netCallBackImp);
             afterViewCreate(savedInstanceState);
         } catch (InstantiationException e) {
@@ -117,7 +123,18 @@ public class FragmentActivityPresentImpl<T extends IView>extends FragmentActivit
     }
 
     public void doNetConnect(){
+        int size = ActivityControl.activities.size();
+        String topName = ActivityControl.getTopActicvityName(getApplicationContext());
+//      LogUtil.d("dfy","topName = "+topName);
+        String topActivityName = ActivityControl.activities.get(size-1).getClass().getName();
 
+        if(!TextUtils.isEmpty(topName))
+        {
+            if(topName.equals(topActivityName) && topActivityName.equals(MAIN_INSTANCE))
+            {
+                Util.sendLocalBroadcast(getApplicationContext(),new Intent(REENTER));
+            }
+        }
     }
 
 }

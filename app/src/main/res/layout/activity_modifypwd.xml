@@ -7,7 +7,14 @@
     android:background="@color/colorPrimary"
     android:layout_height="match_parent">
 
-    <include layout="@layout/title_bar" />
+
+    <com.example.dufangyu.lecatapp.customview.TitleLinearLayout
+        style="@style/title_bar_style"
+        android:id="@+id/titleLayout"
+        >
+    </com.example.dufangyu.lecatapp.customview.TitleLinearLayout>
+
+
 
     <include layout="@layout/view" />
 

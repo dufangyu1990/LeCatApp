@@ -10,6 +10,8 @@
         layout="@layout/regist_title_bar"/>
 
 
+
+
    <ScrollView
        android:layout_width="match_parent"
        android:id="@+id/regist_scroll"

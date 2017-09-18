@@ -5,10 +5,10 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 
 import com.example.dufangyu.lecatapp.R;
 import com.example.dufangyu.lecatapp.activity.MyApplication;
+import com.example.dufangyu.lecatapp.customview.TitleLinearLayout;
 import com.example.dufangyu.lecatapp.fragment.HomePageFragment;
 import com.example.dufangyu.lecatapp.fragment.MyFragment;
 
@@ -23,11 +23,14 @@ public class MainView extends ViewImpl{
 
     private HomePageFragment homePageFragment;
     private MyFragment myFragment;
-    private TextView mTitleText;
+    private TitleLinearLayout linearLayout_title;
     @Override
     public void initView() {
-        mTitleText = findViewById(R.id.title_text);
         menuArry = findViewById(R.id.menu_arr);
+
+        linearLayout_title = findViewById(R.id.titleLayout);
+
+
     }
 
 
@@ -50,7 +53,7 @@ public class MainView extends ViewImpl{
                         } else {
                             transaction.show(homePageFragment);
                         }
-                        mTitleText.setText(mRootView.getContext().getString(R.string.homepage));
+                        linearLayout_title.setTitleText(mRootView.getContext().getString(R.string.homepage));
                         break;
                     case R.id.tab_myself:
                         if (myFragment == null) {
@@ -63,7 +66,7 @@ public class MainView extends ViewImpl{
                         } else {
                             transaction.show(myFragment);
                         }
-                        mTitleText.setText(mRootView.getContext().getString(R.string.myself));
+                        linearLayout_title.setTitleText(mRootView.getContext().getString(R.string.myself));
                         break;
 
                 }

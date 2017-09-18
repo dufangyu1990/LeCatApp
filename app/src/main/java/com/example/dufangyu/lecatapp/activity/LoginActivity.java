@@ -207,7 +207,7 @@ public class LoginActivity extends ActivityPresentImpl<LoginView> implements Vie
     }
 
     @Override
-    public void loginSuccess(String code, String author) {
+    public void loginSuccess(String code, String author,String userName,String phoneCall,String address) {
         mView.cancleAnim();
         mView.saveAccountNdPwd();
         departCode = code;

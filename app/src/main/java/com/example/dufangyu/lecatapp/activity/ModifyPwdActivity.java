@@ -49,9 +49,6 @@ public class ModifyPwdActivity extends ActivityPresentImpl<ModifyPwdView> implem
     public void onClick(View v) {
         switch (v.getId())
         {
-            case R.id.back_img:
-                finish();
-                break;
             case R.id.submit_btn:
                 modifyPwdAction();
                 break;

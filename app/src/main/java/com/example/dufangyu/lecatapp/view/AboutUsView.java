@@ -1,11 +1,10 @@
 package com.example.dufangyu.lecatapp.view;
 
-import android.view.View;
 import android.widget.TextView;
 
 import com.example.dufangyu.lecatapp.R;
 import com.example.dufangyu.lecatapp.activity.MyApplication;
-import com.example.dufangyu.lecatapp.helper.EventHelper;
+import com.example.dufangyu.lecatapp.customview.TitleLinearLayout;
 
 
 /**
@@ -13,14 +12,18 @@ import com.example.dufangyu.lecatapp.helper.EventHelper;
  */
 
 public class AboutUsView extends ViewImpl{
-    private TextView titletext,backtext,versiontext;
+    private TextView versiontext;
+    private TitleLinearLayout linearLayout_title;
     @Override
     public void initView() {
-        titletext = findViewById(R.id.title_text);
-        backtext = findViewById(R.id.back_img);
-        backtext.setVisibility(View.VISIBLE);
-        titletext.setText(mRootView.getContext().getString(R.string.about));
-        backtext.setText(mRootView.getContext().getString(R.string.myself));
+
+
+
+        linearLayout_title = findViewById(R.id.titleLayout);
+        linearLayout_title.setBackVisisble(true);
+        linearLayout_title.setBackText(mRootView.getContext().getString(R.string.myself));
+        linearLayout_title.setTitleText(mRootView.getContext().getString(R.string.about));
+
         versiontext = findViewById(R.id.versinname);
         versiontext.setText("Version"+ MyApplication.getInstance().getStringPerference("versionName"));
 
@@ -33,6 +36,5 @@ public class AboutUsView extends ViewImpl{
 
     @Override
     public void bindEvent() {
-        EventHelper.click(mPresent,backtext);
     }
 }

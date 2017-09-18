@@ -19,7 +19,6 @@ public class HomePageBiz extends BaseBiz implements IHomePage {
         this.listener = listener;
     }
 
-
     @Override
     public void get4GPushData() {
 
@@ -29,17 +28,29 @@ public class HomePageBiz extends BaseBiz implements IHomePage {
         {
             temBuf.append(DataManager.p_strDeviceList[i][1]).append("&");
         }
-//        LogUtil.d("dfy","temBuf = "+temBuf.toString());
+        LogUtil.d("dfy","temBuf = "+temBuf.toString());
         TcpConnectUtil.getTcpInstance().IntiTemp();
         TcpConnectUtil.getTcpInstance().ClintSendBcCommData(2150, "0002", "1", temBuf.toString(), "", "", "", "", "", "", "", "","" , "", "", "", "", "", "");
 
+    }
+
+    @Override
+    public void reEnterIn(String loginName, String password) {
+        TcpConnectUtil.getTcpInstance().IntiTemp();
+        TcpConnectUtil.getTcpInstance().ClintSendBcCommData(1105, "0002", "", "", "", "", "", "", "", "", "", loginName,password, "", "", "", "", "", "");
+    }
+
+    @Override
+    public void getDeviceList(String loginName) {
+        TcpConnectUtil.getTcpInstance().IntiTemp();
+        TcpConnectUtil.getTcpInstance().ClintSendBcCommData(1107, "0001", "", "", "", "", "", "", "", "", "", loginName, "", "", "", "", "", "", "");
     }
 
 
     @Override
     protected void handleServerResult(int intDataType, String strDataType, String strSetSN, String strSetSN1, String strAlmComType, String strParam1, String strParam2, String strParam3,String[] strArr) {
 //        LogUtil.d("dfy","设备Id = "+strArr[2]+",报警状态 = "+strArr[4]+",更新时间 = "+strArr[8]);
-        LogUtil.d("dfy","温度值 = "+strArr[10]+",湿度值 = "+strArr[11]);
+//        LogUtil.d("dfy","温度值 = "+strArr[10]+",湿度值 = "+strArr[11]);
         if(intDataType==2150)
         {
             if(strDataType.equals("1002"))
@@ -52,6 +63,32 @@ public class HomePageBiz extends BaseBiz implements IHomePage {
                 realData.setTemperatureValue(strArr[10]);
                 realData.setHumidityValueValue(strArr[11]);
                 listener.refreshUI(realData);
+            }
+        }else if(intDataType==1105)
+        {
+            if(strDataType.equals("1002"))
+            {
+                if(strParam1.equals("0"))//登录失败
+                {
+                    listener.reEnterFail();
+                }else if(strParam1.equals("1"))//登录成功
+                {
+                    //大参数2:管理部门码  个人用户管理码为空
+                    //大参数3:管理权限 (后续定义).
+                    //大参数4: 用户姓名
+                    //大参数5: 联系电话
+                    //大参数6:用户地址
+                    listener.reEnterSuccess(strParam2,strParam3,strArr[13],strArr[14],strArr[15]);
+                }
+            }
+
+        }else if(intDataType ==1106||intDataType ==1107)
+        {
+            if(strDataType.equals("1001"))
+            {
+                DataManager.getManagerInstance().saveDeviceListData();
+                if(listener!=null)
+                    listener.getDeviceList();
             }
         }
     }

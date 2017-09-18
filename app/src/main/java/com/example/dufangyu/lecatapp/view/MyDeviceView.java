@@ -7,12 +7,11 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.example.dufangyu.lecatapp.R;
 import com.example.dufangyu.lecatapp.adapter.DeviceAdapter;
 import com.example.dufangyu.lecatapp.bean.DeviceBean;
-import com.example.dufangyu.lecatapp.helper.EventHelper;
+import com.example.dufangyu.lecatapp.customview.TitleLinearLayout;
 import com.example.dufangyu.lecatapp.manager.DataManager;
 import com.yanzhenjie.recyclerview.swipe.SwipeItemClickListener;
 import com.yanzhenjie.recyclerview.swipe.SwipeMenu;
@@ -31,19 +30,23 @@ import java.util.List;
  */
 
 public class MyDeviceView extends ViewImpl implements SwipeItemClickListener {
-    private TextView titletext,backtext;
     private SwipeRefreshLayout mRefreshLayout;
     private SwipeMenuRecyclerView mRecyclerView;
     private DeviceAdapter deviceAdapter;
     private List<DeviceBean> datalist = new ArrayList<>();
     private int deletePos;
+    private TitleLinearLayout linearLayout_title;
     @Override
     public void initView() {
-        titletext = findViewById(R.id.title_text);
-        backtext = findViewById(R.id.back_img);
-        backtext.setVisibility(View.VISIBLE);
-        titletext.setText(mRootView.getContext().getString(R.string.my_device));
-        backtext.setText(mRootView.getContext().getString(R.string.myself));
+
+
+
+        linearLayout_title = findViewById(R.id.titleLayout);
+        linearLayout_title.setBackVisisble(true);
+        linearLayout_title.setBackText(mRootView.getContext().getString(R.string.myself));
+        linearLayout_title.setTitleText(mRootView.getContext().getString(R.string.my_device));
+
+
         mRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.refresh_layout);
 //        mRefreshLayout.setOnRefreshListener(this); // 刷新监听。
         mRefreshLayout.setEnabled(false);
@@ -71,7 +74,6 @@ public class MyDeviceView extends ViewImpl implements SwipeItemClickListener {
 
     @Override
     public void bindEvent() {
-        EventHelper.click(mPresent,backtext);
     }
 
 

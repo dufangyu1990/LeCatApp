@@ -8,4 +8,10 @@ import com.example.dufangyu.lecatapp.bean.RealData;
 
 public interface HomePageListener {
     void refreshUI(RealData realData);
+    //重新登录成功
+    void reEnterSuccess(String code,String author,String userName,String phoneCall,String address);
+    //重新登录失败
+    void reEnterFail();
+
+    void getDeviceList();
 }

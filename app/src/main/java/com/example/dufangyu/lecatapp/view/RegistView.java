@@ -32,6 +32,11 @@ public class RegistView extends ViewImpl{
         pwd_editor = findViewById(R.id.pwd_editor);
         insure_editor = findViewById(R.id.insure_editor);
         submitBtn = findViewById(R.id.submit_btn);
+
+
+
+
+
     }
 
     @Override

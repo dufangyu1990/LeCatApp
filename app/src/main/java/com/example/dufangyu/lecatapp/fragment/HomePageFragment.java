@@ -11,6 +11,7 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.view.View;
 
 import com.example.dufangyu.lecatapp.R;
+import com.example.dufangyu.lecatapp.activity.MyApplication;
 import com.example.dufangyu.lecatapp.bean.RealData;
 import com.example.dufangyu.lecatapp.biz.HomePageBiz;
 import com.example.dufangyu.lecatapp.biz.HomePageListener;
@@ -19,6 +20,8 @@ import com.example.dufangyu.lecatapp.manager.DataManager;
 import com.example.dufangyu.lecatapp.present.FragmentPresentImpl;
 import com.example.dufangyu.lecatapp.utils.BroadCastControll;
 import com.example.dufangyu.lecatapp.utils.Constant;
+import com.example.dufangyu.lecatapp.utils.LogUtil;
+import com.example.dufangyu.lecatapp.utils.MyToast;
 import com.example.dufangyu.lecatapp.view.HomePageView;
 
 /**
@@ -35,7 +38,7 @@ public class HomePageFragment extends FragmentPresentImpl<HomePageView> implemen
     private IntentFilter filter;
     private Context context;
     private static  HomePageFragment thisInstance;
-    private boolean isNetConnnect =true  ;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,9 +65,31 @@ public class HomePageFragment extends FragmentPresentImpl<HomePageView> implemen
        mView.refreshView(realData);
     }
 
+    @Override
+    public void reEnterSuccess(String code, String author,String userName,String phoneCall,String address) {
+
+        mainBiz.getDeviceList(MyApplication.getInstance().getStringPerference("UserName"));
+    }
+
+    @Override
+    public void reEnterFail() {
+        MyToast.showTextToast(context.getApplicationContext(),"登录失败");
+    }
+
+    @Override
+    public void getDeviceList() {
+        int size = DataManager.p_intDeviceCount;
+        if(size>0)//有设备的情况下再去获取数据
+        {
+            mainBiz.get4GPushData();
+        }
+    }
+
     private void registMyRecivier()
     {
         filter = new IntentFilter(Constant.ADD_NEWDEVICE);
+        filter.addAction(Constant.DELETE_DEVICE);
+        filter.addAction(Constant.REENTER);
         mReceiver = new BroadcastReceiver() {
 
             @Override
@@ -80,8 +105,12 @@ public class HomePageFragment extends FragmentPresentImpl<HomePageView> implemen
                     }else{
                        mView.reFreshNoData();
                     }
+                }else if(action.equals(Constant.REENTER))
+                {
+                    LogUtil.d("dfy","收到重新登录的请求");
+                    mainBiz = new HomePageBiz(thisInstance);
+                    mainBiz.reEnterIn( MyApplication.getInstance().getStringPerference("UserName"),MyApplication.getInstance().getStringPerference("Password"));
                 }
-
             }
         };
     }
@@ -102,22 +131,5 @@ public class HomePageFragment extends FragmentPresentImpl<HomePageView> implemen
         }
     }
 
-    @Override
-    public void doNetConnect() {
-        super.doNetConnect();
-        if(!isNetConnnect)
-        {
-            int size = DataManager.p_intDeviceCount;
-            if(size>0)//有设备的情况下再去获取数据
-            {
-                mainBiz.get4GPushData();
-            }
-        }
-    }
 
-    @Override
-    public void doNetDisConnect() {
-        super.doNetDisConnect();
-        isNetConnnect = false;
-    }
 }

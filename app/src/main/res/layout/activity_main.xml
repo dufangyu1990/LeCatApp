@@ -9,7 +9,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        <include layout="@layout/title_bar"/>
+
+        <com.example.dufangyu.lecatapp.customview.TitleLinearLayout
+            style="@style/title_bar_style"
+            android:id="@+id/titleLayout"
+            >
+        </com.example.dufangyu.lecatapp.customview.TitleLinearLayout>
+
 
 
         <FrameLayout

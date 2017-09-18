@@ -1,10 +1,10 @@
 package com.example.dufangyu.lecatapp.view;
 
-import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.dufangyu.lecatapp.R;
+import com.example.dufangyu.lecatapp.customview.TitleLinearLayout;
 import com.example.dufangyu.lecatapp.helper.EventHelper;
 import com.example.dufangyu.lecatapp.utils.MyToast;
 
@@ -17,17 +17,21 @@ import static com.example.dufangyu.lecatapp.R.id.nickname_ed;
 
 public class AddDeviceView extends ViewImpl{
 
-    private TextView titletext,backtext,addDeviceBtn;
+    private TextView addDeviceBtn;
     private EditText nickNameEd;
     private EditText deviceIdEd;
+    private TitleLinearLayout linearLayout_title;
 
     @Override
     public void initView() {
-        titletext = findViewById(R.id.title_text);
-        backtext = findViewById(R.id.back_img);
-        backtext.setVisibility(View.VISIBLE);
-        titletext.setText(mRootView.getContext().getString(R.string.add_device));
-        backtext.setText(mRootView.getContext().getString(R.string.myself));
+
+
+
+        linearLayout_title = findViewById(R.id.titleLayout);
+        linearLayout_title.setBackVisisble(true);
+        linearLayout_title.setBackText(mRootView.getContext().getString(R.string.myself));
+        linearLayout_title.setTitleText(mRootView.getContext().getString(R.string.add_device));
+
         addDeviceBtn = findViewById(R.id.add_device);
         nickNameEd = findViewById(nickname_ed);
         deviceIdEd = findViewById(deviceId_ed);
@@ -41,7 +45,7 @@ public class AddDeviceView extends ViewImpl{
 
     @Override
     public void bindEvent() {
-        EventHelper.click(mPresent,backtext,addDeviceBtn);
+        EventHelper.click(mPresent,addDeviceBtn);
     }
 
     public boolean checkValid()

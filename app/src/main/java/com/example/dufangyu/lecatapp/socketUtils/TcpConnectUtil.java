@@ -507,7 +507,7 @@ public class TcpConnectUtil {
 //                TempJudge(strDataType,strParam2);
             }
         }else{
-//            LogUtil.d("dfy","mDataCallBack = "+mDataCallBack);
+            LogUtil.d("dfy","mDataCallBack = "+mDataCallBack);
             //不论什么数据类型，都进入此方法，不用每个都列出来
             if(mDataCallBack!=null)
                 mDataCallBack.onReceiveResult(intDataType,strDataType,strSetSN,strSetSN1,strAlmComType,strParam1,strParam2,strParam3,strArr);

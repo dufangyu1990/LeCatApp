@@ -40,9 +40,7 @@ public class UpdateActivity extends ActivityPresentImpl<UpdateView> implements V
     public void onClick(View v) {
         switch (v.getId())
         {
-            case R.id.back_img:
-                finish();
-                break;
+
             case R.id.versionCode_submit_btn:
 
                 updateApp();

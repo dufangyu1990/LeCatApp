@@ -42,9 +42,6 @@ public class AddDeviceActivity extends ActivityPresentImpl<AddDeviceView> implem
     public void onClick(View v) {
         switch (v.getId())
         {
-            case R.id.back_img:
-                finish();
-                break;
             case R.id.add_device:
                 addDevice();
                 break;

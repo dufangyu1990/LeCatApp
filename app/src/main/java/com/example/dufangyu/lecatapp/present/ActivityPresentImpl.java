@@ -1,10 +1,12 @@
 package com.example.dufangyu.lecatapp.present;
 
 import android.content.BroadcastReceiver;
+import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.KeyEvent;
 
 import com.example.dufangyu.lecatapp.CallBack.NetCallBackImp;
@@ -12,8 +14,12 @@ import com.example.dufangyu.lecatapp.helper.GenericHelper;
 import com.example.dufangyu.lecatapp.socketUtils.TcpConnectUtil;
 import com.example.dufangyu.lecatapp.utils.ActivityControl;
 import com.example.dufangyu.lecatapp.utils.LogUtil;
+import com.example.dufangyu.lecatapp.utils.Util;
 import com.example.dufangyu.lecatapp.view.IView;
 
+import static com.example.dufangyu.lecatapp.utils.Constant.LOGIN_INSTANCE;
+import static com.example.dufangyu.lecatapp.utils.Constant.REENTER;
+import static com.example.dufangyu.lecatapp.utils.Constant.SPLASH_INSTANCE;
 import static com.example.dufangyu.lecatapp.utils.Constant.TCPDISLINK;
 import static com.example.dufangyu.lecatapp.utils.Constant.TCPLINK;
 import static com.example.dufangyu.lecatapp.utils.Constant.TCPNONET;
@@ -44,6 +50,8 @@ public  class ActivityPresentImpl<T extends IView>extends AppCompatActivity impl
             mView.bindPresenter(this);
             mView.bindEvent();
             mLocalBroadcastManager = LocalBroadcastManager.getInstance(this);
+
+//            LogUtil.d("dfy","activity name = "+this.getClass().getName());
             TcpConnectUtil.getTcpInstance().setNetCallBack(netCallBackImp);
             TcpConnectUtil.getTcpInstance().startThreads();
             afterViewCreate(savedInstanceState);
@@ -142,6 +150,20 @@ public  class ActivityPresentImpl<T extends IView>extends AppCompatActivity impl
 
     //app连接服务器成功
     public void doNetConnect(){
+
+        int size = ActivityControl.activities.size();
+        String topName = ActivityControl.getTopActicvityName(getApplicationContext());
+//      LogUtil.d("dfy","topName = "+topName);
+        String topActivityName = ActivityControl.activities.get(size-1).getClass().getName();
+
+        if(!TextUtils.isEmpty(topName))
+        {
+            if(topName.equals(topActivityName) && !topActivityName.equals(LOGIN_INSTANCE) && !topActivityName.equals(SPLASH_INSTANCE))
+            {
+                Util.sendLocalBroadcast(getApplicationContext(),new Intent(REENTER));
+            }
+        }
+
 
     }
 

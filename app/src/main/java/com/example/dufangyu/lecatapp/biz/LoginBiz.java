@@ -51,7 +51,10 @@ public class LoginBiz extends BaseBiz implements ILogin{
                 {
                     //大参数2:管理部门码  个人用户管理码为空
                     //大参数3:管理权限 (后续定义).
-                    listener.loginSuccess(strParam2,strParam3);
+                    //大参数4: 用户姓名
+                    //大参数5: 联系电话
+                    //大参数6:用户地址
+                    listener.loginSuccess(strParam2,strParam3,strArr[13],strArr[14],strArr[15]);
                 }
             }
 

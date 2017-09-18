@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.LocalBroadcastManager;
-import android.view.View;
 
 import com.example.dufangyu.lecatapp.R;
 import com.example.dufangyu.lecatapp.biz.IMyDevice;
@@ -21,7 +20,7 @@ import static com.example.dufangyu.lecatapp.utils.Constant.ADD_NEWDEVICE;
  * Created by dufangyu on 2017/9/14.
  */
 
-public class MyDeviceActivity extends ActivityPresentImpl<MyDeviceView> implements View.OnClickListener,MyDeviceListener{
+public class MyDeviceActivity extends ActivityPresentImpl<MyDeviceView> implements MyDeviceListener{
 
 
     private IMyDevice myDeviceBiz;
@@ -62,15 +61,7 @@ public class MyDeviceActivity extends ActivityPresentImpl<MyDeviceView> implemen
     }
 
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId())
-        {
-            case R.id.back_img:
-                finish();
-                break;
-        }
-    }
+
 
 
     @Override
