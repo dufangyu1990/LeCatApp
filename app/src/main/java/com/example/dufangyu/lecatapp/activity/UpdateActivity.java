@@ -81,4 +81,9 @@ public class UpdateActivity extends ActivityPresentImpl<UpdateView> implements V
 
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        updateBiz= null;
+    }
 }

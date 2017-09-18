@@ -13,9 +13,6 @@ public interface IPresent<T> {
     void beforeViewCreate(Bundle savedInstanceState);
 
     void afterViewCreate(Bundle savedInstanceState);
-
-
-
     //view回调activity中方法
     void presentCallBack(String param1, String param2, String params3) ;
 

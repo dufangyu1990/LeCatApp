@@ -133,4 +133,11 @@ public class RegistActivity extends ActivityPresentImpl<RegistView> implements V
             }
         });
     }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        registBiz = null;
+    }
 }

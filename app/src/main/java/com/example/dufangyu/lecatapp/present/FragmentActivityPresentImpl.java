@@ -76,6 +76,7 @@ public class FragmentActivityPresentImpl<T extends IView>extends FragmentActivit
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        mView = null;
         ActivityControl.removeActivity(this);
         LogUtil.d("dfy", getClass().getSimpleName() + "  onDestroy");
     }

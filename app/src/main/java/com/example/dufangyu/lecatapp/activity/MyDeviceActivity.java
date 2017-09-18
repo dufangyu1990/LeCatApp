@@ -97,6 +97,7 @@ public class MyDeviceActivity extends ActivityPresentImpl<MyDeviceView> implemen
     protected void onDestroy() {
         super.onDestroy();
         sendMyBroacast();
+        myDeviceBiz = null;
     }
 
     private void sendMyBroacast()

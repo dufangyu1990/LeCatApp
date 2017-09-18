@@ -63,6 +63,7 @@ public class FragmentPresentImpl<T extends IView> extends Fragment implements IP
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        mView = null;
     }
 
     @Override

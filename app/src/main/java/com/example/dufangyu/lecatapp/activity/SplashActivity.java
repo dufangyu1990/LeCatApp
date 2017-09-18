@@ -31,7 +31,7 @@ import static com.example.dufangyu.lecatapp.utils.Constant.APKURL;
 @RuntimePermissions
 public class SplashActivity extends ActivityPresentImpl<SplashView> implements View.OnClickListener{
 
-    private ISplash splashBiz;
+    private ISplash splashBiz = null;
     private boolean isServetConnect =false;
 
     @Override
@@ -140,6 +140,7 @@ public class SplashActivity extends ActivityPresentImpl<SplashView> implements V
 
     @Override
     public void pressAgainExit() {
+        splashBiz = null;
         finish();
         System.exit(0);
     }
@@ -187,5 +188,12 @@ public class SplashActivity extends ActivityPresentImpl<SplashView> implements V
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         SplashActivityPermissionsDispatcher.onRequestPermissionsResult(this,requestCode,grantResults);
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        splashBiz = null;
     }
 }

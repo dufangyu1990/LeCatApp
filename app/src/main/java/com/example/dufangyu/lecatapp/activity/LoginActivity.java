@@ -32,7 +32,7 @@ import static com.example.dufangyu.lecatapp.utils.Constant.TCPLINK;
 public class LoginActivity extends ActivityPresentImpl<LoginView> implements View.OnClickListener,View.OnFocusChangeListener,LoginListener{
 
     private long exitTime=0;
-    private ILogin loginBiz;
+    private ILogin loginBiz = null;
     private boolean isConnected;
     private Handler myHandler = new Handler();
     private static Activity splashActivity;

@@ -31,7 +31,7 @@ import com.example.dufangyu.lecatapp.view.HomePageView;
 public class HomePageFragment extends FragmentPresentImpl<HomePageView> implements HomePageListener,View.OnClickListener {
 
 
-    private IHomePage mainBiz;
+    private IHomePage mainBiz = null;
 
     private LocalBroadcastManager mLocalBroadcastManager;
     private BroadcastReceiver mReceiver;
@@ -98,6 +98,7 @@ public class HomePageFragment extends FragmentPresentImpl<HomePageView> implemen
                 String action = intent.getAction();
                 if (action.equals(Constant.ADD_NEWDEVICE)||action.equals(Constant.DELETE_DEVICE)) {
                     int size = DataManager.p_intDeviceCount;
+                    mainBiz= null;
                     mainBiz = new HomePageBiz(thisInstance);
                     if(size>0)//有设备的情况下再去获取数据
                     {
@@ -108,6 +109,7 @@ public class HomePageFragment extends FragmentPresentImpl<HomePageView> implemen
                 }else if(action.equals(Constant.REENTER))
                 {
                     LogUtil.d("dfy","收到重新登录的请求");
+                    mainBiz= null;
                     mainBiz = new HomePageBiz(thisInstance);
                     mainBiz.reEnterIn( MyApplication.getInstance().getStringPerference("UserName"),MyApplication.getInstance().getStringPerference("Password"));
                 }

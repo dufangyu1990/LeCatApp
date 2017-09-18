@@ -95,8 +95,14 @@ public  class ActivityPresentImpl<T extends IView>extends AppCompatActivity impl
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        mView = null;
         ActivityControl.removeActivity(this);
         LogUtil.d("dfy", getClass().getSimpleName() + "  onDestroy");
+
+
+
+
+
     }
     @Override
     protected void onPause() {
