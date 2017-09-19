@@ -37,13 +37,11 @@ public class HomePageFragment extends FragmentPresentImpl<HomePageView> implemen
     private BroadcastReceiver mReceiver;
     private IntentFilter filter;
     private Context context;
-    private static  HomePageFragment thisInstance;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mainBiz = new HomePageBiz(this);
-        thisInstance = this;
         int size = DataManager.p_intDeviceCount;
 //        LogUtil.d("dfy","szie = "+size);
         if(size>0)//有设备的情况下再去获取数据
@@ -90,28 +88,24 @@ public class HomePageFragment extends FragmentPresentImpl<HomePageView> implemen
         filter = new IntentFilter(Constant.ADD_NEWDEVICE);
         filter.addAction(Constant.DELETE_DEVICE);
         filter.addAction(Constant.REENTER);
+        filter.addAction(Constant.REFRESH);
         mReceiver = new BroadcastReceiver() {
 
             @Override
             public void onReceive(Context context, Intent intent) {
 
                 String action = intent.getAction();
-                if (action.equals(Constant.ADD_NEWDEVICE)||action.equals(Constant.DELETE_DEVICE)) {
+                if (action.equals(Constant.ADD_NEWDEVICE)||action.equals(Constant.DELETE_DEVICE)||action.equals(Constant.REFRESH)) {
+
+
+                    LogUtil.d("dfy","收到广播"+action+",刷新数据");
                     int size = DataManager.p_intDeviceCount;
-                    mainBiz= null;
-                    mainBiz = new HomePageBiz(thisInstance);
                     if(size>0)//有设备的情况下再去获取数据
                     {
                         mainBiz.get4GPushData();
                     }else{
                        mView.reFreshNoData();
                     }
-                }else if(action.equals(Constant.REENTER))
-                {
-                    LogUtil.d("dfy","收到重新登录的请求");
-                    mainBiz= null;
-                    mainBiz = new HomePageBiz(thisInstance);
-                    mainBiz.reEnterIn( MyApplication.getInstance().getStringPerference("UserName"),MyApplication.getInstance().getStringPerference("Password"));
                 }
             }
         };
@@ -123,12 +117,6 @@ public class HomePageFragment extends FragmentPresentImpl<HomePageView> implemen
         switch (v.getId())
         {
             case R.id.menkongimg:
-//                int tempvalue  = Util.getRandomValue(20,30);
-//                int tempvalue2  = Util.getRandomValue(20,80);
-//                RealData realData = new RealData();
-//                realData.setTemperatureValue(tempvalue+"");
-//                realData.setHumidityValueValue(tempvalue2+"");
-//                mView.refreshView(realData);
                 break;
         }
     }

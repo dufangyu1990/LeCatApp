@@ -55,4 +55,9 @@ public class AddDeviceBiz extends BaseBiz implements IAddDevice{
         TcpConnectUtil.getTcpInstance().IntiTemp();
         TcpConnectUtil.getTcpInstance().ClintSendBcCommData(1107, "0001", "", "", "", "", "", "", "", "", "", loginName, "", "", "", "", "", "", "");
     }
+
+    @Override
+    public void detachDataCallBackNull() {
+        TcpConnectUtil.getTcpInstance().setDataCallBack(null);
+    }
 }

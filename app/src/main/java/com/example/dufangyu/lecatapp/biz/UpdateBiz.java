@@ -34,7 +34,12 @@ public class UpdateBiz extends BaseBiz implements IUpdate{
                 }
             }
         }
-
-
     }
+
+    @Override
+    public void detachDataCallBackNull() {
+        TcpConnectUtil.getTcpInstance().setDataCallBack(null);
+    }
+
+
 }

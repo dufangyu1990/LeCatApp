@@ -282,12 +282,10 @@ public class ProgressView extends View{
         }
 
         this.progress = progress;
+        tempProgress = progress;
         mAngle  = 360 * progress / max;
 
 //        start();
-
-
-
         // 刷新控件。刷一次即执行一次onDraw。postInvalidate()能在非UI线程刷新
         invalidate();
     }
@@ -399,6 +397,8 @@ public class ProgressView extends View{
     private Runnable progressChangeTask = new Runnable() {
         @Override
         public void run() {
+//            LogUtil.d("dfy","tempProgress = "+tempProgress);
+//            LogUtil.d("dfy","progress = "+progress);
             removeCallbacks(this);
            if(disProgress>0)
            {

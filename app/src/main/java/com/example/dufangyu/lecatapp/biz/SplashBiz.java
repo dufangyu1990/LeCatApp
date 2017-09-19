@@ -38,5 +38,10 @@ public class SplashBiz extends BaseBiz implements ISplash{
 
     }
 
+    @Override
+    public void detachDataCallBackNull() {
+        TcpConnectUtil.getTcpInstance().setDataCallBack(null);
+    }
+
 
 }

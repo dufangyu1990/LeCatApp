@@ -8,6 +8,7 @@ import android.widget.TextView;
 import com.example.dufangyu.lecatapp.R;
 import com.example.dufangyu.lecatapp.bean.RealData;
 import com.example.dufangyu.lecatapp.customview.ProgressView;
+import com.example.dufangyu.lecatapp.utils.LogUtil;
 import com.example.dufangyu.lecatapp.utils.Util;
 
 import static com.example.dufangyu.lecatapp.utils.Constant.HUMiDITY_BELOW;
@@ -99,6 +100,7 @@ public class HomePageView extends ViewImpl{
 
     public void reFreshNoData()
     {
+        LogUtil.d("dfy","无数据可刷新");
         wendu_progressView.setProgress(0);
         shidu_progressView.setProgress(0);
         wendu_progressView.setText("");

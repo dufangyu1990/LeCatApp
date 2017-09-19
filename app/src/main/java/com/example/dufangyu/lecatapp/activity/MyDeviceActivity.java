@@ -14,7 +14,7 @@ import com.example.dufangyu.lecatapp.socketUtils.TcpConnectUtil;
 import com.example.dufangyu.lecatapp.utils.MyToast;
 import com.example.dufangyu.lecatapp.view.MyDeviceView;
 
-import static com.example.dufangyu.lecatapp.utils.Constant.ADD_NEWDEVICE;
+import static com.example.dufangyu.lecatapp.utils.Constant.DELETE_DEVICE;
 
 /**
  * Created by dufangyu on 2017/9/14.
@@ -68,12 +68,12 @@ public class MyDeviceActivity extends ActivityPresentImpl<MyDeviceView> implemen
     public void getDevices() {
         mView.setDeviceList();
 
-
     }
 
     @Override
     public void deleteSuccess() {
         mView.notifyAdapterRefresh();
+        deleteSuccess = true;
         //删除成功后再重新获取一遍列表
         myDeviceBiz.getMyDevice(loginName);
         MyToast.showTextToast(getApplicationContext(),"删除设备成功");
@@ -96,13 +96,15 @@ public class MyDeviceActivity extends ActivityPresentImpl<MyDeviceView> implemen
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        sendMyBroacast();
+        if(deleteSuccess)
+            sendMyBroacast();
+        myDeviceBiz.detachDataCallBackNull();
         myDeviceBiz = null;
     }
 
     private void sendMyBroacast()
     {
-        Intent intent =new Intent(ADD_NEWDEVICE);
+        Intent intent =new Intent(DELETE_DEVICE);
         mLocalBroadcastManager.sendBroadcast(intent);
     }
 }

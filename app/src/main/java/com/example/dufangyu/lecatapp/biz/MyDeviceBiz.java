@@ -2,6 +2,7 @@ package com.example.dufangyu.lecatapp.biz;
 
 import com.example.dufangyu.lecatapp.manager.DataManager;
 import com.example.dufangyu.lecatapp.socketUtils.TcpConnectUtil;
+import com.example.dufangyu.lecatapp.utils.LogUtil;
 
 /**
  * Created by dufangyu on 2017/9/14.
@@ -27,9 +28,14 @@ public class MyDeviceBiz extends BaseBiz implements IMyDevice{
         TcpConnectUtil.getTcpInstance().ClintSendBcCommData(1108, "0002", "0", "", "", "", "", "", "", loginName, "", deviceId, "", "", "", "", "", "", "");
     }
 
+
+
+
     @Override
     protected void handleServerResult(int intDataType, String strDataType, String strSetSN, String strSetSN1,
                                       String strAlmComType, String strParam1, String strParam2, String strParam3,String[] strArr) {
+        LogUtil.d("dfy","intDataType = "+intDataType);
+        LogUtil.d("dfy","我的设备handleServerResult");
         if(intDataType ==1106||intDataType ==1107)
         {
             if(strDataType.equals("1001"))
@@ -58,5 +64,11 @@ public class MyDeviceBiz extends BaseBiz implements IMyDevice{
         }
 
 
+    }
+
+
+    @Override
+    public void detachDataCallBackNull() {
+        TcpConnectUtil.getTcpInstance().setDataCallBack(null);
     }
 }

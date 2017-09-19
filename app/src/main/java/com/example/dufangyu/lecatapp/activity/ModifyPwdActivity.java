@@ -93,6 +93,7 @@ public class ModifyPwdActivity extends ActivityPresentImpl<ModifyPwdView> implem
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        modifyPwdBiz.detachDataCallBackNull();
         modifyPwdBiz = null;
     }
 }

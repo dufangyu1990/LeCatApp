@@ -39,4 +39,8 @@ public class ModifyBiz extends BaseBiz implements IModifyPwd{
     }
 
 
+    @Override
+    public void detachDataCallBackNull() {
+        TcpConnectUtil.getTcpInstance().setDataCallBack(null);
+    }
 }

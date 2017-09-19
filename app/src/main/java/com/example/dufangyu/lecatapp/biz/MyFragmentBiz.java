@@ -26,9 +26,15 @@ public class MyFragmentBiz  implements IMyFragment{
         TcpConnectUtil.getTcpInstance().ClintSendBcCommData(1105, "0004", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
         DataManager.getManagerInstance().resetData();
         BroadCastControll.removeAllReciver(context);
+        TcpConnectUtil.getTcpInstance().setDataCallBack(null);
+        TcpConnectUtil.getTcpInstance().setRealDatCallBack(null);
 
     }
 
+    @Override
+    public void detachDataCallBackNull() {
+        TcpConnectUtil.getTcpInstance().setDataCallBack(null);
+    }
 
 
 }

@@ -54,7 +54,6 @@ public class CaptureActivity extends Activity implements SurfaceHolder.Callback 
     private SurfaceView surfaceView;
     private SurfaceHolder surfaceHolder;
     private String terminalNo;
-    protected final String HTTP_TASK_KEY = "HttpTaskKey_" + hashCode();
     /**
      * 活动监控器，用于省电，如果手机没有连接电源线，那么当相机开启后如果一直处于不被使用状态则该服务会将当前activity关闭。
      * 活动监控器全程监控扫描活跃状态，与CaptureActivity生命周期相同.每一次扫描过后都会重置该监控，即重新倒计时。
@@ -370,7 +369,8 @@ public class CaptureActivity extends Activity implements SurfaceHolder.Callback 
         }
 
         viewfinderView.refreshDrawableState();
-        cameraManager.setManualFramingRect(600, 222);
+        //不用调用这个方法，里面真正执行的是getFramingRect()方法确定宽高大小
+//        cameraManager.setManualFramingRect(600, 222);
         viewfinderView.refreshDrawableState();
 
     }
@@ -396,7 +396,7 @@ public class CaptureActivity extends Activity implements SurfaceHolder.Callback 
             mHandler.setDecodeFormats(decodeFormats);
         }
         viewfinderView.refreshDrawableState();
-        cameraManager.setManualFramingRect(300, 300);
+//        cameraManager.setManualFramingRect(300, 300);
         viewfinderView.refreshDrawableState();
     }
 

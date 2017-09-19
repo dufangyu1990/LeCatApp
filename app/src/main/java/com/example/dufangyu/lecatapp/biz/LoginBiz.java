@@ -69,4 +69,10 @@ public class LoginBiz extends BaseBiz implements ILogin{
             }
         }
     }
+
+
+    @Override
+    public void detachDataCallBackNull() {
+        TcpConnectUtil.getTcpInstance().setDataCallBack(null);
+    }
 }

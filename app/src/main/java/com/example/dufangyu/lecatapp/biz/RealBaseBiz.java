@@ -1,20 +1,20 @@
 package com.example.dufangyu.lecatapp.biz;
 
-import com.example.dufangyu.lecatapp.CallBack.DataCallBackImp;
+import com.example.dufangyu.lecatapp.CallBack.RealDataCallBackImp;
 import com.example.dufangyu.lecatapp.socketUtils.TcpConnectUtil;
 
 /**
  * Created by dufangyu on 2017/9/13.
  */
 
-public abstract class BaseBiz {
+public abstract class RealBaseBiz {
 
-    public BaseBiz()
+    public RealBaseBiz()
     {
-        TcpConnectUtil.getTcpInstance().setDataCallBack(serverCallBack);
+        TcpConnectUtil.getTcpInstance().setRealDatCallBack(serverCallBack);
     }
 
-    private DataCallBackImp serverCallBack = new DataCallBackImp()
+    private RealDataCallBackImp serverCallBack = new RealDataCallBackImp()
     {
 
         @Override

@@ -3,6 +3,7 @@ package com.example.dufangyu.lecatapp.socketUtils;
 
 import com.example.dufangyu.lecatapp.CallBack.DataCallBack;
 import com.example.dufangyu.lecatapp.CallBack.NetCallBack;
+import com.example.dufangyu.lecatapp.CallBack.RealDataCallBack;
 import com.example.dufangyu.lecatapp.utils.Constant;
 import com.example.dufangyu.lecatapp.utils.LogUtil;
 
@@ -25,7 +26,8 @@ public class TcpConnectUtil {
     private int p_intLinkTcpServerPort = Constant.TCPSERVERPORT;
     private int p_intStateCode = 0;//状态码
     private NetCallBack mCallBack;
-    private DataCallBack mDataCallBack;
+    private  DataCallBack mDataCallBack;
+    private RealDataCallBack mRealDatCallBack;
     public static boolean p_bLinkCenterON = false;
     private Socket p_TcpClientSocket = null;
     private OutputStream p_outputstream; // 发送流
@@ -87,6 +89,10 @@ public class TcpConnectUtil {
         }
 
 
+    }
+
+    public void setRealDatCallBack(RealDataCallBack mRealDatCallBack) {
+        this.mRealDatCallBack = mRealDatCallBack;
     }
 
     // 发送数据线程
@@ -243,7 +249,6 @@ public class TcpConnectUtil {
                             // 网络断开
                             p_bLinkCenterON = false;
                             p_intStateCode = TCPDISLINK;
-                            LogUtil.d("dfy","mCallBack = "+mCallBack);
                             if(mCallBack!=null)
                                 mCallBack.onHandle(p_intStateCode);
 //                            myHandler.post(taskRunnable);
@@ -507,10 +512,23 @@ public class TcpConnectUtil {
 //                TempJudge(strDataType,strParam2);
             }
         }else{
-            LogUtil.d("dfy","mDataCallBack = "+mDataCallBack);
-            //不论什么数据类型，都进入此方法，不用每个都列出来
-            if(mDataCallBack!=null)
-                mDataCallBack.onReceiveResult(intDataType,strDataType,strSetSN,strSetSN1,strAlmComType,strParam1,strParam2,strParam3,strArr);
+
+//            LogUtil.d("dfy","intDataType = "+intDataType);
+
+            if(intDataType ==2150)//实时数据单独处理
+            {
+                LogUtil.d("dfy","mRealDatCallBack = "+mRealDatCallBack);
+                if(mRealDatCallBack!=null)
+                {
+                    mRealDatCallBack.onReceiveResult(intDataType,strDataType,strSetSN,strSetSN1,strAlmComType,strParam1,strParam2,strParam3,strArr);
+                }
+            }else{
+//                LogUtil.d("dfy","mDataCallBack = "+mDataCallBack);
+                //不论什么数据类型，都进入此方法，不用每个都列出来
+                if(mDataCallBack!=null)
+                    mDataCallBack.onReceiveResult(intDataType,strDataType,strSetSN,strSetSN1,strAlmComType,strParam1,strParam2,strParam3,strArr);
+            }
+
         }
 
 //        if(intDataType == 1105)

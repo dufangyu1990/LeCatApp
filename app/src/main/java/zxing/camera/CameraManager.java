@@ -25,6 +25,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.SurfaceHolder;
 
+import com.example.dufangyu.lecatapp.utils.LogUtil;
 import com.google.zxing.PlanarYUVLuminanceSource;
 
 import java.io.IOException;
@@ -290,10 +291,14 @@ public final class CameraManager {
 	 * @return The rectangle to draw on screen in window coordinates.
 	 */
 	public synchronized Rect getFramingRect() {
+
+
 		if (framingRect == null) {
 			if (camera == null) {
 				return null;
 			}
+
+
 			Point screenResolution = configManager.getScreenResolution();
 			if (screenResolution == null) {
 				// Called early, before init even finished
@@ -327,13 +332,12 @@ public final class CameraManager {
 //			framingRect = new Rect(leftOffset, topOffset - 80, leftOffset + width, topOffset - 80 + height);
 
 
-
-			//下面这种方式得到的矩形框会比较大，这里不太需要太大的矩形框
-			//只需要扫面一个条形码就行，比较小
+			//下面这种方式得到的矩形框会比较适合扫描条形码，
+			//如果要扫描二维码，高度适当增大点就行
 			int width = screenResolution.x * 7 / 10;
 			int height = screenResolution.y * 2 / 10;
-//			LogUtil.d("dfy","设置矩形框高度--》"+height);
-//			LogUtil.d("dfy","设置矩形框宽度--》"+width);
+			//扫描二维码
+//			int height = screenResolution.y * 4 / 10;
 			int leftOffset = (screenResolution.x - width) / 2;
 			int topOffset = (screenResolution.y - height) / 3;
 			framingRect = new Rect(leftOffset, topOffset, leftOffset + width, topOffset + height);
@@ -391,14 +395,14 @@ public final class CameraManager {
 			rect.bottom = rect.bottom * cameraResolution.x / screenResolution.y;
 			framingRectInPreview = rect;
 
-			Log.d(TAG, "Calculated framingRectInPreview rect: "
-					+ framingRectInPreview);
+//			Log.d(TAG, "Calculated framingRectInPreview rect: "
+//					+ framingRectInPreview);
 
 
-			Log.d("dfy", "Calculated framingRectInPreview rect left: " + framingRectInPreview.left+",top = "+framingRectInPreview.top);
-			Log.d("dfy", "Calculated framingRectInPreview rect right: " + framingRectInPreview.right+",bottom = "+framingRectInPreview.bottom);
-			Log.d(TAG, "cameraResolution: " + cameraResolution);
-			Log.d(TAG, "screenResolution: " + screenResolution);
+//			LogUtil.d("dfy", "Calculated framingRectInPreview rect left: " + framingRectInPreview.left+",top = "+framingRectInPreview.top);
+//			LogUtil.d("dfy", "Calculated framingRectInPreview rect right: " + framingRectInPreview.right+",bottom = "+framingRectInPreview.bottom);
+//			LogUtil.d(TAG, "cameraResolution: " + cameraResolution);
+//			LogUtil.d(TAG, "screenResolution: " + screenResolution);
 		}
 
 		return framingRectInPreview;
@@ -436,15 +440,14 @@ public final class CameraManager {
 			//只需要扫面一个条形码就行，比较小
 			width = screenResolution.x * 7 / 10;
 			height = screenResolution.y * 2 / 10;
-//			LogUtil.d("dfy","设置矩形框高度--》"+height);
-//			LogUtil.d("dfy","设置矩形框宽度--》"+width);
+			LogUtil.d("dfy","设置矩形框高度--》"+height);
+			LogUtil.d("dfy","设置矩形框宽度--》"+width);
 			int leftOffset = (screenResolution.x - width) / 2;
 			int topOffset = (screenResolution.y - height) / 3;
 			framingRect = new Rect(leftOffset, topOffset, leftOffset + width, topOffset + height);
 
-//			Log.d(TAG, "Calculated framing rect left: " + framingRect.left+",top = "+framingRect.top);
-//			Log.d(TAG, "Calculated framing rect right: " + framingRect.right+",bottom ="+framingRect.bottom);
-
+			Log.d(TAG, "Calculated framing rect left: " + framingRect.left+",top = "+framingRect.top);
+			Log.d(TAG, "Calculated framing rect right: " + framingRect.right+",bottom ="+framingRect.bottom);
 			framingRectInPreview = null;
 		} else {
 			requestedFramingRectWidth = width;

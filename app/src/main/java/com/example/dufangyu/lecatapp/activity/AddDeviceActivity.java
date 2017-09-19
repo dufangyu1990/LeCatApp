@@ -110,6 +110,7 @@ public class AddDeviceActivity extends ActivityPresentImpl<AddDeviceView> implem
         {
             sendMyBroacast();
         }
+        addDeviceBiz.detachDataCallBackNull();
         addDeviceBiz = null;
     }
 

@@ -1,12 +1,15 @@
 package com.example.dufangyu.lecatapp.activity;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Rect;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.content.LocalBroadcastManager;
 import android.view.View;
 import android.view.ViewTreeObserver;
 
@@ -17,10 +20,14 @@ import com.example.dufangyu.lecatapp.biz.LoginListener;
 import com.example.dufangyu.lecatapp.customview.CustomDialog;
 import com.example.dufangyu.lecatapp.present.ActivityPresentImpl;
 import com.example.dufangyu.lecatapp.socketUtils.TcpConnectUtil;
+import com.example.dufangyu.lecatapp.utils.BroadCastControll;
+import com.example.dufangyu.lecatapp.utils.Constant;
+import com.example.dufangyu.lecatapp.utils.LogUtil;
 import com.example.dufangyu.lecatapp.utils.MyToast;
 import com.example.dufangyu.lecatapp.utils.Util;
 import com.example.dufangyu.lecatapp.view.LoginView;
 
+import static com.example.dufangyu.lecatapp.utils.Constant.REFRESH;
 import static com.example.dufangyu.lecatapp.utils.Constant.TCPDISLINK;
 import static com.example.dufangyu.lecatapp.utils.Constant.TCPLINK;
 
@@ -40,10 +47,16 @@ public class LoginActivity extends ActivityPresentImpl<LoginView> implements Vie
     private String password;
     private boolean isFirstEnter;
     private String departCode;
+
+    private LocalBroadcastManager mLocalBroadcastManager;
+    private BroadcastReceiver mReceiver;
+    private IntentFilter filter;
+    private static LoginActivity loginInstance;
+    private static boolean isNeedJump = true;//是否需要跳转到主页
     @Override
     public void afterViewCreate(Bundle savedInstanceState) {
         super.afterViewCreate(savedInstanceState);
-
+        loginInstance = this;
         isConnected = getIntent().getBooleanExtra("isConnected",false);
         isFirstEnter = getIntent().getBooleanExtra("isFirstEnter",false);
         if(isConnected)
@@ -58,8 +71,44 @@ public class LoginActivity extends ActivityPresentImpl<LoginView> implements Vie
             mView.hideOverImg();
         }
 
+        mLocalBroadcastManager = LocalBroadcastManager.getInstance(this);
+        registMyRecivier();
+        mLocalBroadcastManager.registerReceiver(mReceiver,filter);
+        BroadCastControll.addReceiver(mReceiver);
+
 
     }
+
+
+
+    private void registMyRecivier()
+    {
+        filter = new IntentFilter(Constant.REENTER);
+        mReceiver = new BroadcastReceiver() {
+
+            @Override
+            public void onReceive(Context context, Intent intent) {
+
+                String action = intent.getAction();
+                if(action.equals(Constant.REENTER))
+                {
+                    LogUtil.d("dfy","收到重新登录的请求");
+                    isNeedJump = false;
+//                    LogUtil.d("dfy","loginBiz = "+loginBiz);
+                    loginBiz = null;
+                    loginBiz = new LoginBiz(loginInstance);
+//                    LogUtil.d("dfy","loginBiz = "+loginBiz);
+                    login();
+                }
+            }
+        };
+    }
+
+
+
+
+
+
 
 
 
@@ -88,6 +137,7 @@ public class LoginActivity extends ActivityPresentImpl<LoginView> implements Vie
     public static void actionStart(Context context,boolean isConnected,boolean isFirstEnter)
     {
 
+        isNeedJump = true;
         splashActivity = (Activity) context;
         Intent intent = new Intent(context, LoginActivity.class);
         intent.putExtra("isConnected",isConnected);
@@ -141,7 +191,15 @@ public class LoginActivity extends ActivityPresentImpl<LoginView> implements Vie
             exitTime = System.currentTimeMillis();
         } else {
             myHandler.removeCallbacksAndMessages(null);
+            if(loginBiz!=null)
+            {
+                loginBiz.detachDataCallBackNull();
+                loginBiz = null;
+            }
+            TcpConnectUtil.getTcpInstance().setDataCallBack(null);
+            TcpConnectUtil.getTcpInstance().setRealDatCallBack(null);
             finish();
+
             System.exit(0);
         }
     }
@@ -224,7 +282,12 @@ public class LoginActivity extends ActivityPresentImpl<LoginView> implements Vie
 
     @Override
     public void getDeviceList() {
-        MainActivity.actionStart(LoginActivity.this,departCode);
-        finish();
+        if(isNeedJump)
+        {
+            MainActivity.actionStart(LoginActivity.this,departCode);
+        }
+        else{
+            Util.sendLocalBroadcast(this,new Intent(REFRESH));
+        }
     }
 }

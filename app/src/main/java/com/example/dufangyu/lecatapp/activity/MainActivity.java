@@ -8,6 +8,8 @@ import android.support.v4.app.FragmentManager;
 import com.example.dufangyu.lecatapp.R;
 import com.example.dufangyu.lecatapp.listener.JumpToActivityListener;
 import com.example.dufangyu.lecatapp.present.FragmentActivityPresentImpl;
+import com.example.dufangyu.lecatapp.socketUtils.TcpConnectUtil;
+import com.example.dufangyu.lecatapp.utils.ActivityControl;
 import com.example.dufangyu.lecatapp.utils.BroadCastControll;
 import com.example.dufangyu.lecatapp.utils.MyToast;
 import com.example.dufangyu.lecatapp.view.MainView;
@@ -78,6 +80,9 @@ public class MainActivity extends FragmentActivityPresentImpl<MainView> implemen
             exitTime = System.currentTimeMillis();
         } else {
             BroadCastControll.removeAllReciver(this);
+            ActivityControl.finishAll();
+            TcpConnectUtil.getTcpInstance().setDataCallBack(null);
+            TcpConnectUtil.getTcpInstance().setRealDatCallBack(null);
             finish();
             System.exit(0);
         }

@@ -38,4 +38,9 @@ public class RegistBiz extends BaseBiz implements IRegist{
         TcpConnectUtil.getTcpInstance().ClintSendBcCommData(1105, "0001", "", "", "", "", "", "", "", "", "", username, password, "", "", "", "", "", "");
 
     }
+
+    @Override
+    public void detachDataCallBackNull() {
+        TcpConnectUtil.getTcpInstance().setDataCallBack(null);
+    }
 }

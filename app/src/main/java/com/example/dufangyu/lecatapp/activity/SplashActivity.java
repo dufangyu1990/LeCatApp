@@ -14,6 +14,7 @@ import com.example.dufangyu.lecatapp.biz.ISplash;
 import com.example.dufangyu.lecatapp.biz.SplashBiz;
 import com.example.dufangyu.lecatapp.biz.SplashListener;
 import com.example.dufangyu.lecatapp.present.ActivityPresentImpl;
+import com.example.dufangyu.lecatapp.socketUtils.TcpConnectUtil;
 import com.example.dufangyu.lecatapp.utils.DownloadTool;
 import com.example.dufangyu.lecatapp.utils.MyToast;
 import com.example.dufangyu.lecatapp.utils.Util;
@@ -140,7 +141,13 @@ public class SplashActivity extends ActivityPresentImpl<SplashView> implements V
 
     @Override
     public void pressAgainExit() {
-        splashBiz = null;
+        if(splashBiz!=null)
+        {
+            splashBiz.detachDataCallBackNull();
+            splashBiz = null;
+        }
+        TcpConnectUtil.getTcpInstance().setDataCallBack(null);
+        TcpConnectUtil.getTcpInstance().setRealDatCallBack(null);
         finish();
         System.exit(0);
     }

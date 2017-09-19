@@ -10,7 +10,7 @@ import com.example.dufangyu.lecatapp.utils.LogUtil;
  * Created by dufangyu on 2017/9/5.
  */
 
-public class HomePageBiz extends BaseBiz implements IHomePage {
+public class HomePageBiz extends RealBaseBiz implements IHomePage {
     private HomePageListener listener;
 
 
@@ -92,4 +92,7 @@ public class HomePageBiz extends BaseBiz implements IHomePage {
             }
         }
     }
+
+
+
 }

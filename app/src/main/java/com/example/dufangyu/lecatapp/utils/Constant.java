@@ -34,6 +34,7 @@ public class Constant {
 	public static final String LOGIN_INSTANCE=" com.example.dufangyu.lecatapp.activity.LoginActivity";//
 	public static final String SPLASH_INSTANCE="com.example.dufangyu.lecatapp.activity.SplashActivity";//
 	public static final String MAIN_INSTANCE="com.example.dufangyu.lecatapp.activity.MainActivity";//
+	public static final String REFRESH="refresh";//
 
 
 }
