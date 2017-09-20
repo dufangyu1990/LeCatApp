@@ -517,7 +517,7 @@ public class TcpConnectUtil {
 
             if(intDataType ==2150)//实时数据单独处理
             {
-                LogUtil.d("dfy","mRealDatCallBack = "+mRealDatCallBack);
+//                LogUtil.d("dfy","mRealDatCallBack = "+mRealDatCallBack);
                 if(mRealDatCallBack!=null)
                 {
                     mRealDatCallBack.onReceiveResult(intDataType,strDataType,strSetSN,strSetSN1,strAlmComType,strParam1,strParam2,strParam3,strArr);

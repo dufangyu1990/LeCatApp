@@ -11,6 +11,7 @@ import com.example.dufangyu.lecatapp.present.FragmentActivityPresentImpl;
 import com.example.dufangyu.lecatapp.socketUtils.TcpConnectUtil;
 import com.example.dufangyu.lecatapp.utils.ActivityControl;
 import com.example.dufangyu.lecatapp.utils.BroadCastControll;
+import com.example.dufangyu.lecatapp.utils.LogUtil;
 import com.example.dufangyu.lecatapp.utils.MyToast;
 import com.example.dufangyu.lecatapp.view.MainView;
 
@@ -22,7 +23,6 @@ public class MainActivity extends FragmentActivityPresentImpl<MainView> implemen
     private String depCode;//部门code  个人用户登录返回""
     private String strShareUserName;
     private String strSharePassword;
-    private boolean isNetConnnect =true  ;
     @Override
     public void afterViewCreate(Bundle savedInstanceState) {
         super.afterViewCreate(savedInstanceState);
@@ -71,6 +71,12 @@ public class MainActivity extends FragmentActivityPresentImpl<MainView> implemen
     @Override
     public void jumpToMyDeviceActivity() {
         MyDeviceActivity.actionStart(this,strShareUserName);
+    }
+
+    @Override
+    public void jumpToUserInfoActivity() {
+        LogUtil.d("dfy","跳转");
+        UserInfoActivity.actionStart(this,strShareUserName);
     }
 
     //再按一次退出

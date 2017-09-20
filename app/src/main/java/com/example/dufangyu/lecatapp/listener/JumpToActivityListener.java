@@ -16,6 +16,7 @@ public interface JumpToActivityListener {
 	public void jumpToUpdateActivity();
 	public void jumpToScanCodeActivity();
 	public void jumpToMyDeviceActivity();
+	public void jumpToUserInfoActivity();
 //	public void resetAppData();
 //	public void jumpToReturnAdvActivity();
 }

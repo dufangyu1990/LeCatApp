@@ -10,6 +10,7 @@ import com.example.dufangyu.lecatapp.biz.IModifyPwd;
 import com.example.dufangyu.lecatapp.biz.ModifyBiz;
 import com.example.dufangyu.lecatapp.biz.ModifyPwdListener;
 import com.example.dufangyu.lecatapp.customview.CustomDialog;
+import com.example.dufangyu.lecatapp.customview.CustomLoadDialog;
 import com.example.dufangyu.lecatapp.present.ActivityPresentImpl;
 import com.example.dufangyu.lecatapp.socketUtils.TcpConnectUtil;
 import com.example.dufangyu.lecatapp.utils.MyToast;
@@ -69,10 +70,12 @@ public class ModifyPwdActivity extends ActivityPresentImpl<ModifyPwdView> implem
         {
 
             newPassword = mView.getNewPwdStr();
+            CustomLoadDialog.show(ModifyPwdActivity.this,"",true,null,R.layout.logindialog);
 
             modifyPwdBiz.modifyPwd(loginName, newPassword, new ModifyPwdListener() {
                 @Override
                 public void modifySuccess() {
+                    CustomLoadDialog.dismisDialog();
                     CustomDialog.show(ModifyPwdActivity.this, getResources().getString(R.string.modifypwdsuccess), true, null, R.layout.text_dialog);
                     CustomDialog.setAutoDismiss(true,1500,true);
                     MyApplication.getInstance().setStringPerference("Password", newPassword);
@@ -81,6 +84,7 @@ public class ModifyPwdActivity extends ActivityPresentImpl<ModifyPwdView> implem
 
                 @Override
                 public void modifyFail() {
+                    CustomLoadDialog.dismisDialog();
                     CustomDialog.show(ModifyPwdActivity.this, getResources().getString(R.string.modifypwdfail), true, null, R.layout.text_dialog);
                     CustomDialog.setAutoDismiss(true,1500);
                 }

@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/zhaungchebiaoqian"
+    android:layout_width="match_parent"
+    android:fitsSystemWindows="true"
+    android:layout_height="match_parent">
+
+    <com.example.dufangyu.lecatapp.customview.TitleLinearLayout
+        android:id="@+id/titleLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </com.example.dufangyu.lecatapp.customview.TitleLinearLayout>
+
+    <include layout="@layout/view" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:padding="@dimen/margin5"
+        android:layout_marginTop="@dimen/margin40"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginLeft="@dimen/margin10"
+            android:orientation="vertical"
+            android:layout_marginRight="@dimen/margin10"
+            android:layout_height="wrap_content">
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text16"
+                    android:paddingTop="@dimen/margin10"
+                    android:paddingLeft="@dimen/margin10"
+                    android:paddingBottom="@dimen/margin10"
+                    android:textColor="@color/black"
+                    android:minWidth="@dimen/margin60"
+                    android:text="用户名"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin10"
+                    android:textColor="@color/black"
+                    android:text=":"
+                    />
+
+                <EditText
+                    android:paddingTop="@dimen/margin10"
+                    android:paddingBottom="@dimen/margin10"
+                    android:id="@+id/yonghuming_editor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:singleLine="true"
+                    android:enabled="false"
+                    android:layout_marginLeft="@dimen/margin10"
+                    android:textCursorDrawable="@null"
+                    android:textSize="@dimen/text14" />
+
+
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginLeft="@dimen/margin10"
+            android:orientation="vertical"
+            android:layout_marginRight="@dimen/margin10"
+            android:layout_height="wrap_content">
+            <include layout="@layout/view" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text16"
+                    android:paddingTop="@dimen/margin10"
+                    android:paddingLeft="@dimen/margin10"
+                    android:paddingBottom="@dimen/margin10"
+                    android:textColor="@color/black"
+                    android:minWidth="@dimen/margin60"
+                    android:text="姓名"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin10"
+                    android:textColor="@color/black"
+                    android:text=":"
+                    />
+
+
+
+                <EditText
+                    android:paddingTop="@dimen/margin10"
+                    android:paddingBottom="@dimen/margin10"
+                    android:id="@+id/name_editor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:singleLine="true"
+                    android:layout_marginLeft="@dimen/margin10"
+                    android:textCursorDrawable="@null"
+                    android:textSize="@dimen/text14" />
+
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginLeft="@dimen/margin10"
+            android:orientation="vertical"
+            android:layout_marginRight="@dimen/margin10"
+            android:layout_height="wrap_content">
+
+            <include layout="@layout/view" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text16"
+                    android:paddingTop="@dimen/margin10"
+                    android:paddingLeft="@dimen/margin10"
+                    android:paddingBottom="@dimen/margin10"
+                    android:textColor="@color/black"
+                    android:minWidth="@dimen/margin60"
+                    android:text="电话"
+                    />
+
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin10"
+                    android:textColor="@color/black"
+                    android:text=":"
+                    />
+                <EditText
+                    android:paddingTop="@dimen/margin10"
+                    android:paddingBottom="@dimen/margin10"
+                    android:id="@+id/phone_editor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:inputType="number"
+                    android:singleLine="true"
+                    android:layout_marginLeft="@dimen/margin10"
+                    android:textCursorDrawable="@null"
+                    android:textSize="@dimen/text14" />
+
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginLeft="@dimen/margin10"
+            android:orientation="vertical"
+            android:layout_marginRight="@dimen/margin10"
+            android:layout_height="wrap_content">
+
+            <include layout="@layout/view" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minWidth="@dimen/margin60"
+                    android:paddingBottom="@dimen/margin10"
+                    android:paddingLeft="@dimen/margin10"
+                    android:paddingTop="@dimen/margin10"
+                    android:text="住址"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text16" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin10"
+                    android:textColor="@color/black"
+                    android:text=":"
+                    />
+
+                <EditText
+                    android:paddingTop="@dimen/margin10"
+                    android:paddingBottom="@dimen/margin10"
+                    android:id="@+id/address_editor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:singleLine="true"
+                    android:layout_marginLeft="@dimen/margin10"
+                    android:textCursorDrawable="@null"
+                    android:textSize="@dimen/text14" />
+
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+
+
+
+    </LinearLayout>
+
+
+
+    <TextView
+        android:id="@+id/queren_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin10"
+        android:layout_marginRight="@dimen/margin10"
+        android:layout_marginTop="@dimen/margin40"
+        android:paddingTop="@dimen/margin10"
+        android:paddingBottom="@dimen/margin10"
+        android:clickable="true"
+        android:paddingLeft="@dimen/margin30"
+        android:paddingRight="@dimen/margin30"
+        android:background="@drawable/settingbtn"
+        android:text="确定"
+        android:gravity="center"
+        android:textSize="@dimen/text16"
+        android:textColor="@color/white" />
+
+
+
+
+</LinearLayout>

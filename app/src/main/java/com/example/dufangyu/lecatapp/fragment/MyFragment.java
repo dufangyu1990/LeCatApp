@@ -39,6 +39,7 @@ public class MyFragment  extends FragmentPresentImpl<MyView> implements View.OnC
 
     private String username;
     private String password;
+
     private JumpToActivityListener mListener;
     private MyAlertDialog dialog;
     private Context context;
@@ -80,6 +81,7 @@ public class MyFragment  extends FragmentPresentImpl<MyView> implements View.OnC
         switch (v.getId())
         {
             case R.id.userinfo_rel:
+                mListener.jumpToUserInfoActivity();
                 break;
             case R.id.changepwd_rel:
                 mListener.jumpToModifyPawActivity(username,password);

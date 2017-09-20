@@ -47,7 +47,9 @@ public class LoginActivity extends ActivityPresentImpl<LoginView> implements Vie
     private String password;
     private boolean isFirstEnter;
     private String departCode;
-
+    private String yonghuming;
+    private String phoneStr;
+    private String addressStr;
     private LocalBroadcastManager mLocalBroadcastManager;
     private BroadcastReceiver mReceiver;
     private IntentFilter filter;
@@ -267,8 +269,13 @@ public class LoginActivity extends ActivityPresentImpl<LoginView> implements Vie
     @Override
     public void loginSuccess(String code, String author,String userName,String phoneCall,String address) {
         mView.cancleAnim();
-        mView.saveAccountNdPwd();
         departCode = code;
+        LogUtil.d("dfy","登录成功 userName = "+userName+",phoneCall = "+phoneCall+",address = "+address);
+        yonghuming = userName;
+        phoneStr = phoneCall;
+        addressStr = address;
+        mView.saveAccountNdPwd(userName,phoneCall,address);
+
         loginBiz.getDeviceList(loginName);
 
     }

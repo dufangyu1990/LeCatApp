@@ -27,6 +27,7 @@
 
 
     <string name="changePas">修改密码</string>
+    <string name="userinfo">个人信息</string>
     <string name="returnAdvs">意见反馈</string>
     <string name="about">关于我们</string>
     <string name="exitLogin">退出登录</string>
@@ -98,6 +99,8 @@
     <string name="ModifyPassword">修改密码</string>
     <string name="modifypwdsuccess">修改密码成功</string>
     <string name="modifypwdfail">修改密码失败</string>
+    <string name="modifyuserfail">修改用户信息失败</string>
+    <string name="modifyusersuccess">修改用户信息成功</string>
     <string name="button_ok">确定</string>
     <string name="msg_camera_framework_bug">抱歉，Android相机可能被占用，您可能需要重启设备。</string>
     <string name="canclespeedOrder">取消限速</string>

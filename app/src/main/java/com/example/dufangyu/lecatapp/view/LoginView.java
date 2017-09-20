@@ -195,7 +195,7 @@ public class LoginView extends ViewImpl{
     /**
      * 保存用户名密码
      */
-    public void saveAccountNdPwd()
+    public void saveAccountNdPwd(String yonghuming,String phoneStr,String addressStr)
     {
         if (p_bSavePassON) {
             // 记住密码
@@ -208,6 +208,9 @@ public class LoginView extends ViewImpl{
             MyApplication.getInstance().setStringPerference("UserName", accountText.getText().toString().trim());
             MyApplication.getInstance().setStringPerference("Password", passwordText.getText().toString().trim());
         }
+        MyApplication.getInstance().setStringPerference("yonghuming", yonghuming);
+        MyApplication.getInstance().setStringPerference("phoneStr",phoneStr);
+        MyApplication.getInstance().setStringPerference("addressStr",addressStr);
     }
 
 
