@@ -6,8 +6,6 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 
 import com.example.dufangyu.lecatapp.R;
 import com.example.dufangyu.lecatapp.biz.ISplash;
@@ -38,8 +36,8 @@ public class SplashActivity extends ActivityPresentImpl<SplashView> implements V
     @Override
     public void beforeViewCreate(Bundle savedInstanceState) {
         super.beforeViewCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//        requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 
 

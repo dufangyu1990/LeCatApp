@@ -13,5 +13,8 @@ public interface IHomePage {
 
     void getDeviceList(String loginName);
 
+    //发送灯控指令
+    void sendLightCommand(String light_type);
+
 
 }

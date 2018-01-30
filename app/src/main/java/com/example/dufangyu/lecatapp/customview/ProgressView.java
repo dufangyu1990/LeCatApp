@@ -150,7 +150,7 @@ public class ProgressView extends View{
         super.onDraw(canvas);
         center = getWidth() / 2;	// 此时可以获取控件的尺寸了
 //        radius = (int) ((center - ringSize) / 2);
-        radius =  (int)(center*0.7) ;
+        radius =  (int)(center*0.7) ;//圆心到蓝色外边的距离
 
 
         //蓝色内边距离圆心的距离

@@ -201,7 +201,6 @@ public class LoginActivity extends ActivityPresentImpl<LoginView> implements Vie
             TcpConnectUtil.getTcpInstance().setDataCallBack(null);
             TcpConnectUtil.getTcpInstance().setRealDatCallBack(null);
             finish();
-
             System.exit(0);
         }
     }

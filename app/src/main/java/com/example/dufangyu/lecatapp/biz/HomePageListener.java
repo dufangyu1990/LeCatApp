@@ -14,4 +14,6 @@ public interface HomePageListener {
     void reEnterFail();
 
     void getDeviceList();
+    //发送灯控指令成功
+    void send_lightControlSuccess();
 }

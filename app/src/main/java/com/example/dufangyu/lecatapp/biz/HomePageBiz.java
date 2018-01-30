@@ -13,7 +13,7 @@ import com.example.dufangyu.lecatapp.utils.LogUtil;
 public class HomePageBiz extends RealBaseBiz implements IHomePage {
     private HomePageListener listener;
 
-
+    private StringBuffer temBuf= new StringBuffer();
     public HomePageBiz(HomePageListener listener)
     {
         this.listener = listener;
@@ -21,8 +21,8 @@ public class HomePageBiz extends RealBaseBiz implements IHomePage {
 
     @Override
     public void get4GPushData() {
-
-        StringBuffer temBuf = new StringBuffer();
+        temBuf.setLength(0);
+//        StringBuffer temBuf = new StringBuffer();
         int size = DataManager.p_intDeviceCount;
         for(int i =0;i<size;i++)
         {
@@ -44,6 +44,28 @@ public class HomePageBiz extends RealBaseBiz implements IHomePage {
     public void getDeviceList(String loginName) {
         TcpConnectUtil.getTcpInstance().IntiTemp();
         TcpConnectUtil.getTcpInstance().ClintSendBcCommData(1107, "0001", "", "", "", "", "", "", "", "", "", loginName, "", "", "", "", "", "", "");
+    }
+    /**
+     * 发送灯控指令
+     * @param light_type
+     * 0关灯
+     * 1开灯红
+     * 2开灯绿
+     * 3开灯蓝
+     */
+    @Override
+    public void sendLightCommand(String light_type) {
+        temBuf.setLength(0);
+        int size = DataManager.p_intDeviceCount;
+        for(int i =0;i<size;i++)
+        {
+            temBuf.append(DataManager.p_strDeviceList[i][1]).append("&");
+        }
+        LogUtil.d("dfy","temBuf = "+temBuf.toString());
+        TcpConnectUtil.getTcpInstance().IntiTemp();
+        TcpConnectUtil.getTcpInstance().ClintSendBcCommData (2160, "0002", "101", temBuf.toString(), "", "", "", "", "", "", "", light_type,"" , "", "", "", "", "", "");
+
+
     }
 
 
@@ -89,6 +111,16 @@ public class HomePageBiz extends RealBaseBiz implements IHomePage {
                 DataManager.getManagerInstance().saveDeviceListData();
                 if(listener!=null)
                     listener.getDeviceList();
+            }
+        }else if(intDataType ==2106)
+        {
+            if(strDataType.equals("1002"))
+            {
+                if(strParam1.equals("1"))//灯控指令提交成功
+                {
+                    if(listener!=null)
+                        listener.send_lightControlSuccess();
+                }
             }
         }
     }

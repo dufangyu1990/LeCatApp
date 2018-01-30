@@ -27,6 +27,7 @@
         android:theme="@style/MyBaseTheme">
 
         <activity android:name=".activity.SplashActivity"
+        android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
             android:screenOrientation="portrait"
             >
             <intent-filter>
@@ -37,6 +38,7 @@
         </activity>
         <activity android:name=".activity.LoginActivity"
             android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
             android:windowSoftInputMode="adjustResize|stateHidden"
             />
         <activity android:name=".activity.MainActivity"

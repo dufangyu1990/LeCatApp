@@ -531,6 +531,7 @@ public class TcpConnectUtil {
 
         }
 
+
 //        if(intDataType == 1105)
 //        {
 ////            LogUtil.d("dfy","mDataCallBack = "+mDataCallBack);

@@ -32,7 +32,6 @@ public class HomePageFragment extends FragmentPresentImpl<HomePageView> implemen
 
 
     private IHomePage mainBiz = null;
-
     private LocalBroadcastManager mLocalBroadcastManager;
     private BroadcastReceiver mReceiver;
     private IntentFilter filter;
@@ -83,6 +82,11 @@ public class HomePageFragment extends FragmentPresentImpl<HomePageView> implemen
         }
     }
 
+    @Override
+    public void send_lightControlSuccess() {
+        MyToast.showTextToast(context.getApplicationContext(),"指令发送成功");
+    }
+
     private void registMyRecivier()
     {
         filter = new IntentFilter(Constant.ADD_NEWDEVICE);
@@ -117,6 +121,19 @@ public class HomePageFragment extends FragmentPresentImpl<HomePageView> implemen
         switch (v.getId())
         {
             case R.id.menkongimg:
+
+                break;
+            case R.id.red_light:
+                mainBiz.sendLightCommand("1");
+                break;
+            case R.id.green_light:
+                mainBiz.sendLightCommand("2");
+                break;
+            case R.id.blue_light:
+                mainBiz.sendLightCommand("3");
+                break;
+            case R.id.close_light:
+                mainBiz.sendLightCommand("0");
                 break;
         }
     }

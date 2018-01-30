@@ -8,6 +8,7 @@ import android.widget.TextView;
 import com.example.dufangyu.lecatapp.R;
 import com.example.dufangyu.lecatapp.bean.RealData;
 import com.example.dufangyu.lecatapp.customview.ProgressView;
+import com.example.dufangyu.lecatapp.helper.EventHelper;
 import com.example.dufangyu.lecatapp.utils.LogUtil;
 import com.example.dufangyu.lecatapp.utils.Util;
 
@@ -26,6 +27,7 @@ public class HomePageView extends ViewImpl{
     private TextView dateTv,timeTv;
     private TextView updateTimeTv;
     private ImageView menkongimg;
+    private TextView redLightTv,greenLightTv,blueLightTv,closeLightTv;
     @Override
     public void initView() {
         menkongimg = findViewById(R.id.menkongimg);
@@ -41,6 +43,11 @@ public class HomePageView extends ViewImpl{
         shidu_progressView.setMax(100);
         dateTv = findViewById(R.id.date_textView);
         timeTv = findViewById(R.id.time_textView);
+        redLightTv = findViewById(R.id.red_light);
+        greenLightTv = findViewById(R.id.green_light);
+        blueLightTv = findViewById(R.id.blue_light);
+        closeLightTv = findViewById(R.id.close_light);
+
     }
 
     @Override
@@ -51,7 +58,8 @@ public class HomePageView extends ViewImpl{
     @Override
     public void bindEvent() {
 
-//        EventHelper.click(mPresent,menkongimg);
+        EventHelper.click(mPresent,menkongimg,
+                redLightTv,greenLightTv,blueLightTv,closeLightTv);
     }
 
 

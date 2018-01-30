@@ -16,6 +16,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
+
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -43,6 +46,64 @@
         android:layout_below="@id/texttv"
         android:layout_centerHorizontal="true"
         />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="红灯"
+            android:id="@+id/red_light"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="@dimen/margin10"
+            />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="绿灯"
+                android:id="@+id/green_light"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:padding="@dimen/margin10"
+                />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_weight="1"
+                android:text="蓝灯"
+                android:id="@+id/blue_light"
+                android:gravity="center"
+                android:padding="@dimen/margin10"
+                />
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_weight="1"
+                android:text="关灯"
+                android:id="@+id/close_light"
+                android:gravity="center"
+                android:padding="@dimen/margin10"
+                />
+
+
+        </LinearLayout>
+
+
+
+
 
     </RelativeLayout>
     </LinearLayout>
