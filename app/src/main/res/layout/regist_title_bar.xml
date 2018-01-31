@@ -18,9 +18,11 @@
             android:textColor="@color/white"
             android:textSize="@dimen/text16"
             android:padding="@dimen/margin10"
+            android:layout_marginTop="@dimen/margin20"
+            android:layout_marginLeft="@dimen/margin20"
             android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
-            android:visibility="invisible" />
+            android:visibility="visible" />
 
 
 

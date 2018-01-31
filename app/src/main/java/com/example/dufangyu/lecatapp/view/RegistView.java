@@ -1,6 +1,8 @@
 package com.example.dufangyu.lecatapp.view;
 
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ScrollView;
@@ -8,7 +10,9 @@ import android.widget.TextView;
 
 import com.example.dufangyu.lecatapp.R;
 import com.example.dufangyu.lecatapp.helper.EventHelper;
-import com.example.dufangyu.lecatapp.utils.MyToast;
+import com.example.dufangyu.lecatapp.utils.Util;
+
+import java.util.Random;
 
 /**
  * Created by dufangyu on 2017/9/11.
@@ -18,9 +22,11 @@ public class RegistView extends ViewImpl{
 
     private TextView backtv;
     private ScrollView mScrollview;
-    private EditText username_editor,pwd_editor,insure_editor;
+    private EditText username_editor,pwd_editor,code_editor;
     private TextView submitBtn;
     private TextView logoImg;
+    private TextView verfycodeTv;
+    private Random random = new Random();
     @Override
     public void initView() {
         logoImg = findViewById(R.id.regist_logo);
@@ -29,12 +35,116 @@ public class RegistView extends ViewImpl{
         mScrollview = findViewById(R.id.regist_scroll);
         username_editor = findViewById(R.id.username_editor);
         pwd_editor = findViewById(R.id.pwd_editor);
-        insure_editor = findViewById(R.id.insure_editor);
+        code_editor = findViewById(R.id.code_editor);
         submitBtn = findViewById(R.id.submit_btn);
+        verfycodeTv = findViewById(R.id.verfycodeTv);
+
+
+        username_editor.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                String value = username_editor.getText().toString().trim();
+                if(Util.isMobile(value))
+                {
+                    if(!TextUtils.isEmpty(pwd_editor.getText().toString().trim())
+                       &&!TextUtils.isEmpty(code_editor.getText().toString().trim())
+                            )
+                    {
+                        submitBtn.setEnabled(true);
+                    }else{
+                        submitBtn.setEnabled(false);
+                    }
+                }else{
+                    submitBtn.setEnabled(false);
+                }
+
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+
+        pwd_editor.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                String value = pwd_editor.getText().toString().trim();
+                if(!TextUtils.isEmpty(value))
+                {
+                    if(Util.isMobile(username_editor.getText().toString().trim()))
+                    {
+                        if(!TextUtils.isEmpty(code_editor.getText().toString().trim()))
+                        {
+                            submitBtn.setEnabled(true);
+                        }else{
+                            submitBtn.setEnabled(false);
+                        }
+                    }else{
+                        submitBtn.setEnabled(false);
+                    }
+                }else{
+                    submitBtn.setEnabled(false);
+                }
 
 
 
 
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        code_editor.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String value = code_editor.getText().toString().trim();
+                if(!TextUtils.isEmpty(value))
+                {
+                    if(Util.isMobile(username_editor.getText().toString().trim()))
+                    {
+                        if(!TextUtils.isEmpty(pwd_editor.getText().toString().trim()))
+                        {
+                            submitBtn.setEnabled(true);
+                        }else{
+                            submitBtn.setEnabled(false);
+                        }
+                    }else{
+                        submitBtn.setEnabled(false);
+                    }
+                }else{
+                    submitBtn.setEnabled(false);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
     }
 
@@ -46,39 +156,18 @@ public class RegistView extends ViewImpl{
     @Override
     public void bindEvent() {
 
-        EventHelper.click(mPresent,backtv,submitBtn);
-        EventHelper.focus(mPresent,username_editor,pwd_editor,insure_editor);
+        EventHelper.click(mPresent,backtv,submitBtn,verfycodeTv);
+        EventHelper.focus(mPresent,username_editor,pwd_editor,code_editor);
     }
 
 
-    public boolean checkValid()
+
+
+
+    public boolean isValidPhone()
     {
-        String username = username_editor.getText().toString().trim();
-        String password = pwd_editor.getText().toString().trim();
-        String again_pwd = insure_editor.getText().toString().trim();
-        if(TextUtils.isEmpty(username) )
-        {
-            MyToast.showTextToast(mRootView.getContext(), "用户名不能为空");
-            return false;
-        }
-        if( TextUtils.isEmpty(password))
-        {
-            MyToast.showTextToast(mRootView.getContext(), "密码不能为空");
-            return false;
-        }
-        if(TextUtils.isEmpty(again_pwd))
-        {
-            MyToast.showTextToast(mRootView.getContext(), "确认密码不能为空");
-            return false;
-        }
-
-
-        if(!password.equals(again_pwd))
-        {
-            MyToast.showTextToast(mRootView.getContext(), "两个密码不一致,请重新设置");
-            return false;
-        }
-        return true;
+        String phoneNumber =username_editor.getText().toString().trim();
+        return Util.isMobile(phoneNumber);
     }
 
 
@@ -99,6 +188,32 @@ public class RegistView extends ViewImpl{
     {
 //        mScrollview.fullScroll(View.FOCUS_DOWN);
         mScrollview.scrollTo(0, mScrollview.getHeight() - logoImg.getHeight() );
+    }
+
+
+
+
+    public void setCodeValue()
+    {
+        String result="";
+        for (int i=0;i<6;i++)
+        {
+            result+=random.nextInt(10);//next(10)返回[0,9)
+        }
+        code_editor.setText(result);
+    }
+
+    public void startCountTime(long millisUntilFinished)
+    {
+        verfycodeTv.setEnabled(false);
+        verfycodeTv.setText(millisUntilFinished/1000+"s");
+
+    }
+
+    public void finishCountTime()
+    {
+        verfycodeTv.setEnabled(true);
+        verfycodeTv.setText("获取验证码");
     }
 
 }

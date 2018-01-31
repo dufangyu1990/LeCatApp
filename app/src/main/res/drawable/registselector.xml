@@ -2,29 +2,6 @@
 
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     
-    <!--<item android:state_pressed="false">
-        <shape>
-            实心  bdw   lanse
-            <solid android:color="@color/green" />
-            圆角
-            <corners android:radius="5dp" />
-            描边
-            <stroke android:width="0.5dp" android:color="@color/green" />
-        </shape>
-    </item>
-    <item android:state_pressed="true">
-        <shape>
-            实心
-            <solid android:color="@color/choseGrey" />
-            圆角
-            <corners android:radius="5dp" />
-            描边
-            <stroke android:width="0.5dp" android:color="@color/choseGrey" />
-        </shape>
-    </item>-->
-
-
-
     <item android:state_enabled="false">
         <shape>
             实心  bdw   lanse
@@ -45,6 +22,7 @@
             <stroke android:width="0.5dp" android:color="@color/green" />
         </shape>
     </item>
+    
     
     
     

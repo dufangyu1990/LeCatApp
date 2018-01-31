@@ -12,10 +12,9 @@ import android.view.ViewTreeObserver;
 import com.example.dufangyu.lecatapp.R;
 import com.example.dufangyu.lecatapp.biz.IRegist;
 import com.example.dufangyu.lecatapp.biz.RegistBiz;
-import com.example.dufangyu.lecatapp.biz.RegistListenr;
-import com.example.dufangyu.lecatapp.customview.CustomLoadDialog;
 import com.example.dufangyu.lecatapp.present.ActivityPresentImpl;
 import com.example.dufangyu.lecatapp.socketUtils.TcpConnectUtil;
+import com.example.dufangyu.lecatapp.utils.MyCountDownTimer;
 import com.example.dufangyu.lecatapp.utils.MyToast;
 import com.example.dufangyu.lecatapp.utils.Util;
 import com.example.dufangyu.lecatapp.view.RegistView;
@@ -27,7 +26,7 @@ import com.example.dufangyu.lecatapp.view.RegistView;
 public class RegistActivity extends ActivityPresentImpl<RegistView> implements View.OnClickListener,View.OnFocusChangeListener{
 
     private Handler myHandler = new Handler();
-
+    private MyCountDownTimer countTimer;
     private IRegist registBiz;
     public static void actionStart(Context context)
     {
@@ -51,11 +50,37 @@ public class RegistActivity extends ActivityPresentImpl<RegistView> implements V
             case R.id.submit_btn:
                 registUser();
                 break;
+            case R.id.verfycodeTv:
+                if(!mView.isValidPhone())
+                {
+                    MyToast.showTextToast(getApplicationContext(),"请输入正确的手机号");
+                }else{
+                    if(countTimer==null)
+                    {
+                        initCounterTimer();
+                    }
+                    countTimer.start();
+                    mView.setCodeValue();
+                }
+                break;
         }
     }
 
 
+    public void initCounterTimer()
+    {
+        countTimer = new MyCountDownTimer(60*1000,1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                mView.startCountTime(millisUntilFinished);
+            }
 
+            @Override
+            public void onFinish() {
+                mView.finishCountTime();
+            }
+        };
+    }
     private void registUser()
     {
         if(!TcpConnectUtil.p_bLinkCenterON)
@@ -64,26 +89,22 @@ public class RegistActivity extends ActivityPresentImpl<RegistView> implements V
             return;
         }
 
-        if(mView.checkValid())
-        {
 
-
-            CustomLoadDialog.show(RegistActivity.this,"",true,null,R.layout.logindialog);
-            registBiz.registUser(mView.getValueById(R.id.username_editor), mView.getValueById(R.id.pwd_editor), new RegistListenr() {
-                @Override
-                public void registSuccess() {
-                    CustomLoadDialog.dismisDialog();
-                    MyToast.showTextToast(getApplicationContext(),"注册成功");
-                    finish();
-                }
-
-                @Override
-                public void registFail() {
-                    CustomLoadDialog.dismisDialog();
-                    MyToast.showTextToast(getApplicationContext(),"用户已存在");
-                }
-            });
-        }
+//            CustomLoadDialog.show(RegistActivity.this,"",true,null,R.layout.logindialog);
+//            registBiz.registUser(mView.getValueById(R.id.username_editor), mView.getValueById(R.id.pwd_editor), new RegistListenr() {
+//                @Override
+//                public void registSuccess() {
+//                    CustomLoadDialog.dismisDialog();
+//                    MyToast.showTextToast(getApplicationContext(),"注册成功");
+//                    finish();
+//                }
+//
+//                @Override
+//                public void registFail() {
+//                    CustomLoadDialog.dismisDialog();
+//                    MyToast.showTextToast(getApplicationContext(),"用户已存在");
+//                }
+//            });
 
     }
 
