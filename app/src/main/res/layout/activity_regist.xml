@@ -2,46 +2,51 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/beijing1"
+    android:background="@color/green"
     android:fitsSystemWindows="true"
     android:orientation="vertical">
 
-    <include
-        layout="@layout/regist_title_bar"/>
-
-
+    <include layout="@layout/regist_title_bar"/>
 
 
    <ScrollView
        android:layout_width="match_parent"
        android:id="@+id/regist_scroll"
+       android:background="@color/white"
        android:layout_height="match_parent">
        <LinearLayout
            android:layout_width="match_parent"
            android:orientation="vertical"
            android:layout_height="match_parent">
 
-           <ImageView
-               android:id="@+id/regist_logo"
-               android:layout_width="wrap_content"
+
+
+
+
+           <com.example.dufangyu.lecatapp.customview.MyTextView
+               android:layout_width="match_parent"
                android:layout_height="wrap_content"
-               android:layout_gravity="center_horizontal"
-               android:layout_marginTop="@dimen/margin10"
-               android:src="@drawable/touxiang" />
+               android:gravity="center"
+               android:id="@+id/regist_logo"
+               android:textColor="@color/black"
+               android:textSize="@dimen/text20"
+               android:text="@string/registName"
+               />
+
+
+
 
 
            <LinearLayout
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
                android:layout_marginTop="@dimen/margin10"
-               android:background="@drawable/beijing2"
                android:orientation="vertical">
 
 
                <LinearLayout
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
-                   android:layout_marginTop="@dimen/margin30"
                    android:orientation="vertical">
 
                    <include layout="@layout/lineview" />
@@ -193,6 +198,7 @@
            </LinearLayout>
 
 
+
            <TextView
                android:id="@+id/submit_btn"
                android:layout_width="match_parent"
@@ -210,6 +216,11 @@
                android:text="提交"
                android:textColor="@color/white"
                android:textSize="@dimen/text16" />
+
+
+
+
+
        </LinearLayout>
 
    </ScrollView>

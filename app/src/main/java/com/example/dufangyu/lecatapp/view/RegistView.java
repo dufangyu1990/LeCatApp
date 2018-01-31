@@ -3,7 +3,6 @@ package com.example.dufangyu.lecatapp.view;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -21,7 +20,7 @@ public class RegistView extends ViewImpl{
     private ScrollView mScrollview;
     private EditText username_editor,pwd_editor,insure_editor;
     private TextView submitBtn;
-    private ImageView logoImg;
+    private TextView logoImg;
     @Override
     public void initView() {
         logoImg = findViewById(R.id.regist_logo);
