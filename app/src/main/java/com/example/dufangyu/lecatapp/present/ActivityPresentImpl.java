@@ -125,15 +125,15 @@ public  class ActivityPresentImpl<T extends IView>extends Activity implements IP
             switch (stateCode)
             {
                 case TCPNONET:
-//                    LogUtil.d("dfy", "无网络");
+                    LogUtil.d("dfy", "无网络");
                     doNoNetWork();
                     break;
                 case TCPDISLINK:
-//                    LogUtil.d("dfy", "与服务器连接断开");
+                    LogUtil.d("dfy", "与服务器连接断开");
                     doNetDisConnect();
                     break;
                 case TCPLINK:
-//                    LogUtil.d("dfy","与服务器连接成功");
+                    LogUtil.d("dfy","与服务器连接成功");
                     doNetConnect();
                     break;
 
@@ -159,9 +159,9 @@ public  class ActivityPresentImpl<T extends IView>extends Activity implements IP
 
         int size = ActivityControl.activities.size();
         String topName = ActivityControl.getTopActicvityName(getApplicationContext());
-//      LogUtil.d("dfy","topName = "+topName);
+//        LogUtil.d("dfy","topName = "+topName);
         String topActivityName = ActivityControl.activities.get(size-1).getClass().getName();
-
+//        LogUtil.d("dfy","topActivityName = "+topActivityName);
         if(!TextUtils.isEmpty(topName))
         {
             if(topName.equals(topActivityName) && !topActivityName.equals(LOGIN_INSTANCE) && !topActivityName.equals(SPLASH_INSTANCE))

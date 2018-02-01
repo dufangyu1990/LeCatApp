@@ -59,6 +59,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/margin10"
                 android:text="@string/strLinkStateLabel"
+                android:visibility="invisible"
                 android:textColor="@color/green"
                 android:textSize="14sp" />
 
@@ -89,7 +90,6 @@
                         android:textSize="@dimen/text16" />
 
                     <EditText
-
                         android:id="@+id/user_name_et"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -335,6 +335,7 @@
                 android:layout_alignParentRight="true"
                 android:textColor="@color/green"
                 android:text="忘记密码?"
+                android:id="@+id/forgetPwdTv"
                 android:textSize="@dimen/text18"
 
                 />

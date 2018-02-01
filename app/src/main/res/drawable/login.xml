@@ -4,16 +4,24 @@
     <item android:state_enabled="false">
         <shape>
             <!-- 实心 -->
-            <solid android:color="@color/grey" />
+            <solid android:color="@color/gray" />
             <!-- 圆角 -->
             <corners android:radius="5dp" />
         </shape>
     </item>
-    <item android:state_pressed="false">
+    <item android:state_enabled="true">
         <shape>
-            <!-- 实心    lanse -->
+            <!-- 实心 -->
             <solid android:color="@color/green" />
             <!-- 圆角 -->
+            <corners android:radius="5dp" />
+        </shape>
+    </item>
+   <!-- <item android:state_pressed="false">
+        <shape>
+            &lt;!&ndash; 实心    lanse &ndash;&gt;
+            <solid android:color="@color/green" />
+            &lt;!&ndash; 圆角 &ndash;&gt;
             <corners android:radius="5dp" />
 
             <stroke android:width="@dimen/margin1" android:color="@color/green" />
@@ -21,11 +29,11 @@
     </item>
     <item android:state_pressed="true">
         <shape>
-            <!-- 实心 -->
-            <solid android:color="@color/darklanse" />
-            <!-- 圆角 -->
+            &lt;!&ndash; 实心 &ndash;&gt;
+            <solid android:color="@color/green" />
+            &lt;!&ndash; 圆角 &ndash;&gt;
             <corners android:radius="5dp" />
-            <stroke android:width="@dimen/margin1" android:color="@color/darklanse" />
+            <stroke android:width="@dimen/margin1" android:color="@color/green" />
         </shape>
-    </item>
+    </item>-->
 </selector>

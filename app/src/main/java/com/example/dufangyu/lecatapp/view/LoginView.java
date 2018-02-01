@@ -39,18 +39,18 @@ public class LoginView extends ViewImpl{
 
 
     private ScrollView mScrollView;
-    private ImageView logoImg;
-    private TextView appName;
+    private TextView logoImg;
     private ImageView overImg;//遮盖图
     private ImageView loadimg;
     private RelativeLayout loginlayout;
+    private TextView backImg,forgetPwdTv;
 
     @Override
     public void initView() {
+        backImg = findViewById(R.id.back_img);
         loadimg = findViewById(R.id.loginloadImageView);
         overImg = findViewById(R.id.overImg);
-        appName = findViewById(R.id.appname);
-        logoImg = findViewById(R.id.logoimg);
+        logoImg = findViewById(R.id.regist_logo);
         registtv = findViewById(R.id.regist_user);
         mScrollView = findViewById(R.id.scrollview);
         accountText = findViewById(R.id.user_name_et);
@@ -59,6 +59,8 @@ public class LoginView extends ViewImpl{
         linkStateText = findViewById(R.id.netstateTv);
         SavePassCheck = findViewById(R.id.SavePassCheck);
         loginlayout = findViewById(R.id.loginlayout);
+        backImg.setVisibility(View.INVISIBLE);
+        forgetPwdTv = findViewById(R.id.forgetPwdTv);
         setListeners();
 
     }
@@ -70,7 +72,7 @@ public class LoginView extends ViewImpl{
 
     @Override
     public void bindEvent() {
-        EventHelper.click(mPresent,loginlayout,registtv);
+        EventHelper.click(mPresent,loginlayout,registtv,forgetPwdTv);
         EventHelper.focus(mPresent,accountText,passwordText);
     }
 
@@ -81,7 +83,7 @@ public class LoginView extends ViewImpl{
 //        LogUtil.d("dfy","mScrollView.getHeight() = "+mScrollView.getHeight());
 //        LogUtil.d("dfy","滚动距离 = "+(mScrollView.getHeight() - logoImg.getHeight() - logotextImg.getHeight()));
 
-        mScrollView.scrollTo(0, mScrollView.getHeight() - logoImg.getHeight()-appName.getHeight() );
+        mScrollView.scrollTo(0, mScrollView.getHeight() - logoImg.getHeight() );
     }
 
     private void setListeners()
@@ -179,12 +181,15 @@ public class LoginView extends ViewImpl{
             accountText.setTextColor(0x90000000);
             passwordText.setTextColor(0x90000000);
             loginText.setEnabled(false);
+            loginlayout.setEnabled(false);
 
         }else if(state==TCPLINK)
         {
             accountText.setEnabled(true);
-            passwordText.setEnabled(true);
+            passwordText.setEnabled(true)
+            ;
             loginText.setEnabled(true);
+            loginlayout.setEnabled(true);
             accountText.setTextColor(mRootView.getContext().getResources().getColor(R.color.text_color));
             passwordText.setTextColor(mRootView.getContext().getResources().getColor(R.color.text_color));
         }

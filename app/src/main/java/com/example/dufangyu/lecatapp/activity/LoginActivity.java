@@ -63,6 +63,8 @@ public class LoginActivity extends ActivityPresentImpl<LoginView> implements Vie
         isFirstEnter = getIntent().getBooleanExtra("isFirstEnter",false);
         if(isConnected)
             mView.setNetState(TCPLINK,getResources().getString(R.string.netconnect));
+        else
+            mView.setNetState(TCPDISLINK,getResources().getString(R.string.strLinkStateLabel));
         mView.initPwdCheckBox();
         if(!isFirstEnter)
         {
@@ -131,6 +133,9 @@ public class LoginActivity extends ActivityPresentImpl<LoginView> implements Vie
                 break;
             case R.id.pass_word_et:
                 getKeyboardHeight();
+                break;
+            case R.id.forgetPwdTv:
+                ForgetPwdActivity.actionStart(LoginActivity.this);
                 break;
         }
     }

@@ -139,7 +139,7 @@
 
 
                             <com.example.dufangyu.lecatapp.customview.MyTextView
-                                android:id="@+id/verfycodeTv"
+                                android:id="@+id/forget_verfycodeTv"
                                 android:layout_gravity="center"
                                 android:layout_width="wrap_content"
                                 android:layout_weight="1"

@@ -15,7 +15,6 @@ import com.example.dufangyu.lecatapp.present.ActivityPresentImpl;
 import com.example.dufangyu.lecatapp.socketUtils.TcpConnectUtil;
 import com.example.dufangyu.lecatapp.utils.DownloadTool;
 import com.example.dufangyu.lecatapp.utils.MyToast;
-import com.example.dufangyu.lecatapp.utils.Util;
 import com.example.dufangyu.lecatapp.view.SplashView;
 
 import permissions.dispatcher.NeedsPermission;
@@ -83,7 +82,7 @@ public class SplashActivity extends ActivityPresentImpl<SplashView> implements V
 //        LogUtil.d("dfy","doNoNetWork.....");
         super.doNoNetWork();
         isServetConnect = false;
-        Util.SystemMsg(SplashActivity.this, "", "网络连接失败,请检查网络状态");
+//        Util.SystemMsg(SplashActivity.this, "", "网络连接失败,请检查网络状态");
         executeAnim();
     }
 
@@ -124,6 +123,8 @@ public class SplashActivity extends ActivityPresentImpl<SplashView> implements V
                 }
             });
 
+        }else{
+            mView.startAnim();
         }
     }
 
