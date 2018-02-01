@@ -57,7 +57,7 @@
                 android:id="@+id/netstateTv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/margin20"
+                android:layout_marginLeft="@dimen/margin10"
                 android:text="@string/strLinkStateLabel"
                 android:textColor="@color/green"
                 android:textSize="14sp" />

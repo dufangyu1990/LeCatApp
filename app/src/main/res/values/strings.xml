@@ -22,6 +22,11 @@
 
 
 
+    <!--忘记密码界面-->
+    <string name="forgetpwdtitle">重置新密码</string>
+
+
+
     <string name="badnetwork">网络连接失败,请检查网络状态</string>
     <string name="badnetinfo">网络连接异常!</string>
     <string name="pressagain">再按一次退出</string>

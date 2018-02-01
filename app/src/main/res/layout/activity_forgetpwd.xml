@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/green"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include layout="@layout/regist_title_bar"/>
+
+
+    <ScrollView
+        android:id="@+id/regist_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <com.example.dufangyu.lecatapp.customview.MyTextView
+                android:id="@+id/regist_logo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/forgetpwdtitle"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text28" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin20"
+                android:layout_marginRight="@dimen/margin20"
+                android:layout_marginTop="@dimen/margin40"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:orientation="vertical">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin10"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingBottom="@dimen/margin17"
+                            android:paddingTop="@dimen/margin17">
+
+                            <com.example.dufangyu.lecatapp.customview.MyTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:minWidth="@dimen/margin60"
+                                android:text="账号"
+                                android:layout_gravity="center"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/text16" />
+
+                            <EditText
+
+                                android:id="@+id/forget_username_editor"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="@dimen/margin10"
+                                android:layout_weight="1"
+                                android:background="@null"
+                                android:hint="请输入手机号码"
+                                android:singleLine="true"
+                                android:maxLength="11"
+                                android:inputType="numberDecimal"
+                                android:textColor="@color/black"
+                                android:textColorHint="@color/linecolor"
+                                android:textCursorDrawable="@drawable/color_cursor"
+                                android:textSize="@dimen/text16" />
+
+
+                        </LinearLayout>
+
+                        <include layout="@layout/lineview" />
+
+
+                    </LinearLayout>
+
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin10"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingBottom="@dimen/margin12"
+                            android:paddingTop="@dimen/margin12">
+
+                            <com.example.dufangyu.lecatapp.customview.MyTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:minWidth="@dimen/margin60"
+                                android:text="验证码"
+                                android:layout_gravity="center"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/text16" />
+
+                            <EditText
+
+                                android:id="@+id/forget_code_editor"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="@dimen/margin10"
+                                android:layout_weight="4"
+                                android:hint="请输入验证码"
+                                android:inputType="numberDecimal"
+                                android:background="@null"
+                                android:textColor="@color/black"
+                                android:textColorHint="@color/linecolor"
+                                android:textCursorDrawable="@drawable/color_cursor"
+                                android:singleLine="true"
+                                android:textSize="@dimen/text16" />
+
+
+                            <com.example.dufangyu.lecatapp.customview.MyTextView
+                                android:id="@+id/verfycodeTv"
+                                android:layout_gravity="center"
+                                android:layout_width="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_height="wrap_content"
+                                android:text="获取验证码"
+                                android:paddingLeft="@dimen/margin10"
+                                android:paddingTop="@dimen/margin5"
+                                android:paddingBottom="@dimen/margin5"
+                                android:paddingRight="@dimen/margin10"
+                                android:background="@drawable/registselector"
+                                android:gravity="center"
+                                android:enabled="true"
+                                android:textColor="@drawable/verfycode_textselector"
+                                />
+
+
+                        </LinearLayout>
+                        <include layout="@layout/lineview" />
+
+                    </LinearLayout>
+
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin10"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingBottom="@dimen/margin17"
+                            android:paddingTop="@dimen/margin17">
+
+                            <com.example.dufangyu.lecatapp.customview.MyTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:minWidth="@dimen/margin60"
+                                android:text="新密码"
+                                android:layout_gravity="center"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/text16" />
+
+                            <EditText
+
+                                android:maxLength="12"
+                                android:id="@+id/forget_pwd_editor"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="@dimen/margin10"
+                                android:layout_weight="1"
+                                android:textCursorDrawable="@drawable/color_cursor"
+                                android:background="@null"
+                                android:textColor="@color/black"
+                                android:textColorHint="@color/linecolor"
+                                android:hint="请输入新密码"
+                                android:inputType="textPassword"
+                                android:singleLine="true"
+                                android:textSize="@dimen/text16" />
+
+
+                        </LinearLayout>
+
+                        <include layout="@layout/lineview" />
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin10"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingBottom="@dimen/margin17"
+                            android:paddingTop="@dimen/margin17">
+
+                            <com.example.dufangyu.lecatapp.customview.MyTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:minWidth="@dimen/margin60"
+                                android:text="新密码"
+                                android:layout_gravity="center"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/text16" />
+
+                            <EditText
+
+                                android:maxLength="12"
+                                android:id="@+id/forget_newpwd_editor"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="@dimen/margin10"
+                                android:layout_weight="1"
+                                android:textCursorDrawable="@drawable/color_cursor"
+                                android:background="@null"
+                                android:textColor="@color/black"
+                                android:textColorHint="@color/linecolor"
+                                android:hint="请再次输入新密码"
+                                android:inputType="textPassword"
+                                android:singleLine="true"
+                                android:textSize="@dimen/text16" />
+
+
+                        </LinearLayout>
+
+                        <include layout="@layout/lineview" />
+
+
+                    </LinearLayout>
+
+
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+            <com.example.dufangyu.lecatapp.customview.MyTextView
+                android:id="@+id/resetPwd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin50"
+                android:layout_marginRight="@dimen/margin50"
+                android:layout_marginTop="@dimen/margin20"
+                android:background="@drawable/registbtn"
+                android:clickable="true"
+                android:enabled="false"
+                android:gravity="center"
+                android:paddingBottom="@dimen/margin10"
+                android:paddingLeft="@dimen/margin30"
+                android:paddingRight="@dimen/margin30"
+                android:paddingTop="@dimen/margin10"
+                android:text="重置密码"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text18" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>
