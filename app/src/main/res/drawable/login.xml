@@ -12,11 +12,11 @@
     <item android:state_pressed="false">
         <shape>
             <!-- 实心    lanse -->
-            <solid android:color="@color/lightlanse" />
+            <solid android:color="@color/green" />
             <!-- 圆角 -->
             <corners android:radius="5dp" />
 
-            <stroke android:width="@dimen/margin1" android:color="@color/lightlanse" />
+            <stroke android:width="@dimen/margin1" android:color="@color/green" />
         </shape>
     </item>
     <item android:state_pressed="true">

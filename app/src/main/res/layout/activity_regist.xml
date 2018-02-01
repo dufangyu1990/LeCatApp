@@ -131,7 +131,7 @@
                                 android:background="@null"
                                 android:textColor="@color/black"
                                 android:textColorHint="@color/linecolor"
-                                android:hint="同时包括字母和数字，长度8位到12位"
+                                android:hint="请输入密码"
                                 android:inputType="textPassword"
                                 android:singleLine="true"
                                 android:textSize="@dimen/text16" />
