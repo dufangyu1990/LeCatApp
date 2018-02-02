@@ -12,8 +12,6 @@ import com.example.dufangyu.lecatapp.R;
 import com.example.dufangyu.lecatapp.helper.EventHelper;
 import com.example.dufangyu.lecatapp.utils.Util;
 
-import java.util.Random;
-
 /**
  * Created by dufangyu on 2017/9/11.
  */
@@ -26,7 +24,6 @@ public class RegistView extends ViewImpl{
     private TextView submitBtn;
     private TextView logoImg;
     private TextView verfycodeTv;
-    private Random random = new Random();
     @Override
     public void initView() {
         logoImg = findViewById(R.id.regist_logo);
@@ -195,12 +192,7 @@ public class RegistView extends ViewImpl{
 
     public void setCodeValue()
     {
-        String result="";
-        for (int i=0;i<6;i++)
-        {
-            result+=random.nextInt(10);//next(10)返回[0,9)
-        }
-        code_editor.setText(result);
+        code_editor.setText(Util.getRandomCode(6));
     }
 
     public void startCountTime(long millisUntilFinished)

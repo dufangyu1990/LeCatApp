@@ -136,9 +136,9 @@
     <string name="worktime">工作时间(分钟)</string>
     <string name="intervaltime">间隔时间(分钟)</string>
     <string name="mechinestate">终端状态</string>
-    <string name="setting">发  送</string>
     <string name="checkorder">历  史</string>
     <string name="homepage">首页</string>
+    <string name="setting">设置</string>
     <string name="tongji">统计</string>
     <string name="findcar">找车</string>
     <string name="fixcar">装车</string>

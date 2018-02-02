@@ -25,6 +25,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
@@ -644,6 +645,22 @@ public class Util {
     {
         int value = (int)(m+Math.random()*(n-m+1));
         return value;
+    }
+
+    /**
+     * 获取length长度的随机数
+     * @param length
+     * @return
+     */
+    public static String getRandomCode(int length)
+    {
+        Random random = new Random();
+        String result="";
+        for (int i=0;i<length;i++)
+        {
+            result+=random.nextInt(10);//next(10)返回[0,9)
+        }
+        return result;
     }
 
 

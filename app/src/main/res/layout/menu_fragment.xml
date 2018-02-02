@@ -18,6 +18,12 @@
             android:text="@string/homepage" />
 
         <RadioButton
+            android:id="@+id/tab_settingpage"
+            style="@style/menu_style"
+            android:drawableTop="@drawable/tab_homepage_selector"
+            android:text="@string/setting" />
+
+        <RadioButton
             android:id="@+id/tab_myself"
             style="@style/menu_style"
             android:drawableTop="@drawable/tab_myself_selector"
