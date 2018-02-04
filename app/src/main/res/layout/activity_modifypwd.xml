@@ -49,14 +49,14 @@
                     android:layout_width="match_parent"
                     android:orientation="horizontal"
                     android:paddingTop="@dimen/margin10"
-                    android:paddingBottom="@dimen/margin10"
+                    android:paddingBottom="@dimen/margin20"
                     android:layout_height="wrap_content">
 
-                    <TextView
+                    <com.example.dufangyu.lecatapp.customview.MyTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
-                        android:text="原始密码 :"
+                        android:text="原始密码"
                         android:minWidth="@dimen/margin80"
                         android:textSize="@dimen/text16"
                         />
@@ -92,16 +92,16 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:orientation="horizontal"
-                    android:paddingTop="@dimen/margin10"
-                    android:paddingBottom="@dimen/margin10"
+                    android:paddingTop="@dimen/margin20"
+                    android:paddingBottom="@dimen/margin20"
                     android:layout_height="wrap_content">
 
-                    <TextView
+                    <com.example.dufangyu.lecatapp.customview.MyTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
                         android:minWidth="@dimen/margin80"
-                        android:text="新 密 码   :"
+                        android:text="新 密 码"
                         android:textSize="@dimen/text16"
                         />
 
@@ -136,15 +136,15 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:orientation="horizontal"
-                    android:paddingTop="@dimen/margin10"
+                    android:paddingTop="@dimen/margin20"
                     android:paddingBottom="@dimen/margin10"
                     android:layout_height="wrap_content">
 
-                    <TextView
+                    <com.example.dufangyu.lecatapp.customview.MyTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
-                        android:text="重复密码 :"
+                        android:text="重复密码"
                         android:minWidth="@dimen/margin80"
                         android:textSize="@dimen/text16"
                         />
@@ -174,18 +174,16 @@
 
 
 
-        <TextView
+        <com.example.dufangyu.lecatapp.customview.MyTextView
             android:id="@+id/submit_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/margin10"
             android:layout_marginRight="@dimen/margin10"
             android:layout_marginTop="@dimen/margin40"
-            android:paddingTop="@dimen/margin10"
-            android:paddingBottom="@dimen/margin10"
+            android:paddingTop="@dimen/margin15"
+            android:paddingBottom="@dimen/margin15"
             android:clickable="true"
-            android:paddingLeft="@dimen/margin30"
-            android:paddingRight="@dimen/margin30"
             android:background="@drawable/settingbtn"
             android:text="确定"
             android:gravity="center"

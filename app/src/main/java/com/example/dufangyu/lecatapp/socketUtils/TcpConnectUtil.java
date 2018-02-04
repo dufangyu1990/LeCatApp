@@ -466,14 +466,14 @@ public class TcpConnectUtil {
             if (p_intTempCount == 0) {
 //                LogUtil.d("dfy","mDataCallBack = "+mDataCallBack);
                 if(mDataCallBack!=null)
-                    mDataCallBack.onReceiveResult(intDataType,strDataType,strSetSN,strSetSN1,strAlmComType,strParam1,strParam2,strParam3,strArr);
+                    mDataCallBack.onReceiveResult(intDataType,strDataType,strSetSN,strSetSN1,strAlmComType,strParam1,strParam2,strParam3,strParam4,strArr);
             } else {
                 if (p_intTempProCount >= p_intTempCount)
                 {
                     p_intTempProCount=0;
 //                    LogUtil.d("dfy","mDataCallBack = "+mDataCallBack);
                     if(mDataCallBack!=null)
-                        mDataCallBack.onReceiveResult(intDataType,strDataType,strSetSN,strSetSN1,strAlmComType,strParam1,strParam2,strParam3,strArr);
+                        mDataCallBack.onReceiveResult(intDataType,strDataType,strSetSN,strSetSN1,strAlmComType,strParam1,strParam2,strParam3,strParam4,strArr);
                 }
             }
         }else if (intDataType == 1107) {
@@ -508,7 +508,7 @@ public class TcpConnectUtil {
                 p_intTempProCount=0;
 //                LogUtil.d("dfy","mDataCallBack = "+mDataCallBack);
                 if(mDataCallBack!=null)
-                    mDataCallBack.onReceiveResult(intDataType,strDataType,strSetSN,strSetSN1,strAlmComType,strParam1,strParam2,strParam3,strArr);
+                    mDataCallBack.onReceiveResult(intDataType,strDataType,strSetSN,strSetSN1,strAlmComType,strParam1,strParam2,strParam3,strParam4,strArr);
 //                TempJudge(strDataType,strParam2);
             }
         }else{
@@ -520,13 +520,13 @@ public class TcpConnectUtil {
 //                LogUtil.d("dfy","mRealDatCallBack = "+mRealDatCallBack);
                 if(mRealDatCallBack!=null)
                 {
-                    mRealDatCallBack.onReceiveResult(intDataType,strDataType,strSetSN,strSetSN1,strAlmComType,strParam1,strParam2,strParam3,strArr);
+                    mRealDatCallBack.onReceiveResult(intDataType,strDataType,strSetSN,strSetSN1,strAlmComType,strParam1,strParam2,strParam3,strParam4,strArr);
                 }
             }else{
 //                LogUtil.d("dfy","mDataCallBack = "+mDataCallBack);
                 //不论什么数据类型，都进入此方法，不用每个都列出来
                 if(mDataCallBack!=null)
-                    mDataCallBack.onReceiveResult(intDataType,strDataType,strSetSN,strSetSN1,strAlmComType,strParam1,strParam2,strParam3,strArr);
+                    mDataCallBack.onReceiveResult(intDataType,strDataType,strSetSN,strSetSN1,strAlmComType,strParam1,strParam2,strParam3,strParam4,strArr);
             }
 
         }

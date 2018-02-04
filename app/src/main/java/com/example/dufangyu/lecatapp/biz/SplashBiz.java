@@ -13,7 +13,7 @@ public class SplashBiz extends BaseBiz implements ISplash{
 
     @Override
     protected void handleServerResult(int intDataType, String strDataType, String strSetSN, String strSetSN1,
-                                      String strAlmComType, String strParam1, String strParam2, String strParam3,String[] strArr) {
+                                      String strAlmComType, String strParam1, String strParam2, String strParam3,String strParam4,String[] strArr) {
         if(intDataType==1105)
         {
             if(strDataType.equals("1010"))

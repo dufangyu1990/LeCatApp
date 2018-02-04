@@ -56,6 +56,10 @@ public class TitleLinearLayout extends LinearLayout{
         backTv.setText(value);
     }
 
+    public void setTitleSize(float size)
+    {
+        title_textTv.setTextSize(size);
+    }
 
     public void setBackBg(int color)
     {

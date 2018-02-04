@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@color/green"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/regist_title_bar"/>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:id="@+id/lightStateImg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/close_light"
+            android:padding="@dimen/margin10"
+            android:layout_centerInParent="true"/>
+
+
+    </RelativeLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:padding="@dimen/margin5"
+            android:layout_marginTop="@dimen/margin10"
+            android:layout_height="wrap_content">
+
+            <include layout="@layout/shuxianlayout"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:text="状态控制"
+                android:textColor="@color/black"
+                android:layout_marginLeft="@dimen/margin5"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+        <include layout="@layout/lineview"/>
+        <LinearLayout
+            android:paddingTop="@dimen/margin5"
+            android:paddingBottom="@dimen/margin5"
+            android:background="@color/white"
+            android:layout_marginTop="@dimen/margin10"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="2"
+                android:layout_height="wrap_content">
+
+
+
+                <LinearLayout
+                    android:layout_marginLeft="@dimen/margin10"
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="@dimen/margin10"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="灯状态"
+                        android:layout_weight="1"
+                        android:textColor="@color/black"
+                        />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="关"
+                        android:id="@+id/showlighttv"
+                        android:gravity="center"
+                        android:layout_weight="1.5"
+                        />
+
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_marginLeft="@dimen/margin10"
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content">
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="显示颜色"
+                        android:layout_weight="1"
+                        android:textColor="@color/black"
+                        />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="绿色"
+                        android:id="@+id/showcolortv"
+                        android:gravity="center"
+                        android:layout_weight="1.5"
+                        />
+
+                </LinearLayout>
+
+
+
+
+
+
+            </LinearLayout>
+
+            
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+                
+                <TextView
+                    android:clickable="true"
+                    android:paddingLeft="@dimen/margin10"
+                    android:paddingRight="@dimen/margin10"
+                    android:paddingTop="@dimen/margin5"
+                    android:paddingBottom="@dimen/margin5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="蓝色"
+                    android:id="@+id/blue_light"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:layout_margin="@dimen/margin5"
+                    android:textColor="@color/white"
+                    android:background="@drawable/blue_btn"
+                    />
+
+                <TextView
+                    android:id="@+id/red_light"
+                    android:clickable="true"
+                    android:paddingLeft="@dimen/margin10"
+                    android:paddingRight="@dimen/margin10"
+                    android:paddingTop="@dimen/margin5"
+                    android:paddingBottom="@dimen/margin5"
+                    android:layout_margin="@dimen/margin5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="红色"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/white"
+                    android:background="@drawable/red_btn"
+                    />
+
+                <TextView
+                    android:id="@+id/green_light"
+                    android:clickable="true"
+                    android:paddingLeft="@dimen/margin10"
+                    android:paddingRight="@dimen/margin10"
+                    android:paddingTop="@dimen/margin5"
+                    android:paddingBottom="@dimen/margin5"
+                    android:layout_margin="@dimen/margin5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="绿色"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/white"
+                    android:background="@drawable/green_btn"
+                    />
+
+                <TextView
+                    android:paddingLeft="@dimen/margin10"
+                    android:paddingRight="@dimen/margin10"
+                    android:paddingTop="@dimen/margin5"
+                    android:paddingBottom="@dimen/margin5"
+                    android:layout_margin="@dimen/margin5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="关灯"
+                    android:id="@+id/close_light"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/white"
+                    android:background="@drawable/blue_btn"
+                    />
+                
+                
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

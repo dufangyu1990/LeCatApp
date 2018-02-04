@@ -22,7 +22,6 @@ public class HomePageBiz extends RealBaseBiz implements IHomePage {
     @Override
     public void get4GPushData() {
         temBuf.setLength(0);
-//        StringBuffer temBuf = new StringBuffer();
         int size = DataManager.p_intDeviceCount;
         for(int i =0;i<size;i++)
         {
@@ -45,16 +44,12 @@ public class HomePageBiz extends RealBaseBiz implements IHomePage {
         TcpConnectUtil.getTcpInstance().IntiTemp();
         TcpConnectUtil.getTcpInstance().ClintSendBcCommData(1107, "0001", "", "", "", "", "", "", "", "", "", loginName, "", "", "", "", "", "", "");
     }
-    /**
-     * 发送灯控指令
-     * @param light_type
-     * 0关灯
-     * 1开灯红
-     * 2开灯绿
-     * 3开灯蓝
-     */
+
+
+
+
     @Override
-    public void sendLightCommand(String light_type) {
+    public void check4GData() {
         temBuf.setLength(0);
         int size = DataManager.p_intDeviceCount;
         for(int i =0;i<size;i++)
@@ -63,16 +58,16 @@ public class HomePageBiz extends RealBaseBiz implements IHomePage {
         }
         LogUtil.d("dfy","temBuf = "+temBuf.toString());
         TcpConnectUtil.getTcpInstance().IntiTemp();
-        TcpConnectUtil.getTcpInstance().ClintSendBcCommData (2160, "0002", "101", temBuf.toString(), "", "", "", "", "", "", "", light_type,"" , "", "", "", "", "", "");
-
-
+        TcpConnectUtil.getTcpInstance().ClintSendBcCommData (2160, "0001", "101", temBuf.toString(), "", "", "", "", "", "", "", "","" , "", "", "", "", "", "");
     }
 
 
     @Override
-    protected void handleServerResult(int intDataType, String strDataType, String strSetSN, String strSetSN1, String strAlmComType, String strParam1, String strParam2, String strParam3,String[] strArr) {
+    protected void handleServerResult(int intDataType, String strDataType, String strSetSN, String strSetSN1, String strAlmComType, String strParam1, String strParam2, String strParam3,String strParam4,String[] strArr) {
 //        LogUtil.d("dfy","设备Id = "+strArr[2]+",报警状态 = "+strArr[4]+",更新时间 = "+strArr[8]);
 //        LogUtil.d("dfy","温度值 = "+strArr[10]+",湿度值 = "+strArr[11]);
+
+
         if(intDataType==2150)
         {
             if(strDataType.equals("1002"))
@@ -112,15 +107,14 @@ public class HomePageBiz extends RealBaseBiz implements IHomePage {
                 if(listener!=null)
                     listener.getDeviceList();
             }
-        }else if(intDataType ==2106)
+        }else if(intDataType ==2160)
         {
-            if(strDataType.equals("1002"))
+            //收到巡检指令返回
+            if(strDataType.equals("1001"))
             {
-                if(strParam1.equals("1"))//灯控指令提交成功
-                {
-                    if(listener!=null)
-                        listener.send_lightControlSuccess();
-                }
+                LogUtil.d("dfy","strSetSN1 = "+strSetSN1);
+                if(listener!=null)
+                    listener.getCheck4GData(strParam1,strParam2,strParam3,strParam4);
             }
         }
     }

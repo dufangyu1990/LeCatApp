@@ -166,6 +166,7 @@ public  class ActivityPresentImpl<T extends IView>extends Activity implements IP
         {
             if(topName.equals(topActivityName) && !topActivityName.equals(LOGIN_INSTANCE) && !topActivityName.equals(SPLASH_INSTANCE))
             {
+                LogUtil.d("dfy","发送重新登录广播");
                 Util.sendLocalBroadcast(getApplicationContext(),new Intent(REENTER));
             }
         }

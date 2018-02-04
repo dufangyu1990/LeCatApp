@@ -83,9 +83,10 @@ public class HomePageFragment extends FragmentPresentImpl<HomePageView> implemen
     }
 
     @Override
-    public void send_lightControlSuccess() {
-        MyToast.showTextToast(context.getApplicationContext(),"指令发送成功");
+    public void getCheck4GData(String param1, String param2, String param3, String param4) {
+
     }
+
 
     private void registMyRecivier()
     {
@@ -123,18 +124,7 @@ public class HomePageFragment extends FragmentPresentImpl<HomePageView> implemen
             case R.id.menkongimg:
 
                 break;
-            case R.id.red_light:
-                mainBiz.sendLightCommand("1");
-                break;
-            case R.id.green_light:
-                mainBiz.sendLightCommand("2");
-                break;
-            case R.id.blue_light:
-                mainBiz.sendLightCommand("3");
-                break;
-            case R.id.close_light:
-                mainBiz.sendLightCommand("0");
-                break;
+
         }
     }
 

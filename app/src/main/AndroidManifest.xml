@@ -74,6 +74,9 @@
         <activity android:name=".activity.UserInfoActivity"
             android:screenOrientation="portrait"
             />
+        <activity android:name=".activity.LightControlActivity"
+            android:screenOrientation="portrait"
+            />
 
 
         <provider

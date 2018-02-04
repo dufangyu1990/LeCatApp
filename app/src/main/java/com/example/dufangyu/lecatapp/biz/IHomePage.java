@@ -6,6 +6,7 @@ package com.example.dufangyu.lecatapp.biz;
 
 public interface IHomePage {
 
+    //获取设备最后数据
     void get4GPushData();
 
     //重新登录
@@ -13,8 +14,10 @@ public interface IHomePage {
 
     void getDeviceList(String loginName);
 
-    //发送灯控指令
-    void sendLightCommand(String light_type);
+
+
+    //发送巡检指令
+    void check4GData();
 
 
 }

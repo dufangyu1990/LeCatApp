@@ -70,7 +70,7 @@
     <string name="strEndTime">结束时间</string>
     <string name="strLoadHis">回放轨迹</string>
     <string name="strQueryMileage">里程查询</string>
-    <string name="scan_scan">扫一扫</string>
+    <string name="scan_scan">扫码添加设备</string>
     <string name="scan_qrcode">将二维码放入框内，即可自动扫描</string>
     <string name="scan_onecode">将条形码放入框内，即可自动扫描</string>
     <string name="scan_qr">二维码</string>

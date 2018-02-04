@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<View xmlns:android="http://schemas.android.com/apk/res/android"
+
+android:layout_width="4dp"
+android:layout_marginTop="@dimen/margin2"
+android:layout_marginBottom="@dimen/margin2"
+android:layout_marginLeft="@dimen/margin10"
+android:layout_height="match_parent"
+android:background="@drawable/vertical_line">
+
+</View>

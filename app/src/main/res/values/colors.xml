@@ -7,6 +7,7 @@
     <color name="gray_text_ab">#ffababab</color>
     <color name="gray_text_89">#ff898989</color>
     <color name="gray_text_66">#ff666666</color>
+    <color name="danlanse">#CDEDE7</color>
 
 
 
@@ -191,6 +192,11 @@
     <color name="bc">#157FC6</color>
     <color name="choseBlack">#000000</color>
     <color name="choseGrey">#a9a9a9</color>
+    <color name="blue_press">#328ED0</color>
+    <color name="red_press">#D45148</color>
+    <color name="green_light">#69D61B</color>
+    <color name="green_press">#5DBE18</color>
+    <color name="defaultbg">#C7C7C7</color>
 
     <color name="contents_text">#ff000000</color>
     <color name="encode_view">#ffffffff</color>

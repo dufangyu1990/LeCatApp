@@ -33,7 +33,7 @@ public class MyDeviceBiz extends BaseBiz implements IMyDevice{
 
     @Override
     protected void handleServerResult(int intDataType, String strDataType, String strSetSN, String strSetSN1,
-                                      String strAlmComType, String strParam1, String strParam2, String strParam3,String[] strArr) {
+                                      String strAlmComType, String strParam1, String strParam2, String strParam3,String strParam4,String[] strArr) {
         LogUtil.d("dfy","intDataType = "+intDataType);
         LogUtil.d("dfy","我的设备handleServerResult");
         if(intDataType ==1106||intDataType ==1107)

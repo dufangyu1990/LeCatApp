@@ -5,11 +5,11 @@
     <item android:state_pressed="false">
         <shape>
             实心  bdw   lanse
-            <solid android:color="@color/lanse" />
+            <solid android:color="@color/green" />
             圆角
             <corners android:radius="5dp" />
             描边
-            <stroke android:width="0.5dp" android:color="@color/lanse" />
+            <stroke android:width="0.5dp" android:color="@color/green" />
         </shape>
     </item>
     <item android:state_pressed="true">

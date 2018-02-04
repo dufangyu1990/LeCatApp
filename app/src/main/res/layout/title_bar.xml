@@ -13,7 +13,7 @@
             android:id="@+id/back_img"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/fanhui"
+            android:drawableLeft="@drawable/fanhui_white"
             android:drawablePadding="@dimen/margin7"
             android:text="@string/scan_back"
             android:textColor="@color/white"
@@ -37,7 +37,7 @@
 
 
 
-        <TextView
+        <com.example.dufangyu.lecatapp.customview.MyTextView
             android:id="@+id/title_text"
             style="@style/title_text_style"
             android:layout_width="wrap_content"

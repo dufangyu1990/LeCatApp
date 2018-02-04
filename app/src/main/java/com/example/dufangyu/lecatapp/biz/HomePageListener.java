@@ -14,6 +14,7 @@ public interface HomePageListener {
     void reEnterFail();
 
     void getDeviceList();
-    //发送灯控指令成功
-    void send_lightControlSuccess();
+
+    //收到巡检指令的返回值
+    void getCheck4GData(String param1,String param2,String param3,String param4);
 }

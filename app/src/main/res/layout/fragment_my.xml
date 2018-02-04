@@ -22,40 +22,59 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin20"
-                android:background="@drawable/wodelan"
+                android:paddingLeft="@dimen/margin20"
+                android:paddingBottom="@dimen/margin60"
+                android:background="@color/green"
                 android:orientation="horizontal" >
 
                 <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_margin="@dimen/margin10"
                     android:layout_gravity="center_vertical"
-                    android:src="@drawable/touxiang_selector" />
+                    android:src="@drawable/my_logo" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:layout_gravity="center_vertical"
                     android:orientation="vertical" >
+
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="欢迎您"
+                        android:layout_marginTop="10dp"
                         android:textColor="@color/white"
+                        android:text="欢迎您"
                         android:textSize="@dimen/text20" />
 
                     <TextView
                         android:id="@+id/my_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:textColor="@color/white"
                         android:text="乐瞄用户"
+                        android:textColor="@color/white"
                         android:textSize="@dimen/text20" />
+
+
                 </LinearLayout>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/go"
+                    android:padding="@dimen/margin20"
+                    android:visibility="gone"
+                    android:layout_marginRight="@dimen/margin20"
+                    android:layout_gravity="center_vertical"
+                    />
+
+
             </LinearLayout>
+
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -64,104 +83,69 @@
                 android:background="@color/white"
                 android:orientation="vertical" >
 
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/margin10"
-                    android:layout_marginRight="@dimen/margin10"
                     android:orientation="vertical">
 
                     <RelativeLayout
-                        android:id="@+id/userinfo_rel"
+                        android:id="@+id/mydevice_rel"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/setlist_selector"
                         android:clickable="true"
                         android:orientation="horizontal"
-                        android:padding="@dimen/margin10">
+                        >
 
 
                         <ImageView
-
-                            android:id="@+id/changepwimg"
-                            android:visibility="gone"
+                            android:id="@+id/img1"
+                            android:visibility="visible"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
-                            android:layout_marginLeft="@dimen/margin5"
-                            android:src="@drawable/shezhi" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
                             android:layout_marginLeft="@dimen/margin10"
-                            android:layout_toRightOf="@id/changepwimg"
-                            android:drawableRight="@drawable/jiantouleft"
-                            android:text="@string/persioninfo"
-                            android:textColor="@color/text_color"
-                            android:textSize="@dimen/text16" />
+                            android:src="@drawable/my_device" />
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:orientation="vertical"
+                            android:layout_marginLeft="@dimen/margin10"
+                            android:layout_toRightOf="@id/img1"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:drawableRight="@drawable/next"
+                                android:text="@string/my_device"
+                                android:paddingTop="@dimen/margin15"
+                                android:paddingRight="@dimen/margin15"
+                                android:paddingBottom="@dimen/margin15"
+                                android:textColor="@color/text_color"
+                                android:textSize="@dimen/text16" />
+
+                            <include layout="@layout/commonview"/>
+
+                        </LinearLayout>
+
+
+
+
 
 
                     </RelativeLayout>
 
-                    <include layout="@layout/commonview"/>
+
 
                 </LinearLayout>
-
-
 
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/margin10"
-                    android:layout_marginRight="@dimen/margin10"
-                    android:orientation="vertical">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="@dimen/margin10"
-                    android:id="@+id/mydevice_rel"
-                    android:clickable="true"
-                    android:background="@drawable/setlist_selector"
-                    >
-
-                    <ImageView
-
-                        android:id="@+id/news"
-                        android:visibility="gone"
-                        android:src="@drawable/mima"
-                        android:layout_width="wrap_content"
-                        android:layout_marginLeft="@dimen/margin5"
-                        android:layout_centerVertical="true"
-                        android:layout_height="wrap_content" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_toRightOf="@id/news"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/margin10"
-                        android:drawableRight="@drawable/jiantouleft"
-                        android:layout_centerVertical="true"
-                        android:text="@string/my_device"
-                        android:textColor="@color/text_color"
-                        android:textSize="@dimen/text16" />
-                </RelativeLayout>
-                <include layout="@layout/commonview"/>
-
-                </LinearLayout>
-
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/margin10"
-                    android:layout_marginRight="@dimen/margin10"
                     android:orientation="vertical">
 
                     <RelativeLayout
@@ -171,136 +155,239 @@
                         android:background="@drawable/setlist_selector"
                         android:clickable="true"
                         android:orientation="horizontal"
-                        android:padding="@dimen/margin10">
+                        >
 
 
                         <ImageView
-
-                            android:id="@+id/advsimg"
+                            android:id="@+id/img2"
+                            android:visibility="visible"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
-                            android:layout_marginLeft="@dimen/margin5"
-                            android:src="@drawable/yijian"
-                            android:visibility="gone" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
                             android:layout_marginLeft="@dimen/margin10"
-                            android:layout_toRightOf="@id/advsimg"
-                            android:drawableRight="@drawable/jiantouleft"
-                            android:text="@string/add_device"
-                            android:textColor="@color/text_color"
-                            android:textSize="@dimen/text16" />
+                            android:src="@drawable/add_device" />
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:orientation="vertical"
+                            android:layout_marginLeft="@dimen/margin10"
+                            android:layout_toRightOf="@id/img2"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:drawableRight="@drawable/next"
+                                android:text="@string/add_device"
+                                android:paddingTop="@dimen/margin15"
+                                android:paddingRight="@dimen/margin15"
+                                android:paddingBottom="@dimen/margin15"
+                                android:textColor="@color/text_color"
+                                android:textSize="@dimen/text16" />
+
+                            <include layout="@layout/commonview"/>
+
+                        </LinearLayout>
+
+
+
+
+
+
                     </RelativeLayout>
 
-                    <include layout="@layout/commonview"/>
-                </LinearLayout>
 
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/margin10"
-                    android:layout_marginRight="@dimen/margin10"
                     android:orientation="vertical">
+
                     <RelativeLayout
+                        android:id="@+id/userinfo_rel"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:padding="@dimen/margin10"
+                        android:background="@drawable/setlist_selector"
                         android:clickable="true"
+                        android:orientation="horizontal"
+                        >
+
+
+                        <ImageView
+                            android:id="@+id/changepwimg"
+                            android:visibility="visible"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/margin10"
+                            android:src="@drawable/info" />
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:orientation="vertical"
+                            android:layout_marginLeft="@dimen/margin10"
+                            android:layout_toRightOf="@id/changepwimg"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:drawableRight="@drawable/next"
+                                android:text="@string/persioninfo"
+                                android:paddingTop="@dimen/margin15"
+                                android:paddingRight="@dimen/margin15"
+                                android:paddingBottom="@dimen/margin15"
+                                android:textColor="@color/text_color"
+                                android:textSize="@dimen/text16" />
+
+                            <include layout="@layout/commonview"/>
+
+                        </LinearLayout>
+
+
+
+
+
+
+                    </RelativeLayout>
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
                         android:id="@+id/changepwd_rel"
-                        android:background="@drawable/setlist_selector"
-                        >
-
-
-                        <ImageView
-
-                            android:id="@+id/aboutimg"
-                            android:src="@drawable/guanyu"
-                            android:visibility="gone"
-                            android:layout_width="wrap_content"
-                            android:layout_marginLeft="@dimen/margin5"
-                            android:layout_centerVertical="true"
-                            android:layout_height="wrap_content" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_toRightOf="@id/aboutimg"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/margin10"
-                            android:drawableRight="@drawable/jiantouleft"
-                            android:layout_centerVertical="true"
-                            android:text="@string/ModifyPassword"
-                            android:textColor="@color/text_color"
-                            android:textSize="@dimen/text16" />
-                    </RelativeLayout>
-
-                 </LinearLayout>
-
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/margin10"
-                    android:layout_marginRight="@dimen/margin10"
-                    android:id="@+id/update_layout"
-                    android:orientation="vertical">
-                    <include layout="@layout/commonview"/>
-                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:padding="@dimen/margin10"
-                        android:clickable="true"
-                        android:id="@+id/update_rel"
                         android:background="@drawable/setlist_selector"
+                        android:clickable="true"
+                        android:orientation="horizontal"
                         >
 
 
                         <ImageView
-
-                            android:id="@+id/updateimg"
-                            android:src="@drawable/guanyu"
-                            android:visibility="gone"
+                            android:id="@+id/img3"
+                            android:visibility="visible"
                             android:layout_width="wrap_content"
-                            android:layout_marginLeft="@dimen/margin5"
-                            android:layout_centerVertical="true"
-                            android:layout_height="wrap_content" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_toRightOf="@id/updateimg"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/margin10"
-                            android:drawableRight="@drawable/jiantouleft"
                             android:layout_centerVertical="true"
-                            android:text="@string/update"
-                            android:textColor="@color/text_color"
-                            android:textSize="@dimen/text16" />
+                            android:layout_marginLeft="@dimen/margin10"
+                            android:src="@drawable/pwd" />
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:orientation="vertical"
+                            android:layout_marginLeft="@dimen/margin10"
+                            android:layout_toRightOf="@id/img3"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:drawableRight="@drawable/next"
+                                android:text="@string/ModifyPassword"
+                                android:paddingTop="@dimen/margin15"
+                                android:paddingRight="@dimen/margin15"
+                                android:paddingBottom="@dimen/margin15"
+                                android:textColor="@color/text_color"
+                                android:textSize="@dimen/text16" />
+
+
+
+                        </LinearLayout>
+
+
+
+
+
+
                     </RelativeLayout>
+
+
 
                 </LinearLayout>
 
 
+                <LinearLayout
+                    android:id="@+id/update_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:id="@+id/update_rel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/setlist_selector"
+                        android:clickable="true"
+                        android:orientation="horizontal"
+                        >
 
 
+                        <ImageView
+                            android:id="@+id/img4"
+                            android:visibility="visible"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/margin10"
+                            android:src="@drawable/update" />
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:orientation="vertical"
+                            android:layout_marginLeft="@dimen/margin10"
+                            android:layout_toRightOf="@id/img4"
+                            android:layout_height="wrap_content">
+
+                            <include layout="@layout/commonview"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:drawableRight="@drawable/next"
+                                android:text="@string/update"
+                                android:paddingTop="@dimen/margin15"
+                                android:paddingRight="@dimen/margin15"
+                                android:paddingBottom="@dimen/margin15"
+                                android:textColor="@color/text_color"
+                                android:textSize="@dimen/text16" />
+
+
+                        </LinearLayout>
+
+
+
+
+
+
+                    </RelativeLayout>
+
+
+
+                </LinearLayout>
 
 
 
             </LinearLayout>
 
 
-
-
-
-
-
-                <TextView
+                <com.example.dufangyu.lecatapp.customview.MyTextView
                     android:id="@+id/exitlogin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -315,9 +402,6 @@
                     android:text="@string/exitLogin"
                     android:textColor="@color/white"
                     android:textSize="@dimen/text16" />
-
-
-
         </LinearLayout>
     </ScrollView>
 

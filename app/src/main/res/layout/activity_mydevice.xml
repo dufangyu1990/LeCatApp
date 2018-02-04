@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:fitsSystemWindows="true"
-    android:background="@color/colorPrimary"
+    android:background="@color/green"
     android:layout_height="match_parent">
 
     <com.example.dufangyu.lecatapp.customview.TitleLinearLayout
@@ -18,9 +18,33 @@
         android:layout_width="match_parent"
         android:background="@color/zhaungchebiaoqian"
         android:orientation="vertical"
+
         android:layout_height="match_parent">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:background="@color/white"
+            android:padding="@dimen/margin5"
+            android:layout_marginTop="@dimen/margin20"
+            android:layout_height="wrap_content">
+
+            <include layout="@layout/shuxianlayout"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:text="当前设备"
+                android:textColor="@color/black"
+                android:layout_marginLeft="@dimen/margin5"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <include layout="@layout/lineview"/>
         <android.support.v4.widget.SwipeRefreshLayout
             android:id="@+id/refresh_layout"
+            android:background="@color/zhaungchebiaoqian"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             >
@@ -28,7 +52,10 @@
             <com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView
                 android:id="@+id/recycler_view"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:background="@color/white"
+                android:layout_height="match_parent" />
+
+
         </android.support.v4.widget.SwipeRefreshLayout>
 
 

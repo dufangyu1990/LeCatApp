@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:background="@color/zhaungchebiaoqian"
+    android:background="@color/green"
     android:layout_width="match_parent"
     android:fitsSystemWindows="true"
     android:layout_height="match_parent">
@@ -12,6 +12,17 @@
         android:layout_height="wrap_content">
 
     </com.example.dufangyu.lecatapp.customview.TitleLinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:background="@color/zhaungchebiaoqian"
+        android:layout_height="match_parent">
+
+
+
 
     <include layout="@layout/view" />
     <LinearLayout
@@ -39,7 +50,7 @@
                 android:orientation="horizontal"
                 android:layout_height="wrap_content">
 
-                <TextView
+                <com.example.dufangyu.lecatapp.customview.MyTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text16"
@@ -94,7 +105,7 @@
                 android:orientation="horizontal"
                 android:layout_height="wrap_content">
 
-                <TextView
+                <com.example.dufangyu.lecatapp.customview.MyTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text16"
@@ -150,7 +161,7 @@
                 android:orientation="horizontal"
                 android:layout_height="wrap_content">
 
-                <TextView
+                <com.example.dufangyu.lecatapp.customview.MyTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text16"
@@ -206,7 +217,7 @@
                 android:orientation="horizontal"
                 android:layout_height="wrap_content">
 
-                <TextView
+                <com.example.dufangyu.lecatapp.customview.MyTextView
                     android:id="@+id/textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -275,6 +286,6 @@
         android:textColor="@color/white" />
 
 
-
+    </LinearLayout>
 
 </LinearLayout>

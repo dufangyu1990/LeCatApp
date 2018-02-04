@@ -279,7 +279,6 @@ public class LoginActivity extends ActivityPresentImpl<LoginView> implements Vie
         phoneStr = phoneCall;
         addressStr = address;
         mView.saveAccountNdPwd(userName,phoneCall,address);
-
         loginBiz.getDeviceList(loginName);
 
     }

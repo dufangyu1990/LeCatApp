@@ -12,7 +12,7 @@ public class RegistBiz extends BaseBiz implements IRegist{
     private RegistListenr listener;
     @Override
     protected void handleServerResult(int intDataType, String strDataType, String strSetSN,
-                                      String strSetSN1, String strAlmComType, String strParam1, String strParam2, String strParam3,String[] strArr) {
+                                      String strSetSN1, String strAlmComType, String strParam1, String strParam2, String strParam3,String strParam4,String[] strArr) {
 
         if(intDataType==1105)
         {

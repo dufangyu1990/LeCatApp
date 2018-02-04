@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item ><bitmap android:src="@drawable/lightbg" android:gravity="center"/></item>
+    <item
+        android:top="4dp"
+        android:left="2dp"
+        >
+        <bitmap android:src="@drawable/greenball" android:gravity="top"/>
+
+
+    </item>
+    <item android:top="146dp"
+        > <bitmap android:src="@drawable/open"
+        android:gravity="center"
+        /> </item>
+</layer-list>

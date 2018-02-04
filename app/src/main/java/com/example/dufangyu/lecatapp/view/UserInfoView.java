@@ -23,7 +23,8 @@ public class UserInfoView extends ViewImpl{
 
         linearLayout_title = findViewById(R.id.titleLayout);
         linearLayout_title.setBackVisisble(true);
-        linearLayout_title.setBackText(mRootView.getContext().getString(R.string.myself));
+        linearLayout_title.setBackText("");
+        linearLayout_title.setTitleSize(18.0f);
         linearLayout_title.setTitleText(mRootView.getContext().getString(R.string.userinfo));
 
         loginnameEd = findViewById(R.id.yonghuming_editor);
