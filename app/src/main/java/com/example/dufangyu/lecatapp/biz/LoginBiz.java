@@ -38,8 +38,15 @@ public class LoginBiz extends BaseBiz implements ILogin{
     }
 
 
+
+
     @Override
-    protected void handleServerResult(int intDataType, String strDataType, String strSetSN, String strSetSN1, String strAlmComType, String strParam1, String strParam2, String strParam3,String strParam4,String[] strArr) {
+    public void detachDataCallBackNull() {
+        TcpConnectUtil.getTcpInstance().setDataCallBack(null);
+    }
+
+    @Override
+    protected void handleServerResult(int intDataType, String strDataType, String strSetType, String strSetSN, String strSetSN1, String strAlmComType, String strHisType, String strPosType, String strFadeType, String strRecogType, String strRecogType1, String strParam1, String strParam2, String strParam3, String strParam4, String strParam5, String strParam6, String strParam7, String strParam8, String[] strArr) {
         if(intDataType==1105)
         {
             if(strDataType.equals("1002"))
@@ -68,11 +75,5 @@ public class LoginBiz extends BaseBiz implements ILogin{
                     listener.getDeviceList();
             }
         }
-    }
-
-
-    @Override
-    public void detachDataCallBackNull() {
-        TcpConnectUtil.getTcpInstance().setDataCallBack(null);
     }
 }

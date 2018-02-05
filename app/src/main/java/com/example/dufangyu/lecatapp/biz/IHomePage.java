@@ -4,7 +4,7 @@ package com.example.dufangyu.lecatapp.biz;
  * Created by dufangyu on 2017/9/5.
  */
 
-public interface IHomePage {
+public interface IHomePage extends BaseInterface{
 
     //获取设备最后数据
     void get4GPushData();

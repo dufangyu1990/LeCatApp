@@ -125,15 +125,15 @@ public  class ActivityPresentImpl<T extends IView>extends Activity implements IP
             switch (stateCode)
             {
                 case TCPNONET:
-                    LogUtil.d("dfy", "无网络");
+//                    LogUtil.d("dfy", "无网络");
                     doNoNetWork();
                     break;
                 case TCPDISLINK:
-                    LogUtil.d("dfy", "与服务器连接断开");
+//                    LogUtil.d("dfy", "与服务器连接断开");
                     doNetDisConnect();
                     break;
                 case TCPLINK:
-                    LogUtil.d("dfy","与服务器连接成功");
+//                    LogUtil.d("dfy","与服务器连接成功");
                     doNetConnect();
                     break;
 

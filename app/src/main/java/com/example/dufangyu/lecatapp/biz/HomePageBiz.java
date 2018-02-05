@@ -10,7 +10,7 @@ import com.example.dufangyu.lecatapp.utils.LogUtil;
  * Created by dufangyu on 2017/9/5.
  */
 
-public class HomePageBiz extends RealBaseBiz implements IHomePage {
+public class HomePageBiz extends BaseBiz implements IHomePage {
     private HomePageListener listener;
 
     private StringBuffer temBuf= new StringBuffer();
@@ -62,10 +62,11 @@ public class HomePageBiz extends RealBaseBiz implements IHomePage {
     }
 
 
+
+
+
     @Override
-    protected void handleServerResult(int intDataType, String strDataType, String strSetSN, String strSetSN1, String strAlmComType, String strParam1, String strParam2, String strParam3,String strParam4,String[] strArr) {
-//        LogUtil.d("dfy","设备Id = "+strArr[2]+",报警状态 = "+strArr[4]+",更新时间 = "+strArr[8]);
-//        LogUtil.d("dfy","温度值 = "+strArr[10]+",湿度值 = "+strArr[11]);
+    protected void handleServerResult(int intDataType, String strDataType, String strSetType, String strSetSN, String strSetSN1, String strAlmComType, String strHisType, String strPosType, String strFadeType, String strRecogType, String strRecogType1, String strParam1, String strParam2, String strParam3, String strParam4, String strParam5, String strParam6, String strParam7, String strParam8, String[] strArr) {
 
 
         if(intDataType==2150)
@@ -109,16 +110,20 @@ public class HomePageBiz extends RealBaseBiz implements IHomePage {
             }
         }else if(intDataType ==2160)
         {
+
+
             //收到巡检指令返回
             if(strDataType.equals("1001"))
             {
-                LogUtil.d("dfy","strSetSN1 = "+strSetSN1);
                 if(listener!=null)
                     listener.getCheck4GData(strParam1,strParam2,strParam3,strParam4);
             }
         }
     }
 
-
+    @Override
+    public void detachDataCallBackNull() {
+        TcpConnectUtil.getTcpInstance().setDataCallBack(null);
+    }
 
 }

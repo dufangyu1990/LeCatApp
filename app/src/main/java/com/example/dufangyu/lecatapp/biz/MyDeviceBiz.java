@@ -31,9 +31,15 @@ public class MyDeviceBiz extends BaseBiz implements IMyDevice{
 
 
 
+
+
     @Override
-    protected void handleServerResult(int intDataType, String strDataType, String strSetSN, String strSetSN1,
-                                      String strAlmComType, String strParam1, String strParam2, String strParam3,String strParam4,String[] strArr) {
+    public void detachDataCallBackNull() {
+        TcpConnectUtil.getTcpInstance().setDataCallBack(null);
+    }
+
+    @Override
+    protected void handleServerResult(int intDataType, String strDataType, String strSetType, String strSetSN, String strSetSN1, String strAlmComType, String strHisType, String strPosType, String strFadeType, String strRecogType, String strRecogType1, String strParam1, String strParam2, String strParam3, String strParam4, String strParam5, String strParam6, String strParam7, String strParam8, String[] strArr) {
         LogUtil.d("dfy","intDataType = "+intDataType);
         LogUtil.d("dfy","我的设备handleServerResult");
         if(intDataType ==1106||intDataType ==1107)
@@ -63,12 +69,5 @@ public class MyDeviceBiz extends BaseBiz implements IMyDevice{
             }
         }
 
-
-    }
-
-
-    @Override
-    public void detachDataCallBackNull() {
-        TcpConnectUtil.getTcpInstance().setDataCallBack(null);
     }
 }

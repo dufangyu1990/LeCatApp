@@ -121,15 +121,15 @@ public class HomePageView1 extends ViewImpl{
     public void reFreshNoData()
     {
         LogUtil.d("dfy","无数据可刷新");
-        wendu_progressView.setProgress(0);
-        shidu_progressView.setProgress(0);
-        wendu_progressView.setText("");
-        wendu_progressView.setTextValue("");
-        shidu_progressView.setText("");
-        shidu_progressView.setTextValue("");
-        updateTimeTv.setVisibility(View.INVISIBLE);
-        dateTv.setText("");
-        timeTv.setText("");
+//        wendu_progressView.setProgress(0);
+//        shidu_progressView.setProgress(0);
+//        wendu_progressView.setText("");
+//        wendu_progressView.setTextValue("");
+//        shidu_progressView.setText("");
+//        shidu_progressView.setTextValue("");
+//        updateTimeTv.setVisibility(View.INVISIBLE);
+//        dateTv.setText("");
+//        timeTv.setText("");
     }
 
 
@@ -137,6 +137,7 @@ public class HomePageView1 extends ViewImpl{
     public void refreshHomeUI(String lockValue,String doorValue,String batteryValue)
     {
 
+        LogUtil.d("dfy","refreshHomeUI");
         if(doorValue.equals("0"))
         {
             doorStateTv.setText("开");

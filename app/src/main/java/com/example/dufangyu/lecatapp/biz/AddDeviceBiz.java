@@ -20,9 +20,27 @@ public class AddDeviceBiz extends BaseBiz implements IAddDevice{
     }
 
 
-    @Override
-    protected void handleServerResult(int intDataType, String strDataType, String strSetSN, String strSetSN1, String strAlmComType, String strParam1, String strParam2, String strParam3,String strParam4,String[] strArr) {
 
+
+    @Override
+    public void addDevice(String loginName,String deviceId, String nickName) {
+        TcpConnectUtil.getTcpInstance().IntiTemp();
+        TcpConnectUtil.getTcpInstance().ClintSendBcCommData(1108, "0002", "1", "", "", "", "", "", "", loginName, DEVICE_TYPE, deviceId, nickName, "", "", "", "", "", "");
+    }
+
+    @Override
+    public void getMyDeviceAgain(String loginName) {
+        TcpConnectUtil.getTcpInstance().IntiTemp();
+        TcpConnectUtil.getTcpInstance().ClintSendBcCommData(1107, "0001", "", "", "", "", "", "", "", "", "", loginName, "", "", "", "", "", "", "");
+    }
+
+    @Override
+    public void detachDataCallBackNull() {
+        TcpConnectUtil.getTcpInstance().setDataCallBack(null);
+    }
+
+    @Override
+    protected void handleServerResult(int intDataType, String strDataType, String strSetType, String strSetSN, String strSetSN1, String strAlmComType, String strHisType, String strPosType, String strFadeType, String strRecogType, String strRecogType1, String strParam1, String strParam2, String strParam3, String strParam4, String strParam5, String strParam6, String strParam7, String strParam8, String[] strArr) {
         if(intDataType==1108)
         {
             if(strDataType.equals("1002"))
@@ -40,24 +58,5 @@ public class AddDeviceBiz extends BaseBiz implements IAddDevice{
                 listener.getDeviceOver();
             }
         }
-
-
-    }
-
-    @Override
-    public void addDevice(String loginName,String deviceId, String nickName) {
-        TcpConnectUtil.getTcpInstance().IntiTemp();
-        TcpConnectUtil.getTcpInstance().ClintSendBcCommData(1108, "0002", "1", "", "", "", "", "", "", loginName, DEVICE_TYPE, deviceId, nickName, "", "", "", "", "", "");
-    }
-
-    @Override
-    public void getMyDeviceAgain(String loginName) {
-        TcpConnectUtil.getTcpInstance().IntiTemp();
-        TcpConnectUtil.getTcpInstance().ClintSendBcCommData(1107, "0001", "", "", "", "", "", "", "", "", "", loginName, "", "", "", "", "", "", "");
-    }
-
-    @Override
-    public void detachDataCallBackNull() {
-        TcpConnectUtil.getTcpInstance().setDataCallBack(null);
     }
 }

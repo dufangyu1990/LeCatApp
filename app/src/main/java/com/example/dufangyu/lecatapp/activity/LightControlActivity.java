@@ -10,6 +10,7 @@ import com.example.dufangyu.lecatapp.biz.ILightBiz;
 import com.example.dufangyu.lecatapp.biz.LightBiz;
 import com.example.dufangyu.lecatapp.biz.LightControlListener;
 import com.example.dufangyu.lecatapp.present.ActivityPresentImpl;
+import com.example.dufangyu.lecatapp.utils.LogUtil;
 import com.example.dufangyu.lecatapp.view.LightControlView;
 
 /**
@@ -35,6 +36,8 @@ public class LightControlActivity extends ActivityPresentImpl<LightControlView> 
         switch (v.getId())
         {
             case R.id.back_img:
+                lightBiz.detachDataCallBackNull();
+                lightBiz = null;
                 finish();
                 break;
             case R.id.blue_light:
@@ -53,7 +56,9 @@ public class LightControlActivity extends ActivityPresentImpl<LightControlView> 
 
     }
 
-    public static void actionStart(Context context,String lightValue)
+
+
+    public static void actionStart(Context context, String lightValue)
     {
         Intent intent = new Intent(context,LightControlActivity.class);
         intent.putExtra("lightValue",lightValue);
@@ -62,6 +67,23 @@ public class LightControlActivity extends ActivityPresentImpl<LightControlView> 
 
     @Override
     public void getDeviceData(String param1, String param2, String param3, String param4) {
+        LogUtil.d("dfy","getDeviceData refreshUI");
         mView.refreshUI(param1);
+    }
+
+    @Override
+    public void pressAgainExit() {
+        if(lightBiz!=null)
+        {
+            lightBiz.detachDataCallBackNull();
+            lightBiz = null;
+        }
+        finish();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
     }
 }

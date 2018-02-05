@@ -102,11 +102,11 @@ public class FragmentActivityPresentImpl<T extends IView>extends FragmentActivit
                     MyToast.showTextToast(getApplicationContext(),getResources().getString(R.string.badnetwork));
                     break;
                 case TCPDISLINK:
-                    LogUtil.d("dfy", "与服务器连接断开");
+//                    LogUtil.d("dfy", "与服务器连接断开");
                     doNetDisConnect();
                     break;
                 case TCPLINK:
-                    LogUtil.d("dfy","与服务器连接成功");
+//                    LogUtil.d("dfy","与服务器连接成功");
                     doNetConnect();
                     break;
 

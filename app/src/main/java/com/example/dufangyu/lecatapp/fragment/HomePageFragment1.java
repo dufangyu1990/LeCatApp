@@ -45,6 +45,20 @@ public class HomePageFragment1 extends FragmentPresentImpl<HomePageView1> implem
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        mLocalBroadcastManager = LocalBroadcastManager.getInstance(context);
+        registMyRecivier();
+        mLocalBroadcastManager.registerReceiver(mReceiver,filter);
+        BroadCastControll.addReceiver(mReceiver);
+
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        LogUtil.d("dfy","HomeFragment onResume");
+        mainBiz = null;
         mainBiz = new HomePageBiz(this);
         int size = DataManager.p_intDeviceCount;
         if(size>0)//有设备的情况下再去获取数据
@@ -56,20 +70,24 @@ public class HomePageFragment1 extends FragmentPresentImpl<HomePageView1> implem
                 @Override
                 public void run() {
                     mHandler.removeCallbacks(this);
-                    LogUtil.d("dfy","enter here");
                     if(!isReceviceData)
                         MyToast.showTextToast(context.getApplicationContext(),"当前设备不在线");
                 }
             },6*1000);
         }
-        context = getActivity();
-        mLocalBroadcastManager = LocalBroadcastManager.getInstance(context);
-        registMyRecivier();
-        mLocalBroadcastManager.registerReceiver(mReceiver,filter);
-        BroadCastControll.addReceiver(mReceiver);
 
 
     }
+
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mHandler.removeCallbacksAndMessages(null);
+//        mainBiz.detachDataCallBackNull();
+//        mainBiz = null;
+    }
+
 
 
     @Override
@@ -93,7 +111,17 @@ public class HomePageFragment1 extends FragmentPresentImpl<HomePageView1> implem
         int size = DataManager.p_intDeviceCount;
         if(size>0)//有设备的情况下再去获取数据
         {
-            mainBiz.get4GPushData();
+//            mainBiz.get4GPushData();
+            mainBiz.check4GData();
+            mHandler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    mHandler.removeCallbacks(this);
+                    LogUtil.d("dfy","enter here");
+                    if(!isReceviceData)
+                        MyToast.showTextToast(context.getApplicationContext(),"当前设备不在线");
+                }
+            },6*1000);
         }
     }
 
@@ -122,7 +150,7 @@ public class HomePageFragment1 extends FragmentPresentImpl<HomePageView1> implem
         mReceiver = new BroadcastReceiver() {
 
             @Override
-            public void onReceive(Context context, Intent intent) {
+            public void onReceive(final Context context, Intent intent) {
 
                 String action = intent.getAction();
                 if (action.equals(Constant.ADD_NEWDEVICE)||action.equals(Constant.DELETE_DEVICE)||action.equals(Constant.REFRESH)) {
@@ -131,7 +159,17 @@ public class HomePageFragment1 extends FragmentPresentImpl<HomePageView1> implem
                     int size = DataManager.p_intDeviceCount;
                     if(size>0)//有设备的情况下再去获取数据
                     {
-                        mainBiz.get4GPushData();
+//                        mainBiz.get4GPushData();
+                        mainBiz.check4GData();
+                        mHandler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                mHandler.removeCallbacks(this);
+                                LogUtil.d("dfy","enter here");
+                                if(!isReceviceData)
+                                    MyToast.showTextToast(context.getApplicationContext(),"当前设备不在线");
+                            }
+                        },6*1000);
                     }else{
                        mView.reFreshNoData();
                     }
@@ -139,6 +177,7 @@ public class HomePageFragment1 extends FragmentPresentImpl<HomePageView1> implem
             }
         };
     }
+
 
 
     @Override
@@ -162,4 +201,9 @@ public class HomePageFragment1 extends FragmentPresentImpl<HomePageView1> implem
     }
 
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        this.context = context;
+    }
 }

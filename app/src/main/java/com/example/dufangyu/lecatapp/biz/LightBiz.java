@@ -30,23 +30,22 @@ public class LightBiz extends BaseBiz implements ILightBiz{
         TcpConnectUtil.getTcpInstance().ClintSendBcCommData (2160, "0002", "101", temBuf.toString(), "", "", "", "", "", "", "", light_type,"" , "", "", "", "", "", "");
     }
 
+
     @Override
-    protected void handleServerResult(int intDataType, String strDataType, String strSetSN, String strSetSN1, String strAlmComType, String strParam1, String strParam2, String strParam3, String strParam4,String[] strArr) {
+    public void detachDataCallBackNull() {
+        TcpConnectUtil.getTcpInstance().setDataCallBack(null);
+    }
+
+    @Override
+    protected void handleServerResult(int intDataType, String strDataType, String strSetType, String strSetSN, String strSetSN1, String strAlmComType, String strHisType, String strPosType, String strFadeType, String strRecogType, String strRecogType1, String strParam1, String strParam2, String strParam3, String strParam4, String strParam5, String strParam6, String strParam7, String strParam8, String[] strArr) {
         if(intDataType ==2160)
         {
             //收到巡检指令返回
             if(strDataType.equals("1001"))
             {
-                LogUtil.d("dfy","strSetSN1 = "+strSetSN1);
                 if(listener!=null)
                     listener.getDeviceData(strParam1,strParam2,strParam3,strParam4);
             }
         }
-
-    }
-
-    @Override
-    public void detachDataCallBackNull() {
-        TcpConnectUtil.getTcpInstance().setDataCallBack(null);
     }
 }

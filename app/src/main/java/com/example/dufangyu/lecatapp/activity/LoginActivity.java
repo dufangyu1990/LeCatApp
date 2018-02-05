@@ -295,9 +295,20 @@ public class LoginActivity extends ActivityPresentImpl<LoginView> implements Vie
         if(isNeedJump)
         {
             MainActivity.actionStart(LoginActivity.this,departCode);
+            loginBiz.detachDataCallBackNull();
+            loginBiz = null;
+            finish();
         }
         else{
             Util.sendLocalBroadcast(this,new Intent(REFRESH));
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //不在onDestroy中做detachDataCallBackNull操作，防止，下个页面设置了
+        //callBack,此时上个页面onDestroy，又重新设为null了
+
     }
 }

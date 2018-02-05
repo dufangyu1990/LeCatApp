@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.example.dufangyu.lecatapp.R;
 import com.example.dufangyu.lecatapp.helper.EventHelper;
+import com.example.dufangyu.lecatapp.utils.LogUtil;
 
 import static com.example.dufangyu.lecatapp.R.id.close_light;
 
@@ -70,6 +71,7 @@ public class LightControlView extends ViewImpl{
 
     public void setLightStateImg(String state)
     {
+        LogUtil.d("dfy","state = "+state);
         Drawable drawable = null;
         setBtnEnable();
         if(state.equals("3"))

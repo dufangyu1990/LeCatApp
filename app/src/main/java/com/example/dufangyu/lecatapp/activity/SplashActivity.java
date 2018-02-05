@@ -57,6 +57,9 @@ public class SplashActivity extends ActivityPresentImpl<SplashView> implements V
         }else{
             LoginActivity.actionStart(SplashActivity.this,isServetConnect,true);
         }
+
+        splashBiz.detachDataCallBackNull();
+        splashBiz = null;
         finish();
     }
 
@@ -200,7 +203,6 @@ public class SplashActivity extends ActivityPresentImpl<SplashView> implements V
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        splashBiz.detachDataCallBackNull();
-        splashBiz = null;
+
     }
 }

@@ -72,6 +72,10 @@ public class TcpConnectUtil {
         mDataCallBack = callback;
     }
 
+    public DataCallBack getDataCallBack()
+    {
+        return mDataCallBack;
+    }
 
 
     //开启一系列线程
@@ -466,14 +470,22 @@ public class TcpConnectUtil {
             if (p_intTempCount == 0) {
 //                LogUtil.d("dfy","mDataCallBack = "+mDataCallBack);
                 if(mDataCallBack!=null)
-                    mDataCallBack.onReceiveResult(intDataType,strDataType,strSetSN,strSetSN1,strAlmComType,strParam1,strParam2,strParam3,strParam4,strArr);
+                    mDataCallBack.onReceiveResult(intDataType,  strDataType,  strSetType,  strSetSN,
+                         strSetSN1,  strAlmComType,  strHisType,  strPosType,
+                         strFadeType,  strRecogType,  strRecogType1,  strParam1,
+                         strParam2,  strParam3,  strParam4,  strParam5,  strParam6,
+                         strParam7,  strParam8,strArr);
             } else {
                 if (p_intTempProCount >= p_intTempCount)
                 {
                     p_intTempProCount=0;
 //                    LogUtil.d("dfy","mDataCallBack = "+mDataCallBack);
                     if(mDataCallBack!=null)
-                        mDataCallBack.onReceiveResult(intDataType,strDataType,strSetSN,strSetSN1,strAlmComType,strParam1,strParam2,strParam3,strParam4,strArr);
+                        mDataCallBack.onReceiveResult(intDataType,  strDataType,  strSetType,  strSetSN,
+                                strSetSN1,  strAlmComType,  strHisType,  strPosType,
+                                strFadeType,  strRecogType,  strRecogType1,  strParam1,
+                                strParam2,  strParam3,  strParam4,  strParam5,  strParam6,
+                                strParam7,  strParam8,strArr);
                 }
             }
         }else if (intDataType == 1107) {
@@ -508,26 +520,44 @@ public class TcpConnectUtil {
                 p_intTempProCount=0;
 //                LogUtil.d("dfy","mDataCallBack = "+mDataCallBack);
                 if(mDataCallBack!=null)
-                    mDataCallBack.onReceiveResult(intDataType,strDataType,strSetSN,strSetSN1,strAlmComType,strParam1,strParam2,strParam3,strParam4,strArr);
+                    mDataCallBack.onReceiveResult(intDataType,  strDataType,  strSetType,  strSetSN,
+                            strSetSN1,  strAlmComType,  strHisType,  strPosType,
+                            strFadeType,  strRecogType,  strRecogType1,  strParam1,
+                            strParam2,  strParam3,  strParam4,  strParam5,  strParam6,
+                            strParam7,  strParam8,strArr);
 //                TempJudge(strDataType,strParam2);
             }
         }else{
+            LogUtil.d("dfy","mDataCallBack = "+mDataCallBack);
+            LogUtil.d("dfy","intDataType = "+intDataType);
+            if(mDataCallBack!=null)
+                mDataCallBack.onReceiveResult(intDataType,  strDataType,  strSetType,  strSetSN,
+                        strSetSN1,  strAlmComType,  strHisType,  strPosType,
+                        strFadeType,  strRecogType,  strRecogType1,  strParam1,
+                        strParam2,  strParam3,  strParam4,  strParam5,  strParam6,
+                        strParam7,  strParam8,strArr);
 
-//            LogUtil.d("dfy","intDataType = "+intDataType);
 
-            if(intDataType ==2150)//实时数据单独处理
-            {
-//                LogUtil.d("dfy","mRealDatCallBack = "+mRealDatCallBack);
-                if(mRealDatCallBack!=null)
-                {
-                    mRealDatCallBack.onReceiveResult(intDataType,strDataType,strSetSN,strSetSN1,strAlmComType,strParam1,strParam2,strParam3,strParam4,strArr);
-                }
-            }else{
-//                LogUtil.d("dfy","mDataCallBack = "+mDataCallBack);
-                //不论什么数据类型，都进入此方法，不用每个都列出来
-                if(mDataCallBack!=null)
-                    mDataCallBack.onReceiveResult(intDataType,strDataType,strSetSN,strSetSN1,strAlmComType,strParam1,strParam2,strParam3,strParam4,strArr);
-            }
+
+//            if(intDataType ==2160)//实时数据单独处理
+//            {
+//                if(mRealDatCallBack!=null)
+//                {
+//                    mRealDatCallBack.onReceiveResult(intDataType,  strDataType,  strSetType,  strSetSN,
+//                            strSetSN1,  strAlmComType,  strHisType,  strPosType,
+//                            strFadeType,  strRecogType,  strRecogType1,  strParam1,
+//                            strParam2,  strParam3,  strParam4,  strParam5,  strParam6,
+//                            strParam7,  strParam8,strArr);
+//                }
+//            }else{
+//                //不论什么数据类型，都进入此方法，不用每个都列出来
+//                if(mDataCallBack!=null)
+//                    mDataCallBack.onReceiveResult(intDataType,  strDataType,  strSetType,  strSetSN,
+//                            strSetSN1,  strAlmComType,  strHisType,  strPosType,
+//                            strFadeType,  strRecogType,  strRecogType1,  strParam1,
+//                            strParam2,  strParam3,  strParam4,  strParam5,  strParam6,
+//                            strParam7,  strParam8,strArr);
+//            }
 
         }
 
