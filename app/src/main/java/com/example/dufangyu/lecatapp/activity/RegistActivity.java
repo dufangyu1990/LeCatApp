@@ -45,7 +45,7 @@ public class RegistActivity extends ActivityPresentImpl<RegistView> implements V
         switch (v.getId())
         {
             case R.id.back_img:
-                finish();
+                releaseAll();
                 break;
             case R.id.submit_btn:
                 registUser();
@@ -159,7 +159,23 @@ public class RegistActivity extends ActivityPresentImpl<RegistView> implements V
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        registBiz.detachDataCallBackNull();
-        registBiz = null;
     }
+
+    @Override
+    public void pressAgainExit() {
+        releaseAll();
+    }
+
+    private void releaseAll()
+    {
+        if(registBiz!= null)
+        {
+            registBiz.detachDataCallBackNull();
+            registBiz = null;
+        }
+        finish();
+
+    }
+
+
 }

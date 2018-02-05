@@ -22,11 +22,12 @@ public class AddDeviceView extends ViewImpl{
     private EditText deviceIdEd;
     private TitleLinearLayout linearLayout_title;
 
+    private TextView backTv;
     @Override
     public void initView() {
 
 
-
+        backTv = findViewById(R.id.back_img);
         linearLayout_title = findViewById(R.id.titleLayout);
         linearLayout_title.setBackVisisble(true);
         linearLayout_title.setBackText(mRootView.getContext().getString(R.string.myself));
@@ -45,7 +46,7 @@ public class AddDeviceView extends ViewImpl{
 
     @Override
     public void bindEvent() {
-        EventHelper.click(mPresent,addDeviceBtn);
+        EventHelper.click(mPresent,addDeviceBtn,backTv);
     }
 
     public boolean checkValid()

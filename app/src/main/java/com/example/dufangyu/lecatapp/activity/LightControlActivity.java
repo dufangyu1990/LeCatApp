@@ -36,8 +36,11 @@ public class LightControlActivity extends ActivityPresentImpl<LightControlView> 
         switch (v.getId())
         {
             case R.id.back_img:
-                lightBiz.detachDataCallBackNull();
-                lightBiz = null;
+                if(lightBiz!=null)
+                {
+                    lightBiz.detachDataCallBackNull();
+                    lightBiz = null;
+                }
                 finish();
                 break;
             case R.id.blue_light:

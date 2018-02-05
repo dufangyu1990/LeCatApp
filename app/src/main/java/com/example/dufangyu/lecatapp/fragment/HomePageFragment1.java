@@ -84,8 +84,6 @@ public class HomePageFragment1 extends FragmentPresentImpl<HomePageView1> implem
     public void onPause() {
         super.onPause();
         mHandler.removeCallbacksAndMessages(null);
-//        mainBiz.detachDataCallBackNull();
-//        mainBiz = null;
     }
 
 

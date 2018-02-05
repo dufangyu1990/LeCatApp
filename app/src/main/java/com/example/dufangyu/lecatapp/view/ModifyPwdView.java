@@ -25,7 +25,7 @@ public class ModifyPwdView extends ViewImpl{
     @Override
     public void initView() {
 
-
+        backtext = findViewById(R.id.back_img);
         linearLayout_title = findViewById(R.id.titleLayout);
         linearLayout_title.setBackVisisble(true);
         linearLayout_title.setBackText("");
@@ -47,7 +47,7 @@ public class ModifyPwdView extends ViewImpl{
 
     @Override
     public void bindEvent() {
-        EventHelper.click(mPresent,submit_btn);
+        EventHelper.click(mPresent,submit_btn,backtext);
 
     }
 

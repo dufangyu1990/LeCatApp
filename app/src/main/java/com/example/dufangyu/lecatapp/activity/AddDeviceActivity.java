@@ -45,6 +45,14 @@ public class AddDeviceActivity extends ActivityPresentImpl<AddDeviceView> implem
             case R.id.add_device:
                 addDevice();
                 break;
+            case R.id.back_img:
+                if(addDeviceBiz!=null)
+                {
+                    addDeviceBiz.detachDataCallBackNull();
+                    addDeviceBiz = null;
+                }
+                finish();
+                break;
         }
     }
 
@@ -99,9 +107,20 @@ public class AddDeviceActivity extends ActivityPresentImpl<AddDeviceView> implem
         addsuccess = true;
         CustomLoadDialog.dismisDialog();
         MyToast.showTextToast(getApplicationContext(),"设备添加成功");
+        addDeviceBiz.detachDataCallBackNull();
+        addDeviceBiz = null;
         finish();
     }
 
+    @Override
+    public void pressAgainExit() {
+        if(addDeviceBiz!=null)
+        {
+            addDeviceBiz.detachDataCallBackNull();
+            addDeviceBiz = null;
+        }
+        finish();
+    }
 
     @Override
     protected void onDestroy() {
@@ -110,8 +129,7 @@ public class AddDeviceActivity extends ActivityPresentImpl<AddDeviceView> implem
         {
             sendMyBroacast();
         }
-        addDeviceBiz.detachDataCallBackNull();
-        addDeviceBiz = null;
+
     }
 
 }

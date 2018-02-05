@@ -1,6 +1,5 @@
 package com.example.dufangyu.lecatapp.customview;
 
-import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -27,12 +26,12 @@ public class TitleLinearLayout extends LinearLayout{
         View mView = LayoutInflater.from(context).inflate(R.layout.title_bar,this);
         title_textTv = (TextView) mView.findViewById(R.id.title_text);
         backTv = (TextView)mView.findViewById(R.id.back_img);
-        backTv.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ((Activity) getContext()).finish();
-            }
-        });
+//        backTv.setOnClickListener(new OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                ((Activity) getContext()).finish();
+//            }
+//        });
 
     }
 

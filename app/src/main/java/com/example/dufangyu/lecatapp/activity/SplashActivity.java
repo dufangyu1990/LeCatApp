@@ -200,9 +200,5 @@ public class SplashActivity extends ActivityPresentImpl<SplashView> implements V
     }
 
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
 
-    }
 }

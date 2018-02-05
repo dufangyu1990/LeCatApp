@@ -7,11 +7,13 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.dufangyu.lecatapp.R;
 import com.example.dufangyu.lecatapp.adapter.DeviceAdapter;
 import com.example.dufangyu.lecatapp.bean.DeviceBean;
 import com.example.dufangyu.lecatapp.customview.TitleLinearLayout;
+import com.example.dufangyu.lecatapp.helper.EventHelper;
 import com.example.dufangyu.lecatapp.manager.DataManager;
 import com.yanzhenjie.recyclerview.swipe.SwipeItemClickListener;
 import com.yanzhenjie.recyclerview.swipe.SwipeMenu;
@@ -36,11 +38,12 @@ public class MyDeviceView extends ViewImpl implements SwipeItemClickListener {
     private List<DeviceBean> datalist = new ArrayList<>();
     private int deletePos;
     private TitleLinearLayout linearLayout_title;
+    private TextView backTv;
     @Override
     public void initView() {
 
 
-
+        backTv = findViewById(R.id.back_img);
         linearLayout_title = findViewById(R.id.titleLayout);
         linearLayout_title.setBackVisisble(true);
          linearLayout_title.setBackText("");
@@ -75,6 +78,7 @@ public class MyDeviceView extends ViewImpl implements SwipeItemClickListener {
 
     @Override
     public void bindEvent() {
+        EventHelper.click(mPresent,backTv);
     }
 
 

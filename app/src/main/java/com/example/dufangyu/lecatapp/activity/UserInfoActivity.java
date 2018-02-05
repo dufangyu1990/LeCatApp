@@ -53,6 +53,9 @@ public class UserInfoActivity extends ActivityPresentImpl<UserInfoView> implemen
             case R.id.queren_btn:
                 submitToServier();
                 break;
+            case R.id.back_img:
+                releaseAll();
+                break;
         }
     }
 
@@ -98,9 +101,21 @@ public class UserInfoActivity extends ActivityPresentImpl<UserInfoView> implemen
 
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        userInfoBiz.detachDataCallBackNull();
-        userInfoBiz = null;
+    public void pressAgainExit() {
+        releaseAll();
     }
+
+
+    private void releaseAll()
+    {
+        if(userInfoBiz!=null)
+        {
+            userInfoBiz.detachDataCallBackNull();
+            userInfoBiz = null;
+        }
+        finish();
+
+
+    }
+
 }

@@ -17,10 +17,11 @@ public class UserInfoView extends ViewImpl{
 
     private TextView qrTv;
 
+    private TextView backTv;
     private EditText loginnameEd,nameEd,phoneEd,addressEd;
     @Override
     public void initView() {
-
+        backTv = findViewById(R.id.back_img);
         linearLayout_title = findViewById(R.id.titleLayout);
         linearLayout_title.setBackVisisble(true);
         linearLayout_title.setBackText("");
@@ -68,7 +69,7 @@ public class UserInfoView extends ViewImpl{
     @Override
     public void bindEvent() {
 
-        EventHelper.click(mPresent,qrTv);
+        EventHelper.click(mPresent,qrTv,backTv);
     }
 
 

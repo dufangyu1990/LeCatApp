@@ -19,12 +19,12 @@ public class UpdateView extends ViewImpl{
 
     private TextView updateBtn;
     private EditText versionCode_ed;
+    private TextView backTv;
     private TitleLinearLayout linearLayout_title;
     @Override
     public void initView() {
 
-
-
+        backTv = findViewById(R.id.back_img);
         linearLayout_title = findViewById(R.id.titleLayout);
         linearLayout_title.setBackVisisble(true);
         linearLayout_title.setBackText("");
@@ -42,7 +42,7 @@ public class UpdateView extends ViewImpl{
 
     @Override
     public void bindEvent() {
-        EventHelper.click(mPresent,updateBtn);
+        EventHelper.click(mPresent,updateBtn,backTv);
     }
 
     public boolean checkValid()

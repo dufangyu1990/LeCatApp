@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.LocalBroadcastManager;
+import android.view.View;
 
 import com.example.dufangyu.lecatapp.R;
 import com.example.dufangyu.lecatapp.biz.IMyDevice;
@@ -20,7 +21,7 @@ import static com.example.dufangyu.lecatapp.utils.Constant.DELETE_DEVICE;
  * Created by dufangyu on 2017/9/14.
  */
 
-public class MyDeviceActivity extends ActivityPresentImpl<MyDeviceView> implements MyDeviceListener{
+public class MyDeviceActivity extends ActivityPresentImpl<MyDeviceView> implements MyDeviceListener,View.OnClickListener{
 
 
     private IMyDevice myDeviceBiz;
@@ -98,13 +99,38 @@ public class MyDeviceActivity extends ActivityPresentImpl<MyDeviceView> implemen
         super.onDestroy();
         if(deleteSuccess)
             sendMyBroacast();
-        myDeviceBiz.detachDataCallBackNull();
-        myDeviceBiz = null;
+
     }
 
     private void sendMyBroacast()
     {
         Intent intent =new Intent(DELETE_DEVICE);
         mLocalBroadcastManager.sendBroadcast(intent);
+    }
+
+
+    @Override
+    public void pressAgainExit() {
+        if(myDeviceBiz!=null)
+        {
+            myDeviceBiz.detachDataCallBackNull();
+            myDeviceBiz=  null;
+        }
+        finish();
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId())
+        {
+            case R.id.back_img:
+                if(myDeviceBiz!=null)
+                {
+                    myDeviceBiz.detachDataCallBackNull();
+                    myDeviceBiz=  null;
+                }
+                finish();
+                break;
+        }
     }
 }

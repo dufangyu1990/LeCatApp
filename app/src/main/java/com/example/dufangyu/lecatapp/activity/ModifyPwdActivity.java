@@ -53,10 +53,26 @@ public class ModifyPwdActivity extends ActivityPresentImpl<ModifyPwdView> implem
             case R.id.submit_btn:
                 modifyPwdAction();
                 break;
+            case R.id.back_img:
+                if(modifyPwdBiz!=null)
+                {
+                    modifyPwdBiz.detachDataCallBackNull();
+                    modifyPwdBiz = null;
+                }
+                finish();
+                break;
         }
     }
 
-
+    @Override
+    public void pressAgainExit() {
+        if(modifyPwdBiz!=null)
+        {
+            modifyPwdBiz.detachDataCallBackNull();
+            modifyPwdBiz=  null;
+        }
+        finish();
+    }
 
     private void modifyPwdAction()
     {
@@ -94,10 +110,8 @@ public class ModifyPwdActivity extends ActivityPresentImpl<ModifyPwdView> implem
 
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        modifyPwdBiz.detachDataCallBackNull();
-        modifyPwdBiz = null;
-    }
+
+
+
+
 }

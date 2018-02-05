@@ -45,6 +45,9 @@ public class UpdateActivity extends ActivityPresentImpl<UpdateView> implements V
 
                 updateApp();
                 break;
+            case R.id.back_img:
+                releaseAll();
+                break;
         }
     }
 
@@ -82,9 +85,19 @@ public class UpdateActivity extends ActivityPresentImpl<UpdateView> implements V
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        updateBiz.detachDataCallBackNull();
-        updateBiz= null;
+    public void pressAgainExit() {
+        releaseAll();
     }
+
+    private void releaseAll()
+    {
+        if(updateBiz!=null)
+        {
+            updateBiz.detachDataCallBackNull();
+            updateBiz= null;
+        }
+        finish();
+
+    }
+
 }

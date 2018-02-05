@@ -37,6 +37,11 @@ public class ForgetPwdActivity extends ActivityPresentImpl<ForgetPwdView> implem
         switch (v.getId())
         {
             case R.id.back_img:
+                if(forgetPwdBiz!=null)
+                {
+                    forgetPwdBiz.detachDataCallBackNull();
+                    forgetPwdBiz = null;
+                }
                 finish();
                 break;
             case R.id.forget_verfycodeTv:
@@ -87,9 +92,18 @@ public class ForgetPwdActivity extends ActivityPresentImpl<ForgetPwdView> implem
 
 
     @Override
+    public void pressAgainExit() {
+        if(forgetPwdBiz!=null)
+        {
+            forgetPwdBiz.detachDataCallBackNull();
+            forgetPwdBiz = null;
+        }
+        finish();
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
-        forgetPwdBiz.detachDataCallBackNull();
-        forgetPwdBiz = null;
+
     }
 }
