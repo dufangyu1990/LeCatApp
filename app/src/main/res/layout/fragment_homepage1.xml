@@ -63,12 +63,11 @@
                             android:layout_height="wrap_content">
 
                             <TextView
-                                android:layout_width="match_parent"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="门感电量"
+                                android:layout_marginLeft="@dimen/margin10"
                                 android:minWidth="@dimen/margin40"
-                                android:gravity="right"
-                                android:layout_weight="1"
                                 android:textColor="@color/black"
                                 />
 
@@ -82,12 +81,11 @@
                                 />
 
                             <TextView
-                                android:layout_width="match_parent"
+                                android:layout_weight="1"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="100%"
                                 android:id="@+id/doorBatteryTv"
-                                android:gravity="left"
-                                android:layout_weight="1"
                                 />
 
 
@@ -152,12 +150,11 @@
                             android:layout_height="wrap_content">
 
                             <TextView
-                                android:layout_width="match_parent"
+                                android:layout_marginLeft="@dimen/margin10"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="锁  电  量"
                                 android:minWidth="@dimen/margin40"
-                                android:gravity="right"
-                                android:layout_weight="1"
                                 android:textColor="@color/black"
                                 />
 
@@ -171,12 +168,11 @@
                                 />
 
                             <TextView
-                                android:layout_width="match_parent"
+                                android:layout_weight="1"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="100%"
                                 android:id="@+id/lockBatteryTv"
-                                android:gravity="left"
-                                android:layout_weight="1"
                                 />
 
 
@@ -241,10 +237,9 @@
                             android:orientation="horizontal">
 
                             <TextView
-                                android:layout_width="match_parent"
+                                android:layout_marginLeft="@dimen/margin10"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:gravity="right"
                                 android:minWidth="@dimen/margin40"
                                 android:text="猫眼电量"
                                 android:textColor="@color/black" />
@@ -258,11 +253,10 @@
                                 android:src="@drawable/battery" />
 
                             <TextView
-                                android:layout_width="match_parent"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:gravity="left"
                                 android:id="@+id/catBatteryTv"
+                                android:layout_weight="1"
                                 android:text="100%" />
 
 

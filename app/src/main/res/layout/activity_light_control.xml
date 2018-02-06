@@ -115,7 +115,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="绿色"
+                        android:text="无"
                         android:id="@+id/showcolortv"
                         android:gravity="center"
                         android:layout_weight="1.5"
