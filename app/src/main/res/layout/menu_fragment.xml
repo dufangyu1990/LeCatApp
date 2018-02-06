@@ -11,19 +11,19 @@
         android:background="@color/white2"
         android:orientation="horizontal">
 
-        <com.example.dufangyu.lecatapp.customview.MyCustomRadioButton
+        <RadioButton
             android:id="@+id/tab_homepage"
             style="@style/menu_style"
             android:drawableTop="@drawable/tab_homepage_selector"
             android:text="@string/homepage" />
 
-        <com.example.dufangyu.lecatapp.customview.MyCustomRadioButton
+        <RadioButton
             android:id="@+id/tab_settingpage"
             style="@style/menu_style"
             android:drawableTop="@drawable/tab_setting_selector"
             android:text="@string/setting" />
 
-        <com.example.dufangyu.lecatapp.customview.MyCustomRadioButton
+        <RadioButton
             android:id="@+id/tab_myself"
             style="@style/menu_style"
             android:drawableTop="@drawable/tab_myself_selector"

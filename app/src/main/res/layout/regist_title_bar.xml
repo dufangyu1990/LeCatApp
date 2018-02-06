@@ -34,7 +34,7 @@
             android:contentDescription="@null"
             android:layout_alignParentRight="true"
             android:padding="@dimen/margin15"
-            android:src="@drawable/bumen"
+            android:src="@drawable/next"
             android:visibility="invisible" />
 
 

@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.Nullable;
 import android.support.v4.content.LocalBroadcastManager;
 import android.view.View;
 
@@ -42,16 +41,14 @@ public class HomePageFragment1 extends FragmentPresentImpl<HomePageView1> implem
     private boolean isReceviceData = false;//是否收到巡检指令的回应数据
 
     private String lightStateValue;
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
 
+    @Override
+    public void afterViewCreate(Bundle savedInstanceState) {
+        super.afterViewCreate(savedInstanceState);
         mLocalBroadcastManager = LocalBroadcastManager.getInstance(context);
         registMyRecivier();
         mLocalBroadcastManager.registerReceiver(mReceiver,filter);
         BroadCastControll.addReceiver(mReceiver);
-
-
     }
 
     @Override

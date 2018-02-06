@@ -27,7 +27,7 @@
             android:id="@+id/appText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableTop="@drawable/icon"
+            android:drawableTop="@mipmap/logo"
             android:layout_centerInParent="true"
             android:drawablePadding="@dimen/margin10"
             android:gravity="center"

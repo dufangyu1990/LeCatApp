@@ -22,7 +22,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/beijing3"
+        android:src="@mipmap/ic_launcher"
         android:scaleType="fitXY"
         />
 
@@ -41,7 +41,7 @@
         android:id="@+id/menkongimg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/menkong1"
+        android:src="@mipmap/ic_launcher"
         android:layout_marginTop="@dimen/margin20"
         android:layout_below="@id/texttv"
         android:layout_centerHorizontal="true"

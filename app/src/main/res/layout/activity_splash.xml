@@ -4,7 +4,6 @@
     xmlns:melove="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:fitsSystemWindows="true"
-    android:background="@drawable/beijing1"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 

@@ -36,7 +36,7 @@
 
 
 
-        <com.example.dufangyu.lecatapp.customview.MyTextView
+        <TextView
             android:id="@+id/regist_logo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -86,7 +86,7 @@
                     android:paddingBottom="@dimen/margin17"
                     android:paddingTop="@dimen/margin17">
 
-                    <com.example.dufangyu.lecatapp.customview.MyTextView
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:minWidth="@dimen/margin60"
@@ -132,7 +132,7 @@
                     android:paddingBottom="@dimen/margin17"
                     android:paddingTop="@dimen/margin17">
 
-                    <com.example.dufangyu.lecatapp.customview.MyTextView
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:minWidth="@dimen/margin60"

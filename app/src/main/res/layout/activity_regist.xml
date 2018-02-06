@@ -21,7 +21,7 @@
             android:orientation="vertical">
 
 
-            <com.example.dufangyu.lecatapp.customview.MyTextView
+            <TextView
                 android:id="@+id/regist_logo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -61,7 +61,7 @@
                             android:paddingBottom="@dimen/margin17"
                             android:paddingTop="@dimen/margin17">
 
-                            <com.example.dufangyu.lecatapp.customview.MyTextView
+                            <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:minWidth="@dimen/margin60"
@@ -109,7 +109,7 @@
                             android:paddingBottom="@dimen/margin17"
                             android:paddingTop="@dimen/margin17">
 
-                            <com.example.dufangyu.lecatapp.customview.MyTextView
+                            <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:minWidth="@dimen/margin60"
@@ -157,7 +157,7 @@
                             android:paddingBottom="@dimen/margin12"
                             android:paddingTop="@dimen/margin12">
 
-                            <com.example.dufangyu.lecatapp.customview.MyTextView
+                            <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:minWidth="@dimen/margin60"
@@ -184,7 +184,7 @@
                                 android:textSize="@dimen/text16" />
 
 
-                            <com.example.dufangyu.lecatapp.customview.MyTextView
+                            <TextView
                                 android:id="@+id/verfycodeTv"
                                 android:layout_gravity="center"
                                 android:layout_width="wrap_content"
@@ -214,7 +214,7 @@
             </LinearLayout>
 
 
-            <com.example.dufangyu.lecatapp.customview.MyTextView
+            <TextView
                 android:id="@+id/submit_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

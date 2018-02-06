@@ -387,7 +387,7 @@
             </LinearLayout>
 
 
-                <com.example.dufangyu.lecatapp.customview.MyTextView
+                <TextView
                     android:id="@+id/exitlogin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

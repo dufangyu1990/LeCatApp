@@ -32,12 +32,12 @@
             android:contentDescription="@null"
             android:layout_alignParentRight="true"
             android:padding="@dimen/margin15"
-            android:src="@drawable/bumen"
+            android:src="@drawable/next"
             android:visibility="invisible" />
 
 
 
-        <com.example.dufangyu.lecatapp.customview.MyTextView
+        <TextView
             android:id="@+id/title_text"
             style="@style/title_text_style"
             android:layout_width="wrap_content"

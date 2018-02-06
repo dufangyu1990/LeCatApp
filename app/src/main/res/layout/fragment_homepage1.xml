@@ -65,7 +65,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="门磁电量"
+                                android:text="门感电量"
                                 android:minWidth="@dimen/margin40"
                                 android:gravity="right"
                                 android:layout_weight="1"
@@ -379,7 +379,7 @@
 
                     </LinearLayout>
 
-                    <com.example.dufangyu.lecatapp.customview.MyTextView
+                    <TextView
                         android:id="@+id/textView2"
                         android:textColor="@color/black"
                         android:paddingBottom="@dimen/margin10"
@@ -395,7 +395,7 @@
                         android:background="@drawable/funtion_btn"
                         android:text="室内监控" />
 
-                    <com.example.dufangyu.lecatapp.customview.MyTextView
+                    <TextView
                         android:paddingBottom="@dimen/margin10"
                         android:textColor="@color/black"
                         android:paddingLeft="@dimen/margin10"

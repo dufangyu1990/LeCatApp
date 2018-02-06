@@ -44,9 +44,6 @@
         <activity android:name=".activity.MainActivity"
             android:screenOrientation="portrait"
             />
-        <activity android:name=".activity.SystemSetActivity"
-            android:screenOrientation="portrait"
-            />
         <activity android:name=".activity.ModifyPwdActivity"
             android:screenOrientation="portrait"
             />

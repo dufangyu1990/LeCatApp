@@ -50,7 +50,7 @@
                 android:orientation="horizontal"
                 android:layout_height="wrap_content">
 
-                <com.example.dufangyu.lecatapp.customview.MyTextView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text16"
@@ -105,7 +105,7 @@
                 android:orientation="horizontal"
                 android:layout_height="wrap_content">
 
-                <com.example.dufangyu.lecatapp.customview.MyTextView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text16"
@@ -161,7 +161,7 @@
                 android:orientation="horizontal"
                 android:layout_height="wrap_content">
 
-                <com.example.dufangyu.lecatapp.customview.MyTextView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text16"
@@ -217,7 +217,7 @@
                 android:orientation="horizontal"
                 android:layout_height="wrap_content">
 
-                <com.example.dufangyu.lecatapp.customview.MyTextView
+                <TextView
                     android:id="@+id/textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

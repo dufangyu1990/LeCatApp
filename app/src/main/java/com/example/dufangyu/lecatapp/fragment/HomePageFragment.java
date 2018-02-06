@@ -53,7 +53,6 @@ public class HomePageFragment extends FragmentPresentImpl<HomePageView> implemen
         mLocalBroadcastManager.registerReceiver(mReceiver,filter);
         BroadCastControll.addReceiver(mReceiver);
 
-
     }
 
 
