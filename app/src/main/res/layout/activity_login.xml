@@ -364,7 +364,7 @@
         android:layout_height="match_parent"
         android:id="@+id/overImg"
         android:src="@drawable/welcome"
-        android:visibility="invisible"
+        android:visibility="gone"
         android:adjustViewBounds="true"
         tools:ignore="ContentDescription"
         android:scaleType="fitXY"

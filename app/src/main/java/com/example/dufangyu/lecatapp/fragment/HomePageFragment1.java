@@ -42,6 +42,7 @@ public class HomePageFragment1 extends FragmentPresentImpl<HomePageView1> implem
 
     private String lightStateValue;
 
+
     @Override
     public void afterViewCreate(Bundle savedInstanceState) {
         super.afterViewCreate(savedInstanceState);
@@ -179,18 +180,11 @@ public class HomePageFragment1 extends FragmentPresentImpl<HomePageView1> implem
     public void onClick(View v) {
         switch (v.getId())
         {
-            case R.id.menkongimg:
-
+            case R.id.doorlightlayout:
+                mView.changeImg();
                 break;
             case R.id.lightcontrolTv:
-                int size = DataManager.p_intDeviceCount;
-                if(size>0)//有设备的情况下再去获取数据
-                {
-                    LightControlActivity.actionStart(context,lightStateValue);
-                }else{
-                    MyToast.showTextToast(context.getApplicationContext(),"当前无在线设备");
-                }
-
+                LightControlActivity.actionStart(context,lightStateValue);
                 break;
         }
     }
@@ -200,5 +194,11 @@ public class HomePageFragment1 extends FragmentPresentImpl<HomePageView1> implem
     public void onAttach(Context context) {
         super.onAttach(context);
         this.context = context;
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        LogUtil.d("dfy","homeFragment hidden = "+hidden);
     }
 }
