@@ -4,7 +4,6 @@ package com.example.dufangyu.lecatapp.biz;
 import com.example.dufangyu.lecatapp.bean.RealData;
 import com.example.dufangyu.lecatapp.manager.DataManager;
 import com.example.dufangyu.lecatapp.socketUtils.TcpConnectUtil;
-import com.example.dufangyu.lecatapp.utils.LogUtil;
 
 /**
  * Created by dufangyu on 2017/9/5.
@@ -27,7 +26,7 @@ public class HomePageBiz extends BaseBiz implements IHomePage {
         {
             temBuf.append(DataManager.p_strDeviceList[i][1]).append("&");
         }
-        LogUtil.d("dfy","temBuf = "+temBuf.toString());
+//        LogUtil.d("dfy","temBuf = "+temBuf.toString());
         TcpConnectUtil.getTcpInstance().IntiTemp();
         TcpConnectUtil.getTcpInstance().ClintSendBcCommData(2150, "0002", "1", temBuf.toString(), "", "", "", "", "", "", "", "","" , "", "", "", "", "", "");
 
@@ -56,7 +55,7 @@ public class HomePageBiz extends BaseBiz implements IHomePage {
         {
             temBuf.append(DataManager.p_strDeviceList[i][1]).append("&");
         }
-        LogUtil.d("dfy","temBuf = "+temBuf.toString());
+//        LogUtil.d("dfy","temBuf = "+temBuf.toString());
         TcpConnectUtil.getTcpInstance().IntiTemp();
         TcpConnectUtil.getTcpInstance().ClintSendBcCommData (2160, "0001", "101", temBuf.toString(), "", "", "", "", "", "", "", "","" , "", "", "", "", "", "");
     }

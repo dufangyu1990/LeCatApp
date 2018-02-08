@@ -55,9 +55,8 @@ public class HomePageFragment1 extends FragmentPresentImpl<HomePageView1> implem
     @Override
     public void onResume() {
         super.onResume();
-        LogUtil.d("dfy","HomeFragment onResume");
-        mainBiz = null;
-        mainBiz = new HomePageBiz(this);
+        if(mainBiz==null)
+            mainBiz = new HomePageBiz(this);
         int size = DataManager.p_intDeviceCount;
         if(size>0)//有设备的情况下再去获取数据
         {
@@ -81,6 +80,7 @@ public class HomePageFragment1 extends FragmentPresentImpl<HomePageView1> implem
     @Override
     public void onPause() {
         super.onPause();
+        LogUtil.d("dfy","HomeFragment onPause");
         mHandler.removeCallbacksAndMessages(null);
     }
 
@@ -113,7 +113,6 @@ public class HomePageFragment1 extends FragmentPresentImpl<HomePageView1> implem
                 @Override
                 public void run() {
                     mHandler.removeCallbacks(this);
-                    LogUtil.d("dfy","enter here");
                     if(!isReceviceData)
                         MyToast.showTextToast(context.getApplicationContext(),"当前设备不在线");
                 }
@@ -155,13 +154,12 @@ public class HomePageFragment1 extends FragmentPresentImpl<HomePageView1> implem
                     int size = DataManager.p_intDeviceCount;
                     if(size>0)//有设备的情况下再去获取数据
                     {
-//                        mainBiz.get4GPushData();
+
                         mainBiz.check4GData();
                         mHandler.postDelayed(new Runnable() {
                             @Override
                             public void run() {
                                 mHandler.removeCallbacks(this);
-                                LogUtil.d("dfy","enter here");
                                 if(!isReceviceData)
                                     MyToast.showTextToast(context.getApplicationContext(),"当前设备不在线");
                             }
@@ -180,7 +178,7 @@ public class HomePageFragment1 extends FragmentPresentImpl<HomePageView1> implem
     public void onClick(View v) {
         switch (v.getId())
         {
-            case R.id.doorlightlayout:
+            case R.id.doorlightTv:
                 mView.changeImg();
                 break;
             case R.id.lightcontrolTv:
@@ -199,6 +197,6 @@ public class HomePageFragment1 extends FragmentPresentImpl<HomePageView1> implem
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
-        LogUtil.d("dfy","homeFragment hidden = "+hidden);
+
     }
 }

@@ -460,10 +460,6 @@
                         android:drawablePadding="@dimen/margin5"
                         android:layout_height="wrap_content" />
 
-                    <View
-                        android:layout_width="1dp"
-                        android:background="@color/green"
-                        android:layout_height="match_parent"/>
 
 
                     <TextView
@@ -494,10 +490,6 @@
                         android:background="@drawable/funtion_btn"
                         android:textColor="@color/black" />
 
-                    <View
-                        android:layout_width="1dp"
-                        android:background="@color/green"
-                        android:layout_height="match_parent"/>
 
 
 
@@ -506,6 +498,7 @@
                         android:layout_width="match_parent"
                         android:orientation="vertical"
                         android:layout_weight="1"
+                        android:visibility="gone"
                         android:id="@+id/doorlightlayout"
                         android:paddingTop="@dimen/margin5"
                         android:paddingBottom="@dimen/margin5"
@@ -531,16 +524,14 @@
 
                     </LinearLayout>
 
-                    <com.example.dufangyu.lecatapp.customview.TextImageView
+                    <TextView
                         android:id="@+id/doorlightTv"
-                        android:visibility="gone"
                         android:paddingTop="@dimen/margin5"
                         android:paddingBottom="@dimen/margin5"
                         android:layout_width="match_parent"
                         android:layout_weight="1"
+                        android:background="@drawable/funtion_btn"
                         android:text="门灯"
-                        app:drawableTopHeight="30dp"
-                        app:drawableTopWidth="30dp"
                         android:drawableTop="@drawable/light"
                         android:gravity="center"
                         android:drawablePadding="@dimen/margin5"

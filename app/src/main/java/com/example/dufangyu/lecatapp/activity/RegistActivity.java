@@ -12,6 +12,8 @@ import android.view.ViewTreeObserver;
 import com.example.dufangyu.lecatapp.R;
 import com.example.dufangyu.lecatapp.biz.IRegist;
 import com.example.dufangyu.lecatapp.biz.RegistBiz;
+import com.example.dufangyu.lecatapp.biz.RegistListenr;
+import com.example.dufangyu.lecatapp.customview.CustomLoadDialog;
 import com.example.dufangyu.lecatapp.present.ActivityPresentImpl;
 import com.example.dufangyu.lecatapp.socketUtils.TcpConnectUtil;
 import com.example.dufangyu.lecatapp.utils.MyCountDownTimer;
@@ -90,21 +92,26 @@ public class RegistActivity extends ActivityPresentImpl<RegistView> implements V
         }
 
 
-//            CustomLoadDialog.show(RegistActivity.this,"",true,null,R.layout.logindialog);
-//            registBiz.registUser(mView.getValueById(R.id.username_editor), mView.getValueById(R.id.pwd_editor), new RegistListenr() {
-//                @Override
-//                public void registSuccess() {
-//                    CustomLoadDialog.dismisDialog();
-//                    MyToast.showTextToast(getApplicationContext(),"注册成功");
-//                    finish();
-//                }
-//
-//                @Override
-//                public void registFail() {
-//                    CustomLoadDialog.dismisDialog();
-//                    MyToast.showTextToast(getApplicationContext(),"用户已存在");
-//                }
-//            });
+            CustomLoadDialog.show(RegistActivity.this,"",true,null,R.layout.logindialog);
+            registBiz.registUser(mView.getValueById(R.id.username_editor), mView.getValueById(R.id.pwd_editor), new RegistListenr() {
+                @Override
+                public void registSuccess() {
+                    CustomLoadDialog.dismisDialog();
+                    MyToast.showTextToast(getApplicationContext(),"注册成功");
+                    if(countTimer!=null)
+                    {
+                        countTimer.cancel();
+                        countTimer = null;
+                    }
+                    finish();
+                }
+
+                @Override
+                public void registFail() {
+                    CustomLoadDialog.dismisDialog();
+                    MyToast.showTextToast(getApplicationContext(),"用户已存在");
+                }
+            });
 
     }
 
@@ -159,6 +166,7 @@ public class RegistActivity extends ActivityPresentImpl<RegistView> implements V
     @Override
     protected void onDestroy() {
         super.onDestroy();
+
     }
 
     @Override

@@ -155,7 +155,6 @@ public class TcpConnectUtil {
                         if (!p_bConnectSuccessON) {
                             p_bConnectSuccessON = true;
                             p_intStateCode = TCPNONET;
-                            LogUtil.d("dfy","mCallBack = "+mCallBack);
                             if(mCallBack!=null)
                                 mCallBack.onHandle(p_intStateCode);
                         }
@@ -528,8 +527,8 @@ public class TcpConnectUtil {
 //                TempJudge(strDataType,strParam2);
             }
         }else{
-            LogUtil.d("dfy","mDataCallBack = "+mDataCallBack);
-            LogUtil.d("dfy","intDataType = "+intDataType);
+//            LogUtil.d("dfy","mDataCallBack = "+mDataCallBack);
+//            LogUtil.d("dfy","intDataType = "+intDataType);
             if(mDataCallBack!=null)
                 mDataCallBack.onReceiveResult(intDataType,  strDataType,  strSetType,  strSetSN,
                         strSetSN1,  strAlmComType,  strHisType,  strPosType,

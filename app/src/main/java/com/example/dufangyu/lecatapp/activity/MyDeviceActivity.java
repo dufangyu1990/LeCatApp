@@ -12,6 +12,7 @@ import com.example.dufangyu.lecatapp.biz.MyDeviceBiz;
 import com.example.dufangyu.lecatapp.biz.MyDeviceListener;
 import com.example.dufangyu.lecatapp.present.ActivityPresentImpl;
 import com.example.dufangyu.lecatapp.socketUtils.TcpConnectUtil;
+import com.example.dufangyu.lecatapp.utils.LogUtil;
 import com.example.dufangyu.lecatapp.utils.MyToast;
 import com.example.dufangyu.lecatapp.view.MyDeviceView;
 
@@ -35,6 +36,7 @@ public class MyDeviceActivity extends ActivityPresentImpl<MyDeviceView> implemen
         mLocalBroadcastManager = LocalBroadcastManager.getInstance(this);
         loginName = getIntent().getStringExtra("loginName");
         myDeviceBiz = new MyDeviceBiz(this);
+        LogUtil.d("dfy","myDeviceBiz = "+myDeviceBiz);
         mView.startRefrsh(true);
         getDataFromServer();
 
@@ -43,7 +45,6 @@ public class MyDeviceActivity extends ActivityPresentImpl<MyDeviceView> implemen
 
     private void getDataFromServer()
     {
-
         if(!TcpConnectUtil.p_bLinkCenterON)
         {
             MyToast.showTextToast(getApplicationContext(),getResources().getString(R.string.badnetwork));

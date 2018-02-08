@@ -2,9 +2,9 @@ package com.example.dufangyu.lecatapp.view;
 
 
 import android.graphics.drawable.Drawable;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.dufangyu.lecatapp.R;
@@ -32,8 +32,6 @@ public class HomePageView1 extends ViewImpl{
     private TextView redLightTv,greenLightTv,blueLightTv,closeLightTv;
     private TextView doorlightTv;
     private TextView lightControlTv;
-    private LinearLayout doorlayout;
-    private ImageView doorimg;
     private TextView doorStateTv,doorBatteryTv,lockStateTv,lockBatteryTv,catBatteryTv;
     private boolean isLightOn = false;
     @Override
@@ -41,8 +39,6 @@ public class HomePageView1 extends ViewImpl{
 
         lightControlTv = findViewById(R.id.lightcontrolTv);
         doorlightTv = findViewById(R.id.doorlightTv);
-        doorlayout = findViewById(R.id.doorlightlayout);
-        doorimg = findViewById(R.id.doorimg);
         doorStateTv = findViewById(R.id.doorStateTv);
         doorBatteryTv = findViewById(R.id.doorBatteryTv);
         lockStateTv = findViewById(R.id.lockStaeTv);
@@ -81,7 +77,7 @@ public class HomePageView1 extends ViewImpl{
     @Override
     public void bindEvent() {
 
-        EventHelper.click(mPresent,lightControlTv,doorlightTv,doorlayout);
+        EventHelper.click(mPresent,lightControlTv,doorlightTv);
     }
 
 
@@ -176,18 +172,16 @@ public class HomePageView1 extends ViewImpl{
         Drawable drawable= null;
         if(!isLightOn)
         {
-//            drawable = ContextCompat.getDrawable(mRootView.getContext(),R.drawable.light_on);
-//            drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
-//            doorlightTv.setCompoundDrawablesWithIntrinsicBounds(null,drawable,null,null);
+            drawable = ContextCompat.getDrawable(mRootView.getContext(),R.drawable.light_on);
+            drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+            doorlightTv.setCompoundDrawables(null,drawable,null,null);
             isLightOn = true;
-            doorimg.setImageResource(R.drawable.light_on);
         }else{
 
-//            drawable = ContextCompat.getDrawable(mRootView.getContext(),R.drawable.light);
-//            drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
-//            doorlightTv.setCompoundDrawablesWithIntrinsicBounds(null,drawable,null,null);
+            drawable = ContextCompat.getDrawable(mRootView.getContext(),R.drawable.light);
+            drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+            doorlightTv.setCompoundDrawables(null,drawable,null,null);
             isLightOn = false;
-            doorimg.setImageResource(R.drawable.light);
         }
     }
 

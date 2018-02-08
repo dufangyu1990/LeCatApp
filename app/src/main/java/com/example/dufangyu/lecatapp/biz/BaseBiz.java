@@ -11,7 +11,6 @@ public abstract class BaseBiz {
 
     public BaseBiz()
     {
-//        LogUtil.d("dfy","callBack = "+ TcpConnectUtil.getTcpInstance().getDataCallBack());
         TcpConnectUtil.getTcpInstance().setDataCallBack(serverCallBack);
     }
 
