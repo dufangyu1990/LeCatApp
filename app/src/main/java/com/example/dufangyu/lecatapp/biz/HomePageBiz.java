@@ -4,6 +4,7 @@ package com.example.dufangyu.lecatapp.biz;
 import com.example.dufangyu.lecatapp.bean.RealData;
 import com.example.dufangyu.lecatapp.manager.DataManager;
 import com.example.dufangyu.lecatapp.socketUtils.TcpConnectUtil;
+import com.example.dufangyu.lecatapp.utils.LogUtil;
 
 /**
  * Created by dufangyu on 2017/9/5.
@@ -60,8 +61,21 @@ public class HomePageBiz extends BaseBiz implements IHomePage {
         TcpConnectUtil.getTcpInstance().ClintSendBcCommData (2160, "0001", "101", temBuf.toString(), "", "", "", "", "", "", "", "","" , "", "", "", "", "", "");
     }
 
-
-
+    /**
+     * 发送监听指令
+     */
+    @Override
+    public void sendJTOrder(String phoneNumber) {
+        temBuf.setLength(0);
+        int size = DataManager.p_intDeviceCount;
+        for(int i =0;i<size;i++)
+        {
+            temBuf.append(DataManager.p_strDeviceList[i][1]).append("&");
+        }
+//        LogUtil.d("dfy","temBuf = "+temBuf.toString());
+        TcpConnectUtil.getTcpInstance().IntiTemp();
+        TcpConnectUtil.getTcpInstance().ClintSendBcCommData (2160, "0003", "101", temBuf.toString(), "", "", "", "", "", "", "", phoneNumber,"" , "", "", "", "", "", "");
+    }
 
 
     @Override
@@ -109,11 +123,10 @@ public class HomePageBiz extends BaseBiz implements IHomePage {
             }
         }else if(intDataType ==2160)
         {
-
-
             //收到巡检指令返回
             if(strDataType.equals("1001"))
             {
+                LogUtil.d("dfy","4g网关回传数据");
                 if(listener!=null)
                     listener.getCheck4GData(strParam1,strParam2,strParam3,strParam4);
             }

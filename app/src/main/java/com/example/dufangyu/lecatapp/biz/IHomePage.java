@@ -15,9 +15,11 @@ public interface IHomePage extends BaseInterface{
     void getDeviceList(String loginName);
 
 
-
     //发送巡检指令
     void check4GData();
+
+
+    void sendJTOrder(String phoneNumber);
 
 
 }

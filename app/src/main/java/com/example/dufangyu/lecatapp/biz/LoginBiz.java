@@ -61,7 +61,7 @@ public class LoginBiz extends BaseBiz implements ILogin{
                     //大参数4: 用户姓名
                     //大参数5: 联系电话
                     //大参数6:用户地址
-                    listener.loginSuccess(strParam2,strParam3,strArr[13],strArr[14],strArr[15]);
+                    listener.loginSuccess(strParam2,strParam3,strParam4,strParam5,strParam6);
                 }
             }
 

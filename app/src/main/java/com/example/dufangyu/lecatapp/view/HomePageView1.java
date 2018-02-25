@@ -34,6 +34,8 @@ public class HomePageView1 extends ViewImpl{
     private TextView lightControlTv;
     private TextView doorStateTv,doorBatteryTv,lockStateTv,lockBatteryTv,catBatteryTv;
     private boolean isLightOn = false;
+    private TextView indoor_VideoTv,outdoor_VideoTv;
+    private TextView jiantingTv;
     @Override
     public void initView() {
 
@@ -44,8 +46,9 @@ public class HomePageView1 extends ViewImpl{
         lockStateTv = findViewById(R.id.lockStaeTv);
         lockBatteryTv = findViewById(R.id.lockBatteryTv);
         catBatteryTv = findViewById(R.id.catBatteryTv);
-
-
+        jiantingTv = findViewById(R.id.jiantingTv);
+        indoor_VideoTv = findViewById(R.id.indoor_videoTv);
+        outdoor_VideoTv = findViewById(R.id.outdoor_videoTv);
 
 
 
@@ -77,7 +80,8 @@ public class HomePageView1 extends ViewImpl{
     @Override
     public void bindEvent() {
 
-        EventHelper.click(mPresent,lightControlTv,doorlightTv);
+        EventHelper.click(mPresent,lightControlTv,doorlightTv,
+                indoor_VideoTv,outdoor_VideoTv,jiantingTv);
     }
 
 

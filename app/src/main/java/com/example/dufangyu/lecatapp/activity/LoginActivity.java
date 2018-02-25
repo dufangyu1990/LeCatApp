@@ -10,10 +10,13 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.content.LocalBroadcastManager;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewTreeObserver;
+import android.widget.Toast;
 
 import com.example.dufangyu.lecatapp.R;
+import com.example.dufangyu.lecatapp.bean.LoginBean;
 import com.example.dufangyu.lecatapp.biz.ILogin;
 import com.example.dufangyu.lecatapp.biz.LoginBiz;
 import com.example.dufangyu.lecatapp.biz.LoginListener;
@@ -24,8 +27,11 @@ import com.example.dufangyu.lecatapp.utils.BroadCastControll;
 import com.example.dufangyu.lecatapp.utils.Constant;
 import com.example.dufangyu.lecatapp.utils.LogUtil;
 import com.example.dufangyu.lecatapp.utils.MyToast;
+import com.example.dufangyu.lecatapp.utils.SharePrefUtil;
 import com.example.dufangyu.lecatapp.utils.Util;
 import com.example.dufangyu.lecatapp.view.LoginView;
+import com.google.gson.Gson;
+import com.jjhome.master.http.OnConnListener;
 
 import static com.example.dufangyu.lecatapp.utils.Constant.REFRESH;
 import static com.example.dufangyu.lecatapp.utils.Constant.TCPDISLINK;
@@ -55,6 +61,13 @@ public class LoginActivity extends ActivityPresentImpl<LoginView> implements Vie
     private IntentFilter filter;
     private static LoginActivity loginInstance;
     private static boolean isNeedJump = true;//是否需要跳转到主页
+
+
+
+    private String mPwd;
+    private LoginBean loginBean;
+
+
     @Override
     public void afterViewCreate(Bundle savedInstanceState) {
         super.afterViewCreate(savedInstanceState);
@@ -275,11 +288,16 @@ public class LoginActivity extends ActivityPresentImpl<LoginView> implements Vie
         mView.cancleAnim();
         departCode = code;
         LogUtil.d("dfy","登录成功 userName = "+userName+",phoneCall = "+phoneCall+",address = "+address);
+        LogUtil.d("dfy","code = "+code);
         yonghuming = userName;
         phoneStr = phoneCall;
         addressStr = address;
         mView.saveAccountNdPwd(userName,phoneCall,address);
         loginBiz.getDeviceList(loginName);
+        //同时登陆视频demo的服务器
+        loginVideoServer();
+
+
 
     }
 
@@ -310,5 +328,66 @@ public class LoginActivity extends ActivityPresentImpl<LoginView> implements Vie
         //不在onDestroy中做detachDataCallBackNull操作，防止，下个页面设置了
         //callBack,此时上个页面onDestroy，又重新设为null了
 
+    }
+
+
+
+    private void loginVideoServer()
+    {
+        String name = "7988@qq.com";
+        String pwd = "qq123456";
+        sendLoginData(name,pwd);
+
+    }
+
+    public void sendLoginData(final String name, final String pwd) {
+        mPwd = pwd;
+        if (TextUtils.isEmpty(MyApplication.APP_ID)) {
+            MyToast.showTextToast(this, "请查询自己的APP_ID");
+            return;
+        }
+        MyApplication.getMasterRequest().msLogin(name, pwd, MyApplication.APP_ID, new OnConnListener() {
+
+            @Override
+            public void onStart() {
+            }
+
+            @Override
+            public void onSuccess(String s) {
+                LogUtil.d("dfy", s);
+                Gson gson = new Gson();
+               loginBean = gson.fromJson(s, LoginBean.class);
+                if (loginBean == null) {
+                    onFailure(1, "数据有误");
+                } else {
+                    if (loginBean.errcode == 0) {
+                        SharePrefUtil.putString("userId", loginBean.user_id);
+                        SharePrefUtil.putString("userPwd", pwd);
+                        SharePrefUtil.putString("userToken", loginBean.getUser_token());
+                        SharePrefUtil.putString("userPushIp", loginBean.getPushserver_ip());
+
+                        MyApplication.getInstance().setLoginBean(loginBean);
+//                        Intent intent = DeviceListActivity.getIntent(loginBean.user_id, mPwd, loginBean.pushserver_ip, LoginActivity.this);
+//                        startActivity(intent);
+//                        finish();
+                    } else {
+                        Toast.makeText(LoginActivity.this, "errcode "+loginBean.errcode +" errorInfo "
+                                +loginBean.errinfo , Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(int i, String s) {
+                if (!TextUtils.isEmpty(s)) {
+                    MyToast.showTextToast(LoginActivity.this, s);
+                }
+                LogUtil.d("dfy", ">>>>>>>>>>>" + i);
+            }
+
+
+            public void onFinish() {
+            }
+        });
     }
 }

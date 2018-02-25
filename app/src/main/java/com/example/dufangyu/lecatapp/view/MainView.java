@@ -13,6 +13,7 @@ import com.example.dufangyu.lecatapp.customview.TitleLinearLayout;
 import com.example.dufangyu.lecatapp.fragment.HomePageFragment1;
 import com.example.dufangyu.lecatapp.fragment.MyFragment;
 import com.example.dufangyu.lecatapp.fragment.SetPageFragment;
+import com.example.dufangyu.lecatapp.utils.SharePrefUtil;
 
 
 /**
@@ -51,6 +52,11 @@ public class MainView extends ViewImpl{
                     case R.id.tab_homepage:
                         if (homePageFragment1 == null) {
                             homePageFragment1 = new HomePageFragment1();
+                            Bundle bundle = new Bundle();
+                            bundle.putString("userId", SharePrefUtil.getString("userId",""));
+                            bundle.putString("userPwd", SharePrefUtil.getString("userPwd",""));
+                            bundle.putString("userPushIp", SharePrefUtil.getString("userPushIp",""));
+                            homePageFragment1.setArguments(bundle);
                             transaction.add(R.id.ll_content, homePageFragment1);
                         } else {
                             transaction.show(homePageFragment1);

@@ -41,9 +41,9 @@ public class MainActivity extends FragmentActivityPresentImpl<MainView> implemen
         Intent intent = new Intent(context,MainActivity.class);
         intent.putExtra("depCode",code);
         context.startActivity(intent);
-
-
     }
+
+
 
 
 

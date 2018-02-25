@@ -375,7 +375,7 @@
                     </LinearLayout>
 
                     <TextView
-                        android:id="@+id/textView2"
+                        android:id="@+id/indoor_videoTv"
                         android:textColor="@color/black"
                         android:paddingBottom="@dimen/margin10"
                         android:paddingLeft="@dimen/margin10"
@@ -391,6 +391,7 @@
                         android:text="室内监控" />
 
                     <TextView
+                        android:id="@+id/outdoor_videoTv"
                         android:paddingBottom="@dimen/margin10"
                         android:textColor="@color/black"
                         android:paddingLeft="@dimen/margin10"
@@ -476,7 +477,7 @@
                         android:layout_height="wrap_content" />
 
                     <TextView
-                        android:id="@+id/textView3"
+                        android:id="@+id/jiantingTv"
                         android:paddingTop="@dimen/margin5"
                         android:paddingBottom="@dimen/margin5"
                         android:layout_width="match_parent"

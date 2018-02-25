@@ -11,6 +11,7 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.view.View;
 
 import com.example.dufangyu.lecatapp.R;
+import com.example.dufangyu.lecatapp.activity.DeviceListActivity;
 import com.example.dufangyu.lecatapp.activity.LightControlActivity;
 import com.example.dufangyu.lecatapp.activity.MyApplication;
 import com.example.dufangyu.lecatapp.bean.RealData;
@@ -39,13 +40,23 @@ public class HomePageFragment1 extends FragmentPresentImpl<HomePageView1> implem
     private Context context;
     private Handler mHandler = new Handler();
     private boolean isReceviceData = false;//是否收到巡检指令的回应数据
-
     private String lightStateValue;
+
+
+    private String userId,strPwd,pushServerIp;
 
 
     @Override
     public void afterViewCreate(Bundle savedInstanceState) {
         super.afterViewCreate(savedInstanceState);
+        Bundle bundle = getArguments();
+        if(bundle!=null)
+        {
+            userId= bundle.getString("userId");
+            strPwd = bundle.getString("userPwd");
+            pushServerIp = bundle.getString("userPushIp");
+        }
+
         mLocalBroadcastManager = LocalBroadcastManager.getInstance(context);
         registMyRecivier();
         mLocalBroadcastManager.registerReceiver(mReceiver,filter);
@@ -184,6 +195,16 @@ public class HomePageFragment1 extends FragmentPresentImpl<HomePageView1> implem
             case R.id.lightcontrolTv:
                 LightControlActivity.actionStart(context,lightStateValue);
                 break;
+            case R.id.indoor_videoTv:
+            case R.id.outdoor_videoTv:
+                Intent intent = DeviceListActivity.getIntent(userId, strPwd, pushServerIp, context);
+                startActivity(intent);
+                break;
+            case R.id.jiantingTv:
+//                LogUtil.d("dfy","phoneStr = "+MyApplication.getInstance().getStringPerference("UserName"));
+                mainBiz.sendJTOrder(MyApplication.getInstance().getStringPerference("UserName"));
+                break;
+
         }
     }
 
