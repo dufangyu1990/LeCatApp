@@ -14,7 +14,6 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.example.dufangyu.lecatapp.R;
 import com.example.dufangyu.lecatapp.utils.MyToast;
@@ -190,13 +189,15 @@ public class PlayActivity extends Activity implements View.OnClickListener {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
             // do something...
-            if ((System.currentTimeMillis() - exitTime) > TIME_DIFF) {
-                Toast.makeText(PlayActivity.this, "再次点击退出播放",
-                        Toast.LENGTH_SHORT).show();
-                exitTime = System.currentTimeMillis();
-            } else {
-                PlayActivity.this.finish();
-            }
+//            if ((System.currentTimeMillis() - exitTime) > TIME_DIFF) {
+//                Toast.makeText(PlayActivity.this, "再次点击退出播放",
+//                        Toast.LENGTH_SHORT).show();
+//                exitTime = System.currentTimeMillis();
+//            } else {
+//                PlayActivity.this.finish();
+//            }
+
+            PlayActivity.this.finish();
             return true;
         }
         return super.onKeyDown(keyCode, event);

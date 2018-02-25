@@ -68,7 +68,6 @@ public class DeviceListActivity extends Activity implements View.OnClickListener
         mPushIp = getIntent().getStringExtra("pushIp");
 
         initView();
-
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

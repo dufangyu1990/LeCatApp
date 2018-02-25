@@ -1,6 +1,7 @@
 package com.example.dufangyu.lecatapp.fragment;
 
 
+import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -8,12 +9,14 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.content.LocalBroadcastManager;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 
 import com.example.dufangyu.lecatapp.R;
-import com.example.dufangyu.lecatapp.activity.DeviceListActivity;
 import com.example.dufangyu.lecatapp.activity.LightControlActivity;
 import com.example.dufangyu.lecatapp.activity.MyApplication;
+import com.example.dufangyu.lecatapp.activity.PlayActivity;
 import com.example.dufangyu.lecatapp.bean.RealData;
 import com.example.dufangyu.lecatapp.biz.HomePageBiz;
 import com.example.dufangyu.lecatapp.biz.HomePageListener;
@@ -24,7 +27,22 @@ import com.example.dufangyu.lecatapp.utils.BroadCastControll;
 import com.example.dufangyu.lecatapp.utils.Constant;
 import com.example.dufangyu.lecatapp.utils.LogUtil;
 import com.example.dufangyu.lecatapp.utils.MyToast;
+import com.example.dufangyu.lecatapp.utils.SharePrefUtil;
 import com.example.dufangyu.lecatapp.view.HomePageView1;
+import com.example.jjhome.network.Constants;
+import com.example.jjhome.network.DeviceUtils;
+import com.example.jjhome.network.TestEvent;
+import com.example.jjhome.network.ddpush.YeePushService;
+import com.example.jjhome.network.ddpush.YeePushUtils;
+import com.example.jjhome.network.entity.DeviceListBean;
+import com.example.jjhome.network.entity.DeviceListItemBean;
+import com.google.gson.Gson;
+import com.jjhome.master.http.OnConnListener;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import de.greenrobot.event.EventBus;
 
 /**
  * Created by dufangyu on 2017/8/31.
@@ -44,11 +62,13 @@ public class HomePageFragment1 extends FragmentPresentImpl<HomePageView1> implem
 
 
     private String userId,strPwd,pushServerIp;
-
+    private DeviceListBean mListBean = new DeviceListBean();
+    private ArrayList<String> mPushIpList = new ArrayList<>();
 
     @Override
     public void afterViewCreate(Bundle savedInstanceState) {
         super.afterViewCreate(savedInstanceState);
+        EventBus.getDefault().register(this);
         Bundle bundle = getArguments();
         if(bundle!=null)
         {
@@ -197,8 +217,9 @@ public class HomePageFragment1 extends FragmentPresentImpl<HomePageView1> implem
                 break;
             case R.id.indoor_videoTv:
             case R.id.outdoor_videoTv:
-                Intent intent = DeviceListActivity.getIntent(userId, strPwd, pushServerIp, context);
-                startActivity(intent);
+//                Intent intent = DeviceListActivity.getIntent(userId, strPwd, pushServerIp, context);
+//                startActivity(intent);
+                videoAction();
                 break;
             case R.id.jiantingTv:
 //                LogUtil.d("dfy","phoneStr = "+MyApplication.getInstance().getStringPerference("UserName"));
@@ -219,5 +240,142 @@ public class HomePageFragment1 extends FragmentPresentImpl<HomePageView1> implem
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
 
+    }
+
+
+
+    private void videoAction()
+    {
+        getData();
+        Intent startSrv = new Intent(context.getApplicationContext(), YeePushService.class);
+        startSrv.putExtra("pushIp", pushServerIp);
+        context.getApplicationContext().startService(startSrv);
+    }
+
+    /**
+     * 从服务器请求设备列表
+     */
+    public void getData() {
+        final ProgressDialog progressDialog = new ProgressDialog(context.getApplicationContext());
+        progressDialog.setMessage("加载中...");
+        //TODO 从服务器获取设备列表
+        Log.d("success--->>>", "getData");
+        MyApplication.getMasterRequest().msDeviceList(userId, strPwd, SharePrefUtil.getString("userToken", ""), new OnConnListener() {
+            @Override
+            public void onStart() {
+//                progressDialog.show();
+                Log.d("success--->>>", "onStart()");
+            }
+
+            @Override
+            public void onSuccess(String s) {
+                Log.d("success--->>>", s);
+                if (TextUtils.isEmpty(s)) {
+                    return;
+                }
+                try {
+                    Gson gson = new Gson();
+                    mListBean = gson.fromJson(s, mListBean.getClass());
+                } catch (Exception e) {
+                    // TODO: handle exception
+                }
+
+                if (mListBean == null) {
+                    onFailure(1, "没有数据");
+                    return;
+                }
+                if (mListBean.errcode != 0) {
+                    onFailure(mListBean.errcode, mListBean.errinfo);
+                    return;
+                }
+                List<DeviceListItemBean> device_list = mListBean.device_list;
+                mPushIpList.clear();
+                if (null != device_list && device_list.size() > 0) {
+                    DeviceUtils.deleteAllDevice();
+                    for (int i = 0; i < device_list.size(); i++) {
+                        DeviceListItemBean deviceListItemBean = device_list.get(i);
+                        DeviceUtils.connectDevice(deviceListItemBean.getDevice_id(), deviceListItemBean.getDevice_name(), deviceListItemBean.getDevice_pass(), "0", deviceListItemBean.getShare(), deviceListItemBean.getShared_by(), deviceListItemBean.p2pserver_ip + "-" + deviceListItemBean.p2pserver_port);
+                        if (!mPushIpList.contains(deviceListItemBean.getPushserver_ip())) {
+                            mPushIpList.add(deviceListItemBean.getPushserver_ip());
+                        }
+                    }
+//                    mListAdapter.addData(mListBean.device_list);
+                }
+
+                if (mPushIpList != null && mPushIpList.size() > 0) {
+                    YeePushUtils.resetServiceClient(context.getApplicationContext(), mPushIpList);
+                    YeePushUtils.sendDeviceList(pushServerIp, context, device_list, userId);//将设备信息绑定到推送服务器
+                }
+
+                if(device_list.size() ==  1)
+                {
+                   Intent intent = PlayActivity.getIntent(context, device_list.get(0));
+                    startActivity(intent);
+                }
+
+            }
+
+            @Override
+            public void onFailure(int i, String s) {
+                Log.d("success--->>>", "onFailure()" + s);
+                if (!TextUtils.isEmpty(s)) {
+                    MyToast.showTextToast(context.getApplicationContext(), s);
+                }
+            }
+
+            @Override
+            public void onFinish() {
+//                progressDialog.dismiss();
+            }
+        });
+    }
+
+
+    public void onEventMainThread(TestEvent event) {
+        LogUtil.d("HomeonEvent", "DeviceListActivity onEventMainThread:" + event.get_string());
+        //获取设备的状态
+        if (event.get_string().equals(Constants.ACTION_UPDATE_STATE)) {
+            Bundle bundle = event.get_bundle();
+            //0:不在线；1：在线 2:密码错误
+            LogUtil.d("HomeonEvent", "onEventMainThread bundle.getInt(\"clientState\", 0)" + bundle.getInt("clientState", 0));
+            //device_id
+//            Log.i("VKState", "DeviceListActivity--> clientState -->> " + bundle.getInt("clientState", 0) + " clientStrId " + bundle.getString("clientStrId"));
+            LogUtil.d("HomeonEvent", "onEventMainThread bundle.getString(\"clientStrId\")" + bundle.getString("clientStrId"));
+        }
+
+        //在线人数和最大在线人数
+        if (event.get_string().equals(Constants.ACTION_SEND_ONLINE_NUMS)) {
+            Bundle bundle = event.get_bundle();
+            String deviceId = bundle.getString("device_id");
+            int onlineNums = bundle.getInt("onlineNums");
+            int maxNums = bundle.getInt("maxNums");
+            LogUtil.d("HomeonEvent", "device_id" + deviceId + " onlineNums:" + onlineNums + " maxNums:" + maxNums);
+        }
+
+        //修改设备密码结果
+        if (event.get_string().equals(Constants.MSG_REPSW_RESPONSE)) {
+            Bundle bundle = event.get_bundle();
+            String result = bundle.getString("result");
+            //result为0时设置成功，在这里调用主服务器的修改设备密码接口
+            //MyApplication.getMasterRequest().msModifyDevice();
+            LogUtil.d("HomeonEvent", "result:" + result);
+        }
+
+        if (event.get_string().equals("testyeepushservice")) {
+            Bundle bundle = event.get_bundle();
+            String cmd = bundle.getString("cmd");
+            MyToast.showTextToast(context.getApplicationContext(), cmd);
+            LogUtil.d("HomeonEvent", "cmd:" + cmd);
+        }
+    }
+
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+        DeviceUtils.deleteAllDevice();
+        YeePushUtils.sendLogoutTcp(SharePrefUtil.getString("userPushIp", ""),
+                context, mPushIpList, SharePrefUtil.getString("userId", ""));
     }
 }
