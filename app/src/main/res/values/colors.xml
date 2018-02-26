@@ -35,6 +35,7 @@
     <color name="edittext_hint">#d1d6de</color>
     <!-- 暗灰色 -->
     <color name="dimgrey">#696969</color>
+    <color name="videobg">#282421</color>
     <!-- 雪白色 -->
     <color name="floralwhite">#FFFAF0</color>
     <color name="edittext_color">#595b5e</color>

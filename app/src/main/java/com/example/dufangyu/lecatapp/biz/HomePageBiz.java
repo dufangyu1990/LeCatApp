@@ -80,8 +80,6 @@ public class HomePageBiz extends BaseBiz implements IHomePage {
 
     @Override
     protected void handleServerResult(int intDataType, String strDataType, String strSetType, String strSetSN, String strSetSN1, String strAlmComType, String strHisType, String strPosType, String strFadeType, String strRecogType, String strRecogType1, String strParam1, String strParam2, String strParam3, String strParam4, String strParam5, String strParam6, String strParam7, String strParam8, String[] strArr) {
-
-
         if(intDataType==2150)
         {
             if(strDataType.equals("1002"))
@@ -126,7 +124,7 @@ public class HomePageBiz extends BaseBiz implements IHomePage {
             //收到巡检指令返回
             if(strDataType.equals("1001"))
             {
-                LogUtil.d("dfy","4g网关回传数据");
+                LogUtil.d("dfy","4g网关回传数据"+"lightValue = "+strParam1);
                 if(listener!=null)
                     listener.getCheck4GData(strParam1,strParam2,strParam3,strParam4);
             }

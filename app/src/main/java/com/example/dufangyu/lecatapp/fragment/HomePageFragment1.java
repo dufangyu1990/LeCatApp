@@ -62,6 +62,7 @@ public class HomePageFragment1 extends FragmentPresentImpl<HomePageView1> implem
 
 
     private String userId,strPwd,pushServerIp;
+    private String titleName;
     private DeviceListBean mListBean = new DeviceListBean();
     private ArrayList<String> mPushIpList = new ArrayList<>();
 
@@ -85,15 +86,17 @@ public class HomePageFragment1 extends FragmentPresentImpl<HomePageView1> implem
 
     @Override
     public void onResume() {
+        LogUtil.d("dfy","onResume");
         super.onResume();
-        if(mainBiz==null)
-            mainBiz = new HomePageBiz(this);
+        mainBiz = null;
+        mainBiz = new HomePageBiz(this);
         int size = DataManager.p_intDeviceCount;
         if(size>0)//有设备的情况下再去获取数据
         {
 //            mainBiz.get4GPushData();
             //发送巡检指令
             mainBiz.check4GData();
+            isReceviceData = false;
             mHandler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -140,6 +143,7 @@ public class HomePageFragment1 extends FragmentPresentImpl<HomePageView1> implem
         {
 //            mainBiz.get4GPushData();
             mainBiz.check4GData();
+            isReceviceData = false;
             mHandler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -162,6 +166,7 @@ public class HomePageFragment1 extends FragmentPresentImpl<HomePageView1> implem
     public void getCheck4GData(String param1, String param2, String param3, String param4) {
         isReceviceData = true;
         lightStateValue = param1;
+        LogUtil.d("dfy","lightStateValue = "+lightStateValue);
         mView.refreshHomeUI(param2,param3,param4);
 
     }
@@ -187,6 +192,7 @@ public class HomePageFragment1 extends FragmentPresentImpl<HomePageView1> implem
                     {
 
                         mainBiz.check4GData();
+                        isReceviceData = false;
                         mHandler.postDelayed(new Runnable() {
                             @Override
                             public void run() {
@@ -216,9 +222,13 @@ public class HomePageFragment1 extends FragmentPresentImpl<HomePageView1> implem
                 LightControlActivity.actionStart(context,lightStateValue);
                 break;
             case R.id.indoor_videoTv:
+                titleName = "室内监控";
+                videoAction();
+                break;
             case R.id.outdoor_videoTv:
 //                Intent intent = DeviceListActivity.getIntent(userId, strPwd, pushServerIp, context);
 //                startActivity(intent);
+                titleName = "室外监控";
                 videoAction();
                 break;
             case R.id.jiantingTv:
@@ -309,7 +319,7 @@ public class HomePageFragment1 extends FragmentPresentImpl<HomePageView1> implem
 
                 if(device_list.size() ==  1)
                 {
-                   Intent intent = PlayActivity.getIntent(context, device_list.get(0));
+                   Intent intent = PlayActivity.getIntent(context, device_list.get(0),titleName);
                     startActivity(intent);
                 }
 

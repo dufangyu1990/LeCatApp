@@ -6,14 +6,17 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.dufangyu.lecatapp.R;
 import com.example.dufangyu.lecatapp.utils.MyToast;
@@ -47,11 +50,18 @@ public class PlayActivity extends Activity implements View.OnClickListener {
 
     private DeviceListItemBean mDevice;
 
+    private String titleName;
+
     private String mDeviceID;
     private String mDeviceType;
 
-    private Button btn_open_voice;
-    private Button btn_open_mac;
+    private TextView btn_open_voice;
+    private TextView btn_open_mac;
+    private TextView btn_closeVideo;
+    private TextView backTv;
+    private TextView titleTv;
+
+
     private Button btn_save_video;
     private boolean isOpenVoice = true;// 是否开启了声音
     private boolean isOpenMac = false;// 是否开启了对讲
@@ -60,6 +70,13 @@ public class PlayActivity extends Activity implements View.OnClickListener {
     private String[] btnMac = {"通话开启", "通话关闭"};
     private LinearLayout linearLayout;
     private boolean isShakeHeaderModel = false;
+
+    public static Intent getIntent(Context context, DeviceListItemBean deviceBean,String titleName) {
+        Intent intent = new Intent(context, PlayActivity.class);
+        intent.putExtra("device", deviceBean);
+        intent.putExtra("titleName", titleName);
+        return intent;
+    }
 
     public static Intent getIntent(Context context, DeviceListItemBean deviceBean) {
         Intent intent = new Intent(context, PlayActivity.class);
@@ -77,6 +94,9 @@ public class PlayActivity extends Activity implements View.OnClickListener {
         mDevice = (DeviceListItemBean) getIntent().getSerializableExtra("device");
         mDeviceID = mDevice.getDevice_id();
         mDeviceType = mDevice.getType();
+
+        titleName = getIntent().getStringExtra("titleName");
+
         initView();
         EventBus.getDefault().register(this);
         linearLayout = (LinearLayout) findViewById(R.id.layOutVideo);
@@ -127,14 +147,24 @@ public class PlayActivity extends Activity implements View.OnClickListener {
     }
 
     public void initView() {
-        btn_open_voice = (Button) findViewById(R.id.btn_open_voice);
+        btn_open_voice = (TextView) findViewById(R.id.btn_open_voice);
         btn_open_voice.setOnClickListener(this);
-        btn_open_mac = (Button) findViewById(R.id.btn_open_mac);
+        btn_open_mac = (TextView) findViewById(R.id.btn_open_mac);
         btn_open_mac.setOnClickListener(this);
-        btn_save_video = (Button) findViewById(R.id.save_video);
-        btn_save_video.setOnClickListener(this);
-        Button screen_shot = (Button) findViewById(R.id.screen_shot);
-        screen_shot.setOnClickListener(this);
+        btn_closeVideo = (TextView) findViewById(R.id.closevideo);
+        btn_closeVideo.setOnClickListener(this);
+//        btn_save_video = (Button) findViewById(R.id.save_video);
+//        btn_save_video.setOnClickListener(this);
+//        Button screen_shot = (Button) findViewById(R.id.screen_shot);
+//        screen_shot.setOnClickListener(this);
+
+
+        backTv = (TextView) findViewById(R.id.back_img);
+        backTv.setVisibility(View.VISIBLE);
+        backTv.setOnClickListener(this);
+        titleTv = (TextView) findViewById(R.id.title_text);
+        titleTv.setText(titleName);
+
     }
 
 
@@ -236,11 +266,13 @@ public class PlayActivity extends Activity implements View.OnClickListener {
             case R.id.btn_open_voice:
                 if (isOpenVoice) {
                     DeviceUtils.stopAudio();
-                    btn_open_voice.setText(btnVoice[1]);
+//                    btn_open_voice.setText(btnVoice[1]);
+                    changeVoiceImg();
                     MyToast.showTextToast(PlayActivity.this, "声音已经关闭");
                 } else {
                     DeviceUtils.startAudio();
-                    btn_open_voice.setText(btnVoice[0]);
+                    changeVoiceImg();
+//                    btn_open_voice.setText(btnVoice[0]);
                     MyToast.showTextToast(PlayActivity.this, "声音已经开启");
 
                 }
@@ -248,27 +280,31 @@ public class PlayActivity extends Activity implements View.OnClickListener {
                 break;
             //Android 6.0以上手机需要录音动态权限 Manifest.permission.RECORD_AUDIO
             case R.id.btn_open_mac:
-
                 PlayActivityPermissionsDispatcher.needMacWithCheck(this);
+                break;
 
-
+            case R.id.closevideo:
+            case R.id.back_img:
+                finish();
                 break;
             //Android 6.0以上手机需要SD卡存储权限
             // Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE
-            case R.id.screen_shot:
-                DeviceUtils.saveImg("YeelensSdk", "test");
-                break;
-            //Android 6.0以上手机需要SD卡存储权限
-            // Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE
-            case R.id.save_video:
-                if (isSaveVideo) {
-                    DeviceUtils.stopSaveMp4Video(mDeviceID);
-                    btn_save_video.setText("录像已经停止");
-                } else {
-                    DeviceUtils.startSaveMp4Video(mDeviceID, "YeelensSdk", "Test_Video");
-                    btn_save_video.setText("录像已经开始");
-                }
-                isSaveVideo = !isSaveVideo;
+//            case R.id.screen_shot:
+//                DeviceUtils.saveImg("YeelensSdk", "test");
+//                break;
+//            //Android 6.0以上手机需要SD卡存储权限
+//            // Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE
+//            case R.id.save_video:
+//                if (isSaveVideo) {
+//                    DeviceUtils.stopSaveMp4Video(mDeviceID);
+//                    btn_save_video.setText("录像已经停止");
+//                } else {
+//                    DeviceUtils.startSaveMp4Video(mDeviceID, "YeelensSdk", "Test_Video");
+//                    btn_save_video.setText("录像已经开始");
+//                }
+//                isSaveVideo = !isSaveVideo;
+//                break;
+            default:
                 break;
         }
     }
@@ -279,13 +315,16 @@ public class PlayActivity extends Activity implements View.OnClickListener {
     {
         if (isOpenMac) {
             DeviceUtils.stopRecord(mDeviceID);
-            btn_open_mac.setText(btnMac[1]);
+//            btn_open_mac.setText(btnMac[1]);
+
+            changeMacImg();
             MyToast.showTextToast(PlayActivity.this, "通话已经关闭");
 
 
         } else {
             DeviceUtils.startRecord(mDeviceID);
-            btn_open_mac.setText(btnMac[0]);
+//            btn_open_mac.setText(btnMac[0]);
+            changeMacImg();
             MyToast.showTextToast(PlayActivity.this, "通话已经开启");
 
         }
@@ -330,5 +369,44 @@ public class PlayActivity extends Activity implements View.OnClickListener {
                     }
                 }).show();
     }
+
+
+
+
+    private void changeVoiceImg()
+    {
+        Drawable drawable= null;
+        if(!isOpenVoice)
+        {
+            drawable = ContextCompat.getDrawable(this,R.drawable.mianti_kai);
+            drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+            btn_open_voice.setCompoundDrawables(null,drawable,null,null);
+
+        }else{
+            drawable = ContextCompat.getDrawable(this,R.drawable.mianti_guan);
+            drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+            btn_open_voice.setCompoundDrawables(null,drawable,null,null);
+
+        }
+    }
+
+
+    private void changeMacImg()
+    {
+        Drawable drawable= null;
+        if(!isOpenMac)
+        {
+            drawable = ContextCompat.getDrawable(this,R.drawable.duijiang_kai);
+            drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+            btn_open_mac.setCompoundDrawables(null,drawable,null,null);
+
+        }else{
+            drawable = ContextCompat.getDrawable(this,R.drawable.duijiang_guan);
+            drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+            btn_open_mac.setCompoundDrawables(null,drawable,null,null);
+
+        }
+    }
+
 
 }
