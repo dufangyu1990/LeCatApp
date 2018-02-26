@@ -166,7 +166,6 @@ public class HomePageFragment1 extends FragmentPresentImpl<HomePageView1> implem
     public void getCheck4GData(String param1, String param2, String param3, String param4) {
         isReceviceData = true;
         lightStateValue = param1;
-        LogUtil.d("dfy","lightStateValue = "+lightStateValue);
         mView.refreshHomeUI(param2,param3,param4);
 
     }

@@ -70,7 +70,7 @@ public class LightControlActivity extends ActivityPresentImpl<LightControlView> 
 
     @Override
     public void getDeviceData(String param1, String param2, String param3, String param4) {
-        LogUtil.d("dfy","getDeviceData refreshUI");
+//        LogUtil.d("dfy","getDeviceData refreshUI");
         mView.refreshUI(param1);
     }
 

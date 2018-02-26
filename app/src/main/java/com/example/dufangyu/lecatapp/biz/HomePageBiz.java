@@ -124,7 +124,7 @@ public class HomePageBiz extends BaseBiz implements IHomePage {
             //收到巡检指令返回
             if(strDataType.equals("1001"))
             {
-                LogUtil.d("dfy","4g网关回传数据"+"lightValue = "+strParam1);
+                LogUtil.d("dfy","4g网关回传数据");
                 if(listener!=null)
                     listener.getCheck4GData(strParam1,strParam2,strParam3,strParam4);
             }

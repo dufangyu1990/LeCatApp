@@ -19,13 +19,14 @@ public class LightBiz extends BaseBiz implements ILightBiz{
     }
     @Override
     public void sendLightCommand(String light_type) {
+        LogUtil.d("dfy","发送灯控指令");
         temBuf.setLength(0);
         int size = DataManager.p_intDeviceCount;
         for(int i =0;i<size;i++)
         {
             temBuf.append(DataManager.p_strDeviceList[i][1]).append("&");
         }
-        LogUtil.d("dfy","temBuf = "+temBuf.toString());
+//        LogUtil.d("dfy","temBuf = "+temBuf.toString());
         TcpConnectUtil.getTcpInstance().IntiTemp();
         TcpConnectUtil.getTcpInstance().ClintSendBcCommData (2160, "0002", "101", temBuf.toString(), "", "", "", "", "", "", "", light_type,"" , "", "", "", "", "", "");
     }
