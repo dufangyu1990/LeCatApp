@@ -181,7 +181,6 @@ public class HomePageView1 extends ViewImpl{
             doorlightTv.setCompoundDrawables(null,drawable,null,null);
             isLightOn = true;
         }else{
-
             drawable = ContextCompat.getDrawable(mRootView.getContext(),R.drawable.light);
             drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
             doorlightTv.setCompoundDrawables(null,drawable,null,null);
