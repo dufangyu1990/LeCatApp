@@ -57,6 +57,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:drawableTop="@drawable/mianti_kai"
+                    android:layout_marginRight="@dimen/margin20"
                     android:drawablePadding="@dimen/margin2"
                     android:textColor="@color/white"
                     />
@@ -66,6 +67,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:layout_marginLeft="@dimen/margin20"
                     android:drawableTop="@drawable/guanduan_guan"
                     android:drawablePadding="@dimen/margin2"
                     android:textColor="@color/white"
@@ -115,6 +117,7 @@
                 android:orientation="horizontal"
                 android:id="@+id/duijainglayout"
                 android:layout_above="@id/layout1"
+                android:layout_marginBottom="@dimen/margin40"
                 android:layout_height="wrap_content">
 
 
