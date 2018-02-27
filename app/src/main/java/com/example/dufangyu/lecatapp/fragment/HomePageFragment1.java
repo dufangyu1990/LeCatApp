@@ -326,6 +326,8 @@ public class HomePageFragment1 extends FragmentPresentImpl<HomePageView1> implem
 
             @Override
             public void onFailure(int i, String s) {
+
+                MyToast.showTextToast(context.getApplicationContext(),"参数有误，无法进行实时监控");
                 Log.d("success--->>>", "onFailure()" + s);
                 if (!TextUtils.isEmpty(s)) {
                     MyToast.showTextToast(context.getApplicationContext(), s);

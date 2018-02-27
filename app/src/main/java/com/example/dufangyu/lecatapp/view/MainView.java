@@ -53,6 +53,7 @@ public class MainView extends ViewImpl{
                         if (homePageFragment1 == null) {
                             homePageFragment1 = new HomePageFragment1();
                             Bundle bundle = new Bundle();
+
                             bundle.putString("userId", SharePrefUtil.getString("userId",""));
                             bundle.putString("userPwd", SharePrefUtil.getString("userPwd",""));
                             bundle.putString("userPushIp", SharePrefUtil.getString("userPushIp",""));

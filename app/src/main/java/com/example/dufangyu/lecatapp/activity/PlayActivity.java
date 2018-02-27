@@ -12,9 +12,11 @@ import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -39,7 +41,7 @@ import permissions.dispatcher.PermissionRequest;
 import permissions.dispatcher.RuntimePermissions;
 
 @RuntimePermissions
-public class PlayActivity extends Activity implements View.OnClickListener {
+public class PlayActivity extends Activity implements View.OnClickListener,View.OnTouchListener {
     public static final String TAG = "PlayActivity";
     private String strCameraID;
     /**
@@ -56,7 +58,7 @@ public class PlayActivity extends Activity implements View.OnClickListener {
     private String mDeviceType;
 
     private TextView btn_open_voice;
-    private TextView btn_open_mac;
+    private ImageView btn_open_mac;
     private TextView btn_closeVideo;
     private TextView backTv;
     private TextView titleTv;
@@ -94,9 +96,8 @@ public class PlayActivity extends Activity implements View.OnClickListener {
         mDevice = (DeviceListItemBean) getIntent().getSerializableExtra("device");
         mDeviceID = mDevice.getDevice_id();
         mDeviceType = mDevice.getType();
-
         titleName = getIntent().getStringExtra("titleName");
-
+        PlayActivityPermissionsDispatcher.needMacWithCheck(this);
         initView();
         EventBus.getDefault().register(this);
         linearLayout = (LinearLayout) findViewById(R.id.layOutVideo);
@@ -149,8 +150,8 @@ public class PlayActivity extends Activity implements View.OnClickListener {
     public void initView() {
         btn_open_voice = (TextView) findViewById(R.id.btn_open_voice);
         btn_open_voice.setOnClickListener(this);
-        btn_open_mac = (TextView) findViewById(R.id.btn_open_mac);
-        btn_open_mac.setOnClickListener(this);
+        btn_open_mac = (ImageView) findViewById(R.id.btn_open_mac);
+        btn_open_mac.setOnTouchListener(this);
         btn_closeVideo = (TextView) findViewById(R.id.closevideo);
         btn_closeVideo.setOnClickListener(this);
 //        btn_save_video = (Button) findViewById(R.id.save_video);
@@ -260,6 +261,8 @@ public class PlayActivity extends Activity implements View.OnClickListener {
         }
     }
 
+
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -278,10 +281,10 @@ public class PlayActivity extends Activity implements View.OnClickListener {
                 }
                 isOpenVoice = !isOpenVoice;
                 break;
-            //Android 6.0以上手机需要录音动态权限 Manifest.permission.RECORD_AUDIO
-            case R.id.btn_open_mac:
-                PlayActivityPermissionsDispatcher.needMacWithCheck(this);
-                break;
+//            //Android 6.0以上手机需要录音动态权限 Manifest.permission.RECORD_AUDIO
+//            case R.id.btn_open_mac:
+//                PlayActivityPermissionsDispatcher.needMacWithCheck(this);
+//                break;
 
             case R.id.closevideo:
             case R.id.back_img:
@@ -313,22 +316,8 @@ public class PlayActivity extends Activity implements View.OnClickListener {
     @NeedsPermission(Manifest.permission.RECORD_AUDIO)
     public void needMac()
     {
-        if (isOpenMac) {
-            DeviceUtils.stopRecord(mDeviceID);
-//            btn_open_mac.setText(btnMac[1]);
-
-            changeMacImg();
-            MyToast.showTextToast(PlayActivity.this, "通话已经关闭");
 
 
-        } else {
-            DeviceUtils.startRecord(mDeviceID);
-//            btn_open_mac.setText(btnMac[0]);
-            changeMacImg();
-            MyToast.showTextToast(PlayActivity.this, "通话已经开启");
-
-        }
-        isOpenMac = !isOpenMac;
     }
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -390,23 +379,44 @@ public class PlayActivity extends Activity implements View.OnClickListener {
         }
     }
 
-
-    private void changeMacImg()
-    {
-        Drawable drawable= null;
-        if(!isOpenMac)
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        switch (event.getAction())
         {
-            drawable = ContextCompat.getDrawable(this,R.drawable.duijiang_kai);
-            drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
-            btn_open_mac.setCompoundDrawables(null,drawable,null,null);
-
-        }else{
-            drawable = ContextCompat.getDrawable(this,R.drawable.duijiang_guan);
-            drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
-            btn_open_mac.setCompoundDrawables(null,drawable,null,null);
-
+            case MotionEvent.ACTION_DOWN:
+                DeviceUtils.startRecord(mDeviceID);
+                MyToast.showTextToast(PlayActivity.this, "通话已经开启");
+                isOpenMac = true;
+                break;
+            case MotionEvent.ACTION_UP:
+                DeviceUtils.stopRecord(mDeviceID);
+                isOpenMac = false;
+                MyToast.showTextToast(PlayActivity.this, "通话已经关闭");
+                break;
         }
+
+
+
+        return false;
     }
+
+
+//    private void changeMacImg()
+//    {
+//        Drawable drawable= null;
+//        if(!isOpenMac)
+//        {
+//            drawable = ContextCompat.getDrawable(this,R.drawable.duijiang_kai);
+//            drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+//            btn_open_mac.setCompoundDrawables(null,drawable,null,null);
+//
+//        }else{
+//            drawable = ContextCompat.getDrawable(this,R.drawable.duijiang_guan);
+//            drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+//            btn_open_mac.setCompoundDrawables(null,drawable,null,null);
+//
+//        }
+//    }
 
 
 }

@@ -293,7 +293,9 @@ public class LoginActivity extends ActivityPresentImpl<LoginView> implements Vie
         phoneStr = phoneCall;
         addressStr = address;
         mView.saveAccountNdPwd(userName,phoneCall,address);
-        loginBiz.getDeviceList(loginName);
+
+
+
         //同时登陆视频demo的服务器
         loginVideoServer();
 
@@ -361,10 +363,14 @@ public class LoginActivity extends ActivityPresentImpl<LoginView> implements Vie
                     onFailure(1, "数据有误");
                 } else {
                     if (loginBean.errcode == 0) {
+
+
+
                         SharePrefUtil.putString("userId", loginBean.user_id);
                         SharePrefUtil.putString("userPwd", pwd);
                         SharePrefUtil.putString("userToken", loginBean.getUser_token());
                         SharePrefUtil.putString("userPushIp", loginBean.getPushserver_ip());
+
 
                         MyApplication.getInstance().setLoginBean(loginBean);
 //                        Intent intent = DeviceListActivity.getIntent(loginBean.user_id, mPwd, loginBean.pushserver_ip, LoginActivity.this);
@@ -387,6 +393,10 @@ public class LoginActivity extends ActivityPresentImpl<LoginView> implements Vie
 
 
             public void onFinish() {
+
+                //因为需要登录视频服务器，所以在登陆视频服务器操作结束后再进行
+                // 获取设备跳转主页，防止先跳转主页后，视频服务器返回的数据拿不到
+                loginBiz.getDeviceList(loginName);
             }
         });
     }

@@ -35,7 +35,12 @@
 
 
 
+
+
+
+
             <LinearLayout
+                android:id="@+id/layout1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
@@ -67,15 +72,7 @@
                     />
 
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:id="@+id/btn_open_mac"
-                    android:drawableTop="@drawable/duijiang_guan"
-                    android:drawablePadding="@dimen/margin2"
-                    android:textColor="@color/white"
-                    />
+
 
 
 
@@ -109,6 +106,28 @@
                      android:layout_height="wrap_content"
                      android:text="录像已经停止" />-->
             </LinearLayout>
+
+
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:id="@+id/duijainglayout"
+                android:layout_above="@id/layout1"
+                android:layout_height="wrap_content">
+
+
+                <ImageView
+                    android:id="@+id/btn_open_mac"
+                    android:clickable="true"
+                    android:layout_width="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/videoclose_btn"
+                    />
+
+            </RelativeLayout>
 
 
 
