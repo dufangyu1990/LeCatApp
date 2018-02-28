@@ -21,6 +21,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.dufangyu.lecatapp.R;
+import com.example.dufangyu.lecatapp.utils.LogUtil;
 import com.example.dufangyu.lecatapp.utils.MyToast;
 import com.example.jjhome.network.Constants;
 import com.example.jjhome.network.DeviceUtils;
@@ -189,13 +190,17 @@ public class PlayActivity extends Activity implements View.OnClickListener,View.
         super.onStop();
 
         //退出时。请判断视频声音或通话是否打开来确定是否调用下面两个方法
+
+
+        LogUtil.d("dfy","isOpenVoice = "+isOpenVoice);
         if (isOpenVoice) {
             DeviceUtils.stopAudio();
         }
-
+        LogUtil.d("dfy","isOpenMac = "+isOpenMac);
         if (isOpenMac) {
             DeviceUtils.stopRecord(mDeviceID);
         }
+        LogUtil.d("dfy","isSaveVideo = "+isSaveVideo);
         if (isSaveVideo) {
             DeviceUtils.stopSaveMp4Video(mDeviceID);
         }
