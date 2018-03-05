@@ -72,7 +72,10 @@ public class DeviceListActivity extends Activity implements View.OnClickListener
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 DeviceListItemBean mDevice = mListAdapter.getItem(position);
-                Intent intent = DeviceOptionsActivity.getIntent(DeviceListActivity.this, mDevice);
+//                Intent intent = DeviceOptionsActivity.getIntent(DeviceListActivity.this, mDevice);
+//                startActivity(intent);
+
+                Intent intent = PlayActivity.getIntent(DeviceListActivity.this, mDevice);
                 startActivity(intent);
             }
         });

@@ -322,6 +322,7 @@ public class HomePageFragment1 extends FragmentPresentImpl<HomePageView1> implem
                    Intent intent = PlayActivity.getIntent(context, device_list.get(0),titleName);
                     startActivity(intent);
                 }else{
+                    //多台设备显示列表界面
                     Intent intent = DeviceListActivity.getIntent(userId, strPwd, pushServerIp, context);
                     startActivity(intent);
                 }
