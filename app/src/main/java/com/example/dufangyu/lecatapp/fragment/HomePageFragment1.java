@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.example.dufangyu.lecatapp.R;
+import com.example.dufangyu.lecatapp.activity.DeviceListActivity;
 import com.example.dufangyu.lecatapp.activity.LightControlActivity;
 import com.example.dufangyu.lecatapp.activity.MyApplication;
 import com.example.dufangyu.lecatapp.activity.PlayActivity;
@@ -321,7 +322,8 @@ public class HomePageFragment1 extends FragmentPresentImpl<HomePageView1> implem
                    Intent intent = PlayActivity.getIntent(context, device_list.get(0),titleName);
                     startActivity(intent);
                 }else{
-
+                    Intent intent = DeviceListActivity.getIntent(userId, strPwd, pushServerIp, context);
+                    startActivity(intent);
                 }
 
             }
