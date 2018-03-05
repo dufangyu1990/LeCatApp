@@ -320,6 +320,8 @@ public class HomePageFragment1 extends FragmentPresentImpl<HomePageView1> implem
                 {
                    Intent intent = PlayActivity.getIntent(context, device_list.get(0),titleName);
                     startActivity(intent);
+                }else{
+
                 }
 
             }
