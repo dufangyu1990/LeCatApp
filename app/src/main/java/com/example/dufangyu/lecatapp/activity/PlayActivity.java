@@ -190,8 +190,6 @@ public class PlayActivity extends Activity implements View.OnClickListener,View.
         super.onStop();
 
         //退出时。请判断视频声音或通话是否打开来确定是否调用下面两个方法
-
-
         LogUtil.d("dfy","isOpenVoice = "+isOpenVoice);
         if (isOpenVoice) {
             DeviceUtils.stopAudio();
