@@ -68,6 +68,7 @@ public class DeviceListActivity extends Activity implements View.OnClickListener
         mPushIp = getIntent().getStringExtra("pushIp");
 
         initView();
+
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -75,6 +76,7 @@ public class DeviceListActivity extends Activity implements View.OnClickListener
 //                Intent intent = DeviceOptionsActivity.getIntent(DeviceListActivity.this, mDevice);
 //                startActivity(intent);
 
+                //点击跳转到视频界面
                 Intent intent = PlayActivity.getIntent(DeviceListActivity.this, mDevice);
                 startActivity(intent);
             }
