@@ -54,9 +54,6 @@ public class LightControlView extends ViewImpl{
     }
 
 
-
-
-
     public void refreshUI(String lightState)
     {
         if(!TextUtils.isEmpty(lightState))
