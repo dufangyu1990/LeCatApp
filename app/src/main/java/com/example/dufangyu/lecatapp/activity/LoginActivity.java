@@ -137,6 +137,7 @@ public class LoginActivity extends ActivityPresentImpl<LoginView> implements Vie
             case R.id.loginlayout:
                 loginBiz = new LoginBiz(this);
                 login();
+
                 break;
             case R.id.regist_user:
                 RegistActivity.actionStart(LoginActivity.this);

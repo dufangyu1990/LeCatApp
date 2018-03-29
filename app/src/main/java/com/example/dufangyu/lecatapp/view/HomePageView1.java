@@ -33,9 +33,9 @@ public class HomePageView1 extends ViewImpl{
     private TextView doorlightTv;
     private TextView lightControlTv;
     private TextView doorStateTv,doorBatteryTv,lockStateTv,lockBatteryTv,catBatteryTv;
-    private boolean isLightOn = false;
     private TextView indoor_VideoTv,outdoor_VideoTv;
     private TextView jiantingTv;
+    private TextView door_openTv;
     @Override
     public void initView() {
 
@@ -49,7 +49,7 @@ public class HomePageView1 extends ViewImpl{
         jiantingTv = findViewById(R.id.jiantingTv);
         indoor_VideoTv = findViewById(R.id.indoor_videoTv);
         outdoor_VideoTv = findViewById(R.id.outdoor_videoTv);
-
+        door_openTv = findViewById(R.id.open_doorTv);
 
 
 
@@ -81,7 +81,7 @@ public class HomePageView1 extends ViewImpl{
     public void bindEvent() {
 
         EventHelper.click(mPresent,lightControlTv,doorlightTv,
-                indoor_VideoTv,outdoor_VideoTv,jiantingTv);
+                indoor_VideoTv,outdoor_VideoTv,jiantingTv,door_openTv);
     }
 
 
@@ -171,7 +171,7 @@ public class HomePageView1 extends ViewImpl{
 
 
 
-    public void changeImg()
+    public void changeImg(boolean isLightOn)
     {
         Drawable drawable= null;
         if(!isLightOn)
@@ -179,12 +179,10 @@ public class HomePageView1 extends ViewImpl{
             drawable = ContextCompat.getDrawable(mRootView.getContext(),R.drawable.light_on);
             drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
             doorlightTv.setCompoundDrawables(null,drawable,null,null);
-            isLightOn = true;
         }else{
             drawable = ContextCompat.getDrawable(mRootView.getContext(),R.drawable.light);
             drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
             doorlightTv.setCompoundDrawables(null,drawable,null,null);
-            isLightOn = false;
         }
     }
 

@@ -67,6 +67,7 @@ public class HomePageFragment1 extends FragmentPresentImpl<HomePageView1> implem
     private DeviceListBean mListBean = new DeviceListBean();
     private ArrayList<String> mPushIpList = new ArrayList<>();
 
+    private boolean isLightOn;
     @Override
     public void afterViewCreate(Bundle savedInstanceState) {
         super.afterViewCreate(savedInstanceState);
@@ -216,7 +217,14 @@ public class HomePageFragment1 extends FragmentPresentImpl<HomePageView1> implem
         switch (v.getId())
         {
             case R.id.doorlightTv:
-                mView.changeImg();
+                if(isLightOn)
+                {
+                    mainBiz.sendOpenZBLight("0");
+                }else{
+                    mainBiz.sendOpenZBLight("1");
+                }
+                mView.changeImg(isLightOn);
+                isLightOn = !isLightOn;
                 break;
             case R.id.lightcontrolTv:
                 LightControlActivity.actionStart(context,lightStateValue);
@@ -234,6 +242,9 @@ public class HomePageFragment1 extends FragmentPresentImpl<HomePageView1> implem
             case R.id.jiantingTv:
 //                LogUtil.d("dfy","phoneStr = "+MyApplication.getInstance().getStringPerference("UserName"));
                 mainBiz.sendJTOrder(MyApplication.getInstance().getStringPerference("UserName"));
+                break;
+            case R.id.open_doorTv:
+                mainBiz.sendOpenZBDoorLock("1");//开锁
                 break;
 
         }

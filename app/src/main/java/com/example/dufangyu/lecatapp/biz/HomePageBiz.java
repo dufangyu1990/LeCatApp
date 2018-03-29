@@ -77,6 +77,38 @@ public class HomePageBiz extends BaseBiz implements IHomePage {
         TcpConnectUtil.getTcpInstance().ClintSendBcCommData (2160, "0003", "101", temBuf.toString(), "", "", "", "", "", "", "", phoneNumber,"" , "", "", "", "", "", "");
     }
 
+    /**
+     * 开关zb灯
+     * @param lightflag
+     */
+    @Override
+    public void sendOpenZBLight(String lightflag) {
+        temBuf.setLength(0);
+        int size = DataManager.p_intDeviceCount;
+        for(int i =0;i<size;i++)
+        {
+            temBuf.append(DataManager.p_strDeviceList[i][1]).append("&");
+        }
+        TcpConnectUtil.getTcpInstance().IntiTemp();
+        TcpConnectUtil.getTcpInstance().ClintSendBcCommData (2160, "0004", "101", temBuf.toString(), "", "", "", "", "", "", "", lightflag,"" , "", "", "", "", "", "");
+    }
+
+    /**
+     * 开关ZB门锁
+     * @param doorlockflag
+     */
+    @Override
+    public void sendOpenZBDoorLock(String doorlockflag) {
+        temBuf.setLength(0);
+        int size = DataManager.p_intDeviceCount;
+        for(int i =0;i<size;i++)
+        {
+            temBuf.append(DataManager.p_strDeviceList[i][1]).append("&");
+        }
+        TcpConnectUtil.getTcpInstance().IntiTemp();
+        TcpConnectUtil.getTcpInstance().ClintSendBcCommData (2160, "0005", "101", temBuf.toString(), "", "", "", "", "", "", "", doorlockflag,"" , "", "", "", "", "", "");
+    }
+
 
     @Override
     protected void handleServerResult(int intDataType, String strDataType, String strSetType, String strSetSN, String strSetSN1, String strAlmComType, String strHisType, String strPosType, String strFadeType, String strRecogType, String strRecogType1, String strParam1, String strParam2, String strParam3, String strParam4, String strParam5, String strParam6, String strParam7, String strParam8, String[] strArr) {

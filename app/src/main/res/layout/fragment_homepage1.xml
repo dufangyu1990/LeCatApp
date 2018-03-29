@@ -355,7 +355,7 @@
                             android:src="@drawable/door_close_selector" />
 
                         <TextView
-                            android:id="@+id/textView4"
+                            android:id="@+id/open_doorTv"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"

@@ -59,6 +59,7 @@ public class LoginView extends ViewImpl{
         linkStateText = findViewById(R.id.netstateTv);
         SavePassCheck = findViewById(R.id.SavePassCheck);
         loginlayout = findViewById(R.id.loginlayout);
+        loginlayout.setEnabled(true);
         backImg.setVisibility(View.INVISIBLE);
         forgetPwdTv = findViewById(R.id.forgetPwdTv);
         setListeners();
@@ -258,6 +259,7 @@ public class LoginView extends ViewImpl{
             loadimg.startAnimation(animation);
         }
         loginText.setText("正在登录");
+        loginlayout.setEnabled(false);
     }
 
     public void cancleAnim()
@@ -266,6 +268,7 @@ public class LoginView extends ViewImpl{
             loadimg.clearAnimation();
         loadimg.setVisibility(View.INVISIBLE);
         loginText.setText("登录");
+        loginlayout.setEnabled(true);
     }
 
 

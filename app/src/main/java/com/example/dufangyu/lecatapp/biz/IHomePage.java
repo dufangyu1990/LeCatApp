@@ -22,4 +22,11 @@ public interface IHomePage extends BaseInterface{
     void sendJTOrder(String phoneNumber);
 
 
+    //开关ZB灯
+    void sendOpenZBLight(String lightflag);
+
+
+    //开关ZB门锁
+    void sendOpenZBDoorLock(String doorlockflag);
+
 }
